@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇CSS元素显示模式和背景的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS的元素显示模式和背景">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/CSS%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%83%8C%E6%99%AF/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇CSS元素显示模式和背景的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T13:36:35.000Z">
+<meta property="article:modified_time" content="2022-08-02T08:43:39.958Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/CSS%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%83%8C%E6%99%AF/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS的元素显示模式和背景 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/CSS%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%83%8C%E6%99%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS的元素显示模式和背景
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 21:36:35" itemprop="dateCreated datePublished" datetime="2022-08-01T21:36:35+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 16:43:39" itemprop="dateModified" datetime="2022-08-02T16:43:39+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇CSS元素显示模式和背景的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Emmet语法"><a href="#Emmet语法" class="headerlink" title="Emmet语法"></a>Emmet语法</h1><h2 id="快速生成HTML结构语法"><a href="#快速生成HTML结构语法" class="headerlink" title="快速生成HTML结构语法"></a>快速生成HTML结构语法</h2><ul>
+<li>生成标签 直接输入标签名 按tab键即可   比如  div   然后tab 键， 就可以生成 <div></div></li>
+<li>如果想要生成多个相同标签  加上 * 就可以了 比如   div*3  就可以快速生成3个div</li>
+<li>如果有父子级关系的标签，可以用 &gt;  比如   ul &gt; li就可以了</li>
+<li>如果有兄弟关系的标签，用  +  就可以了 比如 div+p  </li>
+<li>如果生成带有类名或者id名字的，  直接写  .demo  或者  #two   tab 键就可以了</li>
+<li>如果生成的div 类名是有顺序的， 可以用 自增符号  $ </li>
+<li>如果想要在生成的标签内部写内容可以用  { }  表示</li>
+</ul>
+<h2 id="快速生成CSS样式语法"><a href="#快速生成CSS样式语法" class="headerlink" title="快速生成CSS样式语法"></a>快速生成CSS样式语法</h2><p>CSS 基本采取简写形式即可</p>
+<p>​		比如 w200   按tab  可以 生成  width: 200px;</p>
+<p>​		比如 lh26px   按tab  可以生成  line-height: 26px;</p>
+<h2 id="快速格式化代码"><a href="#快速格式化代码" class="headerlink" title="快速格式化代码"></a>快速格式化代码</h2><p>Vscode  快速格式化代码:   shift+alt+f</p>
+<p>也可以设置 当我们 保存页面的时候自动格式化代码:</p>
+<p>1）文件 ——.&gt;【首选项】———-&gt;【设置】；</p>
+<p>2）搜索emmet.include;</p>
+<p>3）在settings.json下的【工作区设置】中添加以下语句：</p>
+<p>​		“editor.formatOnType”: true,</p>
+<p>​		“editor.formatOnSave”: true</p>
+<h1 id="CSS的显示模式"><a href="#CSS的显示模式" class="headerlink" title="CSS的显示模式"></a>CSS的显示模式</h1><h2 id="什么是元素的显示模式"><a href="#什么是元素的显示模式" class="headerlink" title="什么是元素的显示模式"></a>什么是元素的显示模式</h2><p><strong>定义：</strong></p>
+<p>​		元素显示模式就是元素（标签）以什么方式进行显示，比如<code>&lt;div&gt;</code>自己占一行，比如一行可以放多个<code>&lt;span&gt;</code>。</p>
+<p><strong>作用：</strong></p>
+<p>​		网页的标签非常多，在不同地方会用到不同类型的标签，了解他们的特点可以更好的布局我们的网页。</p>
+<h3 id="块元素"><a href="#块元素" class="headerlink" title="块元素"></a>块元素</h3><ol>
+<li><p>常见的块元素：<code>&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;</code>,其中<code>&lt;div&gt;</code>标签是最典型的块元素。</p>
+</li>
+<li><p>块级元素的特点： </p>
+<ol>
+<li>自己独占一行。</li>
+<li>高度，宽度、外边距以及内边距都可以控制。</li>
+<li>宽度默认是容器（父级宽度）的100%。</li>
+<li>是一个容器及盒子，里面可以放行内或者块级元素。</li>
+</ol>
+</li>
+<li><p>注意：  </p>
+<ol>
+<li>文字类的元素内不能放块级元素</li>
+<li><code>&lt;p&gt;</code>标签主要用于存放文字，因此<code>&lt;p&gt;</code>里面不能放块级元素，尤其是<code>&lt;div&gt;</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h3><ol>
+<li><p>常见的行内元素：<code>&lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span&gt;</code>其中<code>&lt;span&gt;</code> 标签是最典型的行内元素。有的地方也将行内元素称为内联元素。</p>
+</li>
+<li><p>行内元素的特点：</p>
+<ol>
+<li>相邻行内元素在一行上，一行可以显示多个。</li>
+<li>高、宽直接设置是无效的。</li>
+<li>默认宽度就是它本身内容的宽度。</li>
+<li>行内元素只能容纳文本或其他行内元素。</li>
+</ol>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>链接里面不能再放链接</li>
+<li>特殊情况链接 <code>&lt;a&gt;</code> 里面可以放块级元素，但是给 <code>&lt;a&gt;</code>转换一下块级模式最安全</li>
+</ol>
+</li>
+</ol>
+<h3 id="行内块元素"><a href="#行内块元素" class="headerlink" title="行内块元素"></a>行内块元素</h3><ol>
+<li><p>常见的行内块标签：<code>&lt;img/&gt;、&lt;input/&gt;、&lt;td&gt;</code>它们同时具有块元素和行内元素的特点，有些资料称它们为行内块元素。</p>
+</li>
+<li><p>行内块元素的特点：</p>
+<ol>
+<li>和相邻行内元素（行内块）在一行上，但是他们之间会有空白缝隙。</li>
+<li>一行可以显示多个（行内元素特点）。</li>
+<li>默认宽度就是它本身内容的宽度（行内元素特点）。</li>
+<li>高度，行高、外边距以及内边距都可以控制（块级元素特点）。</li>
+</ol>
+</li>
+</ol>
+<h2 id="元素显示模式的转换"><a href="#元素显示模式的转换" class="headerlink" title="元素显示模式的转换"></a>元素显示模式的转换</h2><ol>
+<li>简单理解就是一个模式的元素需要另外一种模式的特性</li>
+<li>转换方式<ol>
+<li>转换为块元素：display:block;</li>
+<li>转换为行内元素：display:inline;</li>
+<li>转换为行内块：display: inline-block;</li>
+</ol>
+</li>
+</ol>
+<h2 id="元素显示模式"><a href="#元素显示模式" class="headerlink" title="元素显示模式"></a>元素显示模式</h2><table>
+<thead>
+<tr>
+<th>元素模式</th>
+<th>元素排列</th>
+<th>设置样式</th>
+<th>默认宽度</th>
+<th>包含</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>块级元素</td>
+<td>一行只能放一个块级元素</td>
+<td>以设置宽度高度</td>
+<td>容器的100%</td>
+<td>容器既可以包含任何标签</td>
+</tr>
+<tr>
+<td>行内元素</td>
+<td>一行可以放多个行内元素</td>
+<td>不可以直接设置宽度高度</td>
+<td>它本身内容的宽的</td>
+<td>容纳文本或者其他行内元素</td>
+</tr>
+<tr>
+<td>行内块元素</td>
+<td>一行放多个行内块元素</td>
+<td>可以设置宽度和高度</td>
+<td>它本身内容的宽度</td>
+<td></td>
+</tr>
+</tbody></table>
+<h1 id="CSS的背景"><a href="#CSS的背景" class="headerlink" title="CSS的背景"></a>CSS的背景</h1><ol>
+<li>通过 CSS 背景属性，可以给页面元素添加背景样式。</li>
+<li>背景属性可以设置背景颜色、背景图片、背景平铺、背景图片位置、背景图像固定等。</li>
+</ol>
+<h2 id="背景颜色"><a href="#背景颜色" class="headerlink" title="背景颜色"></a>背景颜色</h2><pre><code>background-color 定义元素的背景颜色
+</code></pre>
+<h2 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h2><pre><code>background-image  定义元素的背景图片
+</code></pre>
+<p><strong>其他说明</strong>：</p>
+<ol>
+<li>实际开发常见于logo或者一些装饰性的小图片或者是超大的背景图片，优点是非常便于控制位置(精灵图也是一种运用场景)</li>
+<li>注意：背景图片后面的地址，千万不要忘记加URL，同时里面的路径<strong>不要加引号</strong>。</li>
+</ol>
+<h2 id="背景平铺"><a href="#背景平铺" class="headerlink" title="背景平铺"></a>背景平铺</h2><pre><code>background-repeat 设置元素背景图像的平铺 
+</code></pre>
+<h2 id="背景图片位置"><a href="#背景图片位置" class="headerlink" title="背景图片位置"></a>背景图片位置</h2><pre><code>background-position 属性可以改变图片在背景中的位置
+</code></pre>
+<p><strong>其他说明：</strong></p>
+<ol>
+<li><p>参数是方位名词</p>
+<ol>
+<li>如果指定的两个值都是方位名词，则两个值前后顺序无关，比如 left  top 和 top  left 效果一致</li>
+<li>如果只指定了一个方位名词，另一个值省略，则第二个值默认居中对齐</li>
+</ol>
+</li>
+<li><p>参数是精确单位</p>
+<ol>
+<li>如果参数值是精确坐标，那么第一个肯定是 x 坐标，第二个一定是 y 坐标</li>
+<li>如果只指定一个数值，那该数值一定是 x 坐标，另一个默认垂直居中</li>
+</ol>
+</li>
+<li><p>参数是混合单位</p>
+<ol>
+<li>如果指定的两个值是精确单位和方位名词混合使用，则第一个值是 x 坐标，第二个值是 y 坐标</li>
+</ol>
+</li>
+</ol>
+<h2 id="背景图片固定"><a href="#背景图片固定" class="headerlink" title="背景图片固定"></a>背景图片固定</h2><pre><code>background-attachment 属性设置背景图像是否固定或者随着页面的其余部分滚动。
+</code></pre>
+<p><strong>其他说明：</strong></p>
+<p>background-attachment 后期可以制作视差滚动的效果。</p>
+<h2 id="背景样式合写"><a href="#背景样式合写" class="headerlink" title="背景样式合写"></a>背景样式合写</h2><pre><code>background: 背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置;
+</code></pre>
+<h2 id="背景色半透明"><a href="#背景色半透明" class="headerlink" title="背景色半透明"></a>背景色半透明</h2><p>CSS3 提供了背景颜色半透明的效果。 </p>
+<ol>
+<li>最后一个参数是 alpha 透明度，取值范围在 0~1之间</li>
+<li>我们习惯把 0.3 的 0 省略掉，写为 background: rgba(0, 0, 0, .3);</li>
+</ol>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>背景半透明是指盒子背景半透明，盒子里面的内容不受影响</li>
+<li>CSS3新增属性，是IE9+版本浏览器才支持的，现在实际开发,不用太关注兼容性写法了</li>
+</ol>
+<h2 id="背景缩放"><a href="#背景缩放" class="headerlink" title="背景缩放"></a>背景缩放</h2><pre><code>background-size: 背景图片宽度 背景图片高度；
+</code></pre>
+<p><strong>其他说明：</strong></p>
+<ol>
+<li>单位：长度 | 百分比 | cover | contain<ol>
+<li>cover把背景图片扩展至足够大，使背景图像完全覆盖背景区域</li>
+<li>contain把图像扩展至最大尺寸，使其宽度和高度完全适应内容区域</li>
+</ol>
+</li>
+</ol>
+<h2 id="背景小结"><a href="#背景小结" class="headerlink" title="背景小结"></a>背景小结</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>background-color</td>
+<td>背景颜色</td>
+<td>预定义的颜色值&#x2F;十六进制&#x2F;RGB代码</td>
+</tr>
+<tr>
+<td>background-image</td>
+<td>背景图片</td>
+<td>url（图片路径）</td>
+</tr>
+<tr>
+<td>background-repeat</td>
+<td>是否平铺</td>
+<td>repeat&#x2F;no-repeat&#x2F;repeat-x&#x2F;repeat-y</td>
+</tr>
+<tr>
+<td>background-position</td>
+<td>背景位置</td>
+<td>length&#x2F;position 分别是x和y坐标</td>
+</tr>
+<tr>
+<td>background-attachment</td>
+<td>背景附着</td>
+<td>scroll（背景滚动）&#x2F;fixed（背景固定）</td>
+</tr>
+<tr>
+<td>背景简写</td>
+<td>书写更简单</td>
+<td>背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置</td>
+</tr>
+<tr>
+<td>背景色半透明</td>
+<td>背景颜色半透明</td>
+<td>background：rgba(0,0,0,0.3); 后面必须是4个值</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/CSS%E7%9A%84%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E5%92%8C%E8%83%8C%E6%99%AF/" title="CSS的元素显示模式和背景">http://chhwn.github.io/2022/08/01/CSS的元素显示模式和背景/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/CSS%E7%9A%84%E9%80%89%E6%8B%A9%E5%99%A8%E3%80%81%E5%B1%9E%E6%80%A7%E3%80%81%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/" rel="prev" title="CSS的选择器、属性、引入方式">
+      <i class="fa fa-chevron-left"></i> CSS的选择器、属性、引入方式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/CSS%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E3%80%81%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%B7%E5%BC%8F/" rel="next" title="CSS三大特性、盒子模型和其他样式">
+      CSS三大特性、盒子模型和其他样式 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Emmet%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">Emmet语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90HTML%E7%BB%93%E6%9E%84%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">快速生成HTML结构语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90CSS%E6%A0%B7%E5%BC%8F%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">快速生成CSS样式语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">快速格式化代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E7%9A%84%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">CSS的显示模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%83%E7%B4%A0%E7%9A%84%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">什么是元素的显示模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%97%E5%85%83%E7%B4%A0"><span class="nav-number">2.1.1.</span> <span class="nav-text">块元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0"><span class="nav-number">2.1.2.</span> <span class="nav-text">行内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0"><span class="nav-number">2.1.3.</span> <span class="nav-text">行内块元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.2.</span> <span class="nav-text">元素显示模式的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%98%BE%E7%A4%BA%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">元素显示模式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E7%9A%84%E8%83%8C%E6%99%AF"><span class="nav-number">3.</span> <span class="nav-text">CSS的背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2"><span class="nav-number">3.1.</span> <span class="nav-text">背景颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">背景图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%B9%B3%E9%93%BA"><span class="nav-number">3.3.</span> <span class="nav-text">背景平铺</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">背景图片位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%9B%BA%E5%AE%9A"><span class="nav-number">3.5.</span> <span class="nav-text">背景图片固定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F%E5%90%88%E5%86%99"><span class="nav-number">3.6.</span> <span class="nav-text">背景样式合写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%89%B2%E5%8D%8A%E9%80%8F%E6%98%8E"><span class="nav-number">3.7.</span> <span class="nav-text">背景色半透明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E7%BC%A9%E6%94%BE"><span class="nav-number">3.8.</span> <span class="nav-text">背景缩放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E5%B0%8F%E7%BB%93"><span class="nav-number">3.9.</span> <span class="nav-text">背景小结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

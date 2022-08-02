@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇Ajax的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/02/Ajax/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇Ajax的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003058.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003109.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003133.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003150.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003208.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003228.png">
+<meta property="article:published_time" content="2022-08-01T16:04:09.000Z">
+<meta property="article:modified_time" content="2022-08-02T05:11:07.213Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="Ajax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003058.png">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/02/Ajax/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Ajax | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/02/Ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ajax
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-02 00:04:09 / 修改时间：13:11:07" itemprop="dateCreated datePublished" datetime="2022-08-02T00:04:09+08:00">2022-08-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ajax/" itemprop="url" rel="index"><span itemprop="name">Ajax</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇Ajax的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="ajax简介"><a href="#ajax简介" class="headerlink" title="ajax简介"></a>ajax简介</h2><ol>
+<li>AJAX全称为Asynchronous JavaScript And XML，就是异步的JS和XML</li>
+<li>通过AJAX可以在浏览器中向服务器发送异步请求，最大的优势：无刷新获取数据</li>
+<li>AJAX不是新的编程语言，而是一种将现有的标准组合在一起使用的新方式</li>
+<li>通过AJAX，可以创建更好、更快以及更友好的WEB应用程序</li>
+<li>AJAX基于JavaScript和HTTP请求（HTTP requests）</li>
+</ol>
+<h2 id="XML简介"><a href="#XML简介" class="headerlink" title="XML简介"></a>XML简介</h2><ol>
+<li>XML可扩展标记语言</li>
+<li>XML被设计用来传输和存储数据</li>
+<li>XML和HTML类似，不同的是HTML中都是预定义标签，而XML中没有预定义标签，全都是自定义标签，用来表示一些数据</li>
+<li>目前已经被json代替了</li>
+</ol>
+<h2 id="Ajax基础"><a href="#Ajax基础" class="headerlink" title="Ajax基础"></a>Ajax基础</h2><h3 id="ajax的优点"><a href="#ajax的优点" class="headerlink" title="ajax的优点"></a>ajax的优点</h3><ol>
+<li>可以无需刷新页面而与服务器端进行通信</li>
+<li>允许你根据用户事件来更新部分页面内容</li>
+</ol>
+<h3 id="ajax的缺点"><a href="#ajax的缺点" class="headerlink" title="ajax的缺点"></a>ajax的缺点</h3><ol>
+<li>没有浏览历史，不能回退</li>
+<li>存在跨域问题</li>
+<li>SEO不友好（搜索引擎优化，对爬虫不友好）</li>
+</ol>
+<h3 id="ajax的要点"><a href="#ajax的要点" class="headerlink" title="ajax的要点"></a>ajax的要点</h3><ol>
+<li>AJAX的要点是XMLHttpRequest对象</li>
+<li>不同的浏览器创建 XMLHttpRequest对象的方法是有差异的</li>
+<li>IE浏览器使用ActiveXObject，而其他的浏览器使用名为XMLHttpRequest的JavaScript内置对象</li>
+</ol>
+<h3 id="XMLHttpRequest对象"><a href="#XMLHttpRequest对象" class="headerlink" title="XMLHttpRequest对象"></a>XMLHttpRequest对象</h3><ol>
+<li><p>XMLHttpRequest对象的属性</p>
+<ol>
+<li><p>onreadystatechange事件：onreadystatechange属性存有处理服务器响应的函数。下面的代码定义一个空的函数，可同时对onreadystatechange属性进行设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = function () &#123;</span><br><span class="line">  if (xhr.readyState == 4 &amp;&amp; xhr.status == 200) &#123;</span><br><span class="line">    ..      </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>readyState属性：存有服务器响应的状态信息。每当readyState改变时，onreadystatechange函数就会被执行</p>
+<ul>
+<li><p>readyState属性可能的值</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>请求未初始化（在调用open()之前）</td>
+</tr>
+<tr>
+<td>1</td>
+<td>请求已提出（调用send()之前）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>请求已发送（这里通常可以从响应的到内容头部）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>请求处理中（响应中通常有部分数据可用，但是服务器还没有完成响应）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>请求已完成（可以访问服务器响应并使用它）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>测试响应是否完成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = function () &#123;</span><br><span class="line">  if(xmlHttp.readyState == 4) &#123;</span><br><span class="line">    // 从服务器的response获得数据</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>responseText属性：通过responseText属性来取回由服务器返回的数据</p>
+</li>
+<li><p>status属性：响应状态码</p>
+<ul>
+<li>200: “OK”</li>
+<li>404: 未找到页面</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="请求服务器"><a href="#请求服务器" class="headerlink" title="请求服务器"></a>请求服务器</h3><ol>
+<li>要想把请求发送到服务器，我们就需要使用open()方法和send()方法</li>
+<li>open()方法定义请求，需要三个参数<ol>
+<li>get方式发送请求，数据写在open()函数（第二个参数url后面）中</li>
+<li>第一个参数定义发送请求所使用的方法（GET还是POST）</li>
+<li>第二个参数规定服务器端脚本的URL</li>
+<li>第三个参数规定是否使用异步，默认使用异步（true)，使用同步（false)</li>
+</ol>
+</li>
+<li>send()方法可将请求送往服务器<ol>
+<li>post方式发送请求，数据写在send()函数中，书写方式：key&#x3D;value&amp;key2&#x3D;value2，为字符串</li>
+<li>send(null);</li>
+</ol>
+</li>
+</ol>
+<h3 id="get请求和post请求"><a href="#get请求和post请求" class="headerlink" title="get请求和post请求"></a>get请求和post请求</h3><ol>
+<li><p>与post相比，get更快也更简单，并且大部分情况下都可以使用</p>
+</li>
+<li><p>但在下列情况中，需要使用post</p>
+<ol>
+<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+<li>向服务器发送大量的数据（post没有数据量限制）</li>
+<li>发送包含未知字符的用户输入时，post比get更稳定和可靠</li>
+</ol>
+</li>
+<li><p>get请求</p>
+<ol>
+<li><p>一个简单的get请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&#x27;get&#x27;, &#x27;xxx.php&#x27;);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过get发送信息请求，数据写在open()函数（第二个参数url后面）中，或者可在文件名后进行拼接字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&#x27;get&#x27;, &#x27;xxx.php?name=jack&amp;skill=swim&#x27;);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>post请求</p>
+<ol>
+<li><p>一个简单的post请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&#x27;post&#x27;, &#x27;xxx.php&#x27;);</span><br><span class="line">xhr.send(null);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过post发送数据，需要使用setRequestHeader()来添加HTTP头，然后在send()方法中规定发送的数据</p>
+</li>
+<li><p>post方式发送请求，数据写在send()函数中，书写方式：key&#x3D;value&amp;key2&#x3D;value2，为字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(&#x27;post&#x27;, &#x27;xxx.php&#x27;);</span><br><span class="line">xhr.setRequestHeader(&#x27;Content-type&#x27;, &#x27;application/x-www-form-urlencoded&#x27;);</span><br><span class="line">xhr.send(&#x27;name=rose&amp;skill=painting&#x27;);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a><strong>HTTP协议</strong></h2><ol>
+<li>HTTP（hypertext transport protocol）协议，超文本传输协议</li>
+<li>HTTP协议详细规定了浏览器和万维网服务器之间互相通信的规则</li>
+<li>主要约定了两块内容：<strong>请求报文和响应报文</strong></li>
+<li>浏览器中获取html页面css和js请求后台页面；<strong>发送的是请求报文，服务器返回的是响应报文，使用请求报文和响应报文这种方式进行数据交互称之为http协议</strong></li>
+<li>通过利用AJAX，您的JavaScript会通过JavaScript的XMLHttpRequest对象，直接与服务器来通信<ol>
+<li><strong>XMLHttpRequest：对象提供了在网页加载后与服务器进行通信的方法</strong></li>
+</ol>
+</li>
+</ol>
+<h3 id="请求报文（面试重点）"><a href="#请求报文（面试重点）" class="headerlink" title="请求报文（面试重点）"></a>请求报文（面试重点）</h3><ol>
+<li><p>什么是请求报文：包括<strong>请求行，请求头，请求主体</strong>；主要有发送请求的方法，浏览器的信息，发送的数据</p>
+</li>
+<li><p>格式与参数（重点）</p>
+<ol>
+<li><p>请求行：包括三部分（请求方式、url路径、http协议版本）</p>
+<ul>
+<li>请求方式：日常使用GET和POST使用居多</li>
+<li>url路径：如&#x2F;s?ie&#x3D;utf-8</li>
+<li>http协议版本：如HTTP&#x2F;1.1</li>
+</ul>
+</li>
+<li><p>请求头：包括（浏览器信息、接受的语言格式、想要发给服务器的信息）请求头有很多，不需要都记住，但是必须记住请求头格式 — 键名: 值</p>
+<ul>
+<li>Host：atguifu.com</li>
+<li>Cookie: name&#x3D;guigu</li>
+<li>User-Agent: chrome 83</li>
+</ul>
+</li>
+<li><p>请求主体：</p>
+<p>发送给服务器的数据内容</p>
+<p>；可有可无，</p>
+<p>若请求行的请求类型为GET，则请求体为空；若为POST，则可以不为空</p>
+<ul>
+<li>如：username&#x3D;admin&amp;password&#x3D;admin</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="响应报文（面试重点）"><a href="#响应报文（面试重点）" class="headerlink" title="响应报文（面试重点）"></a>响应报文（面试重点）</h3><ol>
+<li><p>什么是响应报文：包括<strong>状态行，响应头，响应主体</strong>；主要包括服务的信息，浏览器中直接可以看到的内容</p>
+</li>
+<li><p>格式与参数（重点）</p>
+<ol>
+<li><p>状态行</p>
+<p>：服务的信息，包括三部分（</p>
+<p>HTTP协议版本、响应状态码、响应状态字符串（如ok）</p>
+<p>）</p>
+<ul>
+<li><p>http协议版本：如HTTP&#x2F;1.1</p>
+</li>
+<li><p>响应状态码</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>表示OK</td>
+</tr>
+<tr>
+<td>304</td>
+<td>被缓存了</td>
+</tr>
+<tr>
+<td>404</td>
+<td>表示页面找不到</td>
+</tr>
+<tr>
+<td>403</td>
+<td>表示禁止</td>
+</tr>
+<tr>
+<td>401</td>
+<td>未授权</td>
+</tr>
+<tr>
+<td>500</td>
+<td>内部错误</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>响应头：请求头有很多，不需要都记住，但是必须记住请求头格式 — 名字: 值</p>
+<ul>
+<li>Host：atguifu.com</li>
+<li>Cookie: name&#x3D;guigu</li>
+<li>User-Agent: chrome 83</li>
+</ul>
+</li>
+<li><p>响应主体：主要的返回结果</p>
+<p>，用户看到的内容；如html内容放在响应报文的响应体中做传输，浏览器接收到响应结果后，把响应结果提取出来，对内容做解析，在页面进行渲染和呈现</p>
+<h2 id="Ajax发送请求"><a href="#Ajax发送请求" class="headerlink" title="Ajax发送请求"></a>Ajax发送请求</h2><h3 id="XMLHTTPRequest对象基本使用"><a href="#XMLHTTPRequest对象基本使用" class="headerlink" title="XMLHTTPRequest对象基本使用"></a>XMLHTTPRequest对象基本使用</h3></li>
+</ol>
+</li>
+<li><p>创建异步对象</p>
+<p>（XMLHTTPRequset对象）</p>
+<ol>
+<li>例：var xhr &#x3D; new XMLHTTPRequset();</li>
+</ol>
+</li>
+<li><p>请求行</p>
+<ol>
+<li>XMLHTTPRequest对象的open()方法：定义请求<ul>
+<li>第一个参数定义发送请求所使用的方法（GET还是POST）</li>
+<li>第二个参数规定服务器端脚本的URL</li>
+<li>第三个参数规定应当对请求进行异步地处理</li>
+</ul>
+</li>
+<li>xhr.open(‘get’, ‘hello.php’);</li>
+</ol>
+</li>
+<li><p>请求头</p>
+<ol>
+<li>XMLHTTPRequest对象的setRequestHeader()方法：设置请求头<ul>
+<li>第一个参数为键名</li>
+<li>第二个参数为值</li>
+</ul>
+</li>
+<li>xhr.setRequestHeader(‘hanzai’, ‘more and more fat’);</li>
+<li>若为get请求头可以省略；若为post，若发送数据则不能省略，不发送数据则可以省略</li>
+<li>这里可以注册回调函数</li>
+</ol>
+</li>
+<li><p>请求主体</p>
+<ol>
+<li>XMLHTTPRequest对象的send()方法：发送请求</li>
+</ol>
+</li>
+<li><p>案例：点击请求报文，不刷新页面<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003058.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003109.png" alt="img"></p>
+</li>
+</ol>
+<h2 id="fetch-使用"><a href="#fetch-使用" class="headerlink" title="fetch()使用"></a>fetch()使用</h2><h3 id="fetch-介绍"><a href="#fetch-介绍" class="headerlink" title="fetch()介绍"></a>fetch()介绍</h3><ol>
+<li><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a> 提供了一个 JavaScript 接口，用于访问和操纵 HTTP 管道的一些具体部分，例如请求和响应。它还提供了一个全局 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/fetch"><code>fetch()</code></a> 方法，该方法提供了一种简单，合理的方式来跨网络异步获取资源</p>
+</li>
+<li><p>是XMLHTTPRequset理想的替代方案</p>
+</li>
+<li><p>fetch请求的简单设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(&#x27;http://example.com/movies.json&#x27;)</span><br><span class="line">    // 获取到http响应，通过json()方法将http响应的body解析成JSON的promise</span><br><span class="line">    .then(response =&gt; response.json())</span><br><span class="line">    // JSON的promise成功返回调用then回调函数，得到data数据</span><br><span class="line">    .then(data =&gt; console.log(data));</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="fetch规范与-jQuery-ajax-的不同"><a href="#fetch规范与-jQuery-ajax-的不同" class="headerlink" title="fetch规范与 jQuery.ajax()的不同"></a>fetch规范与 jQuery.ajax()的不同</h3><ol>
+<li>当接收到一个代表错误的 HTTP 状态码时，从fetch返回的 Promise <strong>不会被标记为 reject</strong>，即使响应的 HTTP 状态码是 404 或 500</li>
+<li>相反，它会将 Promise 状态标记为 <strong>resolve</strong> （如果响应的 HTTP 状态码不在 200 - 299 的范围内，则设置 resolve 返回值的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Response/ok"><code>ok</code></a> 属性为 false ），仅当网络故障时或请求被阻止时，才会标记为 reject</li>
+</ol>
+<h2 id="Ajax封装"><a href="#Ajax封装" class="headerlink" title="Ajax封装"></a>Ajax封装</h2><h3 id="封装的目的"><a href="#封装的目的" class="headerlink" title="封装的目的"></a>封装的目的</h3><ol>
+<li>让我们把精力集中在逻辑上，来完成页面的交互效果，基础的部分不用每次都写一遍</li>
+</ol>
+<h3 id="封装的步骤"><a href="#封装的步骤" class="headerlink" title="封装的步骤"></a>封装的步骤</h3><ol>
+<li>抽取固不变定的部分</li>
+<li>不固定的部分作为参数</li>
+<li>若参数有很多，就使用对象来进行优化；让对象作为封装函数的唯一参数，将从封装函数内部抽取出来不固定的部分作为对象的属性，回调函数作为对象的方法</li>
+</ol>
+<h3 id="封装的好坏"><a href="#封装的好坏" class="headerlink" title="封装的好坏"></a>封装的好坏</h3><ol>
+<li>功能能否正常执行</li>
+<li>代码的可读性</li>
+<li>考虑问题是否足够多，兼容性问题，异常处理<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003133.png" alt="img"></li>
+</ol>
+<h3 id="jQuery的ajax-方法使用"><a href="#jQuery的ajax-方法使用" class="headerlink" title="jQuery的ajax()方法使用"></a>jQuery的ajax()方法使用</h3><ol>
+<li>打开jQuery的帮助文档，在里面有ajax的方法</li>
+<li>使用时，直接在js代码中引入jQuery文件，然后使用ajax方法即可：$.ajax();<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003150.png" alt="img"></li>
+<li>在$.ajax()方法中，可以人为的指定返回的数据格式：dataType: ‘json’;</li>
+</ol>
+<h2 id="模板引擎的使用"><a href="#模板引擎的使用" class="headerlink" title="模板引擎的使用"></a>模板引擎的使用</h2><h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li>引入模板引擎的js文件</li>
+<li>定义模板<ol>
+<li>定义模板：</li>
+<li>type属性不写，或者写属性值为text&#x2F;javascript，则会被解析为js</li>
+</ol>
+</li>
+<li>挖坑 —&gt; 给坑起名字<ol>
+<li>挖坑标准语法：</li>
+</ol>
+</li>
+<li>填坑 —&gt; 把对象与模板结合<ol>
+<li>数据 -&gt; 服务器 -&gt; ajax</li>
+<li>回调函数</li>
+<li>template(‘id’, 数据);</li>
+</ol>
+</li>
+<li>使用</li>
+<li>例：<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003208.png" alt="img"></li>
+</ol>
+<h2 id="同源跨域"><a href="#同源跨域" class="headerlink" title="同源跨域"></a>同源跨域</h2><h3 id="同源"><a href="#同源" class="headerlink" title="同源"></a>同源</h3><ol>
+<li>协议，域名（地址），端口，三者都相同就称之为同源</li>
+<li>同源策略是一种安全协议，指一段脚本只能读取来自同一来源的窗口和文档的属性</li>
+<li>不同源：协议，域名（地址），端口，三者有一个不一样就称之为不同源</li>
+</ol>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><ol>
+<li>跨域：不同源的网站之间互相发送请求，称之为跨域访问</li>
+<li>浏览器默认是跨域访问的，虽然被限制了，但是在开发中不可避免会出现跨域访问，为了解决跨域访问，就需要在后台(php)设置允许跨域访问：header(‘Access-Control-Allow-Origin: *’);</li>
+<li>此方法只有html5才支持，为了兼容低版本浏览器，就使用另外一种解决方案jsonp</li>
+</ol>
+<h3 id="Jsonp原理（面试必问）"><a href="#Jsonp原理（面试必问）" class="headerlink" title="Jsonp原理（面试必问）"></a>Jsonp原理（面试必问）</h3><ol>
+<li>json是一种数据格式，而jsonp是用来解决跨域获取数据的一种解决方案</li>
+<li>jsonp原理：<ol>
+<li>jsonp就是利用了<strong>src属性支持跨域获取资源</strong></li>
+<li>script标签后面中src属性写上需要请求页面的网址，并且发送一个方法的方法名到服务器</li>
+<li>服务器接收到方法名之后，拼接一个方法的调用，在方法的参数中传入需要给浏览器的数据</li>
+<li>返回给浏览器，浏览器把数据当做js进行解析，解决跨域问题<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211009003228.png" alt="img"></li>
+</ol>
+</li>
+<li><strong>缺点：此方法虽然巧妙，但是却比较鸡肋，因为使用此方法解决跨域问题只支持get请求方式</strong></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/02/Ajax/" title="Ajax">http://chhwn.github.io/2022/08/02/Ajax/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Ajax/" rel="tag"># Ajax</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/Git/" rel="prev" title="Git">
+      <i class="fa fa-chevron-left"></i> Git
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/02/Node-js/" rel="next" title="Node.js">
+      Node.js <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax"><span class="nav-number">1.</span> <span class="nav-text">Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ajax%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">ajax简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.</span> <span class="nav-text">XML简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.</span> <span class="nav-text">Ajax基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">1.3.1.</span> <span class="nav-text">ajax的优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.2.</span> <span class="nav-text">ajax的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax%E7%9A%84%E8%A6%81%E7%82%B9"><span class="nav-number">1.3.3.</span> <span class="nav-text">ajax的要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHttpRequest%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.4.</span> <span class="nav-text">XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.3.5.</span> <span class="nav-text">请求服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get%E8%AF%B7%E6%B1%82%E5%92%8Cpost%E8%AF%B7%E6%B1%82"><span class="nav-number">1.3.6.</span> <span class="nav-text">get请求和post请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%EF%BC%88%E9%9D%A2%E8%AF%95%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">请求报文（面试重点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87%EF%BC%88%E9%9D%A2%E8%AF%95%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">响应报文（面试重点）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82"><span class="nav-number">1.5.</span> <span class="nav-text">Ajax发送请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XMLHTTPRequest%E5%AF%B9%E8%B1%A1%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.5.1.</span> <span class="nav-text">XMLHTTPRequest对象基本使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fetch-%E4%BD%BF%E7%94%A8"><span class="nav-number">1.6.</span> <span class="nav-text">fetch()使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.6.1.</span> <span class="nav-text">fetch()介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch%E8%A7%84%E8%8C%83%E4%B8%8E-jQuery-ajax-%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="nav-number">1.6.2.</span> <span class="nav-text">fetch规范与 jQuery.ajax()的不同</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax%E5%B0%81%E8%A3%85"><span class="nav-number">1.7.</span> <span class="nav-text">Ajax封装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="nav-number">1.7.1.</span> <span class="nav-text">封装的目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.7.2.</span> <span class="nav-text">封装的步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E5%A5%BD%E5%9D%8F"><span class="nav-number">1.7.3.</span> <span class="nav-text">封装的好坏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery%E7%9A%84ajax-%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8"><span class="nav-number">1.7.4.</span> <span class="nav-text">jQuery的ajax()方法使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.8.</span> <span class="nav-text">模板引擎的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.8.1.</span> <span class="nav-text">使用步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%BA%90%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.9.</span> <span class="nav-text">同源跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%BA%90"><span class="nav-number">1.9.1.</span> <span class="nav-text">同源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E5%9F%9F"><span class="nav-number">1.9.2.</span> <span class="nav-text">跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jsonp%E5%8E%9F%E7%90%86%EF%BC%88%E9%9D%A2%E8%AF%95%E5%BF%85%E9%97%AE%EF%BC%89"><span class="nav-number">1.9.3.</span> <span class="nav-text">Jsonp原理（面试必问）</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

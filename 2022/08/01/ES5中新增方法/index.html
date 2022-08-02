@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇ES5中新增方法的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES5中新增方法">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/ES5%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇ES5中新增方法的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T14:45:46.000Z">
+<meta property="article:modified_time" content="2022-08-02T04:46:33.825Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="ES5">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/ES5%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ES5中新增方法 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/ES5%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES5中新增方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:45:46" itemprop="dateCreated datePublished" datetime="2022-08-01T22:45:46+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 12:46:33" itemprop="dateModified" datetime="2022-08-02T12:46:33+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES5/" itemprop="url" rel="index"><span itemprop="name">ES5</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇ES5中新增方法的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ES5中的新增方法"><a href="#ES5中的新增方法" class="headerlink" title="ES5中的新增方法"></a>ES5中的新增方法</h1><h2 id="数组方法-—-迭代（遍历）方法"><a href="#数组方法-—-迭代（遍历）方法" class="headerlink" title="数组方法 — 迭代（遍历）方法"></a>数组方法 — 迭代（遍历）方法</h2><ol>
+<li>迭代方法（遍历）方法：forEach()、map()、filter()、some()、every()、find()、findIndex()</li>
+</ol>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><ol>
+<li><p>语法</p>
+<ul>
+<li>array.forEach(function(currentValue, index, arr))</li>
+</ul>
+<ol>
+<li><p>currentValue：数组当前项的值</p>
+</li>
+<li><p>index：数组当前项的索引</p>
+</li>
+<li><p>arr：数组对象本身</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.forEach(function (value, index, arr) &#123;</span><br><span class="line">    console.log(value); // 输出数组元素</span><br><span class="line">    console.log(index); // 输出数组元素索引</span><br><span class="line">    console.log(arr); // 输出数组本身</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="filter"><a href="#filter" class="headerlink" title="filter()"></a>filter()</h3><ol>
+<li><p>语法：array.filter(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：数组当前项的值</li>
+<li>index：数组当前项的索引</li>
+<li>arr：数组对象本身</li>
+</ol>
+</li>
+<li><p>filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，主要用于筛选数组</p>
+</li>
+<li><p>返回一个新数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr = [12, 5, 71, 19, 24];</span><br><span class="line">  // 方法的返回值是一个新数组</span><br><span class="line">  var newArr = arr.filter(function (value, index) &#123;</span><br><span class="line">    // 筛选出数组中的偶数，将值赋值给新的数组</span><br><span class="line">    return value % 2 === 0;</span><br><span class="line">  &#125;)</span><br><span class="line">  console.log(newArr);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3><ol>
+<li><p>some方法用于检测数组中是否存在满足指定条件的元素</p>
+</li>
+<li><p><strong>与every()的区别：一真即真</strong>， 只要其中一个为true就会返回true</p>
+</li>
+<li><p>语法：array.some(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：数组当前项的值</li>
+<li>index：数组当前项的索引</li>
+<li>arr：数组对象本身</li>
+</ol>
+</li>
+<li><p>返回值为布尔值，如果查找到这个元素则返回true终止循环，否则返回false继续循环</p>
+</li>
+<li><p>若找到第一个满足条件的元素，则终止循环，不再进行查找，迭代效率更高</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 8, 41, 3];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var flag = arr.some(function (value, index, array) &#123;</span><br><span class="line">    return value &gt; 5;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(flag); // true</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3><ol>
+<li><p>every() 方法用于检测数组所有元素是否都符合指定条件</p>
+</li>
+<li><p><strong>与some()的区别：一假即假</strong>，必须所有都返回true才会返回true，哪怕有一个false，就会返回false</p>
+</li>
+<li><p>语法：array.every(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：必须，当前元素的值</li>
+<li>index：可选，当前元素的索引值</li>
+<li>arr： 可选，当前元素属于的数组对象</li>
+</ol>
+</li>
+<li><p>如果数组中检测到有一个元素不满足，则整个表达式返回false ，且剩余的元素不会再进行检测</p>
+</li>
+<li><p>如果所有元素都满足条件，则返回true</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [4, 6, 8, 41, 37];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var flag = arr.some(function (value, index, array) &#123;</span><br><span class="line">    return value &gt; 3;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(flag); // true</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><ol>
+<li><p>map()：通过指定函数处理数组的每个元素，并返回处理后的数组</p>
+</li>
+<li><p>语法：array.map(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：当前被遍历的元素的值</li>
+<li>index：可选，当前元素的索引值</li>
+<li>arr：可选，当前元素属于的数组对象</li>
+</ol>
+</li>
+<li><p>注意：</p>
+<ol>
+<li>map() 不会对空数组进行检测</li>
+<li>map() 不会改变原始数组</li>
+</ol>
+</li>
+<li><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var result = arr.map(item =&gt; &#123;</span><br><span class="line">    // ``为模板字符串</span><br><span class="line">    retrun `&lt;li class=&quot;name&quot;&gt;$&#123;item&#125;&lt;/li&gt;`</span><br><span class="line">&#125;)</span><br><span class="line">console.log(result);</span><br><span class="line">// [&lt;li class=&quot;name&quot;&gt;1&lt;/li&gt;, &lt;li class=&quot;name&quot;&gt;2&lt;/li&gt;. &lt;li class=&quot;name&quot;&gt;3&lt;/li&gt;, &lt;li class=&quot;name&quot;&gt;4&lt;/li&gt;]</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><ol>
+<li><p>findJ()：用于找出第一个符合条件的数组成员，<strong>返回值为该数组成员，若没有找到返回undefined</strong></p>
+</li>
+<li><p>语法：array.find(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：当前被遍历的元素的值</li>
+<li>index：可选，当前元素的索引值</li>
+<li>arr：可选，当前元素属于的数组对象</li>
+</ol>
+</li>
+<li><p><strong>注意：</strong></p>
+<ol>
+<li>find() 对于空数组，函数是不会执行的</li>
+<li>find() 并没有改变数组的原始值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    let array = [</span><br><span class="line">        &#123;</span><br><span class="line">            id: 1,</span><br><span class="line">            name: &#x27;张三&#x27;</span><br><span class="line">        &#125;, </span><br><span class="line">        &#123;</span><br><span class="line">            id: 2,</span><br><span class="line">            name: &#x27;李四&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">// 寻找id值为2的数组成员</span><br><span class="line">    var ary = array.find(item =&gt; item.id == 2);</span><br><span class="line">    console.log(ary); // &#123;id: 2, name: &quot;李四&quot;&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="findIndex"><a href="#findIndex" class="headerlink" title="findIndex()"></a>findIndex()</h3><ol>
+<li><p>findIndex()：用于找出第一个符合条件的数组成员的位置，<strong>找到返回数组元素索引，若没有找到返回-1</strong></p>
+</li>
+<li><p>语法：array.findIndex(function(currentValue, index, arr))</p>
+<ol>
+<li>currentValue：当前被遍历的元素的值</li>
+<li>index：可选，当前元素的索引值</li>
+<li>arr：可选，当前元素属于的数组对象</li>
+</ol>
+</li>
+<li><p><strong>注意：</strong></p>
+<ol>
+<li>find() 对于空数组，函数是不会执行的</li>
+<li>find() 并没有改变数组的原始值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [4, 5, 77, 13, 49, 6];</span><br><span class="line">  // 查询数组中第一个大于10的元素位置索引</span><br><span class="line">  var result = arr.findIndex(value =&gt; value &gt; 10)</span><br><span class="line">  console.log(result); // 2</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h1><h3 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h3><ol>
+<li>语法<ul>
+<li>字符串变量.trim()</li>
+</ul>
+</li>
+<li>trim()方法会从一个字符串的两端删除空白字符</li>
+<li>trim()方法并不影响原字符串本身，它返回的是一个新的字符串</li>
+</ol>
+<h2 id="对象方法"><a href="#对象方法" class="headerlink" title="对象方法"></a>对象方法</h2><h3 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h3><ol>
+<li><p>Obejct.defineProperty()：定义新属性或修改原有的属性</p>
+<ol>
+<li><p>语法</p>
+<ul>
+<li>Obejct.defineProperty(obj, prop, descriptor)<ul>
+<li>obj：必需，目标对象</li>
+<li>prop：必需，需要定义或者修改的属性的名字</li>
+<li>descriptor：必需，目标属性所拥有的特性</li>
+<li>第三个参数descriptor说明：以对象形式{}书写</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>第三个descriptor属性的属性值</p>
+<ul>
+<li>value：设置属性的值，默认为undefined</li>
+<li>writable：值是否可以重写，true | false，默认为false</li>
+<li>enumerable：目标属性是否可以被枚举（遍历），true | false，默认为false</li>
+<li>configurable：目标属性是否可以被删除或是否可以再次修改特性，true | false，默认false</li>
+</ul>
+</li>
+<li><p>代码示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    sex: &#x27;男&#x27;</span><br><span class="line">&#125;</span><br><span class="line">Object.defineProperty(person, &#x27;age&#x27;, &#123;</span><br><span class="line">    value: 18 // 设置age的属性值</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/ES5%E4%B8%AD%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95/" title="ES5中新增方法">http://chhwn.github.io/2022/08/01/ES5中新增方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ES5/" rel="tag"># ES5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/%E7%BB%A7%E6%89%BF/" rel="prev" title="继承">
+      <i class="fa fa-chevron-left"></i> 继承
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/ES5%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/" rel="next" title="ES5函数进阶">
+      ES5函数进阶 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ES5%E4%B8%AD%E7%9A%84%E6%96%B0%E5%A2%9E%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">ES5中的新增方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95-%E2%80%94-%E8%BF%AD%E4%BB%A3%EF%BC%88%E9%81%8D%E5%8E%86%EF%BC%89%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">数组方法 — 迭代（遍历）方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-number">1.1.1.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter"><span class="nav-number">1.1.2.</span> <span class="nav-text">filter()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#some"><span class="nav-number">1.1.3.</span> <span class="nav-text">some()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#every"><span class="nav-number">1.1.4.</span> <span class="nav-text">every()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.1.5.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">1.1.6.</span> <span class="nav-text">find()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findIndex"><span class="nav-number">1.1.7.</span> <span class="nav-text">findIndex()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">字符串方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#trim"><span class="nav-number">2.0.1.</span> <span class="nav-text">trim()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">对象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">2.1.1.</span> <span class="nav-text">Object.defineProperty()</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

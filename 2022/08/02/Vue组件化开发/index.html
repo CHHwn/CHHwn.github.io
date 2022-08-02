@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇Vue组件化开发的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue组件化开发">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/02/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇Vue组件化开发的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T18:16:40.000Z">
+<meta property="article:modified_time" content="2022-08-02T05:27:47.846Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/02/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vue组件化开发 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/02/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue组件化开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-08-02 02:16:40 / 修改时间：13:27:47" itemprop="dateCreated datePublished" datetime="2022-08-02T02:16:40+08:00">2022-08-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇Vue组件化开发的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Vue组件化开发"><a href="#Vue组件化开发" class="headerlink" title="Vue组件化开发"></a>Vue组件化开发</h1><h2 id="组件的基本介绍"><a href="#组件的基本介绍" class="headerlink" title="组件的基本介绍"></a>组件的基本介绍</h2><h3 id="注册组件的基本步骤"><a href="#注册组件的基本步骤" class="headerlink" title="注册组件的基本步骤"></a>注册组件的基本步骤</h3><ol>
+<li><p>调用Vue.extend()方法 - 创建组件构造器</p>
+</li>
+<li><p>调用Vue.component()方法 - 注册组件</p>
+</li>
+<li><p>在Vue实例的作用范围内 - 使用组件</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;   </span><br><span class="line">   //使用组件</span><br><span class="line">    &lt;my-cpm&gt;&lt;/my-cpm&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">//创建组件构造器</span><br><span class="line">const cpnC = Vue.extend(&#123;</span><br><span class="line">    template: &#x27;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;标题&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;模板&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//注册组件</span><br><span class="line">Vue.component(&#x27;my-cpn&#x27;, cpmC)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data:&#123;</span><br><span class="line">        message: &#x27;&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="全局组件-x2F-局部组件"><a href="#全局组件-x2F-局部组件" class="headerlink" title="全局组件 &#x2F; 局部组件"></a>全局组件 &#x2F; 局部组件</h3><ol>
+<li><p>全局组件</p>
+<ul>
+<li>上面的案例</li>
+</ul>
+</li>
+<li><p>局部组件</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;my-cpm&gt;&lt;/my-cpm&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const cpnC = Vue.extend(&#123;</span><br><span class="line">    template: &#x27;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;标题&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;模板&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data:&#123;</span><br><span class="line">        message: &#x27;&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: cpnC</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="父组件-x2F-子组件"><a href="#父组件-x2F-子组件" class="headerlink" title="父组件 &#x2F; 子组件"></a>父组件 &#x2F; 子组件</h3><p>父子组件的错误用法: 以子标签的形式在Vue实例中使用</p>
+<ol>
+<li><p>因为当子组件注册到父组件的components时, Vue会编译好父组件的模块 </p>
+<ol start="2">
+<li>该模块的内容已经决定了父组件将要渲染的HTML (相当于父组件中已经有子组件中的内容了)</li>
+</ol>
+</li>
+</ol>
+<h3 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h3><p>Vue为了简化注册组件的过程, 提供了注册的语法塘, 省去了调用Vue.extend()的步骤. 而是可以直接使用一个对象来代替</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 全局组件</span><br><span class="line">Vue.component(&#x27;xxx&#x27;, &#123;</span><br><span class="line">    template: &#x27;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        哈哈哈哈</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 内部会自动调用Vue.extend()</span><br><span class="line"></span><br><span class="line">// 局部组件</span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        &#x27;cpn&#x27;: &#123;</span><br><span class="line">            template: &#x27;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                    哈哈哈哈</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>组件模板抽离写法 (简单)</p>
+<ol>
+<li><p>方法一<br>将模板放到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 注册一个全局组件  </span><br><span class="line">&lt;div id=&quot;id&quot;&gt;</span><br><span class="line">    &lt;cpn&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/x-tenplate&quot; id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        哈哈哈哈</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;cpn&#x27;, &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二<br>放入标签</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;id&quot;&gt;</span><br><span class="line">    &lt;cpn&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        哈哈哈哈</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Vue.component(&#x27;cpn&#x27;, &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>组件可以访问VUE实例数据吗?<br>不能访问<br>组件是一个单独功能模块的封装 - 这个模块有自己的HTML模板, 也应该有属性自己的数据data</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&#x27;cpn&#x27;, &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            title: &#x27;哈哈哈&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// data属性必须是一个函数, 返回必须是一个对象</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="组件通讯"><a href="#组件通讯" class="headerlink" title="组件通讯"></a>组件通讯</h2><h3 id="父子组件的通讯"><a href="#父子组件的通讯" class="headerlink" title="父子组件的通讯"></a>父子组件的通讯</h3><p>父组件通过props向子组件传递数据</p>
+<ul>
+<li>写法一</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm v-bind:cmovies=&quot;movies&quot; v-bind:cmessage=&quot;message&quot;&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;li v-for=&quot;item in cmovies&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">        &lt;h2&gt;&#123;&#123;cmessage&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const cpn = &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;,</span><br><span class="line">    // 把数组里的当变量来看了</span><br><span class="line">    props: [&#x27;cmovies&#x27;, &#x27;cmessage&#x27;],</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;,</span><br><span class="line">        movies: [&#x27;哈喽&#x27;, &#x27;嗨&#x27;, &#x27;哟哟&#x27;]</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>写法二</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    // 在使用组件的时候绑定</span><br><span class="line">    // 不支持驼峰命名  cMovies要写成c-movies</span><br><span class="line">    &lt;cpm :c-movies=&quot;movies&quot; :c-message=&quot;message&quot;&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;li v-for=&quot;item in cMovies&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">        &lt;h2&gt;&#123;&#123;cMessage&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const cpn = &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;,</span><br><span class="line">    // 把数组里的当变量来看了</span><br><span class="line">    props: &#123;</span><br><span class="line">        // 类型限制 </span><br><span class="line">        // cMovies: Array,</span><br><span class="line">        // cMeesage: String,</span><br><span class="line">        </span><br><span class="line">        // 类型限制 + 提供一些默认值 or  required表示必传值,不然报错</span><br><span class="line">        cMessage: &#123;</span><br><span class="line">            type: String,</span><br><span class="line">            default: &#x27;哈&#x27;,</span><br><span class="line">            required: true</span><br><span class="line">        &#125;,  </span><br><span class="line">        cMovies: &#123;</span><br><span class="line">            type: Array, // 对象or数组类型的时候, 默认值必须是个函数</span><br><span class="line">            default() &#123;</span><br><span class="line">                return &#123;&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    data () &#123;</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;,</span><br><span class="line">        movies: [&#x27;哈喽&#x27;, &#x27;嗨&#x27;, &#x27;哟哟&#x27;]</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<p>子组件通过事件向父组件发送数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">// 父组件模板</span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    // 2.父组件监听一个事件</span><br><span class="line">    // 不能写驼峰</span><br><span class="line">    &lt;cpm @itemclick=&quot;cpnClick&quot;&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// 子组件模板</span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;button v-for=&quot;item in categories&quot; </span><br><span class="line">                @click=&quot;btnClick(item)&quot;&gt;</span><br><span class="line">            &#123;&#123;item.name&#125;&#125;</span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 子组件</span><br><span class="line">const cpn = &#123;</span><br><span class="line">    template: &#x27;#cpn&#x27;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            categories: [</span><br><span class="line">                &#123;id: &#x27;aaaa&#x27;, name: &#x27;热门推荐&#x27;&#125;,</span><br><span class="line">                &#123;id: &#x27;bbbb&#x27;, name: &#x27;手机数码&#x27;&#125;,</span><br><span class="line">                &#123;id: &#x27;cccc&#x27;, name: &#x27;家用家电&#x27;&#125;,</span><br><span class="line">                &#123;id: &#x27;dddd&#x27;, name: &#x27;电脑办公&#x27;&#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        btnClick(item) &#123;</span><br><span class="line">            // 要把item传给父组件</span><br><span class="line">            // 1. 发送一个事件 (自定义事件)</span><br><span class="line">            // 会把item当成默认的传到父组件去</span><br><span class="line">            this.$emit(&#x27;itemclick&#x27;, item)</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 父组件</span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        // 3. 父组件监听的事件 </span><br><span class="line">        cpnClick(item) &#123;</span><br><span class="line">            console.log(&#x27;成功了&#x27;, item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="父子组件的访问方式"><a href="#父子组件的访问方式" class="headerlink" title="父子组件的访问方式"></a>父子组件的访问方式</h3><ol>
+<li><p>父组件访问子组件</p>
+<ul>
+<li>$children: 拿所有子组件</li>
+<li>$refs: 拿指定的子组件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">// this.$children是一个数组类型, 它包含所有子组件对象  </span><br><span class="line">// 通过遍历, 取出所有子组件的message状态  </span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt;</span><br><span class="line">    // 使用$refs的时候, 在想要访问的子组件上添加ref属性</span><br><span class="line">    &lt;cpm ref=&quot;aaa&quot;&gt;&lt;/cpn&gt;</span><br><span class="line">    &lt;buttun @click=&quot;btnClick&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        我是子组件</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        btnClick() &#123;</span><br><span class="line">            cosole.log(this.$children);</span><br><span class="line">            // $children 的使用方法, 一般用的少, 下标不固定</span><br><span class="line">            // this.$children[0].showMessage();</span><br><span class="line">            // this.$children[0].name;</span><br><span class="line">            </span><br><span class="line">            //for (let c of this.$children) &#123;</span><br><span class="line">            //    console.log(c.name); // 我是子组件的name</span><br><span class="line">            //    c.showMessage(); // showMessage</span><br><span class="line">            //&#125;</span><br><span class="line">            </span><br><span class="line">            // $refs 的使用方法 =&gt; 对象类型, 默认是一个空的对象</span><br><span class="line">            console.log(this.$refs.aaa.name); // 我是子组件的name</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &quot;#cpn&quot;,</span><br><span class="line">            data() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    name: &#x27;我是子组件的name&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                showMessage() &#123;</span><br><span class="line">                    cosole.log(&#x27;showMessage&#x27;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子组件访问父组件</p>
+<ul>
+<li>$parent: 上一级父组件</li>
+<li>$root: 根组件</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;ccpn&gt;&lt;/ccpn&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;ccpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;我是子组件&lt;/h2&gt;</span><br><span class="line">        &lt;button @click=&quot;btnClick&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &quot;#cpn&quot;,</span><br><span class="line">            data() &#123;</span><br><span class="line">               return &#123;</span><br><span class="line">                   name: &#x27;我是cpn的name&#x27;</span><br><span class="line">               &#125; </span><br><span class="line">            &#125;,</span><br><span class="line">            conmponents: &#123;</span><br><span class="line">                ccpn: &#123;</span><br><span class="line">                    template: &#x27;#ccpn&#x27;,</span><br><span class="line">                    btnClick() &#123;</span><br><span class="line">                        // 1. 访问父组件$parent</span><br><span class="line">                        // 不建议这么写, 一层套一层 复用性太差</span><br><span class="line">                        console.log(this.$parent);  </span><br><span class="line">                        console.log(this.$parent.name); // 我是cpn的name</span><br><span class="line">                        </span><br><span class="line">                        // 2. 访问根组件 $root</span><br><span class="line">                        console.log(this.$root.meassage);   // 哈哈哈</span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="跨级组件通信之provide-x2F-inject"><a href="#跨级组件通信之provide-x2F-inject" class="headerlink" title="跨级组件通信之provide&#x2F;inject"></a>跨级组件通信之provide&#x2F;inject</h3><p>provide选项允许我们指定我们想要提供给后代组件的数据&#x2F;方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">provide: function () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    fun: this.fun, //方法</span><br><span class="line">    name: &#x27;Bob&#x27;, // 数据</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在任何后代组件里，我们都可以使用inject选项来接收指定的我们想要添加在这个实例上的属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//接受方法</span><br><span class="line">inject: [&#x27;fun&#x27;]</span><br><span class="line">//接受数据</span><br><span class="line">inject:[&#x27;name&#x27;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="插槽slot"><a href="#插槽slot" class="headerlink" title="插槽slot"></a>插槽slot</h2><ol>
+<li>作用:<ol>
+<li>组件的插槽是为了让我们封装的组件更加具有扩展性</li>
+<li>让使用者可以决定组件内部的一些内容到底展示什么</li>
+</ol>
+</li>
+</ol>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ol>
+<li>插槽的基本使用</li>
+<li>插槽的默认值 button</li>
+<li>如果有多个值同时放入到组件进行替换时, 一起作为替换元素</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    // 使用默认值替换</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt;</span><br><span class="line">    // 插槽替换的元素</span><br><span class="line">    &lt;cpm&gt;&lt;span&gt;这是替换的内容呀&lt;/span&gt;&lt;/cpn&gt;</span><br><span class="line">    // 多个元素</span><br><span class="line">    &lt;cpm&gt;</span><br><span class="line">        &lt;div&gt;第一个元素&lt;/div&gt;</span><br><span class="line">        &lt;p&gt;第二个元素&lt;/p&gt;</span><br><span class="line">    &lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;这个是标题&lt;/div&gt;</span><br><span class="line">        &lt;p&gt;这个是内容&lt;/p&gt;</span><br><span class="line">        // 放入插槽</span><br><span class="line">        &lt;slot&gt;默认值元素&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &#x27;#cpn&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><p>在多个插槽的情况下, 替换制定插槽的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;button slot=&quot;left&quot;&gt;返回&lt;/button&gt;&lt;/cpn&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;span slot=&quot;center&quot;&gt;中间标题&lt;/span&gt;&lt;/cpn&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;slot name=&quot;left&quot;&gt;&lt;span&gt;左边&lt;/span&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;slot name=&quot;center&quot;&gt;&lt;span&gt;中间&lt;/span&gt;&lt;/slot&gt;</span><br><span class="line">        &lt;slot name=&quot;right&quot;&gt;&lt;span&gt;右边&lt;/span&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        meassage: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &#x27;#cpn&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h3><ol>
+<li>编译作用域<br>父组件模板所有的东西都在父级作用域内编译, 子组件模板的所有东西会在子级作用域内编译</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm v-show=&quot;isShow&quot;&gt;我是一&lt;/cpn&gt; // true</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;p v-show=&quot;isShow&quot;&gt;我是二&lt;/p&gt; // false</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        isShow: true // Vue实例中的属性</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &#x27;#cpn&#x27;,</span><br><span class="line">            data() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                     isShow: false // 子组件中的属性</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用域插槽使用"><a href="#作用域插槽使用" class="headerlink" title="作用域插槽使用"></a>作用域插槽使用</h3><p>父组件替换插槽的标签, 但是内容由子组件来提供</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">需求: </span><br><span class="line">1. 子组件中包括一组数据, num: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;]</span><br><span class="line">2. 需要在多个界面展示 </span><br><span class="line">   某些界面是以水平方向展示</span><br><span class="line">   某些界面是以列表形式展示</span><br><span class="line">   某些界面直接展示一个数组 </span><br><span class="line">3. 内容在子组件, 希望父组件告诉我们如何展示, 怎么办?</span><br><span class="line">   利用slot作用域插槽就行了</span><br><span class="line">   </span><br><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt; </span><br><span class="line">    &lt;cpm&gt;</span><br><span class="line">        // 2. 获取子组件中的num</span><br><span class="line">        &lt;template slot-scope=&quot;slot&quot;&gt;</span><br><span class="line">            // 根据之前的起名来取  如 slot.aaa</span><br><span class="line">            &lt;span  v-for=&quot;item in slot.data&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/span&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">    &lt;/cpn&gt; </span><br><span class="line">    &lt;cpm&gt;&lt;/cpn&gt; </span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;template id=&quot;cpn&quot;&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        // 1. slot定义  &#x27;data&#x27;可以随便起名 如 :aaa=&quot;num&quot;</span><br><span class="line">        &lt;slot :data=&quot;num&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li v-for=&quot;item in num&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">const app = new Vue(&#123;</span><br><span class="line">    el: &#x27;#app&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: &#x27;哈哈哈&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        cpn: &#123;</span><br><span class="line">            template: &#x27;#cpn&#x27;,</span><br><span class="line">            data() &#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    num: [&#x27;1&#x27;, &#x27;2&#x27;, &#x27;3&#x27;, &#x27;4&#x27;, &#x27;5&#x27;]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/02/Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91/" title="Vue组件化开发">http://chhwn.github.io/2022/08/02/Vue组件化开发/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/02/Vue%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" rel="prev" title="Vue使用及基础语法">
+      <i class="fa fa-chevron-left"></i> Vue使用及基础语法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/02/ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA/" rel="next" title="ES6模块化的导入和导出">
+      ES6模块化的导入和导出 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue%E7%BB%84%E4%BB%B6%E5%8C%96%E5%BC%80%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">Vue组件化开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">组件的基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E7%BB%84%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.1.</span> <span class="nav-text">注册组件的基本步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%BB%84%E4%BB%B6-x2F-%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">全局组件 &#x2F; 局部组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6-x2F-%E5%AD%90%E7%BB%84%E4%BB%B6"><span class="nav-number">1.1.3.</span> <span class="nav-text">父组件 &#x2F; 子组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="nav-number">1.1.4.</span> <span class="nav-text">语法糖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E8%AE%AF"><span class="nav-number">1.2.</span> <span class="nav-text">组件通讯</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E9%80%9A%E8%AE%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">父子组件的通讯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E8%AE%BF%E9%97%AE%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">父子组件的访问方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%A8%E7%BA%A7%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E4%B9%8Bprovide-x2F-inject"><span class="nav-number">1.2.3.</span> <span class="nav-text">跨级组件通信之provide&#x2F;inject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E6%A7%BDslot"><span class="nav-number">1.3.</span> <span class="nav-text">插槽slot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="nav-number">1.3.2.</span> <span class="nav-text">具名插槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="nav-number">1.3.3.</span> <span class="nav-text">作用域插槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD%E4%BD%BF%E7%94%A8"><span class="nav-number">1.3.4.</span> <span class="nav-text">作用域插槽使用</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

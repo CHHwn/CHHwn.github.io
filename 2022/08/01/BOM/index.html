@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇BOM的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOM">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/BOM/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇BOM的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929112103.png">
+<meta property="article:published_time" content="2022-08-01T14:27:16.000Z">
+<meta property="article:modified_time" content="2022-08-02T04:32:38.595Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929112103.png">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/BOM/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>BOM | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BOM
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:27:16" itemprop="dateCreated datePublished" datetime="2022-08-01T22:27:16+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 12:32:38" itemprop="dateModified" datetime="2022-08-02T12:32:38+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇BOM的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="BOM概述"><a href="#BOM概述" class="headerlink" title="BOM概述"></a>BOM概述</h1><h2 id="什么是BOM"><a href="#什么是BOM" class="headerlink" title="什么是BOM"></a>什么是BOM</h2><ol>
+<li>BOM即浏览器对象模型，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window</li>
+<li>BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li>BOM缺乏标准，JavaScript语法的标准化组织是ECMA，DOM的标准化组织是W3C，BOM最初是Netscape浏览器标准的一部分</li>
+</ol>
+<h3 id="DOM和BOM"><a href="#DOM和BOM" class="headerlink" title="DOM和BOM"></a>DOM和BOM</h3><ol>
+<li>DOM<ol>
+<li>文档对象模型</li>
+<li>DOM就是把「文档」当做一个「对象」来看待</li>
+<li>DOM的顶级对象是document</li>
+<li>DOM主要学习的是操作页面先素</li>
+<li>DOM是W3C标准规范</li>
+</ol>
+</li>
+<li>BOM<ol>
+<li>浏览器对象模型</li>
+<li>把「浏览器」当做一个「对象」来看待</li>
+<li>BOM的顶级对象是window</li>
+<li>BOM学习的是浏览器窗口交互的一些对象</li>
+<li>BOM是浏览器厂商在各自浏览器上定义的，兼容性较差</li>
+<li>BOM比DOM更大，它包含DOM</li>
+</ol>
+</li>
+</ol>
+<h3 id="BOM的构成"><a href="#BOM的构成" class="headerlink" title="BOM的构成"></a>BOM的构成</h3><ol>
+<li>window对象是浏览器的顶级对象，它具有双重角色<ol>
+<li>它是JS访问浏览器窗口的一个接口</li>
+<li>它是一个全局对象，定义在全局作用域中的变量，函数都会变成window对象的属性和方法</li>
+</ol>
+</li>
+<li>在调用的时候可以省略window，前面学习的对话框都属于window对象方法，如alert()、prompt()等</li>
+</ol>
+<h1 id="Window对象的常见事件"><a href="#Window对象的常见事件" class="headerlink" title="Window对象的常见事件"></a>Window对象的常见事件</h1><h2 id="窗口加载事件"><a href="#窗口加载事件" class="headerlink" title="窗口加载事件"></a>窗口加载事件</h2><h3 id="onload"><a href="#onload" class="headerlink" title="onload"></a>onload</h3><ol>
+<li>window.onload是窗口(页面)加载事件，当文档内容完全加载完成会触发该事件（包括图像、脚本文件、CSS文件等），就调用的处理函数</li>
+<li>语法<ol>
+<li>传统注册方式：window.onload &#x3D; function() {}</li>
+<li>事件监听注册方式：window.addEventListener(‘load’, function() {});</li>
+</ol>
+</li>
+<li>有了window.onload就可以把JS代码写到页面元素的上方，因为onload是等页面内容全部加载完毕，再去执行处理函数</li>
+</ol>
+<h3 id="DOMContentLoaded"><a href="#DOMContentLoaded" class="headerlink" title="DOMContentLoaded"></a>DOMContentLoaded</h3><ol>
+<li>DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式表、图片、flash等等</li>
+<li>IE9以上支持</li>
+<li>如果页面的图片很多的话，从用户访问 到onload触发可能需要较长的时间，交互效果就不能实现，必然影响用户的体验，此时用DOMContentLoaded事件比较合适</li>
+<li>语法<ol>
+<li>事件监听注册方式：window.addEventListener(‘DOMContentLoaded’, function() {});</li>
+</ol>
+</li>
+</ol>
+<h2 id="调整窗口大小事件"><a href="#调整窗口大小事件" class="headerlink" title="调整窗口大小事件"></a>调整窗口大小事件</h2><ol>
+<li>语法<ol>
+<li>传统注册方式：Window.onresize &#x3D; function() {}</li>
+<li>事件监听注册方式：window.addEventListener(‘resize’, function() {});</li>
+</ol>
+</li>
+<li>Window.onresize是调整窗口大小加载事件，当触发时就调用的处理函数</li>
+<li>注意：<ol>
+<li>只要窗口大小发生像素变化，就会触发这个事件</li>
+<li>经常利用这个事件完成响应式布局，window.innerWidth — 当前屏幕宽度</li>
+</ol>
+</li>
+</ol>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><h3 id="setTimeout-定时器"><a href="#setTimeout-定时器" class="headerlink" title="setTimeout() 定时器"></a>setTimeout() 定时器</h3><ol>
+<li><p>window.setTimeout(调用函数，延迟的毫秒数);</p>
+<ol>
+<li><p>window在调用时可以省略</p>
+</li>
+<li><p>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</p>
+</li>
+<li><p>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</p>
+</li>
+<li><p>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 方式一，直接写函数</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;, 3000);</span><br><span class="line"></span><br><span class="line">    // 方式二，调用函数</span><br><span class="line">    var b = function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(b, 5000);</span><br><span class="line"></span><br><span class="line">    // 方式三，&#x27;函数名()&#x27;</span><br><span class="line">    setTimeout(&#x27;b()&#x27;, 7000);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>停止定时器window.clearTimeout(timeoutID);</p>
+<ol>
+<li><p>window可以省略</p>
+</li>
+<li><p>里面的参数就是定时器的标识符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;取消广告自动关闭&lt;/button&gt;</span><br><span class="line">    &lt;img src=&quot;images/ad.jpg&quot; alt=&quot;&quot; class=&quot;ad&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 广告三秒自动关闭</span><br><span class="line">        var ad = document.querySelector(&#x27;.ad&#x27;);</span><br><span class="line">        var timer = setTimeout(function () &#123;</span><br><span class="line">            ad.style.display = &#x27;none&#x27;;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line"></span><br><span class="line">        // 清除定时器</span><br><span class="line">        var btn = document.querySelector(&#x27;button&#x27;);</span><br><span class="line">        btn.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="setInterval-定时器"><a href="#setInterval-定时器" class="headerlink" title="setInterval() 定时器"></a>setInterval() 定时器</h3><ol>
+<li><p>setInterval(调用函数，重复调用时间间隔);</p>
+<ol>
+<li>该定时器属性和setTimeout()一样，如下：<ul>
+<li>window在调用时可以省略</li>
+<li>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</li>
+<li>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</li>
+<li>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</li>
+</ul>
+</li>
+<li>不同点在于：每隔设置的延时时间，就去调用这个回调函数，会调用很多次，重复调用这个函数；而setTimeout()只会调用一次就结束这个定时器</li>
+</ol>
+</li>
+<li><p>停止定时器window.clearInterval(timeoutID);</p>
+<ol>
+<li><p>window可以省略</p>
+</li>
+<li><p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button class=&quot;start&quot;&gt;开始计时器&lt;/button&gt;</span><br><span class="line">&lt;button class=&quot;stop&quot;&gt;停止计时器&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var start = document.querySelector(&#x27;.start&#x27;);</span><br><span class="line">    var stop = document.querySelector(&#x27;.stop&#x27;);</span><br><span class="line">    var timer = null;</span><br><span class="line"></span><br><span class="line">    // 开始计时器</span><br><span class="line">    start.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        // 不能在此处直接定义变量，因为此处定义则为局部变量</span><br><span class="line">        timer = setInterval(function () &#123;</span><br><span class="line">            console.log(&#x27;hello world!&#x27;);</span><br><span class="line">        &#125;, 1000)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 停止计时器</span><br><span class="line">    stop.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h1 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h1><h2 id="JS是单线程"><a href="#JS是单线程" class="headerlink" title="JS是单线程"></a>JS是单线程</h2><ol>
+<li>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事；这是因为Javascript这门脚本语言诞生的使命所致一JavaScript是为处理页面中用户的交互，以及操作DOM而诞生的；比如我们对某个DOM元索进行添加和删除操作，不能同时进行；应该先进行添加，之后再删除</li>
+<li>单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是：如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉</li>
+</ol>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ol>
+<li>前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的；比如做饭的同步做法：我们要烧水煮饭，等水开了（10分钟之后），再去切菜，炒菜</li>
+<li>同步任务<ol>
+<li>同步任务都在主线程上执行，形成一个执行栈</li>
+</ol>
+</li>
+</ol>
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><ol>
+<li>你在做一件事情时，因为这件事情会花费很长时间，在做这件事的同时，你还可以去处理其他事情。比如做饭的异步做法，我们在烧水的同时，利用这10分钟，去切菜，炒菜</li>
+<li>异步任务<ol>
+<li>JS的异步是通过回调函数实现的，一般而言，异步任务有以下三种类型<ul>
+<li>普通事件，如click等</li>
+<li>资源加载，如load，error等</li>
+<li>定时器，如setInterval，setTimeout等</li>
+</ul>
+</li>
+<li>异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）</li>
+</ol>
+</li>
+</ol>
+<h3 id="JS执行机制-1"><a href="#JS执行机制-1" class="headerlink" title="JS执行机制"></a>JS执行机制</h3><ol>
+<li>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环(event loop)<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929112103.png" alt="img"></li>
+</ol>
+<h1 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h1><h2 id="什么是location对象"><a href="#什么是location对象" class="headerlink" title="什么是location对象"></a>什么是location对象</h2><ol>
+<li><p>window对象给我们提供了一个location属性用于获取或设置窗体的URL，并且可以用于解析URL；因为这个属性返回的是一个对象，所以我们将这个属性也称为location对象</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2></li>
+<li><p>统一资源定位符(Uniform Resource Locator，URL)是互联网上标准资源的地址；互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它</p>
+</li>
+<li><p>语法格式</p>
+<ol>
+<li><p>protocol:&#x2F;&#x2F;host[:port]&#x2F;path&#x2F;[?query]#fragment</p>
+</li>
+<li><p>例：</p>
+<p><a target="_blank" rel="noopener" href="http://www.itcast.cn/index.html?name=andy&amp;age=18#link">http://www.itcast.cn/index.html?name=andy&amp;age=18#link</a></p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>protocol</td>
+<td>通信协议 常用的http,ftp,maito等</td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机（域名） <a target="_blank" rel="noopener" href="http://www.itheima.com/">www.itheima.com</a></td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口号 可选，省略时使用方案的默认端口 如http的默认端口为80</td>
+</tr>
+<tr>
+<td>path</td>
+<td>路径由零或多个’&#x2F;‘符号隔开的字符串，一般用来表示主机上的一个目录或文件地址</td>
+</tr>
+<tr>
+<td>query</td>
+<td>参数 以键值对的形式，通过&amp;符号分隔开来</td>
+</tr>
+<tr>
+<td>fragment</td>
+<td>片段 #后面内容 常见于链接 锚点</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="location对象的属性"><a href="#location对象的属性" class="headerlink" title="location对象的属性"></a>location对象的属性</h3><table>
+<thead>
+<tr>
+<th>location对象属性</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>location.href</td>
+<td>获取或者设置整个URL</td>
+</tr>
+<tr>
+<td>location.host</td>
+<td>返回主机（域名） <a target="_blank" rel="noopener" href="http://www.itheima.com/">www.itheima.com</a></td>
+</tr>
+<tr>
+<td>location.port</td>
+<td>返回端口号，如果未写返回空字符串</td>
+</tr>
+<tr>
+<td>location.pathname</td>
+<td>返回路径</td>
+</tr>
+<tr>
+<td>location.search</td>
+<td>返回参数</td>
+</tr>
+<tr>
+<td>location.hash</td>
+<td>返回片段，#后面内容常见与链接，锚点</td>
+</tr>
+</tbody></table>
+<h3 id="location对象的方法"><a href="#location对象的方法" class="headerlink" title="location对象的方法"></a>location对象的方法</h3><ol>
+<li><p>location对象方法 返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location.assign()    跟href一样，可以跳转页面（也称为重定向页面），记录历史，可以后退</span><br><span class="line">location.replace()    替换当前页面，因为不记录历史，所以不能后退页面</span><br><span class="line">location.reload()    重新加载页面，相当于刷新按钮或f5，如果参数为true，强制刷新ctrl+f5</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="navigator对象（了解）"><a href="#navigator对象（了解）" class="headerlink" title="navigator对象（了解）"></a>navigator对象（了解）</h1><ol>
+<li><p>navigator对象包含有关浏览器的信息，它有很多属性，我们最常用的是userAgent，该属性可以返回由客户机发送服务器的user-agent头部的值</p>
+</li>
+<li><p>下面代码可以判断永和用哪个终端打开的页面，实现跳转</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) &#123;</span><br><span class="line"> window.location.href = &quot;../H5/index1.html&quot;; //手机</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  window.location.href = &quot;../H5/index2.html&quot;; //电脑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h1><ol>
+<li><p>window对象给我们提供了一个history对象，与浏览器历史记录进行交互；该对象包含用户(在浏览器窗口中)访问过的URL</p>
+<table>
+<thead>
+<tr>
+<th>history对象方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back()</td>
+<td>后退功能 — history.back();</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>前进功能 — history.forward();</td>
+</tr>
+<tr>
+<td>go(参数）</td>
+<td>前进后退功能，参数如果是1，前进1一个页面；如果是-1，后退一个页面</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/BOM/" title="BOM">http://chhwn.github.io/2022/08/01/BOM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/DOM%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/" rel="prev" title="DOM事件高级">
+      <i class="fa fa-chevron-left"></i> DOM事件高级
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" rel="next" title="PC端的网页特效">
+      PC端的网页特效 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">BOM概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFBOM"><span class="nav-number">1.1.</span> <span class="nav-text">什么是BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM%E5%92%8CBOM"><span class="nav-number">1.1.1.</span> <span class="nav-text">DOM和BOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BOM%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">1.1.2.</span> <span class="nav-text">BOM的构成</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Window%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">Window对象的常见事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AA%97%E5%8F%A3%E5%8A%A0%E8%BD%BD%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">窗口加载事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#onload"><span class="nav-number">2.1.1.</span> <span class="nav-text">onload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOMContentLoaded"><span class="nav-number">2.1.2.</span> <span class="nav-text">DOMContentLoaded</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E7%AA%97%E5%8F%A3%E5%A4%A7%E5%B0%8F%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">调整窗口大小事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">2.3.1.</span> <span class="nav-text">setTimeout() 定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setInterval-%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-number">2.3.2.</span> <span class="nav-text">setInterval() 定时器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">JS执行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">JS是单线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%92%8C%E5%BC%82%E6%AD%A5"><span class="nav-number">3.2.</span> <span class="nav-text">同步和异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">JS执行机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#location%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.</span> <span class="nav-text">location对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFlocation%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.1.</span> <span class="nav-text">什么是location对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">4.2.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#location%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">4.2.1.</span> <span class="nav-text">location对象的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#location%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.2.2.</span> <span class="nav-text">location对象的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#navigator%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">navigator对象（了解）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#history%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">history对象</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

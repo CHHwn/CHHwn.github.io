@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇JavaScript基础的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇JavaScript基础的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T14:23:13.000Z">
+<meta property="article:modified_time" content="2022-08-02T04:17:51.890Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript基础 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:23:13" itemprop="dateCreated datePublished" datetime="2022-08-01T22:23:13+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 12:17:51" itemprop="dateModified" datetime="2022-08-02T12:17:51+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇JavaScript基础的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript"></a>什么是JavaScript</h2><ul>
+<li>JavaScript是一种运行在客户端的脚本语言</li>
+<li>脚本语言：不需要编译，运行过程由js解释器逐行进行解释并执行</li>
+<li>现在也可以基于Node.js技术进行服务器端编程</li>
+</ul>
+<h2 id="JavaScript作用"><a href="#JavaScript作用" class="headerlink" title="JavaScript作用"></a>JavaScript作用</h2><ul>
+<li>表单动态校验（密码强度检测）（JS产生最初的目的）</li>
+<li>网页特效</li>
+<li>服务端开发（Node.js)</li>
+<li>桌面程序（Electron）</li>
+<li>App（Cordova）</li>
+<li>控制硬件-物联网（Ruff）</li>
+<li>游戏开发（cocos2d-js）</li>
+</ul>
+<h2 id="浏览器执行JS简介"><a href="#浏览器执行JS简介" class="headerlink" title="浏览器执行JS简介"></a>浏览器执行JS简介</h2><p>浏览器分成两部分：渲染引擎和 JS 引擎</p>
+<ul>
+<li>渲染引擎：用来解析HTML与CSS，俗称内核，比如 chrome 浏览器的 blink ，老版本的 webkit</li>
+<li>JS 引擎：也称为 JS 解释器。 用来读取网页中的JavaScript代码，对其处理后运行，比如 chrome 浏览器的 V8</li>
+</ul>
+<p>浏览器本身并不会执行JS代码，而是通过内置 JavaScript 引擎(解释器) 来执行 JS 代码 。JS 引擎执行代码时逐行解释每一句源码（转换为机器语言），然后由计算机去执行，所以 JavaScript 语言归为脚本语言，会逐行解释执行。</p>
+<h2 id="JS的组成"><a href="#JS的组成" class="headerlink" title="JS的组成"></a>JS的组成</h2><p>JavaScript 包括 ECMAScript、DOM、BOM</p>
+<ul>
+<li><p>ECMAScript</p>
+<p>ECMAScript：ECMAScript 规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。</p>
+</li>
+<li><p>DOM文档对象模型<br>文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标记语言的标准编程接口。通过 DOM 提供的接口可以对页面上的各种元素进行操作（大小、位置、颜色等）。</p>
+</li>
+<li><p>BOM浏览器对象模型<br>BOM (Browser Object Model，简称BOM) 是指浏览器对象模型，它提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。通过BOM可以操作浏览器窗口，比如弹出框、控制浏览器跳转、获取分辨率等。</p>
+</li>
+</ul>
+<h1 id="JS基本语法"><a href="#JS基本语法" class="headerlink" title="JS基本语法"></a>JS基本语法</h1><h2 id="输入输出语句"><a href="#输入输出语句" class="headerlink" title="输入输出语句"></a>输入输出语句</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>归属</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alert(msg);</td>
+<td>浏览器弹出警示框</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>console.log(msg);</td>
+<td>浏览器控制台打印输出信息</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>prompt(info);</td>
+<td>浏览看弹出输入框，用户可以输入</td>
+<td>浏览器</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>alert()</code> 主要用来显示消息给用户</li>
+<li><code>console.log()</code> 用来给程序员看自己运行时的消息</li>
+</ul>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用于存放数据的容器，我们通过变量名获取数据，甚至数据可以修改</p>
+<p>本质：变量是程序在内存中申请的一块用来存放数据的空间</p>
+<h2 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2><p>var是一个JS关键字，用来声明变量(variable变量的意思)。使用该关键字声明变量后，计算机会自动为变量分配内存空间。</p>
+<p>age 是程序员定义的变量名，我们要通过变量名来访问内存中分配的空间<br>&#x2F;&#x2F;声明变量同时赋值为18<br>var age &#x3D; 18;<br>&#x2F;&#x2F;同时声明多个变量时，只需要写一个 var， 多个变量名之间使用英文逗号隔开。</p>
+<p>var age &#x3D; 18, address &#x3D;’火影村’,salary &#x3D; 15000;</p>
+<h2 id="声明变量特殊情况"><a href="#声明变量特殊情况" class="headerlink" title="声明变量特殊情况"></a>声明变量特殊情况</h2><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>说明</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var age; console.log(age);</td>
+<td>只声明，不赋值</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>console.log(age)</td>
+<td>不声明 不赋值 直接使用</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>age &#x3D; 10;console.log(age);</td>
+<td>不声明 只赋值</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<h2 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h2><ul>
+<li><p>由字母(A-Z,a-z)，数字(0-9)，下划线(_)，美元符号($)组成，如:usrAge,num01,__name</p>
+</li>
+<li><p>严格区分大小写。 var app; 和 var App; 是两个变量</p>
+</li>
+<li><p>不能以数字开头。</p>
+</li>
+<li><p>不能是关键字，保留字。例如：var,for,while</p>
+</li>
+<li><p>遵循驼峰命名法。首字母小写，后面单词的首字母需要大写。myFirstName</p>
+</li>
+<li><p>推荐翻译网站：有道 爱词霸</p>
+</li>
+<li><p>name尽量不使用来命名，在有些网站有特殊意义</p>
+</li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>1.JavaScript <strong>是一种弱类型或者说动态语言。</strong>这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var age = 10; 			 //这是一个数字型</span><br><span class="line">var areYouOk = &#x27;使得&#x27;;	//这是一个字符串</span><br></pre></td></tr></table></figure>
+
+<p>在代码运行时，变量的数据类型是由 JS引擎 根据 &#x3D; 右边变量值的数据类型来判断 的，运行完毕之后， 变量就确定了数据类型。</p>
+<p>2.JavaScript 拥有动态类型，同时也意味着相同的变量可用作不同的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x = 6;		//x为数字</span><br><span class="line">var x = &quot;Bill&quot;;	//x为字符串</span><br></pre></td></tr></table></figure>
+
+<p>JS 把数据类型分为两类：</p>
+<ul>
+<li>基本数据类型(Number,String,Boolean,Undefined,Null)</li>
+<li>复杂数据类型(Object)</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><table>
+<thead>
+<tr>
+<th>简单数据类型</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number</td>
+<td>数字型，包含整数型和浮点型</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值类型，true（加法运算中当1看）和false（加法运算中当0看）</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串类型</td>
+<td>“”</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>var a; 声明了变量a但是没有给值，此时a &#x3D; undefined</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>var a &#x3D; null; 声明了变量a为空值</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<h2 id="数字型进制"><a href="#数字型进制" class="headerlink" title="数字型进制"></a>数字型进制</h2><p>最常见的进制有二进制、八进制、十进制、十六进制。</p>
+<p>1.八进制数字序列范围：0~7</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var num1 = 07; 		//对应十进制的7</span><br><span class="line">var Num2 = 019;		//对应十进制的19</span><br><span class="line">var num3 = 08;		//对应十进制的8</span><br></pre></td></tr></table></figure>
+
+<p>2.十六进制数字序列范围：0<del>9以及A</del>F</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var num = 0xA;</span><br></pre></td></tr></table></figure>
+
+<p><strong>⭐在JS中八进制前面加0，十六进制前面加 0x</strong></p>
+<ol>
+<li><p>数字型范围<br>JS中数值的最大值：Number.MAX_VALUE<br>JS中数值的最小值：Number.MIN_VALUE</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">consol.log(Number.MAX_VALUE);</span><br><span class="line">consol.log(Number.MIN_VALUE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字型的三个特殊值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(Infinity); 	//Infinity(无穷大)</span><br><span class="line">alert(-Infinity); 	//-Infinity(无穷小)</span><br><span class="line">alert(NaN);       	//NaN - Not a Number ,代表任何一个非数值</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Infinity ，代表无穷大，大于任何数值</li>
+<li>-Infinity ，代表无穷小，小于任何数值</li>
+<li>Nan ，Not a Number，代表一个非数值</li>
+</ol>
+</li>
+<li><p>isNaN(): 这个方法用来判断非数字，并且返回一个值，如果是数字返回的是false，如果不是数字返回的是true</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var userAge = 21;</span><br><span class="line">var isOk = isNan(userAge);</span><br><span class="line">console.log(isOk);		//false,21不是一个非数字</span><br><span class="line"></span><br><span class="line">var userName = &quot;andy&quot;;</span><br><span class="line">console.log(isNan(userName));	//true,&quot;andy&quot;是一个非数字</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="字符串型String"><a href="#字符串型String" class="headerlink" title="字符串型String"></a>字符串型String</h2><p>字符串型可以是引号中的任意文本，其语法为 “双引号” 和 “单引号’’</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var strMsg = &quot;我爱北京天安门~&quot;;		//使用双引号表示字符串</span><br><span class="line">var strMsg = &#x27;我爱北京&#x27;;			  //使用单引号表示字符串</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>因为 HTML 标签里面的属性使用的是双引号，JS 这里我们更推荐使用单引号。</li>
+</ul>
+<ol>
+<li><p>字符串引号嵌套<br>JS可以用 单引号嵌套双引号，或者用 双引号嵌套单引号（外双内单，外单内双）</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var strMsg =&#x27;我是一个“天才”&#x27; //可以用 &#x27; &#x27; 包含 &quot; &quot;</span><br><span class="line">var strMsg2 =&quot;我是&#x27;天才&#x27;&quot; //可以用&quot; &quot;  包含  &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>字符串转义符<br>类似HTML里面的特殊字符，字符串中也有特殊字符，我们称之为转义符。</p>
+</li>
+</ol>
+<p>转义符都是 \ 开头的，常用的转义符及其说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符，n是newline</td>
+</tr>
+<tr>
+<td>\ \</td>
+<td>斜杠\</td>
+</tr>
+<tr>
+<td>\ ’</td>
+<td>’ 单引号</td>
+</tr>
+<tr>
+<td>\ ‘’</td>
+<td>‘’ 双引号</td>
+</tr>
+<tr>
+<td>\ t</td>
+<td>tab 缩进</td>
+</tr>
+<tr>
+<td>\ b</td>
+<td>空格，b是blank的意思</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><p>字符串长度<br>字符串是由若干字符组成的，这些字符的数量就是字符串的长度。通过字符串的 length 属性可以获取整个字符串的长度。</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//通过字符串的length属性可以获取整个字符串的长度</span><br><span class="line">var strMsg = &quot;我是天才！&quot;;</span><br><span class="line">alert(strMsg.length);     //显示5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串的拼接</p>
+<ol>
+<li><p>多个字符串之间可以使用 + 进行拼接，其拼接方式为 字符串 + 任何类型 &#x3D; 拼接之后的新字符串</p>
+</li>
+<li><p>拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串</p>
+</li>
+<li><p>注意：字符串 + 任何类型 &#x3D;拼接之后的新字符串</p>
+<ol>
+<li>字符串相加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&#x27;hello&#x27; + &#x27; &#x27; + &#x27;World&#x27;);  //hello World</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>数值字符串相加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&#x27;100&#x27; + &#x27;100&#x27;); //100100</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>数值字符串+数值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&#x27;12&#x27;+12); //1212</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>数值+数值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(12+12); //24</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>⭐<strong>号总结口诀：数值相加，字符相连</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var  age = 18;</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);  //引引加加，最终也是上面的形式</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>字符串拼接加强</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;老师&#x27; + 18);			//只要有字符就会相连</span><br><span class="line">var age = 18;</span><br><span class="line">// console.log(&#x27;老师age岁了&#x27;);	//这样不行,会输出&quot;老师age岁了&quot;</span><br><span class="line">console.log(&#x27;老师&#x27; + age);		 // 老师18</span><br><span class="line">console.log(&#x27;老师&#x27; + age + &#x27;岁啦&#x27;);	// 老师18岁啦</span><br></pre></td></tr></table></figure>
+
+<p>我们经常会将字符串和变量来拼接，因为变量可以很方便地修改里面的值<br>变量是不能添加引号的，因为加引号的变量会变成字符串<br>如果变量两侧都有字符串拼接，口诀&#x3D;&#x3D;“引引加加 ”，删掉数字&#x3D;&#x3D;变量写加中间</p>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>toString()</td>
+<td>转换为字符串</td>
+<td>var num &#x3D; 1; alert(num.toString());</td>
+</tr>
+<tr>
+<td>String()强制转换</td>
+<td>转换为字符串</td>
+<td>var num &#x3D; 1; alert(String(num));</td>
+</tr>
+<tr>
+<td>加号拼接字符串</td>
+<td>和字符串拼接的结果都是字符串</td>
+<td>var num &#x3D; 1; alert(num + “我是字符串”);</td>
+</tr>
+</tbody></table>
+<ol>
+<li>toString()和String()使用方式不一样</li>
+<li>三种转换方式,更喜欢用第三种加号拼接字符串转换方式，这一种方式也称之为隐式转换</li>
+</ol>
+<h3 id="转换为数字型（重点）"><a href="#转换为数字型（重点）" class="headerlink" title="转换为数字型（重点）"></a>转换为数字型（重点）</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseInt(string)函数</td>
+<td>将string类型转成整数数值型(可以用于去除单位)</td>
+<td>parseInt(‘78’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 将string类型转成整数数值型</span><br><span class="line">var str = &#x27;10.32&#x27;;</span><br><span class="line">console.log(parseInt(str)); //10 取整</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseInt(&#x27;12px&#x27;)); //12</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseFloat(string)函数</td>
+<td>将string类型转成浮点数数值型(可以用于去除单位) parseFloat(‘78.21’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 将string类型转成浮点数数值型</span><br><span class="line">var str1 = &#x27;10.24&#x27;;</span><br><span class="line">console.log(parseFloat(str1)); //10.24</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseFloat(&#x27;120px&#x27;)); //120</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number强制转换函数</td>
+<td>将string类型转换为数值型</td>
+<td>Number(‘12’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 将string类型转换为数值型</span><br><span class="line">var str2 = &#x27;123&#x27;;</span><br><span class="line">console.log(Number(str2)); //123</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>js隐式转换(- * &#x2F;)</td>
+<td>利用算术运算隐式转换为数值</td>
+<td>‘12’-0</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 利用算术运算隐式转换为数值</span><br><span class="line">console.log(&#x27;12&#x27; - 0); //12</span><br><span class="line">console.log(&#x27;120&#x27; / 10); //12</span><br><span class="line">console.log(&#x27;12&#x27; * 1); //12</span><br></pre></td></tr></table></figure>
+
+<h3 id="转换为布尔型"><a href="#转换为布尔型" class="headerlink" title="转换为布尔型"></a>转换为布尔型</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean()函数</td>
+<td>其他类型转成布尔型</td>
+<td>Boolean(‘true’)</td>
+</tr>
+</tbody></table>
+<ol>
+<li>代表空、否定的值都会被转换为false，如’’、0、NaN、null、undefined</li>
+<li>其余值都会被转换为true</li>
+</ol>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><ol>
+<li>运算符(operator)也被称为操作符,是用于实现赋值、比较和执行算数运算等功能的符号</li>
+<li>JavaScript中常用的运算符有：<ol>
+<li>算术运算符</li>
+<li>递增和递减运算符</li>
+<li>比较运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+</ol>
+</li>
+</ol>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ol>
+<li><p>概念：算术运算使用的符号，用于执行两个变量或值的算术运算</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘+’</td>
+<td>加</td>
+<td>10 + 20 &#x3D; 30</td>
+</tr>
+<tr>
+<td>‘-‘</td>
+<td>减</td>
+<td>10 - 20 &#x3D; -10</td>
+</tr>
+<tr>
+<td>‘*’</td>
+<td>乘</td>
+<td>10 * 20 &#x3D; 200</td>
+</tr>
+<tr>
+<td>‘&#x2F;‘</td>
+<td>除</td>
+<td>10 &#x2F; 20 &#x3D; 0.5</td>
+</tr>
+<tr>
+<td>‘%’</td>
+<td>取余数(取模)</td>
+<td>返回除法的余数</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>表达式：由数字、运算符、变量等以能求得数值的有意义排列方法所得的组合</p>
+</li>
+</ol>
+<h2 id="递增和递减运算符"><a href="#递增和递减运算符" class="headerlink" title="递增和递减运算符"></a>递增和递减运算符</h2><ol>
+<li>递增（++）和递减（–）</li>
+<li>在JavaScript中,递增(++)和递减(–)既可以放在变量前面,也可以放在变量后面<ol>
+<li>放在变量前面时，称为前置递增(递减)运算符<ul>
+<li>++num：先自增（自减），后返回值</li>
+</ul>
+</li>
+<li>放在变量后面时，称为后置递增(递减)运算符<ul>
+<li>num++：先返回值，后自增（自减）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>递增和递减运算符必须和变量配合使用</li>
+</ol>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ol>
+<li><p>概念：比较运算符（关系运算符）是两个数据进行比较时所使用的运算符，比较运算后，会返回一个布尔值（true&#x2F;false）作为比较运算的结果</p>
+<table>
+<thead>
+<tr>
+<th>运算符名称</th>
+<th>说明</th>
+<th>案例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘&lt;’</td>
+<td>小于</td>
+<td>1 &lt; 2</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘&gt;’</td>
+<td>大于</td>
+<td>1 &gt; 2</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&gt;&#x3D;’</td>
+<td>大于等于</td>
+<td>2 &gt;&#x3D; 2</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘&lt;&#x3D;’</td>
+<td>小于等于</td>
+<td>3 &lt;&#x3D; 2</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&#x3D;&#x3D;’</td>
+<td>判等（会转型）</td>
+<td>37 &#x3D;&#x3D; 37</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘!&#x3D;’</td>
+<td>不等于</td>
+<td>37 !&#x3D; 37</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;’</td>
+<td>全等（要求值和数据类型都一致）</td>
+<td>37 &#x3D;&#x3D;&#x3D; ‘37’</td>
+<td>false</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>小结</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D; 赋值</td>
+<td>把右边给左边</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>判断</td>
+<td>判断两边值是否相等（注意此时有隐式转换）</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;&#x3D;</td>
+<td>全等</td>
+<td>判断两边的值和数据类型是否完全相等</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ol>
+<li>概念：逻辑运算符是用来进行布尔值运算的运算符,其返回值是布尔值；后面开发中经常用于多个条件的判断<ol>
+<li>&amp;&amp;：”逻辑与”，简称”与” and（一假则假，全真为真）</li>
+<li>||：”逻辑或”，简称”或” or（一真则真，全假为假 ）</li>
+<li>!（取反符）：”逻辑非”，简称”非” not</li>
+</ol>
+</li>
+</ol>
+<h3 id="短路运算（逻辑中断重点）"><a href="#短路运算（逻辑中断重点）" class="headerlink" title="短路运算（逻辑中断重点）"></a>短路运算（逻辑中断重点）</h3><ol>
+<li>短路运算原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值</li>
+<li>逻辑与短路运算<ol>
+<li>语法：表达式1 &amp;&amp; 表达式2<ul>
+<li>如果第一个表达式的值为真，则返回表达式2</li>
+<li>如果第一个表达式的值为假，则返回表达式1</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>逻辑或短路运算<ol>
+<li>语法：表达式1 || 表达式2<ul>
+<li>如果第一个表达式的值为真，则返回表达式1</li>
+<li>如果第一个表达式的值为假，则返回表达式2</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ol>
+<li>基本赋值运算符：&#x3D;</li>
+<li>扩展的赋值运算符：+&#x3D;，-&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;</li>
+<li>先执行等号右边再赋值给左边</li>
+</ol>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小括号</td>
+<td>()</td>
+</tr>
+<tr>
+<td>2</td>
+<td>一元运算符</td>
+<td>++ – !</td>
+</tr>
+<tr>
+<td>3</td>
+<td>算术运算符</td>
+<td>先* &#x2F; %，后+ -</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关系运算符</td>
+<td>&gt; &gt;&#x3D; &lt; &lt;&#x3D;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>相等运算符</td>
+<td>&#x3D;&#x3D; !&#x3D; &#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑运算符</td>
+<td>先&amp;&amp;，后</td>
+</tr>
+<tr>
+<td>7</td>
+<td>赋值运算符</td>
+<td>&#x3D;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>逗号运算符</td>
+<td>,</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/" title="JavaScript基础">http://chhwn.github.io/2022/08/01/JavaScript基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E5%92%8CBootstrap/" rel="prev" title="响应式布局和Bootstrap">
+      <i class="fa fa-chevron-left"></i> 响应式布局和Bootstrap
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/JavaScript%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" rel="next" title="JavaScript流程控制">
+      JavaScript流程控制 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">JavaScript基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFJavaScript"><span class="nav-number">1.1.</span> <span class="nav-text">什么是JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript%E4%BD%9C%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A7%E8%A1%8CJS%E7%AE%80%E4%BB%8B"><span class="nav-number">1.3.</span> <span class="nav-text">浏览器执行JS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.4.</span> <span class="nav-text">JS的组成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">JS基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.1.</span> <span class="nav-text">输入输出语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">3.1.</span> <span class="nav-text">变量初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5"><span class="nav-number">3.2.</span> <span class="nav-text">声明变量特殊情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="nav-number">3.3.</span> <span class="nav-text">变量的命名规范</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9E%8B%E8%BF%9B%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">数字型进制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9E%8BString"><span class="nav-number">4.3.</span> <span class="nav-text">字符串型String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">4.4.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">4.4.1.</span> <span class="nav-text">转换为字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E6%95%B0%E5%AD%97%E5%9E%8B%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">4.4.2.</span> <span class="nav-text">转换为数字型（重点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B8%83%E5%B0%94%E5%9E%8B"><span class="nav-number">4.4.3.</span> <span class="nav-text">转换为布尔型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%92%E5%A2%9E%E5%92%8C%E9%80%92%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.2.</span> <span class="nav-text">递增和递减运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.3.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.4.</span> <span class="nav-text">逻辑运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%EF%BC%88%E9%80%BB%E8%BE%91%E4%B8%AD%E6%96%AD%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-number">5.4.1.</span> <span class="nav-text">短路运算（逻辑中断重点）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">5.5.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">5.6.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

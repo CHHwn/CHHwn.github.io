@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇PC端网页特效的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PC端的网页特效">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇PC端网页特效的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929113858.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929113952.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929114107.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929115946.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929120104.png">
+<meta property="article:published_time" content="2022-08-01T14:29:12.000Z">
+<meta property="article:modified_time" content="2022-08-02T04:34:34.296Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929113858.png">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>PC端的网页特效 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          PC端的网页特效
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:29:12" itemprop="dateCreated datePublished" datetime="2022-08-01T22:29:12+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 12:34:34" itemprop="dateModified" datetime="2022-08-02T12:34:34+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇PC端网页特效的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="三大系列"><a href="#三大系列" class="headerlink" title="三大系列"></a>三大系列</h1><h2 id="元素偏移量offset系列"><a href="#元素偏移量offset系列" class="headerlink" title="元素偏移量offset系列"></a>元素偏移量offset系列</h2><h3 id="offset概述"><a href="#offset概述" class="headerlink" title="offset概述"></a>offset概述</h3><ol>
+<li><p>offset翻译过来就是偏移量，使用offset系列相关属性可以动态的得到该元素的位置（偏移）、大小等</p>
+<ol>
+<li>获得元素距离带有定位父元素的位置</li>
+<li>获得元素自身的大小（宽度高度）</li>
+<li>注意：返回的数值都不带单位</li>
+</ol>
+</li>
+<li><p>offset系列常用属性</p>
+<table>
+<thead>
+<tr>
+<th>offset系列属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>element.offsetParent</td>
+<td>返回作为该元素带有定位的父级元素，若父级元素都没有定位则返回body</td>
+</tr>
+<tr>
+<td>element.offsetTop</td>
+<td>返回元素相对带有定位父元素上方的偏移，若父级元素都没有定位则返回body</td>
+</tr>
+<tr>
+<td>element.offsetLeft</td>
+<td>返回元素相对带有定位父元素左边框的偏移，若父级元素都没有定位则返回body</td>
+</tr>
+<tr>
+<td>element.offsetWidth</td>
+<td>返回自身包括padding、边框、内容区的宽度，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.offsetHeight</td>
+<td>返回自身包括padding、边框、内容区的高度，返回数值不带单位</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="offset与style的区别"><a href="#offset与style的区别" class="headerlink" title="offset与style的区别"></a>offset与style的区别</h3><ol>
+<li>offset<ol>
+<li>offset可以得到任意样式表中的样式值</li>
+<li>offset系列获得的数值是没有单位的</li>
+<li>offsetWidth包含padding + border + width</li>
+<li>offsetWidth等属性是只读属性，只能获取不能赋值</li>
+<li>所以，我们想要获取元素大小位置，用offset更合适</li>
+</ol>
+</li>
+<li>style<ol>
+<li>style只能得到行内样式表中的样式值</li>
+<li>style.width获得的是带有单位的字符串</li>
+<li>style.width获得不包含padding和border的值</li>
+<li>style.width是可读写属性，可以获取也可以赋值</li>
+<li>所以，我们想要给元素更改值，则需要用style改变</li>
+</ol>
+</li>
+</ol>
+<h2 id="元素可视区client系列"><a href="#元素可视区client系列" class="headerlink" title="元素可视区client系列"></a>元素可视区client系列</h2><ol>
+<li><p>client翻译过来就是客户端，我们使用client系列的相关属性来获取元素可视区的相关信息，通过client系列的相关属性可以动态的得到该元素的边框大小、元素大小等</p>
+<table>
+<thead>
+<tr>
+<th>client系列属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>element.clientTop</td>
+<td>返回元素上边框的大小</td>
+</tr>
+<tr>
+<td>element.clientLeft</td>
+<td>返回元素左边框的大小</td>
+</tr>
+<tr>
+<td>element.clientWidth</td>
+<td>返回自身包括padding、内容区的宽度，不含边框，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.clientHeight</td>
+<td>返回自身包括padding、内容区的高度，不含边框，返回数值不带单位</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="元素滚动scroll系列"><a href="#元素滚动scroll系列" class="headerlink" title="元素滚动scroll系列"></a>元素滚动scroll系列</h2><h3 id="元素scroll系列属性"><a href="#元素scroll系列属性" class="headerlink" title="元素scroll系列属性"></a>元素scroll系列属性</h3><ol>
+<li><p>scroll翻译过来就是滚动的，我们使用scroll系列的相关属性可以动态的得到该元素的大小、滚动距离等</p>
+<table>
+<thead>
+<tr>
+<th>scroll系列属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>element.scrollTop</td>
+<td>返回被卷去的上侧距离，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.scrollLeft</td>
+<td>返回被卷去的左侧距离，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.scrollWidth</td>
+<td>返回自身内容实际的宽度，不含边框，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.scrollheight</td>
+<td>返回自身内容实际的高度，不含边框，返回数值不带单位</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="scroll滚动事件"><a href="#scroll滚动事件" class="headerlink" title="scroll滚动事件"></a>scroll滚动事件</h3><ol>
+<li>onscroll：当滚动条被触发发生变化时会触发的事件</li>
+<li>页面被卷去的头部：window.pageYOffset；页面被卷去的左侧</li>
+<li>页面滚动：window.scroll(x, y);</li>
+</ol>
+<h2 id="三大系列总结"><a href="#三大系列总结" class="headerlink" title="三大系列总结"></a>三大系列总结</h2><h3 id="三大系列width属性对比"><a href="#三大系列width属性对比" class="headerlink" title="三大系列width属性对比"></a>三大系列width属性对比</h3><table>
+<thead>
+<tr>
+<th>三大系列大小对比</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>element.offsetWidth</td>
+<td>返回自身包括padding、边框、内容区的宽度，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.clientWidth</td>
+<td>返回自身包括padding、内容区的宽度，不含边框，返回数值不带单位</td>
+</tr>
+<tr>
+<td>element.scrollWidth</td>
+<td>返回自身内容实际的宽度，不含边框，返回数值不带单位</td>
+</tr>
+</tbody></table>
+<ol>
+<li>element.offsetWidt返回的数值包括边框<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929113858.png" alt="img"></li>
+<li>element.clientWidth<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929113952.png" alt="img"></li>
+<li>element.scrollWidth包含文字超出部分<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929114107.png" alt="img"></li>
+</ol>
+<h3 id="三大系列用法"><a href="#三大系列用法" class="headerlink" title="三大系列用法"></a>三大系列用法</h3><ol>
+<li><p>offset（偏移量）系列：用于获得元素位置 offsetLeft、offsetTop</p>
+</li>
+<li><p>client（客户端）系列：用于获取元素的大小 clientWidth、clientHeight</p>
+</li>
+<li><p>scroll（滚动）系列：用于获取滚动距离 scrollTop、scrollLeft</p>
+</li>
+</ol>
+<h2 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h2><ol start="4">
+<li><p>立即执行函数：不需要调用，立马能够自己执行的函数</p>
+</li>
+<li><p>语法</p>
+<ol>
+<li><p>方式一：(function() {})()</p>
+<ul>
+<li><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(a, b) &#123;</span><br><span class="line">  console.log(a + b);</span><br><span class="line">&#125;)(1, 2);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二个小括号可以看作是调用函数</p>
+</li>
+</ul>
+</li>
+<li><p>方式二：(function() {} ())</p>
+<ul>
+<li><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function sum(a, b) &#123;</span><br><span class="line">  console.log(a + b);</span><br><span class="line">&#125; (2, 3));</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>主要作用：立即执行函数最大的作用就是独立创建了一个作用域，里面所有的变量都是局部变量，不会有命名冲突</p>
+</li>
+</ol>
+<h1 id="动画函数封装"><a href="#动画函数封装" class="headerlink" title="动画函数封装"></a>动画函数封装</h1><h2 id="动画实现原理"><a href="#动画实现原理" class="headerlink" title="动画实现原理"></a>动画实现原理</h2><ol>
+<li><p>核心原理：通过定时器setInterval()不断移动盒子位置</p>
+</li>
+<li><p>实现步骤：</p>
+<ol>
+<li><p>获得盒子当前位置</p>
+</li>
+<li><p>让盒子在当前位置加上1个移动距离</p>
+</li>
+<li><p>利用定时器不断重复这个操作</p>
+</li>
+<li><p>加一个结束定时器的条件</p>
+</li>
+<li><p>注意此元素需要添加定位，才能使用element.style.left</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 1. 获得盒子当前位置</span><br><span class="line">        // 2. 让盒子在当前位置加上1个移动距离</span><br><span class="line">        // 3. 利用定时器不断重复这个操作</span><br><span class="line">        // 4. 加一个结束定时器的条件</span><br><span class="line">        // 5. 注意此元素需要添加定位，才能使用element.style.left</span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var timer = setInterval(function () &#123;</span><br><span class="line">            if (div.offsetLeft &gt;= 400) &#123;</span><br><span class="line">                // 停止动画，本质是停止计时器</span><br><span class="line">                clearInterval(timer);</span><br><span class="line">            &#125;</span><br><span class="line">            div.style.left = div.offsetLeft + 1 + &#x27;px&#x27;;</span><br><span class="line">        &#125;, 50);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="简单动画函数封装"><a href="#简单动画函数封装" class="headerlink" title="简单动画函数封装"></a>简单动画函数封装</h2><ol>
+<li><p>简单动画函数封装两个参数：obj目标对象、target目标位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;启动蓝色盒子&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 封装动画函数</span><br><span class="line">        function animate(obj, target) &#123;</span><br><span class="line">            // 当没有这句代码时，会存在一个bug：当不断点击按钮使动画函数不断被调用，计时器会开启的越来越多，导致元素的动画速度越来越快</span><br><span class="line">            // 解决方法：让元素只有一个计时器执行</span><br><span class="line">            // 优化二：在执行下一个计时器时，清除之前的计时器；计时器第一次执行时，因为之前没有执行过计时器，则代码无效</span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line"></span><br><span class="line">            // 优化一：obj.timer 这样做的目的是 给不同的元素指定了不同的计时器</span><br><span class="line">            obj.timer = setInterval(function () &#123;</span><br><span class="line">                if (obj.offsetLeft &gt;= target) &#123;</span><br><span class="line">                    // 停止动画，本质是停止计时器</span><br><span class="line">                    clearInterval(obj.timer);</span><br><span class="line">                &#125;</span><br><span class="line">                obj.style.left = obj.offsetLeft + 1 + &#x27;px&#x27;;</span><br><span class="line">            &#125;, 50);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var span = document.querySelector(&#x27;span&#x27;);</span><br><span class="line">        var btn = document.querySelector(&#x27;button&#x27;);</span><br><span class="line"></span><br><span class="line">        // 调用函数</span><br><span class="line">        animate(div, 400);</span><br><span class="line"></span><br><span class="line">        btn.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            // 调用函数</span><br><span class="line">            animate(span, 300);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="缓动动画原理"><a href="#缓动动画原理" class="headerlink" title="缓动动画原理"></a>缓动动画原理</h2><ol>
+<li>缓动动画就是让元素运动速度有所变化,最常见的是让速度慢慢停下来</li>
+<li>思路：<ol>
+<li>让盒子每次移动的距离慢慢变小，速度就会慢慢落下来</li>
+<li>核心算法： (目标值target - 现在的位置) &#x2F; 10做为每次移动的距离步长</li>
+<li>停止的条件是：让当前盒子位置等于目标位置就停止定时器</li>
+<li>注意：步长的小数需要进行取整，不然会出现元素无法到指定位置的bug<ul>
+<li>步长为正数：向上取整</li>
+<li>步长为负数：向下取整</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>匀速动画就是：盒子是当前的位置 + 固定的值</li>
+<li>缓动动画就是：盒子当前的位置 + 变化的值（目标值target - 现在的位置） &#x2F; 10</li>
+<li>演示见下</li>
+</ol>
+<h3 id="缓动动画添加回调函数"><a href="#缓动动画添加回调函数" class="headerlink" title="缓动动画添加回调函数"></a>缓动动画添加回调函数</h3><ol>
+<li><p>回调函数原理：函数可以作为一个参数；将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数，这个过程就叫做回调</p>
+</li>
+<li><p>例：当缓动动画移动到终点后，盒子改变颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button class=&quot;btn700&quot;&gt;移动到700&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;btn1000&quot;&gt;移动到1000&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function animate(obj, target, cellback) &#123;</span><br><span class="line">            obj.timer = setInterval(function () &#123;</span><br><span class="line">                // 步长值，步长值公式：（目标值target - 现在的位置） / 10</span><br><span class="line">                // 把步长值改为整数，不然会出现元素无法到指定位置的bug，因为在JS中小数不进行计算</span><br><span class="line">                // 步长为正数：向上取 整</span><br><span class="line">                // 步长为负数：向下取整</span><br><span class="line">                var step = (target - obj.offsetLeft) / 10;</span><br><span class="line">                step = step &gt; 0 ? Math.ceil(step) : Math.floor(step);</span><br><span class="line">                // 停止的条件：让当前盒子位置等于目标位置就停止定时器</span><br><span class="line">                if (obj.offsetLeft == target) &#123;</span><br><span class="line">                    clearInterval(obj.timer);</span><br><span class="line">                    // 回调函数写到定时器结束内</span><br><span class="line">                    // 判断是否接收到回调函数，若接收到则调用函数</span><br><span class="line">                    if (cellback) &#123;</span><br><span class="line">                        cellback();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    obj.style.left = obj.offsetLeft + step + &#x27;px&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, 15);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var btn700 = document.querySelector(&#x27;.btn700&#x27;);</span><br><span class="line">        var btn1000 = document.querySelector(&#x27;.btn1000&#x27;);</span><br><span class="line"></span><br><span class="line">        // 调用函数</span><br><span class="line">        btn700.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            animate(div, 700, function () &#123;</span><br><span class="line">                div.style.backgroundColor = &#x27;skyblue&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">        btn1000.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            animate(div, 1000, function () &#123;</span><br><span class="line">                div.style.backgroundColor = &#x27;skyblue&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="常见网页特效案例"><a href="#常见网页特效案例" class="headerlink" title="常见网页特效案例"></a>常见网页特效案例</h1><h2 id="网页轮播图"><a href="#网页轮播图" class="headerlink" title="网页轮播图"></a>网页轮播图</h2><ol>
+<li>轮播图也称为焦点图，是网页中比较常见的网页特效</li>
+</ol>
+<h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><ol>
+<li>鼠标经过轮播图模块，左右按钮显示，离开隐藏左右按钮<ol>
+<li>显示隐藏display按钮</li>
+</ol>
+</li>
+<li>生成动态小圆圈<ol>
+<li>核心思路：小圆圈的个数要跟图片张数一致</li>
+<li>所以首先先得到ul里面图片的张数(图片放入li里面，所以就是li的个数)</li>
+<li>利用循环动态生成小圆圈(这个小圆圈要放入ol里面)</li>
+<li>创建节点createElement(1i)</li>
+<li>插入节点ol.appendChild(li)</li>
+<li>第一个小圆圈需要添加current类(获得current类后小圆圈颜色变化)</li>
+<li>排他思想</li>
+</ol>
+</li>
+<li>点击小圆圈，可以播放相应图片<ol>
+<li>此时用到animate动画函数，将js文件引入(注意：因为index.js依赖animate.js，所以，animate.js要写到index.js上面)</li>
+<li>使用动画函数的前提，该元素必须有定位</li>
+<li>注意是ul移动而不是小li</li>
+<li>滚动图片的核心算法：点击某个小圆圈，就让图片滚动小圆圈的索引号乘以图片的宽度做为ul移动距离</li>
+<li>此时需要知道小圆圈的索引号，我们可以在生成小圆圈的时候，给它设置一个自定义属性，点击的时候获取这个自定义属性即可</li>
+</ol>
+</li>
+<li>点击右侧按钮一次，图片往左播放一张，以此类推，左侧按钮同理<ol>
+<li>声明一个变量num，点击一次，自增1，让这个变量乘以图片宽度，就是ul的滚动距离</li>
+<li>图片无缝滚动原理</li>
+<li>把ul第一个li复制一份，放到ul的最后面</li>
+<li>当图片滚动到克隆的最后一 张图片时，让ul快速的、不做动画的跳到最左侧：left为0</li>
+<li>同时num赋值为0，可以重新开始滚动图片</li>
+</ol>
+</li>
+<li>克隆第一张图片（在for循环外进行，不会多一个小圆圈），放在ul最后</li>
+<li>图片播放的同时，下面小圆圈模块跟随一起变化<ol>
+<li>最简单的做法是再声明一个变量circle，每次点击自增1，注意：左侧按钮也需要这个变量，因此要声明全局变量</li>
+<li>排他思想，播放第几张图片，则第几个小圆圈的类名设置为current</li>
+<li>若circle值为有效图片(除了最后一张克隆的图片)的数量时，令circle值为0，小圆圈从第一个开始</li>
+</ol>
+</li>
+<li>鼠标不经过轮播图，轮播图也会自动播放图片<ol>
+<li>添加一个定时器</li>
+<li>自动播放轮播图，实际就类似于点击了右侧按钮</li>
+<li>手动调用点击事件：使用手动调用右侧按钮点击事件r.click();</li>
+</ol>
+</li>
+<li>鼠标经过，轮播图模块自动播放停止</li>
+</ol>
+<h2 id="节流阀"><a href="#节流阀" class="headerlink" title="节流阀"></a>节流阀</h2><ol>
+<li>轮播图中运用节流阀：防止按钮连续点击造成播放过快</li>
+<li>节流阀目的：当上一个函数动画内容执行完毕，再去执行下一个函数动画，让事件无法连续触发</li>
+<li>核心思路：利用回调函数，添加一个量来控制，锁住函数和解锁函数<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929115946.png" alt="img"></li>
+</ol>
+<h2 id="带有动画的淘宝返回顶部"><a href="#带有动画的淘宝返回顶部" class="headerlink" title="带有动画的淘宝返回顶部"></a>带有动画的淘宝返回顶部</h2><ol>
+<li>此时可以继续使用封装的动画函数</li>
+<li>只需要把所有的left相关的值改为跟页面垂直滚动距离相关就可以</li>
+<li>页面滚动了多少，可以通过window.pageYOffset得到</li>
+<li>最后是页面滚动，使用window.scrol(x, y)<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929120104.png" alt="img"></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" title="PC端的网页特效">http://chhwn.github.io/2022/08/01/PC端的网页特效/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/BOM/" rel="prev" title="BOM">
+      <i class="fa fa-chevron-left"></i> BOM
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" rel="next" title="移动端的网页特效">
+      移动端的网页特效 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%B3%BB%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">三大系列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%81%8F%E7%A7%BB%E9%87%8Foffset%E7%B3%BB%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">元素偏移量offset系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#offset%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">offset概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offset%E4%B8%8Estyle%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.2.</span> <span class="nav-text">offset与style的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%8F%AF%E8%A7%86%E5%8C%BAclient%E7%B3%BB%E5%88%97"><span class="nav-number">1.2.</span> <span class="nav-text">元素可视区client系列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%BB%9A%E5%8A%A8scroll%E7%B3%BB%E5%88%97"><span class="nav-number">1.3.</span> <span class="nav-text">元素滚动scroll系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E7%B4%A0scroll%E7%B3%BB%E5%88%97%E5%B1%9E%E6%80%A7"><span class="nav-number">1.3.1.</span> <span class="nav-text">元素scroll系列属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scroll%E6%BB%9A%E5%8A%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">scroll滚动事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%B3%BB%E5%88%97%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">三大系列总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%B3%BB%E5%88%97width%E5%B1%9E%E6%80%A7%E5%AF%B9%E6%AF%94"><span class="nav-number">1.4.1.</span> <span class="nav-text">三大系列width属性对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E7%B3%BB%E5%88%97%E7%94%A8%E6%B3%95"><span class="nav-number">1.4.2.</span> <span class="nav-text">三大系列用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.</span> <span class="nav-text">立即执行函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">动画函数封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">动画实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85"><span class="nav-number">2.2.</span> <span class="nav-text">简单动画函数封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%8A%A8%E5%8A%A8%E7%94%BB%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">缓动动画原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%8A%A8%E5%8A%A8%E7%94%BB%E6%B7%BB%E5%8A%A0%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">缓动动画添加回调函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88%E6%A1%88%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">常见网页特效案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="nav-number">3.1.</span> <span class="nav-text">网页轮播图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.1.</span> <span class="nav-text">功能需求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E6%B5%81%E9%98%80"><span class="nav-number">3.2.</span> <span class="nav-text">节流阀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E6%9C%89%E5%8A%A8%E7%94%BB%E7%9A%84%E6%B7%98%E5%AE%9D%E8%BF%94%E5%9B%9E%E9%A1%B6%E9%83%A8"><span class="nav-number">3.3.</span> <span class="nav-text">带有动画的淘宝返回顶部</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

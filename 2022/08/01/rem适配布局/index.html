@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇rem适配布局的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rem适配布局">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/rem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇rem适配布局的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922015614.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922015659.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922020359.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922020648.png">
+<meta property="og:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922021227.png">
+<meta property="article:published_time" content="2022-08-01T14:02:38.000Z">
+<meta property="article:modified_time" content="2022-08-02T08:46:07.315Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922015614.png">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/rem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>rem适配布局 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/rem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rem适配布局
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:02:38" itemprop="dateCreated datePublished" datetime="2022-08-01T22:02:38+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 16:46:07" itemprop="dateModified" datetime="2022-08-02T16:46:07+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇rem适配布局的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="rem基础"><a href="#rem基础" class="headerlink" title="rem基础"></a>rem基础</h1><h2 id="rem单位"><a href="#rem单位" class="headerlink" title="rem单位"></a>rem单位</h2><ol>
+<li>rem是一个相对单位，类似于em，em是父元素字体大小</li>
+<li>不同的是rem的基准是相对于html元素的字体大小<ul>
+<li>例：根元素（html）设置font-size: 12px; 非根元素设置width: 2rem; 则换成px表示就是24px；</li>
+</ul>
+</li>
+<li>em相对于父元素的字体大小来讲</li>
+<li>rem相对于html元素的字体大小来讲</li>
+</ol>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><h3 id="媒体查询（Media-Query）是CSS3新语法"><a href="#媒体查询（Media-Query）是CSS3新语法" class="headerlink" title="媒体查询（Media Query）是CSS3新语法"></a>媒体查询（Media Query）是CSS3新语法</h3><ol>
+<li>使用@media查询，可以针对不同的媒体类型定义不同的样式</li>
+<li>@media可以针对不同的屏幕尺寸设置不同的样式(主要价值)</li>
+<li>当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</li>
+<li>媒体查询一般按照从大到小或者从小到大的顺序来</li>
+<li>目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询</li>
+</ol>
+<h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@media mediatype and | on | only (media feature) &#125;</span><br><span class="line">  CSS-code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>用@media开头 注意@符号</li>
+<li>mediatype媒体类型</li>
+<li>关键字 and not only</li>
+<li>media feature 媒体特性 必须有小括号包含</li>
+</ol>
+<h3 id="mediatype查询类型"><a href="#mediatype查询类型" class="headerlink" title="mediatype查询类型"></a>mediatype查询类型</h3><ol>
+<li><p>将不同的终端设备划分成不同的类型，称为媒体类型</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>all</td>
+<td>用于所有设备</td>
+</tr>
+<tr>
+<td>print</td>
+<td>用于打印机和打印预览</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>用于电脑屏幕 平板电脑 智能手机等</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><ol>
+<li>关键字将媒体类型或多个媒体特性连接到一起作为媒体查询的条件<ol>
+<li>and：可以将多个媒体特性连接到一起，相当于“且”</li>
+<li>not ：排除某个媒体类型，相当于“非”，可以省略</li>
+<li>only：指定某个特定的媒体类型，可以省略</li>
+</ol>
+</li>
+</ol>
+<h3 id="媒体特性"><a href="#媒体特性" class="headerlink" title="媒体特性"></a>媒体特性</h3><ol>
+<li><p>每种媒体类型都具有各自不同的特性，根据不同媒体类型的媒体特性设置不同的展示风格</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td>定义输出设备中页面可见区域的宽度</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>定义输出设备中页面最小可见区域宽度（包含等于）</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>定义输出设备中页面最大可见区域宽度（包含等于）</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>案例：屏幕尺寸改变屏幕背景颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    @media screen and (max-width: 639px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @media screen and (min-width: 640px) and (max-width: 799px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: skyblue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @media screen and (min-width: 800px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: tomato;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="媒体查询-rem实现元素动态大小变化"><a href="#媒体查询-rem实现元素动态大小变化" class="headerlink" title="媒体查询+rem实现元素动态大小变化"></a>媒体查询+rem实现元素动态大小变化</h3><ol>
+<li><p>媒体查询+rem：可以实现不同的设备宽度，实现页面元素大小的动态变化</p>
+</li>
+<li><p>案例：屏幕尺寸改变字体大小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    /* 屏幕尺寸小于639px时，html字体大小为50px */</span><br><span class="line">    @media screen and (max-width: 639px) &#123;</span><br><span class="line">      html &#123;</span><br><span class="line">        font-size: 50px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* 屏幕尺寸大于640px时，html字体大小为100px */</span><br><span class="line">    @media screen and (min-width: 640px) &#123;</span><br><span class="line">      html &#123;</span><br><span class="line">        font-size: 100px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div &#123;</span><br><span class="line">        height: 1rem;</span><br><span class="line">        font-size: .7rem;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: skyblue;</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 1rem;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;主页&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="引入资源"><a href="#引入资源" class="headerlink" title="引入资源"></a>引入资源</h3><ol>
+<li><p>当样式比较繁多的时候，我们可以针对不同的媒体使用不同的stylesheets（样式表）</p>
+</li>
+<li><p>原理：直接在link中判断设备的尺寸，然后引入不同的css文件</p>
+</li>
+<li><p>建议：媒体查询最好的方法是从小到大</p>
+</li>
+<li><p>引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件</p>
+</li>
+<li><p>演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 建议：媒体查询最好的方法是从小到大</span><br><span class="line">    引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件 --&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (min-width: 300px)&quot; href=&quot;style300.css&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (min-width: 800px)&quot; href=&quot;style800.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;2&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">/* style300.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* style800.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语法规范<code>&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;style.css&quot;&gt;</code></p>
+</li>
+</ol>
+<h2 id="less基础"><a href="#less基础" class="headerlink" title="less基础"></a>less基础</h2><h3 id="维护CSS的弊端"><a href="#维护CSS的弊端" class="headerlink" title="维护CSS的弊端"></a>维护CSS的弊端</h3><ol>
+<li>css是一门非程序式语言，没有变量，函数，SCOPE（作用域）等概念<ol>
+<li>CSS需要书写大量看似没有逻辑的代码，CSS冗余度是比较高的</li>
+<li>不方便维护及扩展，不利于复用</li>
+<li>CSS没有很好的计算能力</li>
+<li>非前段开发工程师，往往会因为缺少CSS编写经验而很难写出组织良好且易于维护的CSS代码项目</li>
+</ol>
+</li>
+</ol>
+<h3 id="less介绍"><a href="#less介绍" class="headerlink" title="less介绍"></a>less介绍</h3><ol>
+<li>Less ( Leaner Style Sheets的缩写)是一门CSS扩展语言,也成为CSS预处理器</li>
+<li>做为CSS的一种形式的扩展，它并没有减少CSS的功能，而是在现有的CSS语法上，为CSS加入程序式语言的特性。</li>
+<li>它在CSS的语法基础之上，引入了变量，Mixin(混入)，运算l以及函数等功能，大大简化了CSS的编写，并且降低了CSS的维护成本，就像它的名称所说的那样，Less可以让我们用更少的代码做更多的事情。</li>
+<li>less中文网：<a target="_blank" rel="noopener" href="http://lesscss.cn/">http://lesscss.cn/</a></li>
+<li>常见的CSS与预处理器：Sass、Less、Stylus</li>
+</ol>
+<h3 id="less变量"><a href="#less变量" class="headerlink" title="less变量"></a>less变量</h3><ol>
+<li>变量是指没有固定的值，可以改变的。因为我们CSS中的一些颜色和数值等经常使用<ul>
+<li>@变量名: 值;</li>
+</ul>
+</li>
+<li>变量命名规范<ol>
+<li>必须有@为前缀</li>
+<li>不能包含特殊字符</li>
+<li>不能以数字开头</li>
+<li>大小写敏感</li>
+</ol>
+</li>
+</ol>
+<h3 id="less编译"><a href="#less编译" class="headerlink" title="less编译"></a>less编译</h3><ol>
+<li>Easy Less插件：用来把less文件编译为css文件</li>
+</ol>
+<h3 id="less嵌套"><a href="#less嵌套" class="headerlink" title="less嵌套"></a>less嵌套</h3><ol>
+<li>less嵌套 子元素的样式直接写到父元素里面<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922015614.png" alt="img"></li>
+<li>交集、伪类、伪元素选择器<ol>
+<li>内层选择器的前面没有&amp;符号，则被解析为父选择器的后代</li>
+<li>若有&amp;符号，则被解析为父元素自身或者父元素的伪类<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922015659.png" alt="img"></li>
+</ol>
+</li>
+</ol>
+<h3 id="less运算"><a href="#less运算" class="headerlink" title="less运算"></a>less运算</h3><ol>
+<li>乘号（*）和除号（&#x2F;）</li>
+<li>最新版本easy Less插件中，除法必须加括号</li>
+<li>运算符的左右两侧必须用一个空格隔开</li>
+<li>两个数参与运算 如果只有一个数有单位，则最后的结果就以这个单位为准</li>
+<li>两个数参与运算，如果2个数都有单位，而且单位不一样，则以第一个单位为准</li>
+</ol>
+<h2 id="rem适配方案"><a href="#rem适配方案" class="headerlink" title="rem适配方案"></a>rem适配方案</h2><ol>
+<li>让一些不能等比自适应的元素，达到当设备尺寸发生改变的时候，等比例适配当前设备</li>
+<li>使用媒体查询根据不同设备按比例设置html的字体大小，然后页面元素使用rem做尺寸单位，当htmI字体大小变化元素尺寸也会发生变化，从而达到等比缩放的适配</li>
+</ol>
+<h3 id="rem适配方案技术使用（市场主流）"><a href="#rem适配方案技术使用（市场主流）" class="headerlink" title="rem适配方案技术使用（市场主流）"></a>rem适配方案技术使用（市场主流）</h3><ol>
+<li>技术方案1<ol>
+<li>less</li>
+<li>媒体查询<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922020359.png" alt="img"></li>
+<li>rem</li>
+</ol>
+</li>
+<li>rem最终适配方案<ol>
+<li>首先选一套标准尺寸，一般以750px为准</li>
+<li>用屏幕尺寸除以划分的份数，得到了html里面的文字大小，但是我们知道不同屏幕下得到的文字大小是不一样的</li>
+<li>页面元素的rem值 &#x3D; 页面元素在750像素下的px值 &#x2F; html里面的文字大小</li>
+</ol>
+</li>
+<li>技术方案二（推荐）<ol>
+<li>flexible.js</li>
+<li>rem</li>
+</ol>
+</li>
+</ol>
+<h1 id="案例：苏宁首页"><a href="#案例：苏宁首页" class="headerlink" title="案例：苏宁首页"></a>案例：苏宁首页</h1><h2 id="适配方案一"><a href="#适配方案一" class="headerlink" title="适配方案一"></a>适配方案一</h2><h3 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h3><ol>
+<li>方案：采取单独制作移动页面方案</li>
+<li>技术布局采取rem适配布局（less + rem + 媒体查询）</li>
+<li>设计图：本设计图采用750px设计尺寸</li>
+</ol>
+<h3 id="设置公共common-less文件"><a href="#设置公共common-less文件" class="headerlink" title="设置公共common.less文件"></a>设置公共common.less文件</h3><ol>
+<li>新建common.less设置好最常见的屏幕尺寸 ,利用媒体查询设置不同的html字体大小,因为除了首页其他页面也需要</li>
+<li>我们关心的尺寸有320px、360px、 375px、 384px、 400px、 414px、 424px、 480px、 540px、 720px、 750px</li>
+<li>划分的份数我们定为15等份</li>
+<li>因为我们pc端也可以打开我们苏宁移动端首页,我们默认htm|字体大小为50px ,注意这句话写到最上面</li>
+</ol>
+<h3 id="import样式导入"><a href="#import样式导入" class="headerlink" title="import样式导入"></a>import样式导入</h3><ol>
+<li>@import：把一个样式文件导入另外一个样式文件里面<ol>
+<li>语法：<code>@import &quot;common(文件名，可以不加后缀)&quot;;</code></li>
+</ol>
+</li>
+<li>link：把一个样式文件引入到html页面里面</li>
+</ol>
+<h3 id="body样式"><a href="#body样式" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    min-width: 320px;</span><br><span class="line">    width: 15rem;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    line-height: 1.5;</span><br><span class="line">    font-family: Arial, Helvetica;</span><br><span class="line">    background: #f2f2f2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建index-less文件"><a href="#新建index-less文件" class="headerlink" title="新建index.less文件"></a>新建index.less文件</h3><ol>
+<li>新建index.less，用于写首页样式</li>
+<li>将设置好的common.less引入到index.less里面</li>
+</ol>
+<h2 id="适配方案二（推荐）"><a href="#适配方案二（推荐）" class="headerlink" title="适配方案二（推荐）"></a>适配方案二（推荐）</h2><h3 id="简洁高效的rem适配方案flexible-js"><a href="#简洁高效的rem适配方案flexible-js" class="headerlink" title="简洁高效的rem适配方案flexible.js"></a>简洁高效的rem适配方案flexible.js</h3><ol>
+<li>手机淘宝团队出的简洁高效移动端适配库</li>
+<li>再也不需要在写不同屏幕的媒体查询，因为里面js做了处理</li>
+<li>它的原理是把当前设备划分为10等份，但是不同设备下，比例还是一致的</li>
+<li>要做的就是确定好我们当前设备的html文字大小就可以；<ul>
+<li>比如：当前设计稿是750px，那么我们只需要cssrem插件默认的html文字大小（基准值）为75px(750px &#x2F; 10)就可以得到里面页面元素rem值：页面元素的px值 &#x2F;75</li>
+</ul>
+</li>
+<li>剩余的，让flexible.js来去算</li>
+<li>flexible.js中的核心代码，修改这个值就可以利用flexible.js将屏幕分为几份；然后修改cssrem插件默认的html文字大小（基准值），基准值为：设计稿宽度 &#x2F; 屏幕份数<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922020648.png" alt="img"></li>
+<li>flexible.js文件的github地址: <a target="_blank" rel="noopener" href="https://github.com/amfe/lib-flexible">https://github.com/amfe/lib-flexible</a></li>
+</ol>
+<h3 id="引入flexible-js文件"><a href="#引入flexible-js文件" class="headerlink" title="引入flexible.js文件"></a>引入flexible.js文件</h3><ol>
+<li>语法：<code>&lt;script src=&quot;js/flexible.js&quot;&gt;&lt;script&gt;</code></li>
+</ol>
+<h3 id="body样式-1"><a href="#body样式-1" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  min-width: 320px;</span><br><span class="line">  max-width: 750px;</span><br><span class="line">  /* flexible.js给我们划分了10等份 */</span><br><span class="line">  width: 10rem;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  line-height: 1.5;</span><br><span class="line">  font-family: Arial, Helvetica;</span><br><span class="line">  background: #f2f2f2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="cssrem插件px转换为rem"><a href="#cssrem插件px转换为rem" class="headerlink" title="cssrem插件px转换为rem"></a>cssrem插件px转换为rem</h3><ol>
+<li>VScode安装插件重启即可</li>
+<li>需要设置插件默认的html的字体大小基准值</li>
+</ol>
+<h3 id="修改插件默认的html文字大小"><a href="#修改插件默认的html文字大小" class="headerlink" title="修改插件默认的html文字大小"></a>修改插件默认的html文字大小</h3><ol>
+<li>打开设置，在搜索框输入cssroot，然后修改rootfontsize值为75px</li>
+</ol>
+<h3 id="案例：把屏幕宽度约束在1024-1920之间有适配"><a href="#案例：把屏幕宽度约束在1024-1920之间有适配" class="headerlink" title="案例：把屏幕宽度约束在1024-1920之间有适配"></a>案例：把屏幕宽度约束在1024-1920之间有适配</h3><ol>
+<li>设计稿是1920px</li>
+<li>PC端适配：宽度在1024 - 1920px之间页面元素宽高自适应<ol>
+<li>flexible.js 把屏幕分为24等份</li>
+<li>cssrem插件的基准值是80px<ul>
+<li>插件 – 配置按钮 – 配置扩展设置 – Root Font Size 里面设置</li>
+<li>重启VScode软件</li>
+</ul>
+</li>
+<li>要把屏幕宽度约束在1024 - 1920px之间有适配，实现代码：<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210922021227.png" alt="img"></li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/rem%E9%80%82%E9%85%8D%E5%B8%83%E5%B1%80/" title="rem适配布局">http://chhwn.github.io/2022/08/01/rem适配布局/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/flex%E5%B8%83%E5%B1%80/" rel="prev" title="flex布局">
+      <i class="fa fa-chevron-left"></i> flex布局
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/vw%E5%92%8Cvh/" rel="next" title="vw和vh">
+      vw和vh <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#rem%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">rem基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rem%E5%8D%95%E4%BD%8D"><span class="nav-number">1.1.</span> <span class="nav-text">rem单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.2.</span> <span class="nav-text">媒体查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%EF%BC%88Media-Query%EF%BC%89%E6%98%AFCSS3%E6%96%B0%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">媒体查询（Media Query）是CSS3新语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="nav-number">1.2.2.</span> <span class="nav-text">语法规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mediatype%E6%9F%A5%E8%AF%A2%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">mediatype查询类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.2.4.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.5.</span> <span class="nav-text">媒体特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2-rem%E5%AE%9E%E7%8E%B0%E5%85%83%E7%B4%A0%E5%8A%A8%E6%80%81%E5%A4%A7%E5%B0%8F%E5%8F%98%E5%8C%96"><span class="nav-number">1.2.6.</span> <span class="nav-text">媒体查询+rem实现元素动态大小变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E8%B5%84%E6%BA%90"><span class="nav-number">1.2.7.</span> <span class="nav-text">引入资源</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less%E5%9F%BA%E7%A1%80"><span class="nav-number">1.3.</span> <span class="nav-text">less基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%B4%E6%8A%A4CSS%E7%9A%84%E5%BC%8A%E7%AB%AF"><span class="nav-number">1.3.1.</span> <span class="nav-text">维护CSS的弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.3.2.</span> <span class="nav-text">less介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.3.</span> <span class="nav-text">less变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E7%BC%96%E8%AF%91"><span class="nav-number">1.3.4.</span> <span class="nav-text">less编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E5%B5%8C%E5%A5%97"><span class="nav-number">1.3.5.</span> <span class="nav-text">less嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.6.</span> <span class="nav-text">less运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rem%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88"><span class="nav-number">1.4.</span> <span class="nav-text">rem适配方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#rem%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88%E6%8A%80%E6%9C%AF%E4%BD%BF%E7%94%A8%EF%BC%88%E5%B8%82%E5%9C%BA%E4%B8%BB%E6%B5%81%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">rem适配方案技术使用（市场主流）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E8%8B%8F%E5%AE%81%E9%A6%96%E9%A1%B5"><span class="nav-number">2.</span> <span class="nav-text">案例：苏宁首页</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">适配方案一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%AC%E5%85%B1common-less%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">设置公共common.less文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import%E6%A0%B7%E5%BC%8F%E5%AF%BC%E5%85%A5"><span class="nav-number">2.1.3.</span> <span class="nav-text">import样式导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.4.</span> <span class="nav-text">body样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BAindex-less%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.5.</span> <span class="nav-text">新建index.less文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">适配方案二（推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%B4%81%E9%AB%98%E6%95%88%E7%9A%84rem%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88flexible-js"><span class="nav-number">2.2.1.</span> <span class="nav-text">简洁高效的rem适配方案flexible.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5flexible-js%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">引入flexible.js文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#body%E6%A0%B7%E5%BC%8F-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">body样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cssrem%E6%8F%92%E4%BB%B6px%E8%BD%AC%E6%8D%A2%E4%B8%BArem"><span class="nav-number">2.2.4.</span> <span class="nav-text">cssrem插件px转换为rem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%8F%92%E4%BB%B6%E9%BB%98%E8%AE%A4%E7%9A%84html%E6%96%87%E5%AD%97%E5%A4%A7%E5%B0%8F"><span class="nav-number">2.2.5.</span> <span class="nav-text">修改插件默认的html文字大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%8A%8A%E5%B1%8F%E5%B9%95%E5%AE%BD%E5%BA%A6%E7%BA%A6%E6%9D%9F%E5%9C%A81024-1920%E4%B9%8B%E9%97%B4%E6%9C%89%E9%80%82%E9%85%8D"><span class="nav-number">2.2.6.</span> <span class="nav-text">案例：把屏幕宽度约束在1024-1920之间有适配</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

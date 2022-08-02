@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习笔记：这是一篇移动端网页特效的学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端的网页特效">
+<meta property="og:url" content="http://chhwn.github.io/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/index.html">
+<meta property="og:site_name" content="CHHwn的笔记本">
+<meta property="og:description" content="学习笔记：这是一篇移动端网页特效的学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-01T14:29:43.000Z">
+<meta property="article:modified_time" content="2022-08-02T04:36:18.191Z">
+<meta property="article:author" content="CHHwn">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://chhwn.github.io/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>移动端的网页特效 | CHHwn的笔记本</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">CHHwn的笔记本</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学习中....</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chhwn.github.io/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/avatar.jpg">
+      <meta itemprop="name" content="CHHwn">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHHwn的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          移动端的网页特效
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-01 22:29:43" itemprop="dateCreated datePublished" datetime="2022-08-01T22:29:43+08:00">2022-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-02 12:36:18" itemprop="dateModified" datetime="2022-08-02T12:36:18+08:00">2022-08-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+            <div class="post-description">学习笔记：这是一篇移动端网页特效的学习笔记</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="触屏事件"><a href="#触屏事件" class="headerlink" title="触屏事件"></a>触屏事件</h1><h2 id="触屏事件概述"><a href="#触屏事件概述" class="headerlink" title="触屏事件概述"></a>触屏事件概述</h2><ol>
+<li>移动端浏览器兼容性较好，我们不需要考虑以前JS的兼容性问题，可以放心的使用原生JS书写效果，但是移动端也有自己独特的地方；比如触屏事件touch(也称触摸事件)，Android和IOS都有</li>
+</ol>
+<h3 id="常见触屏事件"><a href="#常见触屏事件" class="headerlink" title="常见触屏事件"></a>常见触屏事件</h3><table>
+<thead>
+<tr>
+<th>触屏touch事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>touchstart</td>
+<td>手指触摸到一个DOM元素时触发</td>
+</tr>
+<tr>
+<td>touchmove</td>
+<td>手指在一个DOM元素上滑动时触发</td>
+</tr>
+<tr>
+<td>touchend</td>
+<td>手指从一个DOM元素上移开时触发</td>
+</tr>
+</tbody></table>
+<h2 id="触摸事件对象"><a href="#触摸事件对象" class="headerlink" title="触摸事件对象"></a>触摸事件对象</h2><ol>
+<li><p>touchEvent是一类描述手指在触摸平面(触摸屏、触摸板等)的状态变化的事件；这类事件用于描述一个或多个触点，使开发者可以检测触点的移动，触点的增加和减少，等等</p>
+<table>
+<thead>
+<tr>
+<th>触摸列表</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>touches</td>
+<td>正在触摸屏幕的所有手指的列表</td>
+</tr>
+<tr>
+<td>targetTouches</td>
+<td>正在触摸当前DOM元素上的手指的列表</td>
+</tr>
+<tr>
+<td>changedTouches</td>
+<td>手指状态发生了改变的列表，从无到有，从有到无变化</td>
+</tr>
+</tbody></table>
+<ol>
+<li>由于平时都是给元素注册触摸事件，所以重点记住：targetTocuhes</li>
+<li>注意：<ul>
+<li>如果侦听的是一个DOM元素，touches和targetTouches两个是一样的</li>
+<li>changedTouches是指手指状态发生了改变的列表，从无到有或者从有到无</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="移动端拖动元素"><a href="#移动端拖动元素" class="headerlink" title="移动端拖动元素"></a>移动端拖动元素</h2><ol>
+<li><p>touchstart、touchmove、touchend可以实现拖动元素</p>
+</li>
+<li><p>拖动元素需要当前手指的坐标值，可以使用targetTouches[0]里面的pageX和pageY</p>
+</li>
+<li><p>移动端拖动的原理：手指移动中，计算出手指移动的距离。然后用盒子原来的位置+手指移动的距离</p>
+</li>
+<li><p>手指移动的距离：手指滑动中的位置减去手指刚开始触摸的位置</p>
+</li>
+<li><p>拖动三部曲</p>
+<ol>
+<li>触摸元素touchstart：获取手指初始坐标，同时获得盒子原来的位置</li>
+<li>移动手指touchmove：计算手指的滑动距离，并且移动盒子</li>
+<li>离开手指touchend</li>
+</ol>
+</li>
+<li><p>注意：手指移动也会触发滚动屏幕所以这里要阻止默认的屏幕滚动e.preventDefault();</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        // 设置手指坐标变量</span><br><span class="line">        var pageX = 0;</span><br><span class="line">        var pageY = 0;</span><br><span class="line">        // 设置盒子坐标变量</span><br><span class="line">        var x = 0;</span><br><span class="line">        var y = 0;</span><br><span class="line"></span><br><span class="line">        // 触摸元素touchstart</span><br><span class="line">        div.addEventListener(&#x27;touchstart&#x27;, function (e) &#123;</span><br><span class="line">            // 获取手指触摸坐标</span><br><span class="line">            pageX = e.targetTouches[0].pageX;</span><br><span class="line">            pageY = e.targetTouches[0].pageY;</span><br><span class="line">            // 获取盒子初始坐标</span><br><span class="line">            x = this.style.left;</span><br><span class="line">            y = this.style.top;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 移动手指touchmove</span><br><span class="line">        div.addEventListener(&#x27;touchmove&#x27;, function (e) &#123;</span><br><span class="line">            //获得手指移动的距离</span><br><span class="line">            var moveX = e.targetTouches[0].pageX - pageX;</span><br><span class="line">            var moveY = e.targetTouches[0].pageY - pageY;</span><br><span class="line">            // 将手指移动的距离给盒子，从而移动盒子</span><br><span class="line">            this.style.left = x + moveX + &#x27;px&#x27;;</span><br><span class="line">            this.style.top = y + moveY + &#x27;px&#x27;;</span><br><span class="line"></span><br><span class="line">            // 手指移动也会触发滚动屏幕所以这里要阻止默认的屏幕滚动</span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="案例：移动端轮播图"><a href="#案例：移动端轮播图" class="headerlink" title="案例：移动端轮播图"></a>案例：移动端轮播图</h2><h3 id="自动播放功能"><a href="#自动播放功能" class="headerlink" title="自动播放功能"></a>自动播放功能</h3><ol>
+<li>开启定时器</li>
+<li>移动端移动，可以使用translate移动，千万不要忘记加单位px</li>
+<li>想要图片优雅的移动，添加过渡效果</li>
+<li>索引号从第一张有效图片开始计算，克隆至第一张的最后一张图片不算；因此第一张有效图片的索引号为0，以此类推</li>
+</ol>
+<h3 id="自动播放功能-无缝滚动"><a href="#自动播放功能-无缝滚动" class="headerlink" title="自动播放功能 - 无缝滚动"></a>自动播放功能 - 无缝滚动</h3><ol>
+<li>注意：判断条件是等到图片滚动完毕再去判断，就是过渡完成后再判断<ol>
+<li>此时需要添加检测过渡完成事件（transitionend）<ul>
+<li>Ul.addEventListener(‘transitionend’, function() {})</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>判断条件：如果索引号等于3说明走到最后一张图片，此时索引号要复原为0<ol>
+<li>此时图片去掉过渡效果，然后移动</li>
+</ol>
+</li>
+</ol>
+<h3 id="classList属性"><a href="#classList属性" class="headerlink" title="classList属性"></a>classList属性</h3><ol>
+<li>classList属性是HTML5新增的一个属性，返回元素的类名，但是ie10以上版本支持</li>
+<li>返回的形式是一个伪数组</li>
+<li>三大功能：添加类名、删除类名、切换类<ol>
+<li>添加类名：在后面追加类名不会覆盖以前的类名，注意添加的类前面不需要加.<ul>
+<li>element.classList.add(‘类名’);</li>
+</ul>
+</li>
+<li>删除功能<ul>
+<li>element.classList.remove(‘类名’);</li>
+</ul>
+</li>
+<li>切换类：如果该元素拥有这个类，则删除这个类；若该元素没有这个类，则添加这个类<ul>
+<li>element.classList.toggle(‘类名’);</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="小圆点跟随变化效果"><a href="#小圆点跟随变化效果" class="headerlink" title="小圆点跟随变化效果"></a>小圆点跟随变化效果</h3><ol>
+<li>把ol里面li带有current类名的选出来去掉类名 — classList.remove</li>
+<li>让当前索引号的小li加上current — classList.add</li>
+<li>等着过渡结束之后变化，所以这个写到transitionend事件里面</li>
+</ol>
+<h3 id="手指滑动轮播图"><a href="#手指滑动轮播图" class="headerlink" title="手指滑动轮播图"></a>手指滑动轮播图</h3><ol>
+<li>本质就是ul跟随手指移动，简单说就是移动端拖动元素</li>
+<li>手指触摸的时候就停止定时器</li>
+<li>触摸元素touchstart：获取手指初始坐标</li>
+<li>移动手指touchmove：计算手指的滑动距离，并且移动盒子</li>
+<li>移动盒子：盒子原来的位置 + 手指移动的距离</li>
+<li>手指拖动的时候，不需要动画效果，所以要取消过渡效果</li>
+<li>手指离开，根据移动距离去判断是回弹还是播放上一张下一张</li>
+<li>若移动距离小于某个像素就回弹原来位置</li>
+<li>若移动距离大于某个像素就上一张下一张滑动<ol>
+<li>距离需要用绝对值：Math.abs();</li>
+<li>如果是右滑就是播放上一张，moveX是正值</li>
+<li>如果是左滑就是播放下一张，moveX是负值</li>
+</ol>
+</li>
+<li>根据用户手指是否移动过我们再去判断否则不做效果</li>
+<li>手指接触然后离开，需要重新开启定时器，开启定时器之前需要清除定时器，保证只有一个定时器在运行<ol>
+<li>clearInterval();</li>
+</ol>
+</li>
+<li>阻止滚动屏幕的行为：e.prevnetDefault();</li>
+</ol>
+<h1 id="移动端常见特效"><a href="#移动端常见特效" class="headerlink" title="移动端常见特效"></a>移动端常见特效</h1><h2 id="click延时解决方案"><a href="#click延时解决方案" class="headerlink" title="click延时解决方案"></a>click延时解决方案</h2><ol>
+<li>移动端click事件会有300ms的延时，原因是移动端屏幕双击会缩放(double tap to zoom)页面，在进行点击后，屏幕会等待300ms看有没有第二次点击</li>
+</ol>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ol>
+<li>禁用缩放：浏览器禁用默认的双击缩放行为并且去掉300ms的点击延迟<ul>
+<li><code>&lt;meta name=&quot;viewport&quot; content= &quot;user-scalable=no&quot;&gt;</code></li>
+</ul>
+</li>
+<li>利用touch事件封装这个事件解决300ms延迟<ol>
+<li>原理<ul>
+<li>当我们手指触摸屏幕，记录当前触摸时间</li>
+<li>当我们手指离开屏幕，用离开的时间减去触摸的时间</li>
+<li>如果时间小于150ms，并且没有滑动过屏幕，那么我们就定义为点击</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="移动端常用开发插件"><a href="#移动端常用开发插件" class="headerlink" title="移动端常用开发插件"></a>移动端常用开发插件</h1><h2 id="什么是插件"><a href="#什么是插件" class="headerlink" title="什么是插件"></a>什么是插件</h2><ol>
+<li>移动端要求的是快速开发，所以我们经常会借助于一些插件来帮我完成操作，那么什么是插件呢?</li>
+<li>JS插件是js文件，它遵循一定规范编写，方便程序展示效果，拥有特定功能且方便调用，如轮播图和瀑布流插件</li>
+<li>特点：它一般是为了解决某个问题而专门存在，其功能单一，并且比较小</li>
+<li>以前写的animate.js也算一个最简单的插件</li>
+</ol>
+<h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><h3 id="fastclick插件"><a href="#fastclick插件" class="headerlink" title="fastclick插件"></a>fastclick插件</h3><ol>
+<li><p>插件功能：解决click双击延时</p>
+</li>
+<li><p>将fastclick.js插件下载准备好</p>
+</li>
+<li><p>在html文件中引入js插件</p>
+</li>
+<li><p>复制粘贴使用插件的初始化代码，放在script表圈内最顶部，最好挨<code>&lt;/body&gt;</code></p>
+<p>标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        div &#123;</span><br><span class="line">            width: 50px;</span><br><span class="line">            height: 50px;</span><br><span class="line">            background-color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;script src=&quot;fastclick.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        if (&#x27;addEventListener&#x27; in document) &#123;</span><br><span class="line">            document.addEventListener(&#x27;DOMContentLoaded&#x27;, function() &#123;</span><br><span class="line">                FastClick.attach(document.body);</span><br><span class="line">            &#125;, false);</span><br><span class="line">        &#125;</span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        div.addEventListener(&#x27;click&#x27;, function() &#123;</span><br><span class="line">            alert(11);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Swiper插件使用"><a href="#Swiper插件使用" class="headerlink" title="Swiper插件使用"></a>Swiper插件使用</h3><ol>
+<li>中文官网地址： <a target="_blank" rel="noopener" href="https://www.swiper.com.cn/">https://www.swiper.com.cn/</a></li>
+<li>使用方法<ol>
+<li>引入插件相关文件：相关css文件和js文件</li>
+<li>按照规定语法使用<ul>
+<li>打开Swiper提供的相关html网页，查看网页源代码，将相关内容复制到自己的程序中</li>
+<li>第一步：复制相关结构html代码复制过来 （不要修改里面的结构和类名）</li>
+<li>第二步：复制相关css文件</li>
+<li>第三步：复制相关js文件的初始化代码（初始化代码最好挨着标签，如果不能写在html内容后面，则需要在页面加载完成后再初始化 — load或DOMContentLoaded）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>其他移动端常见插件<ol>
+<li>superslide： <a target="_blank" rel="noopener" href="http://www.superslide2.com/">http://www.superslide2.com/</a></li>
+<li>iscroll： <a target="_blank" rel="noopener" href="https://github.com/cubiq/iscroll">https://github.com/cubiq/iscroll</a></li>
+</ol>
+</li>
+</ol>
+<h1 id="移动端常用开发框架"><a href="#移动端常用开发框架" class="headerlink" title="移动端常用开发框架"></a>移动端常用开发框架</h1><ol>
+<li>框架，顾名思义就是一套架构，它会基于自身的特点向用户提供一套较为完整的解决方案；框架的控制权在框架本身，使用者要按照框架所规定的某种规范进行开发</li>
+<li>前端常用的框架有Bootstrap、Vue、Angular、React等，既能开发PC端，也能开发移动端</li>
+</ol>
+<h2 id="框架和插件的区别"><a href="#框架和插件的区别" class="headerlink" title="框架和插件的区别"></a>框架和插件的区别</h2><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><ol>
+<li>基于自身的特点向用户提供一套较为完整的解决方案；框架的控制权在框架本身，使用者要按照框架所规定的某种规范进行开发</li>
+<li>大而全，一整套解决方案</li>
+</ol>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ol>
+<li>插件一般是为了解决某个问题而专门存在，其功能单一，并目比较小</li>
+<li>小而专一，某个功能的解决方案</li>
+</ol>
+<h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h2><ol>
+<li>Bootstrap是一个简洁、直观、强悍的前端开发框架，它让web开发更迅速、简单</li>
+<li>它可以开发PC端，也可以开发移动端</li>
+<li>Bootstrap - js插件使用步骤<ol>
+<li>引入相关js文件</li>
+<li>复制HTML结构</li>
+<li>修改对应样式</li>
+<li>修改相应JS参数</li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>CHHwn
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chhwn.github.io/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" title="移动端的网页特效">http://chhwn.github.io/2022/08/01/移动端的网页特效/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/01/PC%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" rel="prev" title="PC端的网页特效">
+      <i class="fa fa-chevron-left"></i> PC端的网页特效
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/" rel="next" title="本地存储">
+      本地存储 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A6%E5%B1%8F%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">触屏事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A6%E5%B1%8F%E4%BA%8B%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">触屏事件概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%A7%A6%E5%B1%8F%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">常见触屏事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A6%E6%91%B8%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">触摸事件对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%8B%96%E5%8A%A8%E5%85%83%E7%B4%A0"><span class="nav-number">1.3.</span> <span class="nav-text">移动端拖动元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="nav-number">1.4.</span> <span class="nav-text">案例：移动端轮播图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%8A%9F%E8%83%BD"><span class="nav-number">1.4.1.</span> <span class="nav-text">自动播放功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE%E5%8A%9F%E8%83%BD-%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">自动播放功能 - 无缝滚动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classList%E5%B1%9E%E6%80%A7"><span class="nav-number">1.4.3.</span> <span class="nav-text">classList属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E5%9C%86%E7%82%B9%E8%B7%9F%E9%9A%8F%E5%8F%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="nav-number">1.4.4.</span> <span class="nav-text">小圆点跟随变化效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E6%8C%87%E6%BB%91%E5%8A%A8%E8%BD%AE%E6%92%AD%E5%9B%BE"><span class="nav-number">1.4.5.</span> <span class="nav-text">手指滑动轮播图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%89%B9%E6%95%88"><span class="nav-number">2.</span> <span class="nav-text">移动端常见特效</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#click%E5%BB%B6%E6%97%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.1.</span> <span class="nav-text">click延时解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.1.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">移动端常用开发插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">什么是插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">使用插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fastclick%E6%8F%92%E4%BB%B6"><span class="nav-number">3.2.1.</span> <span class="nav-text">fastclick插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swiper%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8"><span class="nav-number">3.2.2.</span> <span class="nav-text">Swiper插件使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%B8%B8%E7%94%A8%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6"><span class="nav-number">4.</span> <span class="nav-text">移动端常用开发框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8F%92%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.1.</span> <span class="nav-text">框架和插件的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">4.1.1.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">4.1.2.</span> <span class="nav-text">插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bootstrap"><span class="nav-number">4.2.</span> <span class="nav-text">Bootstrap</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="CHHwn"
+      src="/assets/avatar.jpg">
+  <p class="site-author-name" itemprop="name">CHHwn</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/CHHwn" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;CHHwn" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CHHwn</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
