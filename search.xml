@@ -1,264 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>BOM</title>
-    <url>/2022/08/01/BOM/</url>
-    <content><![CDATA[<h1 id="BOM概述"><a href="#BOM概述" class="headerlink" title="BOM概述"></a>BOM概述</h1><h2 id="什么是BOM"><a href="#什么是BOM" class="headerlink" title="什么是BOM"></a>什么是BOM</h2><ol>
-<li>BOM即浏览器对象模型，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window</li>
-<li>BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
-<li>BOM缺乏标准，JavaScript语法的标准化组织是ECMA，DOM的标准化组织是W3C，BOM最初是Netscape浏览器标准的一部分</li>
-</ol>
-<h3 id="DOM和BOM"><a href="#DOM和BOM" class="headerlink" title="DOM和BOM"></a>DOM和BOM</h3><ol>
-<li>DOM<ol>
-<li>文档对象模型</li>
-<li>DOM就是把「文档」当做一个「对象」来看待</li>
-<li>DOM的顶级对象是document</li>
-<li>DOM主要学习的是操作页面先素</li>
-<li>DOM是W3C标准规范</li>
-</ol>
-</li>
-<li>BOM<ol>
-<li>浏览器对象模型</li>
-<li>把「浏览器」当做一个「对象」来看待</li>
-<li>BOM的顶级对象是window</li>
-<li>BOM学习的是浏览器窗口交互的一些对象</li>
-<li>BOM是浏览器厂商在各自浏览器上定义的，兼容性较差</li>
-<li>BOM比DOM更大，它包含DOM</li>
-</ol>
-</li>
-</ol>
-<h3 id="BOM的构成"><a href="#BOM的构成" class="headerlink" title="BOM的构成"></a>BOM的构成</h3><ol>
-<li>window对象是浏览器的顶级对象，它具有双重角色<ol>
-<li>它是JS访问浏览器窗口的一个接口</li>
-<li>它是一个全局对象，定义在全局作用域中的变量，函数都会变成window对象的属性和方法</li>
-</ol>
-</li>
-<li>在调用的时候可以省略window，前面学习的对话框都属于window对象方法，如alert()、prompt()等</li>
-</ol>
-<h1 id="Window对象的常见事件"><a href="#Window对象的常见事件" class="headerlink" title="Window对象的常见事件"></a>Window对象的常见事件</h1><h2 id="窗口加载事件"><a href="#窗口加载事件" class="headerlink" title="窗口加载事件"></a>窗口加载事件</h2><h3 id="onload"><a href="#onload" class="headerlink" title="onload"></a>onload</h3><ol>
-<li>window.onload是窗口(页面)加载事件，当文档内容完全加载完成会触发该事件（包括图像、脚本文件、CSS文件等），就调用的处理函数</li>
-<li>语法<ol>
-<li>传统注册方式：window.onload &#x3D; function() {}</li>
-<li>事件监听注册方式：window.addEventListener(‘load’, function() {});</li>
-</ol>
-</li>
-<li>有了window.onload就可以把JS代码写到页面元素的上方，因为onload是等页面内容全部加载完毕，再去执行处理函数</li>
-</ol>
-<h3 id="DOMContentLoaded"><a href="#DOMContentLoaded" class="headerlink" title="DOMContentLoaded"></a>DOMContentLoaded</h3><ol>
-<li>DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式表、图片、flash等等</li>
-<li>IE9以上支持</li>
-<li>如果页面的图片很多的话，从用户访问 到onload触发可能需要较长的时间，交互效果就不能实现，必然影响用户的体验，此时用DOMContentLoaded事件比较合适</li>
-<li>语法<ol>
-<li>事件监听注册方式：window.addEventListener(‘DOMContentLoaded’, function() {});</li>
-</ol>
-</li>
-</ol>
-<h2 id="调整窗口大小事件"><a href="#调整窗口大小事件" class="headerlink" title="调整窗口大小事件"></a>调整窗口大小事件</h2><ol>
-<li>语法<ol>
-<li>传统注册方式：Window.onresize &#x3D; function() {}</li>
-<li>事件监听注册方式：window.addEventListener(‘resize’, function() {});</li>
-</ol>
-</li>
-<li>Window.onresize是调整窗口大小加载事件，当触发时就调用的处理函数</li>
-<li>注意：<ol>
-<li>只要窗口大小发生像素变化，就会触发这个事件</li>
-<li>经常利用这个事件完成响应式布局，window.innerWidth — 当前屏幕宽度</li>
-</ol>
-</li>
-</ol>
-<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><h3 id="setTimeout-定时器"><a href="#setTimeout-定时器" class="headerlink" title="setTimeout() 定时器"></a>setTimeout() 定时器</h3><ol>
-<li><p>window.setTimeout(调用函数，延迟的毫秒数);</p>
-<ol>
-<li><p>window在调用时可以省略</p>
-</li>
-<li><p>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</p>
-</li>
-<li><p>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</p>
-</li>
-<li><p>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 方式一，直接写函数</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;, 3000);</span><br><span class="line"></span><br><span class="line">    // 方式二，调用函数</span><br><span class="line">    var b = function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(b, 5000);</span><br><span class="line"></span><br><span class="line">    // 方式三，&#x27;函数名()&#x27;</span><br><span class="line">    setTimeout(&#x27;b()&#x27;, 7000);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>停止定时器window.clearTimeout(timeoutID);</p>
-<ol>
-<li><p>window可以省略</p>
-</li>
-<li><p>里面的参数就是定时器的标识符</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;取消广告自动关闭&lt;/button&gt;</span><br><span class="line">    &lt;img src=&quot;images/ad.jpg&quot; alt=&quot;&quot; class=&quot;ad&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 广告三秒自动关闭</span><br><span class="line">        var ad = document.querySelector(&#x27;.ad&#x27;);</span><br><span class="line">        var timer = setTimeout(function () &#123;</span><br><span class="line">            ad.style.display = &#x27;none&#x27;;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line"></span><br><span class="line">        // 清除定时器</span><br><span class="line">        var btn = document.querySelector(&#x27;button&#x27;);</span><br><span class="line">        btn.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h3 id="setInterval-定时器"><a href="#setInterval-定时器" class="headerlink" title="setInterval() 定时器"></a>setInterval() 定时器</h3><ol>
-<li><p>setInterval(调用函数，重复调用时间间隔);</p>
-<ol>
-<li>该定时器属性和setTimeout()一样，如下：<ul>
-<li>window在调用时可以省略</li>
-<li>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</li>
-<li>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</li>
-<li>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</li>
-</ul>
-</li>
-<li>不同点在于：每隔设置的延时时间，就去调用这个回调函数，会调用很多次，重复调用这个函数；而setTimeout()只会调用一次就结束这个定时器</li>
-</ol>
-</li>
-<li><p>停止定时器window.clearInterval(timeoutID);</p>
-<ol>
-<li><p>window可以省略</p>
-</li>
-<li><p>案例</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button class=&quot;start&quot;&gt;开始计时器&lt;/button&gt;</span><br><span class="line">&lt;button class=&quot;stop&quot;&gt;停止计时器&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var start = document.querySelector(&#x27;.start&#x27;);</span><br><span class="line">    var stop = document.querySelector(&#x27;.stop&#x27;);</span><br><span class="line">    var timer = null;</span><br><span class="line"></span><br><span class="line">    // 开始计时器</span><br><span class="line">    start.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        // 不能在此处直接定义变量，因为此处定义则为局部变量</span><br><span class="line">        timer = setInterval(function () &#123;</span><br><span class="line">            console.log(&#x27;hello world!&#x27;);</span><br><span class="line">        &#125;, 1000)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 停止计时器</span><br><span class="line">    stop.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h1 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h1><h2 id="JS是单线程"><a href="#JS是单线程" class="headerlink" title="JS是单线程"></a>JS是单线程</h2><ol>
-<li>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事；这是因为Javascript这门脚本语言诞生的使命所致一JavaScript是为处理页面中用户的交互，以及操作DOM而诞生的；比如我们对某个DOM元索进行添加和删除操作，不能同时进行；应该先进行添加，之后再删除</li>
-<li>单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是：如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉</li>
-</ol>
-<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ol>
-<li>前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的；比如做饭的同步做法：我们要烧水煮饭，等水开了（10分钟之后），再去切菜，炒菜</li>
-<li>同步任务<ol>
-<li>同步任务都在主线程上执行，形成一个执行栈</li>
-</ol>
-</li>
-</ol>
-<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><ol>
-<li>你在做一件事情时，因为这件事情会花费很长时间，在做这件事的同时，你还可以去处理其他事情。比如做饭的异步做法，我们在烧水的同时，利用这10分钟，去切菜，炒菜</li>
-<li>异步任务<ol>
-<li>JS的异步是通过回调函数实现的，一般而言，异步任务有以下三种类型<ul>
-<li>普通事件，如click等</li>
-<li>资源加载，如load，error等</li>
-<li>定时器，如setInterval，setTimeout等</li>
-</ul>
-</li>
-<li>异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）</li>
-</ol>
-</li>
-</ol>
-<h3 id="JS执行机制-1"><a href="#JS执行机制-1" class="headerlink" title="JS执行机制"></a>JS执行机制</h3><ol>
-<li>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环(event loop)<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929112103.png" alt="img"></li>
-</ol>
-<h1 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h1><h2 id="什么是location对象"><a href="#什么是location对象" class="headerlink" title="什么是location对象"></a>什么是location对象</h2><ol>
-<li><p>window对象给我们提供了一个location属性用于获取或设置窗体的URL，并且可以用于解析URL；因为这个属性返回的是一个对象，所以我们将这个属性也称为location对象</p>
-<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2></li>
-<li><p>统一资源定位符(Uniform Resource Locator，URL)是互联网上标准资源的地址；互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它</p>
-</li>
-<li><p>语法格式</p>
-<ol>
-<li><p>protocol:&#x2F;&#x2F;host[:port]&#x2F;path&#x2F;[?query]#fragment</p>
-</li>
-<li><p>例：</p>
-<p><a href="http://www.itcast.cn/index.html?name=andy&amp;age=18#link">http://www.itcast.cn/index.html?name=andy&amp;age=18#link</a></p>
-<table>
-<thead>
-<tr>
-<th>组成</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>protocol</td>
-<td>通信协议 常用的http,ftp,maito等</td>
-</tr>
-<tr>
-<td>host</td>
-<td>主机（域名） <a href="http://www.itheima.com/">www.itheima.com</a></td>
-</tr>
-<tr>
-<td>port</td>
-<td>端口号 可选，省略时使用方案的默认端口 如http的默认端口为80</td>
-</tr>
-<tr>
-<td>path</td>
-<td>路径由零或多个’&#x2F;‘符号隔开的字符串，一般用来表示主机上的一个目录或文件地址</td>
-</tr>
-<tr>
-<td>query</td>
-<td>参数 以键值对的形式，通过&amp;符号分隔开来</td>
-</tr>
-<tr>
-<td>fragment</td>
-<td>片段 #后面内容 常见于链接 锚点</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="location对象的属性"><a href="#location对象的属性" class="headerlink" title="location对象的属性"></a>location对象的属性</h3><table>
-<thead>
-<tr>
-<th>location对象属性</th>
-<th>返回值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>location.href</td>
-<td>获取或者设置整个URL</td>
-</tr>
-<tr>
-<td>location.host</td>
-<td>返回主机（域名） <a href="http://www.itheima.com/">www.itheima.com</a></td>
-</tr>
-<tr>
-<td>location.port</td>
-<td>返回端口号，如果未写返回空字符串</td>
-</tr>
-<tr>
-<td>location.pathname</td>
-<td>返回路径</td>
-</tr>
-<tr>
-<td>location.search</td>
-<td>返回参数</td>
-</tr>
-<tr>
-<td>location.hash</td>
-<td>返回片段，#后面内容常见与链接，锚点</td>
-</tr>
-</tbody></table>
-<h3 id="location对象的方法"><a href="#location对象的方法" class="headerlink" title="location对象的方法"></a>location对象的方法</h3><ol>
-<li><p>location对象方法 返回值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location.assign()    跟href一样，可以跳转页面（也称为重定向页面），记录历史，可以后退</span><br><span class="line">location.replace()    替换当前页面，因为不记录历史，所以不能后退页面</span><br><span class="line">location.reload()    重新加载页面，相当于刷新按钮或f5，如果参数为true，强制刷新ctrl+f5</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="navigator对象（了解）"><a href="#navigator对象（了解）" class="headerlink" title="navigator对象（了解）"></a>navigator对象（了解）</h1><ol>
-<li><p>navigator对象包含有关浏览器的信息，它有很多属性，我们最常用的是userAgent，该属性可以返回由客户机发送服务器的user-agent头部的值</p>
-</li>
-<li><p>下面代码可以判断永和用哪个终端打开的页面，实现跳转</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) &#123;</span><br><span class="line"> window.location.href = &quot;../H5/index1.html&quot;; //手机</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  window.location.href = &quot;../H5/index2.html&quot;; //电脑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h1><ol>
-<li><p>window对象给我们提供了一个history对象，与浏览器历史记录进行交互；该对象包含用户(在浏览器窗口中)访问过的URL</p>
-<table>
-<thead>
-<tr>
-<th>history对象方法</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>back()</td>
-<td>后退功能 — history.back();</td>
-</tr>
-<tr>
-<td>forward()</td>
-<td>前进功能 — history.forward();</td>
-</tr>
-<tr>
-<td>go(参数）</td>
-<td>前进后退功能，参数如果是1，前进1一个页面；如果是-1，后退一个页面</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ajax</title>
     <url>/2022/08/02/Ajax/</url>
     <content><![CDATA[<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><h2 id="ajax简介"><a href="#ajax简介" class="headerlink" title="ajax简介"></a>ajax简介</h2><ol>
@@ -601,6 +343,622 @@
       </categories>
       <tags>
         <tag>Ajax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>BOM</title>
+    <url>/2022/08/01/BOM/</url>
+    <content><![CDATA[<h1 id="BOM概述"><a href="#BOM概述" class="headerlink" title="BOM概述"></a>BOM概述</h1><h2 id="什么是BOM"><a href="#什么是BOM" class="headerlink" title="什么是BOM"></a>什么是BOM</h2><ol>
+<li>BOM即浏览器对象模型，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是window</li>
+<li>BOM由一系列相关的对象构成，并且每个对象都提供了很多方法与属性</li>
+<li>BOM缺乏标准，JavaScript语法的标准化组织是ECMA，DOM的标准化组织是W3C，BOM最初是Netscape浏览器标准的一部分</li>
+</ol>
+<h3 id="DOM和BOM"><a href="#DOM和BOM" class="headerlink" title="DOM和BOM"></a>DOM和BOM</h3><ol>
+<li>DOM<ol>
+<li>文档对象模型</li>
+<li>DOM就是把「文档」当做一个「对象」来看待</li>
+<li>DOM的顶级对象是document</li>
+<li>DOM主要学习的是操作页面先素</li>
+<li>DOM是W3C标准规范</li>
+</ol>
+</li>
+<li>BOM<ol>
+<li>浏览器对象模型</li>
+<li>把「浏览器」当做一个「对象」来看待</li>
+<li>BOM的顶级对象是window</li>
+<li>BOM学习的是浏览器窗口交互的一些对象</li>
+<li>BOM是浏览器厂商在各自浏览器上定义的，兼容性较差</li>
+<li>BOM比DOM更大，它包含DOM</li>
+</ol>
+</li>
+</ol>
+<h3 id="BOM的构成"><a href="#BOM的构成" class="headerlink" title="BOM的构成"></a>BOM的构成</h3><ol>
+<li>window对象是浏览器的顶级对象，它具有双重角色<ol>
+<li>它是JS访问浏览器窗口的一个接口</li>
+<li>它是一个全局对象，定义在全局作用域中的变量，函数都会变成window对象的属性和方法</li>
+</ol>
+</li>
+<li>在调用的时候可以省略window，前面学习的对话框都属于window对象方法，如alert()、prompt()等</li>
+</ol>
+<h1 id="Window对象的常见事件"><a href="#Window对象的常见事件" class="headerlink" title="Window对象的常见事件"></a>Window对象的常见事件</h1><h2 id="窗口加载事件"><a href="#窗口加载事件" class="headerlink" title="窗口加载事件"></a>窗口加载事件</h2><h3 id="onload"><a href="#onload" class="headerlink" title="onload"></a>onload</h3><ol>
+<li>window.onload是窗口(页面)加载事件，当文档内容完全加载完成会触发该事件（包括图像、脚本文件、CSS文件等），就调用的处理函数</li>
+<li>语法<ol>
+<li>传统注册方式：window.onload &#x3D; function() {}</li>
+<li>事件监听注册方式：window.addEventListener(‘load’, function() {});</li>
+</ol>
+</li>
+<li>有了window.onload就可以把JS代码写到页面元素的上方，因为onload是等页面内容全部加载完毕，再去执行处理函数</li>
+</ol>
+<h3 id="DOMContentLoaded"><a href="#DOMContentLoaded" class="headerlink" title="DOMContentLoaded"></a>DOMContentLoaded</h3><ol>
+<li>DOMContentLoaded事件触发时，仅当DOM加载完成，不包括样式表、图片、flash等等</li>
+<li>IE9以上支持</li>
+<li>如果页面的图片很多的话，从用户访问 到onload触发可能需要较长的时间，交互效果就不能实现，必然影响用户的体验，此时用DOMContentLoaded事件比较合适</li>
+<li>语法<ol>
+<li>事件监听注册方式：window.addEventListener(‘DOMContentLoaded’, function() {});</li>
+</ol>
+</li>
+</ol>
+<h2 id="调整窗口大小事件"><a href="#调整窗口大小事件" class="headerlink" title="调整窗口大小事件"></a>调整窗口大小事件</h2><ol>
+<li>语法<ol>
+<li>传统注册方式：Window.onresize &#x3D; function() {}</li>
+<li>事件监听注册方式：window.addEventListener(‘resize’, function() {});</li>
+</ol>
+</li>
+<li>Window.onresize是调整窗口大小加载事件，当触发时就调用的处理函数</li>
+<li>注意：<ol>
+<li>只要窗口大小发生像素变化，就会触发这个事件</li>
+<li>经常利用这个事件完成响应式布局，window.innerWidth — 当前屏幕宽度</li>
+</ol>
+</li>
+</ol>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><h3 id="setTimeout-定时器"><a href="#setTimeout-定时器" class="headerlink" title="setTimeout() 定时器"></a>setTimeout() 定时器</h3><ol>
+<li><p>window.setTimeout(调用函数，延迟的毫秒数);</p>
+<ol>
+<li><p>window在调用时可以省略</p>
+</li>
+<li><p>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</p>
+</li>
+<li><p>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</p>
+</li>
+<li><p>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 方式一，直接写函数</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;, 3000);</span><br><span class="line"></span><br><span class="line">    // 方式二，调用函数</span><br><span class="line">    var b = function () &#123;</span><br><span class="line">        console.log(&#x27;嘣嘣嘣~&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(b, 5000);</span><br><span class="line"></span><br><span class="line">    // 方式三，&#x27;函数名()&#x27;</span><br><span class="line">    setTimeout(&#x27;b()&#x27;, 7000);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>停止定时器window.clearTimeout(timeoutID);</p>
+<ol>
+<li><p>window可以省略</p>
+</li>
+<li><p>里面的参数就是定时器的标识符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;取消广告自动关闭&lt;/button&gt;</span><br><span class="line">    &lt;img src=&quot;images/ad.jpg&quot; alt=&quot;&quot; class=&quot;ad&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 广告三秒自动关闭</span><br><span class="line">        var ad = document.querySelector(&#x27;.ad&#x27;);</span><br><span class="line">        var timer = setTimeout(function () &#123;</span><br><span class="line">            ad.style.display = &#x27;none&#x27;;</span><br><span class="line">        &#125;, 3000);</span><br><span class="line"></span><br><span class="line">        // 清除定时器</span><br><span class="line">        var btn = document.querySelector(&#x27;button&#x27;);</span><br><span class="line">        btn.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="setInterval-定时器"><a href="#setInterval-定时器" class="headerlink" title="setInterval() 定时器"></a>setInterval() 定时器</h3><ol>
+<li><p>setInterval(调用函数，重复调用时间间隔);</p>
+<ol>
+<li>该定时器属性和setTimeout()一样，如下：<ul>
+<li>window在调用时可以省略</li>
+<li>延迟时间的单位是毫秒，但是可以省略，若省略默认为0</li>
+<li>调用函数可以直接写函数，或者写函数名或者采用’函数名()’三种形式，第三种不推荐</li>
+<li>定时器可能会有很多，所以经常给定时器赋值一个标识符（名字）</li>
+</ul>
+</li>
+<li>不同点在于：每隔设置的延时时间，就去调用这个回调函数，会调用很多次，重复调用这个函数；而setTimeout()只会调用一次就结束这个定时器</li>
+</ol>
+</li>
+<li><p>停止定时器window.clearInterval(timeoutID);</p>
+<ol>
+<li><p>window可以省略</p>
+</li>
+<li><p>案例</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;button class=&quot;start&quot;&gt;开始计时器&lt;/button&gt;</span><br><span class="line">&lt;button class=&quot;stop&quot;&gt;停止计时器&lt;/button&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var start = document.querySelector(&#x27;.start&#x27;);</span><br><span class="line">    var stop = document.querySelector(&#x27;.stop&#x27;);</span><br><span class="line">    var timer = null;</span><br><span class="line"></span><br><span class="line">    // 开始计时器</span><br><span class="line">    start.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        // 不能在此处直接定义变量，因为此处定义则为局部变量</span><br><span class="line">        timer = setInterval(function () &#123;</span><br><span class="line">            console.log(&#x27;hello world!&#x27;);</span><br><span class="line">        &#125;, 1000)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    // 停止计时器</span><br><span class="line">    stop.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h1 id="JS执行机制"><a href="#JS执行机制" class="headerlink" title="JS执行机制"></a>JS执行机制</h1><h2 id="JS是单线程"><a href="#JS是单线程" class="headerlink" title="JS是单线程"></a>JS是单线程</h2><ol>
+<li>JavaScript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事；这是因为Javascript这门脚本语言诞生的使命所致一JavaScript是为处理页面中用户的交互，以及操作DOM而诞生的；比如我们对某个DOM元索进行添加和删除操作，不能同时进行；应该先进行添加，之后再删除</li>
+<li>单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是：如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉</li>
+</ol>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><ol>
+<li>前一个任务结束后再执行后一个任务，程序的执行顺序与任务的排列顺序是一致的、同步的；比如做饭的同步做法：我们要烧水煮饭，等水开了（10分钟之后），再去切菜，炒菜</li>
+<li>同步任务<ol>
+<li>同步任务都在主线程上执行，形成一个执行栈</li>
+</ol>
+</li>
+</ol>
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><ol>
+<li>你在做一件事情时，因为这件事情会花费很长时间，在做这件事的同时，你还可以去处理其他事情。比如做饭的异步做法，我们在烧水的同时，利用这10分钟，去切菜，炒菜</li>
+<li>异步任务<ol>
+<li>JS的异步是通过回调函数实现的，一般而言，异步任务有以下三种类型<ul>
+<li>普通事件，如click等</li>
+<li>资源加载，如load，error等</li>
+<li>定时器，如setInterval，setTimeout等</li>
+</ul>
+</li>
+<li>异步任务相关回调函数添加到任务队列中（任务队列也称为消息队列）</li>
+</ol>
+</li>
+</ol>
+<h3 id="JS执行机制-1"><a href="#JS执行机制-1" class="headerlink" title="JS执行机制"></a>JS执行机制</h3><ol>
+<li>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环(event loop)<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20210929112103.png" alt="img"></li>
+</ol>
+<h1 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h1><h2 id="什么是location对象"><a href="#什么是location对象" class="headerlink" title="什么是location对象"></a>什么是location对象</h2><ol>
+<li><p>window对象给我们提供了一个location属性用于获取或设置窗体的URL，并且可以用于解析URL；因为这个属性返回的是一个对象，所以我们将这个属性也称为location对象</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2></li>
+<li><p>统一资源定位符(Uniform Resource Locator，URL)是互联网上标准资源的地址；互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它</p>
+</li>
+<li><p>语法格式</p>
+<ol>
+<li><p>protocol:&#x2F;&#x2F;host[:port]&#x2F;path&#x2F;[?query]#fragment</p>
+</li>
+<li><p>例：</p>
+<p><a href="http://www.itcast.cn/index.html?name=andy&amp;age=18#link">http://www.itcast.cn/index.html?name=andy&amp;age=18#link</a></p>
+<table>
+<thead>
+<tr>
+<th>组成</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>protocol</td>
+<td>通信协议 常用的http,ftp,maito等</td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机（域名） <a href="http://www.itheima.com/">www.itheima.com</a></td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口号 可选，省略时使用方案的默认端口 如http的默认端口为80</td>
+</tr>
+<tr>
+<td>path</td>
+<td>路径由零或多个’&#x2F;‘符号隔开的字符串，一般用来表示主机上的一个目录或文件地址</td>
+</tr>
+<tr>
+<td>query</td>
+<td>参数 以键值对的形式，通过&amp;符号分隔开来</td>
+</tr>
+<tr>
+<td>fragment</td>
+<td>片段 #后面内容 常见于链接 锚点</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="location对象的属性"><a href="#location对象的属性" class="headerlink" title="location对象的属性"></a>location对象的属性</h3><table>
+<thead>
+<tr>
+<th>location对象属性</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>location.href</td>
+<td>获取或者设置整个URL</td>
+</tr>
+<tr>
+<td>location.host</td>
+<td>返回主机（域名） <a href="http://www.itheima.com/">www.itheima.com</a></td>
+</tr>
+<tr>
+<td>location.port</td>
+<td>返回端口号，如果未写返回空字符串</td>
+</tr>
+<tr>
+<td>location.pathname</td>
+<td>返回路径</td>
+</tr>
+<tr>
+<td>location.search</td>
+<td>返回参数</td>
+</tr>
+<tr>
+<td>location.hash</td>
+<td>返回片段，#后面内容常见与链接，锚点</td>
+</tr>
+</tbody></table>
+<h3 id="location对象的方法"><a href="#location对象的方法" class="headerlink" title="location对象的方法"></a>location对象的方法</h3><ol>
+<li><p>location对象方法 返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">location.assign()    跟href一样，可以跳转页面（也称为重定向页面），记录历史，可以后退</span><br><span class="line">location.replace()    替换当前页面，因为不记录历史，所以不能后退页面</span><br><span class="line">location.reload()    重新加载页面，相当于刷新按钮或f5，如果参数为true，强制刷新ctrl+f5</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="navigator对象（了解）"><a href="#navigator对象（了解）" class="headerlink" title="navigator对象（了解）"></a>navigator对象（了解）</h1><ol>
+<li><p>navigator对象包含有关浏览器的信息，它有很多属性，我们最常用的是userAgent，该属性可以返回由客户机发送服务器的user-agent头部的值</p>
+</li>
+<li><p>下面代码可以判断永和用哪个终端打开的页面，实现跳转</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) &#123;</span><br><span class="line"> window.location.href = &quot;../H5/index1.html&quot;; //手机</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  window.location.href = &quot;../H5/index2.html&quot;; //电脑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="history对象"><a href="#history对象" class="headerlink" title="history对象"></a>history对象</h1><ol>
+<li><p>window对象给我们提供了一个history对象，与浏览器历史记录进行交互；该对象包含用户(在浏览器窗口中)访问过的URL</p>
+<table>
+<thead>
+<tr>
+<th>history对象方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>back()</td>
+<td>后退功能 — history.back();</td>
+</tr>
+<tr>
+<td>forward()</td>
+<td>前进功能 — history.forward();</td>
+</tr>
+<tr>
+<td>go(参数）</td>
+<td>前进后退功能，参数如果是1，前进1一个页面；如果是-1，后退一个页面</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS三大特性、盒子模型和其他样式</title>
+    <url>/2022/08/01/CSS%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E3%80%81%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%B7%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="CSS三大特性"><a href="#CSS三大特性" class="headerlink" title="CSS三大特性"></a>CSS三大特性</h1><h2 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h2><ol>
+<li>相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题</li>
+<li>层叠性原则:<ol>
+<li>样式冲突，遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式</li>
+<li>样式不冲突，不会层叠</li>
+</ol>
+</li>
+</ol>
+<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
+<li><p>CSS中的继承: 子标签会继承父标签的某些样式，如文本颜色和字号。恰当地使用继承可以简化代码，降低 CSS 样式的复杂性。</p>
+</li>
+<li><p>子元素可以继承父元素的样式：（text-，font-，line-这些元素开头的可以继承，以及color属性）</p>
+</li>
+<li><p>行高的继承性：</p>
+<ol>
+<li>代码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> font:12px/1.5 Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>行高可以跟单位也可以不跟单位</li>
+<li>如果子元素没有设置行高，则会继承父元素的行高为 1.5</li>
+<li>此时子元素的行高是：当前子元素的文字大小 * 1.5</li>
+<li>body行高1.5这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高</li>
+</ol>
+</li>
+</ol>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>当同一个元素指定多个选择器，就会有优先级的产生。</p>
+<ul>
+<li>选择器相同，则执行层叠性</li>
+<li>选择器不同，则根据选择器权重执行</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>选择器权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>继承或*</td>
+<td>0,0,0,0</td>
+</tr>
+<tr>
+<td>元素选择器</td>
+<td>0,0,0,1</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>伪类选择器 0,0,1,0</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>0,1,0,0</td>
+</tr>
+<tr>
+<td>行内样式</td>
+<td>style&#x3D;”” 1,0,0,0</td>
+</tr>
+<tr>
+<td>!important</td>
+<td>重要的 无穷大</td>
+</tr>
+</tbody></table>
+<h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><ol>
+<li><p>权重是有4组数字组成,但是不会有进位。</p>
+</li>
+<li><p>可以理解为类选择器永远大于元素选择器, id选择器永远大于类选择器,以此类推..</p>
+</li>
+<li><p>等级判断从左向右，如果某一位数值相同，则判断下一位数值。</p>
+</li>
+<li><p>可以简单记忆法:  通配符和继承权重为0, 标签选择器为1,类(伪类)选择器为 10, id选择器 100, 行内样式表为 1000, !important 无穷大.</p>
+</li>
+<li><p>继承的权重是0， 如果该元素没有直接选中，不管父元素权重多高，子元素得到的权重都是 0。</p>
+</li>
+</ol>
+<h3 id="权重的叠加"><a href="#权重的叠加" class="headerlink" title="权重的叠加"></a>权重的叠加</h3><ol>
+<li>权重叠加：如果是复合选择器，则会有权重叠加，需要计算权重。</li>
+<li>计算</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>复合选择器</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>div ul li</td>
+<td>0,0,0,3</td>
+</tr>
+<tr>
+<td>.nav ul li</td>
+<td>0,0,1,2</td>
+</tr>
+<tr>
+<td>a:hover</td>
+<td>0,0,1,1</td>
+</tr>
+<tr>
+<td>.nav a</td>
+<td>0,0,1,1</td>
+</tr>
+</tbody></table>
+<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="网页布局的本质"><a href="#网页布局的本质" class="headerlink" title="网页布局的本质"></a>网页布局的本质</h2><ol>
+<li>网页布局的核心本质： 就是利用 CSS 摆盒子。</li>
+<li>网页布局过程：<ol>
+<li>先准备好相关的网页元素，网页元素基本都是盒子 Box 。</li>
+<li>利用 CSS 设置好盒子样式，然后摆放到相应位置。</li>
+<li>往盒子里面装内容</li>
+</ol>
+</li>
+</ol>
+<h2 id="盒子模型（Box-Model）组成"><a href="#盒子模型（Box-Model）组成" class="headerlink" title="盒子模型（Box Model）组成"></a>盒子模型（Box Model）组成</h2><ol>
+<li>盒子模型：把 HTML 页面中的布局元素看作是一个矩形的盒子，也就是一个盛装内容的容器。</li>
+<li>CSS 盒子模型本质上是一个盒子，封装周围的 HTML 元素，它包括：<strong>边框</strong>、<strong>外边距</strong>、<strong>内边距</strong>、和 <strong>实际内容</strong></li>
+</ol>
+<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><ol>
+<li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border : border-width || border-style || border-color;   </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>边框样式 border-style 可以设置如下值：</p>
+<ol>
+<li>none：没有边框即忽略所有边框的宽度（默认值）</li>
+<li>solid：边框为单实线(最为常用的)</li>
+<li>dashed：边框为虚线  </li>
+<li>dotted：边框为点线</li>
+</ol>
+</li>
+<li><p>边框的合写分写</p>
+<ol>
+<li>边框简写：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border: 1px solid red;  </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>边框分开写法：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-top: 1px solid red;  /* 只设定上边框， 其余同理 */   </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
+<li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-collapse:collapse; </span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
+<h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
+<li>边框会额外增加盒子的实际大小。有两种方案解决：<ol>
+<li>测量盒子大小的时候,不量边框。</li>
+<li>如果测量的时候包含了边框,则需要 width&#x2F;height 减去边框宽度</li>
+</ol>
+</li>
+</ol>
+<h2 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h2><ol>
+<li><p>padding 属性用于设置内边距，即边框与内容之间的距离。</p>
+</li>
+<li><p>语法：</p>
+<ol>
+<li><p>padding：上下左右四边距统一设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding: 20px;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各边距分别设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding-top（上）</span><br><span class="line">padding-bottom（下）</span><br><span class="line">padding-left（左）</span><br><span class="line">padding-right（右）</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="padding的复合属性"><a href="#padding的复合属性" class="headerlink" title="padding的复合属性"></a>padding的复合属性</h3><ol>
+<li>padding属性（简写属性）可以右一到四个值</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>值的个数</th>
+<th>表达意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding:5px</td>
+<td>1个值，代表上下左右都有5px像素内边距</td>
+</tr>
+<tr>
+<td>padding:5px 10px</td>
+<td>2个值，代表上下内边距是5像素左右内边距是10像素</td>
+</tr>
+<tr>
+<td>padding:5px 10px 20px</td>
+<td>代表上内边距5像素左右内边距10像素下内边距20像素</td>
+</tr>
+<tr>
+<td>padding:5px 10px 20px 30px</td>
+<td>上是5像素右10像素下20像素左是30像素 顺时针</td>
+</tr>
+</tbody></table>
+<h2 id="内边距会影响盒子实际大小"><a href="#内边距会影响盒子实际大小" class="headerlink" title="内边距会影响盒子实际大小"></a>内边距会影响盒子实际大小</h2><ol>
+<li><p>当我们给盒子指定 padding 值之后，发生了 2 件事情：</p>
+<ol>
+<li>内容和边框有了距离，添加了内边距。</li>
+<li>padding影响了盒子实际大小。</li>
+</ol>
+</li>
+<li><p>内边距对盒子大小的影响：</p>
+<ol>
+<li>如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子。</li>
+<li>如何盒子本身没有指定width&#x2F;height属性, 则此时padding不会撑开盒子大小。</li>
+</ol>
+</li>
+<li><p>解决方案：</p>
+<ol>
+<li>如果保证盒子跟效果图大小保持一致，则让 width&#x2F;height 减去多出来的内边距大小即可。</li>
+</ol>
+</li>
+</ol>
+<h2 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h2><ol>
+<li><p>margin 属性用于设置外边距，即控制盒子和盒子之间的距离。</p>
+</li>
+<li><p>语法：</p>
+<ol>
+<li><p>margin：上下左右四边距统一设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin: 20px;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各边距分别设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-top（上）</span><br><span class="line">margin-bottom（下）</span><br><span class="line">margin-left（左）</span><br><span class="line">margin-right（右）</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="外边距典型应用"><a href="#外边距典型应用" class="headerlink" title="外边距典型应用"></a>外边距典型应用</h2><ol>
+<li><p>外边距可以让块级盒子水平居中的两个条件：</p>
+<ol>
+<li>盒子必须指定了宽度（width）</li>
+<li>盒子左右的外边距都设置为 auto</li>
+</ol>
+</li>
+<li><p>常见的写法有三种：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-left: auto;   margin-right: auto;</span><br><span class="line">margin: auto;</span><br><span class="line">margin: 0 auto;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
+</li>
+</ol>
+<h2 id="嵌套块元素垂直外边距的塌陷"><a href="#嵌套块元素垂直外边距的塌陷" class="headerlink" title="嵌套块元素垂直外边距的塌陷"></a>嵌套块元素垂直外边距的塌陷</h2><ol>
+<li><p>对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。</p>
+</li>
+<li><p>解决方案：</p>
+<ol>
+<li>可以为父元素定义上边框。</li>
+<li>可以为父元素定义上内边距。</li>
+<li>可以为父元素添加 overflow:hidden。</li>
+</ol>
+</li>
+</ol>
+<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><ol>
+<li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
+</li>
+<li><p>语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  padding:0;   /* 清除内边距 */</span><br><span class="line">  margin:0;    /* 清除外边距 */</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
+</li>
+</ol>
+<h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-radius:length;    </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>参数值可以为数值或百分比的形式</li>
+<li>如果是正方形想要设置为一个圆就把数值修改为高度或者宽度的一半，或者直接写为 50%</li>
+<li>该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角</li>
+<li>分开写：border-top-left-radius、border-top-right-radius、border-bottom-right-radius 和border-bottom-left-radius</li>
+</ol>
+</li>
+</ol>
+<h3 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h3><ol>
+<li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需水平阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需垂直阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选模糊距离（阴影实虚）</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>可选阴影的尺寸（阴影大小）</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选阴影的颜色，参阅CSS颜色值</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>可选将外部阴影（outset）改为内部阴影</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><ol>
+<li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需水平阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需垂直阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选模糊距离（阴影实虚）</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选阴影颜色，参阅CSS颜色值</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -1323,364 +1681,6 @@
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">body &#123;</span><br><span class="line">    perspective: 300px;</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin: 100px auto;</span><br><span class="line">    transition: all 1s;</span><br><span class="line">    /* 代码写给父级，但是影响的是子盒子 */</span><br><span class="line">    transform-style: preserve-3d;</span><br><span class="line">&#125;</span><br><span class="line">.box:hover &#123;</span><br><span class="line">    transform: rotateY(60deg);</span><br><span class="line">&#125;</span><br><span class="line">.box div &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.one &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">.two &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">    transform: rotateX(60deg);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;one&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;two&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS三大特性、盒子模型和其他样式</title>
-    <url>/2022/08/01/CSS%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E3%80%81%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%B7%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="CSS三大特性"><a href="#CSS三大特性" class="headerlink" title="CSS三大特性"></a>CSS三大特性</h1><h2 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h2><ol>
-<li>相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题</li>
-<li>层叠性原则:<ol>
-<li>样式冲突，遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式</li>
-<li>样式不冲突，不会层叠</li>
-</ol>
-</li>
-</ol>
-<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
-<li><p>CSS中的继承: 子标签会继承父标签的某些样式，如文本颜色和字号。恰当地使用继承可以简化代码，降低 CSS 样式的复杂性。</p>
-</li>
-<li><p>子元素可以继承父元素的样式：（text-，font-，line-这些元素开头的可以继承，以及color属性）</p>
-</li>
-<li><p>行高的继承性：</p>
-<ol>
-<li>代码</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> font:12px/1.5 Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>行高可以跟单位也可以不跟单位</li>
-<li>如果子元素没有设置行高，则会继承父元素的行高为 1.5</li>
-<li>此时子元素的行高是：当前子元素的文字大小 * 1.5</li>
-<li>body行高1.5这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高</li>
-</ol>
-</li>
-</ol>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>当同一个元素指定多个选择器，就会有优先级的产生。</p>
-<ul>
-<li>选择器相同，则执行层叠性</li>
-<li>选择器不同，则根据选择器权重执行</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>选择器权重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>继承或*</td>
-<td>0,0,0,0</td>
-</tr>
-<tr>
-<td>元素选择器</td>
-<td>0,0,0,1</td>
-</tr>
-<tr>
-<td>类选择器</td>
-<td>伪类选择器 0,0,1,0</td>
-</tr>
-<tr>
-<td>ID选择器</td>
-<td>0,1,0,0</td>
-</tr>
-<tr>
-<td>行内样式</td>
-<td>style&#x3D;”” 1,0,0,0</td>
-</tr>
-<tr>
-<td>!important</td>
-<td>重要的 无穷大</td>
-</tr>
-</tbody></table>
-<h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><ol>
-<li><p>权重是有4组数字组成,但是不会有进位。</p>
-</li>
-<li><p>可以理解为类选择器永远大于元素选择器, id选择器永远大于类选择器,以此类推..</p>
-</li>
-<li><p>等级判断从左向右，如果某一位数值相同，则判断下一位数值。</p>
-</li>
-<li><p>可以简单记忆法:  通配符和继承权重为0, 标签选择器为1,类(伪类)选择器为 10, id选择器 100, 行内样式表为 1000, !important 无穷大.</p>
-</li>
-<li><p>继承的权重是0， 如果该元素没有直接选中，不管父元素权重多高，子元素得到的权重都是 0。</p>
-</li>
-</ol>
-<h3 id="权重的叠加"><a href="#权重的叠加" class="headerlink" title="权重的叠加"></a>权重的叠加</h3><ol>
-<li>权重叠加：如果是复合选择器，则会有权重叠加，需要计算权重。</li>
-<li>计算</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>复合选择器</th>
-<th>权重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>div ul li</td>
-<td>0,0,0,3</td>
-</tr>
-<tr>
-<td>.nav ul li</td>
-<td>0,0,1,2</td>
-</tr>
-<tr>
-<td>a:hover</td>
-<td>0,0,1,1</td>
-</tr>
-<tr>
-<td>.nav a</td>
-<td>0,0,1,1</td>
-</tr>
-</tbody></table>
-<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="网页布局的本质"><a href="#网页布局的本质" class="headerlink" title="网页布局的本质"></a>网页布局的本质</h2><ol>
-<li>网页布局的核心本质： 就是利用 CSS 摆盒子。</li>
-<li>网页布局过程：<ol>
-<li>先准备好相关的网页元素，网页元素基本都是盒子 Box 。</li>
-<li>利用 CSS 设置好盒子样式，然后摆放到相应位置。</li>
-<li>往盒子里面装内容</li>
-</ol>
-</li>
-</ol>
-<h2 id="盒子模型（Box-Model）组成"><a href="#盒子模型（Box-Model）组成" class="headerlink" title="盒子模型（Box Model）组成"></a>盒子模型（Box Model）组成</h2><ol>
-<li>盒子模型：把 HTML 页面中的布局元素看作是一个矩形的盒子，也就是一个盛装内容的容器。</li>
-<li>CSS 盒子模型本质上是一个盒子，封装周围的 HTML 元素，它包括：<strong>边框</strong>、<strong>外边距</strong>、<strong>内边距</strong>、和 <strong>实际内容</strong></li>
-</ol>
-<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><ol>
-<li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border : border-width || border-style || border-color;   </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>边框样式 border-style 可以设置如下值：</p>
-<ol>
-<li>none：没有边框即忽略所有边框的宽度（默认值）</li>
-<li>solid：边框为单实线(最为常用的)</li>
-<li>dashed：边框为虚线  </li>
-<li>dotted：边框为点线</li>
-</ol>
-</li>
-<li><p>边框的合写分写</p>
-<ol>
-<li>边框简写：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border: 1px solid red;  </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>边框分开写法：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-top: 1px solid red;  /* 只设定上边框， 其余同理 */   </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
-<li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-collapse:collapse; </span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
-<h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
-<li>边框会额外增加盒子的实际大小。有两种方案解决：<ol>
-<li>测量盒子大小的时候,不量边框。</li>
-<li>如果测量的时候包含了边框,则需要 width&#x2F;height 减去边框宽度</li>
-</ol>
-</li>
-</ol>
-<h2 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h2><ol>
-<li><p>padding 属性用于设置内边距，即边框与内容之间的距离。</p>
-</li>
-<li><p>语法：</p>
-<ol>
-<li><p>padding：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding: 20px;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding-top（上）</span><br><span class="line">padding-bottom（下）</span><br><span class="line">padding-left（左）</span><br><span class="line">padding-right（右）</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h3 id="padding的复合属性"><a href="#padding的复合属性" class="headerlink" title="padding的复合属性"></a>padding的复合属性</h3><ol>
-<li>padding属性（简写属性）可以右一到四个值</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>值的个数</th>
-<th>表达意思</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>padding:5px</td>
-<td>1个值，代表上下左右都有5px像素内边距</td>
-</tr>
-<tr>
-<td>padding:5px 10px</td>
-<td>2个值，代表上下内边距是5像素左右内边距是10像素</td>
-</tr>
-<tr>
-<td>padding:5px 10px 20px</td>
-<td>代表上内边距5像素左右内边距10像素下内边距20像素</td>
-</tr>
-<tr>
-<td>padding:5px 10px 20px 30px</td>
-<td>上是5像素右10像素下20像素左是30像素 顺时针</td>
-</tr>
-</tbody></table>
-<h2 id="内边距会影响盒子实际大小"><a href="#内边距会影响盒子实际大小" class="headerlink" title="内边距会影响盒子实际大小"></a>内边距会影响盒子实际大小</h2><ol>
-<li><p>当我们给盒子指定 padding 值之后，发生了 2 件事情：</p>
-<ol>
-<li>内容和边框有了距离，添加了内边距。</li>
-<li>padding影响了盒子实际大小。</li>
-</ol>
-</li>
-<li><p>内边距对盒子大小的影响：</p>
-<ol>
-<li>如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子。</li>
-<li>如何盒子本身没有指定width&#x2F;height属性, 则此时padding不会撑开盒子大小。</li>
-</ol>
-</li>
-<li><p>解决方案：</p>
-<ol>
-<li>如果保证盒子跟效果图大小保持一致，则让 width&#x2F;height 减去多出来的内边距大小即可。</li>
-</ol>
-</li>
-</ol>
-<h2 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h2><ol>
-<li><p>margin 属性用于设置外边距，即控制盒子和盒子之间的距离。</p>
-</li>
-<li><p>语法：</p>
-<ol>
-<li><p>margin：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin: 20px;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-top（上）</span><br><span class="line">margin-bottom（下）</span><br><span class="line">margin-left（左）</span><br><span class="line">margin-right（右）</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="外边距典型应用"><a href="#外边距典型应用" class="headerlink" title="外边距典型应用"></a>外边距典型应用</h2><ol>
-<li><p>外边距可以让块级盒子水平居中的两个条件：</p>
-<ol>
-<li>盒子必须指定了宽度（width）</li>
-<li>盒子左右的外边距都设置为 auto</li>
-</ol>
-</li>
-<li><p>常见的写法有三种：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-left: auto;   margin-right: auto;</span><br><span class="line">margin: auto;</span><br><span class="line">margin: 0 auto;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
-</li>
-</ol>
-<h2 id="嵌套块元素垂直外边距的塌陷"><a href="#嵌套块元素垂直外边距的塌陷" class="headerlink" title="嵌套块元素垂直外边距的塌陷"></a>嵌套块元素垂直外边距的塌陷</h2><ol>
-<li><p>对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。</p>
-</li>
-<li><p>解决方案：</p>
-<ol>
-<li>可以为父元素定义上边框。</li>
-<li>可以为父元素定义上内边距。</li>
-<li>可以为父元素添加 overflow:hidden。</li>
-</ol>
-</li>
-</ol>
-<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><ol>
-<li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
-</li>
-<li><p>语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  padding:0;   /* 清除内边距 */</span><br><span class="line">  margin:0;    /* 清除外边距 */</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
-</li>
-</ol>
-<h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-radius:length;    </span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>参数值可以为数值或百分比的形式</li>
-<li>如果是正方形想要设置为一个圆就把数值修改为高度或者宽度的一半，或者直接写为 50%</li>
-<li>该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角</li>
-<li>分开写：border-top-left-radius、border-top-right-radius、border-bottom-right-radius 和border-bottom-left-radius</li>
-</ol>
-</li>
-</ol>
-<h3 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h3><ol>
-<li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>属性</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>h-shadow</td>
-<td>必需水平阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>v-shadow</td>
-<td>必需垂直阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>可选模糊距离（阴影实虚）</td>
-</tr>
-<tr>
-<td>spread</td>
-<td>可选阴影的尺寸（阴影大小）</td>
-</tr>
-<tr>
-<td>color</td>
-<td>可选阴影的颜色，参阅CSS颜色值</td>
-</tr>
-<tr>
-<td>inset</td>
-<td>可选将外部阴影（outset）改为内部阴影</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><ol>
-<li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>属性</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>h-shadow</td>
-<td>必需水平阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>v-shadow</td>
-<td>必需垂直阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>可选模糊距离（阴影实虚）</td>
-</tr>
-<tr>
-<td>color</td>
-<td>可选阴影颜色，参阅CSS颜色值</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>CSS</category>
@@ -4041,112 +4041,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6剩余参数</title>
-    <url>/2022/08/01/ES6%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="ES6剩余参数"><a href="#ES6剩余参数" class="headerlink" title="ES6剩余参数"></a>ES6剩余参数</h1><ol>
-<li><p>剩余参数：当实参个数大于形参个数时，将剩余的不定数量的参数表示为一个数组</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const fn = (first, ...args) =&gt; &#123;</span><br><span class="line">    console.log(first); // 1</span><br><span class="line">    // args为一个数组</span><br><span class="line">    console.log(args); // [2, 3, 4]</span><br><span class="line">    console.log(...args); // 2 3 4</span><br><span class="line">  &#125;</span><br><span class="line">  fn(1, 2, 3, 4);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>例：求任意个数据相加之和</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const sum = (...args) =&gt; &#123;</span><br><span class="line">    let result = 0;</span><br><span class="line">    // 遍历数组</span><br><span class="line">    args.forEach(value =&gt; result += value)</span><br><span class="line">    // args.forEach((value) =&gt; &#123;</span><br><span class="line">    //     result += value;</span><br><span class="line">    // &#125;)</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(sum(10, 20, 30)); // 60</span><br><span class="line">  console.log(sum(10, 20, 30, 40)); // 100</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>剩余参数与解构配合使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [&#x27;张三&#x27;, &#x27;李四&#x27;, &#x27;王五&#x27;];</span><br><span class="line">  let [arr1, ...arr2] = arr;</span><br><span class="line">  console.log(arr1); // 张三</span><br><span class="line">  // arr2为数组</span><br><span class="line">  console.log(arr2); // Array(2) [&#x27;李四&#x27;, &#x27;王五&#x27;]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES5面向对象编程</title>
-    <url>/2022/08/01/ES5%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[<h1 id="面向对象编程介绍"><a href="#面向对象编程介绍" class="headerlink" title="面向对象编程介绍"></a>面向对象编程介绍</h1><h2 id="两大编程思想"><a href="#两大编程思想" class="headerlink" title="两大编程思想"></a>两大编程思想</h2><ol>
-<li>面向过程</li>
-<li>面向对象</li>
-</ol>
-<h2 id="面向过程编程"><a href="#面向过程编程" class="headerlink" title="面向过程编程"></a>面向过程编程</h2><ol>
-<li>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用</li>
-</ol>
-<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><ol>
-<li>面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作</li>
-<li>面向对象是以对象功能来划分问题，而不是步骤</li>
-<li>在面向对象程序开发思想中，每一个对象都是功能中心，具有明确分工</li>
-<li>面向对象编程具有灵活、代码可复用、容易维护和开发的优点，更适合多人合作的大型软件项目</li>
-</ol>
-<h3 id="面向对象特性"><a href="#面向对象特性" class="headerlink" title="面向对象特性"></a>面向对象特性</h3><ol>
-<li>封装性</li>
-<li>继承性</li>
-<li>多态性</li>
-</ol>
-<h3 id="面向过程和面向对象的对比"><a href="#面向过程和面向对象的对比" class="headerlink" title="面向过程和面向对象的对比"></a>面向过程和面向对象的对比</h3><ol>
-<li>面向过程<ol>
-<li>性能比面向对象高适合跟硬件联系很紧密的东西</li>
-<li>缺点：没有面向对象易维护、易复用、易扩展</li>
-</ol>
-</li>
-<li>面向对象<ol>
-<li>优点：易维护、易复用、易扩展由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护</li>
-<li>缺点：性能低于面向过程</li>
-</ol>
-</li>
-</ol>
-<h1 id="面向对象Tab栏案例"><a href="#面向对象Tab栏案例" class="headerlink" title="面向对象Tab栏案例"></a>面向对象Tab栏案例</h1><h2 id="抽象对象：Tab对象"><a href="#抽象对象：Tab对象" class="headerlink" title="抽象对象：Tab对象"></a>抽象对象：Tab对象</h2><ol>
-<li>该对象具有切换功能 — 切换方法</li>
-<li>该对象具有添加功能 — 添加方法</li>
-<li>该对象具有删除功能 — 删除方法</li>
-<li>该对象具有修改功能 — 修改方法</li>
-<li>因为页面一经加载就需要给元素绑定点击事件，因此需要一个初始化功能 — 初始化函数</li>
-</ol>
-<h3 id="面向对象版tab栏切换-—-添加功能"><a href="#面向对象版tab栏切换-—-添加功能" class="headerlink" title="面向对象版tab栏切换 — 添加功能"></a>面向对象版tab栏切换 — 添加功能</h3><ol>
-<li>点击 + 可以实现添加新的选项卡和内容</li>
-<li>第一步：创建新的选项卡li和新的内容section</li>
-<li>第二步：把创建的两个元素追加到对应的父元素中.</li>
-<li>以前的做法：动态创建元素createElement，但是元素里面内容较多，需要innerHTML赋值在appendChild追加到父元素里面。</li>
-<li>现在高级做法：利用insertAdjacentHTML()可以直接把字符串格式元素添加到父元素中</li>
-<li>appendChild不支持追加字符串的子元素，insertAdjacentHTML支持追加字符串的元素</li>
-<li>因为每次进行tab栏添加后，都需要重新获取li和section，所以将获取li和section封装为一个函数，每次点击添加后都进行调用</li>
-</ol>
-<h3 id="面向对象版tab栏切换-—-删除功能"><a href="#面向对象版tab栏切换-—-删除功能" class="headerlink" title="面向对象版tab栏切换 — 删除功能"></a>面向对象版tab栏切换 — 删除功能</h3><ol>
-<li>击’x’可以删除当前的li选项卡和当前的section</li>
-<li>‘x’是没有索引号的，但是它的父亲li有索引号，这个索引号正是我们想要的索引号</li>
-<li>所以核心思路是：点击’x’号可以删除这个索引号对应的li和section</li>
-</ol>
-<h3 id="面向对象版tab栏切换-—-编辑功能"><a href="#面向对象版tab栏切换-—-编辑功能" class="headerlink" title="面向对象版tab栏切换 — 编辑功能"></a>面向对象版tab栏切换 — 编辑功能</h3><ol>
-<li>双击选顶卡li或者section里面的文字，可以实现修改功能</li>
-<li>双击事件是：ondblclick</li>
-<li>如果双击文字，会默认选定文字，此时需要双击禁止选中文字<ol>
-<li>方法一：js中在对应方法中添加代码<ul>
-<li>window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();</li>
-</ul>
-</li>
-<li>方法二：在对应li和section的css样式中添加，会导致单击也无法选中<ul>
-<li>user-select: none;</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>核心思路：双击文字的时候，在里面生成一个文本框，当失去焦点或者按下回车键时，把文本框输入的值给原先元素即可</li>
-</ol>
-<h3 id="面向对象版tab栏切换-—-代码演示"><a href="#面向对象版tab栏切换-—-代码演示" class="headerlink" title="面向对象版tab栏切换 — 代码演示"></a>面向对象版tab栏切换 — 代码演示</h3><ol>
-<li><p>html结构</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h3&gt;JS面向对象 动态添加标签页&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;tab&quot; id=&quot;tab&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;tab-top&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li class=&quot;backcolor&quot;&gt;</span><br><span class="line">                    测试1</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试2</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试3</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;div class=&quot;append&quot;&gt;+&lt;/div&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;tab-content&quot;&gt;</span><br><span class="line">            &lt;section class=&#x27;block&#x27;&gt;测试一&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试二&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试三&lt;/section&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>js代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建一个tab类</span><br><span class="line">// var that;</span><br><span class="line">class Tab &#123;</span><br><span class="line">  constructor(id) &#123;</span><br><span class="line">    // that = this;</span><br><span class="line">    // 获取实例化对象中的元素</span><br><span class="line">    // 先获取整个tab</span><br><span class="line">    this.main = document.querySelector(id);</span><br><span class="line">    // 获取添加按钮</span><br><span class="line">    this.appends = this.main.querySelector(&#x27;.append&#x27;);</span><br><span class="line">    // 获取ul</span><br><span class="line">    this.ul = this.main.querySelector(&#x27;.tab-top ul:first-child&#x27;);</span><br><span class="line">    // 获取tab-content    </span><br><span class="line">    this.tab_content = this.main.querySelector(&#x27;.tab-content&#x27;);</span><br><span class="line">    // 实例化对象时即调用初始化函数</span><br><span class="line">    this.init();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 初始化函数</span><br><span class="line">  init() &#123;</span><br><span class="line">    // 初始化时，获取li和section</span><br><span class="line">    this.updateNode();</span><br><span class="line">    // 给appends绑定点击事件</span><br><span class="line">    // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">    this.appends.onclick = this.addTab.bind(this.appends, this);</span><br><span class="line">    // 给lis绑定点击事件</span><br><span class="line">    for (var i = 0; i &lt; this.lis.length; i++) &#123;</span><br><span class="line">      // 给每一个li设置索引号</span><br><span class="line">      this.lis[i].index = i;</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.lis[i].onclick = this.toggleTab.bind(this.lis[i], this);</span><br><span class="line">      // 给每一个span绑定点击事件</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.spans[i].onclick = this.removeTab.bind(this.spans[i], this);</span><br><span class="line">      // 给每一个li绑定双击事件</span><br><span class="line">      this.lis[i].ondblclick = this.editTab;</span><br><span class="line">      this.sections[i].ondblclick = this.editTab;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 因为经常进行tab栏的添加删除，所以要多次获取li、section和span</span><br><span class="line">  updateNode() &#123;</span><br><span class="line">    // 获取所有的li</span><br><span class="line">    this.lis = this.main.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">    // 获取所有的section</span><br><span class="line">    this.sections = this.main.querySelectorAll(&#x27;section&#x27;);</span><br><span class="line">    // 获取所有的span</span><br><span class="line">    this.spans = this.main.querySelectorAll(&#x27;span&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 切换功能</span><br><span class="line">  toggleTab(that) &#123;</span><br><span class="line">    // tab-top实现切换功能</span><br><span class="line">    // 这里的that为指向实例化对象</span><br><span class="line">    that.clearClass();</span><br><span class="line">    // 留下自己，给被点击的li添加类名</span><br><span class="line">    this.className = &#x27;backcolor&#x27;;</span><br><span class="line"></span><br><span class="line">    // tab-content实现切换功能</span><br><span class="line">    // 留下自己，给被点击的li对应的section添加类名</span><br><span class="line">    that.sections[this.index].className = &#x27;block&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">  // 排他思想清除类函数</span><br><span class="line">  clearClass() &#123;</span><br><span class="line">    // 因为这个函数是由that调用的，所以this指向的是实例化对象</span><br><span class="line">    for (var j = 0; j &lt; this.lis.length; j++) &#123;</span><br><span class="line">      // 排他思想：干掉别人，让所有的li去掉类</span><br><span class="line">      this.lis[j].className = &#x27;&#x27;;</span><br><span class="line">      // 排他思想：干掉别人，清除每一个section的类</span><br><span class="line">      this.sections[j].className = &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 添加功能</span><br><span class="line">  addTab(that) &#123;</span><br><span class="line">    // 创建一个li和span节点，将span节点放入li中</span><br><span class="line">    // 创建li元素</span><br><span class="line">    var li = &#x27;&lt;li&gt;新选项卡&lt;span&gt;&lt;/span&gt;&lt;/li&gt;&#x27;;</span><br><span class="line">    // 将li元素插入ul中</span><br><span class="line">    that.ul.insertAdjacentHTML(&#x27;beforeend&#x27;, li);</span><br><span class="line"></span><br><span class="line">    // 创建section元素，添加入tab-content中</span><br><span class="line">    var section = &#x27;&lt;section&gt;请输入内容&lt;/section&gt;&#x27;;</span><br><span class="line">    // 将section元素添加进入ab-content中</span><br><span class="line">    that.tab_content.insertAdjacentHTML(&#x27;beforeend&#x27;, section);</span><br><span class="line">    // 每次添加li和section元素时，都需要重新初始化，重新调用li和section</span><br><span class="line">    that.init();</span><br><span class="line">  &#125;</span><br><span class="line">  // 删除功能</span><br><span class="line">  removeTab(that, e) &#123;</span><br><span class="line">    // 阻止冒泡，避免点击span&#x27;x&#x27;号后，冒泡触发点击li的事件</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">    // 因为span没有索引，则获取当前被点击span的父元素的索引</span><br><span class="line">    var index = this.parentNode.index;</span><br><span class="line">    // 删除索引号对应的li和section</span><br><span class="line">    that.lis[index].remove();</span><br><span class="line">    that.sections[index].remove();</span><br><span class="line">    // 每次删除li和section元素时，都需要重新初始化</span><br><span class="line">    that.init();</span><br><span class="line">    // 当删除的是未被选中的tab选项时，被选中的tab选项不变</span><br><span class="line">    if (that.main.querySelector(&quot;.backcolor&quot;)) return;</span><br><span class="line">    // 当删除被选中的tab选项时，该tab选项的前一个tab选项会被自动选中</span><br><span class="line">    // 可以采用被自动点击的方式实现</span><br><span class="line">    index--;</span><br><span class="line">    // 当所有的tab选项被删除时，index为-1， that.lis[index]不存在则停止点击事件</span><br><span class="line">    that.lis[index] &amp;&amp; that.lis[index].click();</span><br><span class="line">  &#125;</span><br><span class="line">  // 修改功能</span><br><span class="line">  editTab() &#123;</span><br><span class="line">    // 取消默认双击选定文字</span><br><span class="line">    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();</span><br><span class="line">    // 获取li中的文字</span><br><span class="line">    var str = this.innerText;</span><br><span class="line">    // 每当li被双击时，就在span内部生成一个input表单替换span里面的文字</span><br><span class="line">    this.innerHTML = &#x27;&lt;input type=&quot;text&quot;&gt;&#x27;;</span><br><span class="line">    // 获取对应的input</span><br><span class="line">    var input = this.children[0];</span><br><span class="line">    // 将li中的文字赋值给文本框</span><br><span class="line">    input.value = str;</span><br><span class="line">    // 让文本框中的内容处于选中状态</span><br><span class="line">    input.select();</span><br><span class="line"></span><br><span class="line">    // 当文本框失去焦点或者按下enter键则将文本框的内容赋值给li</span><br><span class="line">    input.onblur = function () &#123;</span><br><span class="line">      // 这里的this指向input</span><br><span class="line">      this.parentNode.innerHTML = input.value + &#x27;&lt;span&gt;&lt;/span&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    // enter键的ASCII码值为13</span><br><span class="line">    input.onkeyup = function (e) &#123;</span><br><span class="line">      if (e.keyCode === 13) &#123;</span><br><span class="line">        this.blur();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实例化一个tab对象</span><br><span class="line">new Tab(&#x27;#tab&#x27;);</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES5</category>
-      </categories>
-      <tags>
-        <tag>ES5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES5函数进阶</title>
     <url>/2022/08/01/ES5%E5%87%BD%E6%95%B0%E8%BF%9B%E9%98%B6/</url>
     <content><![CDATA[<h1 id="ES5函数进阶"><a href="#ES5函数进阶" class="headerlink" title="ES5函数进阶"></a>ES5函数进阶</h1><h2 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h2><ol>
@@ -4236,30 +4130,137 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6模块化的导入和导出</title>
-    <url>/2022/08/02/ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA/</url>
-    <content><![CDATA[<h1 id="ES6模块化的导入和导出"><a href="#ES6模块化的导入和导出" class="headerlink" title="ES6模块化的导入和导出"></a>ES6模块化的导入和导出</h1><h2 id="ES6的模块化"><a href="#ES6的模块化" class="headerlink" title="ES6的模块化"></a>ES6的模块化</h2><ol>
-<li>在引入js文件时，在标签内部加上属性type&#x3D;’module’，也就是将类型设置为module；如果这样引入js文件，则表示是以模块化的思想对js文件进行使用的，一旦以模块化思想进行使用，就意味着被引入的这个js代码就是一个模块，单独的模块有单独的作用域</li>
+    <title>ES5面向对象编程</title>
+    <url>/2022/08/01/ES5%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="面向对象编程介绍"><a href="#面向对象编程介绍" class="headerlink" title="面向对象编程介绍"></a>面向对象编程介绍</h1><h2 id="两大编程思想"><a href="#两大编程思想" class="headerlink" title="两大编程思想"></a>两大编程思想</h2><ol>
+<li>面向过程</li>
+<li>面向对象</li>
 </ol>
-<h2 id="export和import基本使用"><a href="#export和import基本使用" class="headerlink" title="export和import基本使用"></a>export和import基本使用</h2><ol>
-<li>模块化的用于导出变量（export）有两种方法<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002435.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002508.png" alt="img"></li>
-<li>模块化导入变量（import)<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002524.png" alt="img"></li>
+<h2 id="面向过程编程"><a href="#面向过程编程" class="headerlink" title="面向过程编程"></a>面向过程编程</h2><ol>
+<li>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用</li>
 </ol>
-<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><ol>
-<li>某些情况下，一个模块中包含某个功能，我们并不希望给这个功能命名，而是让导入者可以自己命名</li>
-<li>这个时候就可以使用export default</li>
-<li>export default在同一个模块中，不允许同时存在多个<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002545.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002554.png" alt="img"></li>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><ol>
+<li>面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作</li>
+<li>面向对象是以对象功能来划分问题，而不是步骤</li>
+<li>在面向对象程序开发思想中，每一个对象都是功能中心，具有明确分工</li>
+<li>面向对象编程具有灵活、代码可复用、容易维护和开发的优点，更适合多人合作的大型软件项目</li>
 </ol>
-<h2 id="统一全部导入"><a href="#统一全部导入" class="headerlink" title="统一全部导入"></a>统一全部导入</h2><ol>
-<li>通过 * 可以导入模块中所有的export变量</li>
-<li>但是通常情况下我们需要给*取一个别名，方便后续使用<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002626.png" alt="img"></li>
+<h3 id="面向对象特性"><a href="#面向对象特性" class="headerlink" title="面向对象特性"></a>面向对象特性</h3><ol>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+</ol>
+<h3 id="面向过程和面向对象的对比"><a href="#面向过程和面向对象的对比" class="headerlink" title="面向过程和面向对象的对比"></a>面向过程和面向对象的对比</h3><ol>
+<li>面向过程<ol>
+<li>性能比面向对象高适合跟硬件联系很紧密的东西</li>
+<li>缺点：没有面向对象易维护、易复用、易扩展</li>
+</ol>
+</li>
+<li>面向对象<ol>
+<li>优点：易维护、易复用、易扩展由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护</li>
+<li>缺点：性能低于面向过程</li>
+</ol>
+</li>
+</ol>
+<h1 id="面向对象Tab栏案例"><a href="#面向对象Tab栏案例" class="headerlink" title="面向对象Tab栏案例"></a>面向对象Tab栏案例</h1><h2 id="抽象对象：Tab对象"><a href="#抽象对象：Tab对象" class="headerlink" title="抽象对象：Tab对象"></a>抽象对象：Tab对象</h2><ol>
+<li>该对象具有切换功能 — 切换方法</li>
+<li>该对象具有添加功能 — 添加方法</li>
+<li>该对象具有删除功能 — 删除方法</li>
+<li>该对象具有修改功能 — 修改方法</li>
+<li>因为页面一经加载就需要给元素绑定点击事件，因此需要一个初始化功能 — 初始化函数</li>
+</ol>
+<h3 id="面向对象版tab栏切换-—-添加功能"><a href="#面向对象版tab栏切换-—-添加功能" class="headerlink" title="面向对象版tab栏切换 — 添加功能"></a>面向对象版tab栏切换 — 添加功能</h3><ol>
+<li>点击 + 可以实现添加新的选项卡和内容</li>
+<li>第一步：创建新的选项卡li和新的内容section</li>
+<li>第二步：把创建的两个元素追加到对应的父元素中.</li>
+<li>以前的做法：动态创建元素createElement，但是元素里面内容较多，需要innerHTML赋值在appendChild追加到父元素里面。</li>
+<li>现在高级做法：利用insertAdjacentHTML()可以直接把字符串格式元素添加到父元素中</li>
+<li>appendChild不支持追加字符串的子元素，insertAdjacentHTML支持追加字符串的元素</li>
+<li>因为每次进行tab栏添加后，都需要重新获取li和section，所以将获取li和section封装为一个函数，每次点击添加后都进行调用</li>
+</ol>
+<h3 id="面向对象版tab栏切换-—-删除功能"><a href="#面向对象版tab栏切换-—-删除功能" class="headerlink" title="面向对象版tab栏切换 — 删除功能"></a>面向对象版tab栏切换 — 删除功能</h3><ol>
+<li>击’x’可以删除当前的li选项卡和当前的section</li>
+<li>‘x’是没有索引号的，但是它的父亲li有索引号，这个索引号正是我们想要的索引号</li>
+<li>所以核心思路是：点击’x’号可以删除这个索引号对应的li和section</li>
+</ol>
+<h3 id="面向对象版tab栏切换-—-编辑功能"><a href="#面向对象版tab栏切换-—-编辑功能" class="headerlink" title="面向对象版tab栏切换 — 编辑功能"></a>面向对象版tab栏切换 — 编辑功能</h3><ol>
+<li>双击选顶卡li或者section里面的文字，可以实现修改功能</li>
+<li>双击事件是：ondblclick</li>
+<li>如果双击文字，会默认选定文字，此时需要双击禁止选中文字<ol>
+<li>方法一：js中在对应方法中添加代码<ul>
+<li>window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();</li>
+</ul>
+</li>
+<li>方法二：在对应li和section的css样式中添加，会导致单击也无法选中<ul>
+<li>user-select: none;</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>核心思路：双击文字的时候，在里面生成一个文本框，当失去焦点或者按下回车键时，把文本框输入的值给原先元素即可</li>
+</ol>
+<h3 id="面向对象版tab栏切换-—-代码演示"><a href="#面向对象版tab栏切换-—-代码演示" class="headerlink" title="面向对象版tab栏切换 — 代码演示"></a>面向对象版tab栏切换 — 代码演示</h3><ol>
+<li><p>html结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h3&gt;JS面向对象 动态添加标签页&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;tab&quot; id=&quot;tab&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;tab-top&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li class=&quot;backcolor&quot;&gt;</span><br><span class="line">                    测试1</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试2</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试3</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;div class=&quot;append&quot;&gt;+&lt;/div&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;tab-content&quot;&gt;</span><br><span class="line">            &lt;section class=&#x27;block&#x27;&gt;测试一&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试二&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试三&lt;/section&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>js代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建一个tab类</span><br><span class="line">// var that;</span><br><span class="line">class Tab &#123;</span><br><span class="line">  constructor(id) &#123;</span><br><span class="line">    // that = this;</span><br><span class="line">    // 获取实例化对象中的元素</span><br><span class="line">    // 先获取整个tab</span><br><span class="line">    this.main = document.querySelector(id);</span><br><span class="line">    // 获取添加按钮</span><br><span class="line">    this.appends = this.main.querySelector(&#x27;.append&#x27;);</span><br><span class="line">    // 获取ul</span><br><span class="line">    this.ul = this.main.querySelector(&#x27;.tab-top ul:first-child&#x27;);</span><br><span class="line">    // 获取tab-content    </span><br><span class="line">    this.tab_content = this.main.querySelector(&#x27;.tab-content&#x27;);</span><br><span class="line">    // 实例化对象时即调用初始化函数</span><br><span class="line">    this.init();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 初始化函数</span><br><span class="line">  init() &#123;</span><br><span class="line">    // 初始化时，获取li和section</span><br><span class="line">    this.updateNode();</span><br><span class="line">    // 给appends绑定点击事件</span><br><span class="line">    // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">    this.appends.onclick = this.addTab.bind(this.appends, this);</span><br><span class="line">    // 给lis绑定点击事件</span><br><span class="line">    for (var i = 0; i &lt; this.lis.length; i++) &#123;</span><br><span class="line">      // 给每一个li设置索引号</span><br><span class="line">      this.lis[i].index = i;</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.lis[i].onclick = this.toggleTab.bind(this.lis[i], this);</span><br><span class="line">      // 给每一个span绑定点击事件</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.spans[i].onclick = this.removeTab.bind(this.spans[i], this);</span><br><span class="line">      // 给每一个li绑定双击事件</span><br><span class="line">      this.lis[i].ondblclick = this.editTab;</span><br><span class="line">      this.sections[i].ondblclick = this.editTab;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 因为经常进行tab栏的添加删除，所以要多次获取li、section和span</span><br><span class="line">  updateNode() &#123;</span><br><span class="line">    // 获取所有的li</span><br><span class="line">    this.lis = this.main.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">    // 获取所有的section</span><br><span class="line">    this.sections = this.main.querySelectorAll(&#x27;section&#x27;);</span><br><span class="line">    // 获取所有的span</span><br><span class="line">    this.spans = this.main.querySelectorAll(&#x27;span&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 切换功能</span><br><span class="line">  toggleTab(that) &#123;</span><br><span class="line">    // tab-top实现切换功能</span><br><span class="line">    // 这里的that为指向实例化对象</span><br><span class="line">    that.clearClass();</span><br><span class="line">    // 留下自己，给被点击的li添加类名</span><br><span class="line">    this.className = &#x27;backcolor&#x27;;</span><br><span class="line"></span><br><span class="line">    // tab-content实现切换功能</span><br><span class="line">    // 留下自己，给被点击的li对应的section添加类名</span><br><span class="line">    that.sections[this.index].className = &#x27;block&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">  // 排他思想清除类函数</span><br><span class="line">  clearClass() &#123;</span><br><span class="line">    // 因为这个函数是由that调用的，所以this指向的是实例化对象</span><br><span class="line">    for (var j = 0; j &lt; this.lis.length; j++) &#123;</span><br><span class="line">      // 排他思想：干掉别人，让所有的li去掉类</span><br><span class="line">      this.lis[j].className = &#x27;&#x27;;</span><br><span class="line">      // 排他思想：干掉别人，清除每一个section的类</span><br><span class="line">      this.sections[j].className = &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 添加功能</span><br><span class="line">  addTab(that) &#123;</span><br><span class="line">    // 创建一个li和span节点，将span节点放入li中</span><br><span class="line">    // 创建li元素</span><br><span class="line">    var li = &#x27;&lt;li&gt;新选项卡&lt;span&gt;&lt;/span&gt;&lt;/li&gt;&#x27;;</span><br><span class="line">    // 将li元素插入ul中</span><br><span class="line">    that.ul.insertAdjacentHTML(&#x27;beforeend&#x27;, li);</span><br><span class="line"></span><br><span class="line">    // 创建section元素，添加入tab-content中</span><br><span class="line">    var section = &#x27;&lt;section&gt;请输入内容&lt;/section&gt;&#x27;;</span><br><span class="line">    // 将section元素添加进入ab-content中</span><br><span class="line">    that.tab_content.insertAdjacentHTML(&#x27;beforeend&#x27;, section);</span><br><span class="line">    // 每次添加li和section元素时，都需要重新初始化，重新调用li和section</span><br><span class="line">    that.init();</span><br><span class="line">  &#125;</span><br><span class="line">  // 删除功能</span><br><span class="line">  removeTab(that, e) &#123;</span><br><span class="line">    // 阻止冒泡，避免点击span&#x27;x&#x27;号后，冒泡触发点击li的事件</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">    // 因为span没有索引，则获取当前被点击span的父元素的索引</span><br><span class="line">    var index = this.parentNode.index;</span><br><span class="line">    // 删除索引号对应的li和section</span><br><span class="line">    that.lis[index].remove();</span><br><span class="line">    that.sections[index].remove();</span><br><span class="line">    // 每次删除li和section元素时，都需要重新初始化</span><br><span class="line">    that.init();</span><br><span class="line">    // 当删除的是未被选中的tab选项时，被选中的tab选项不变</span><br><span class="line">    if (that.main.querySelector(&quot;.backcolor&quot;)) return;</span><br><span class="line">    // 当删除被选中的tab选项时，该tab选项的前一个tab选项会被自动选中</span><br><span class="line">    // 可以采用被自动点击的方式实现</span><br><span class="line">    index--;</span><br><span class="line">    // 当所有的tab选项被删除时，index为-1， that.lis[index]不存在则停止点击事件</span><br><span class="line">    that.lis[index] &amp;&amp; that.lis[index].click();</span><br><span class="line">  &#125;</span><br><span class="line">  // 修改功能</span><br><span class="line">  editTab() &#123;</span><br><span class="line">    // 取消默认双击选定文字</span><br><span class="line">    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();</span><br><span class="line">    // 获取li中的文字</span><br><span class="line">    var str = this.innerText;</span><br><span class="line">    // 每当li被双击时，就在span内部生成一个input表单替换span里面的文字</span><br><span class="line">    this.innerHTML = &#x27;&lt;input type=&quot;text&quot;&gt;&#x27;;</span><br><span class="line">    // 获取对应的input</span><br><span class="line">    var input = this.children[0];</span><br><span class="line">    // 将li中的文字赋值给文本框</span><br><span class="line">    input.value = str;</span><br><span class="line">    // 让文本框中的内容处于选中状态</span><br><span class="line">    input.select();</span><br><span class="line"></span><br><span class="line">    // 当文本框失去焦点或者按下enter键则将文本框的内容赋值给li</span><br><span class="line">    input.onblur = function () &#123;</span><br><span class="line">      // 这里的this指向input</span><br><span class="line">      this.parentNode.innerHTML = input.value + &#x27;&lt;span&gt;&lt;/span&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    // enter键的ASCII码值为13</span><br><span class="line">    input.onkeyup = function (e) &#123;</span><br><span class="line">      if (e.keyCode === 13) &#123;</span><br><span class="line">        this.blur();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实例化一个tab对象</span><br><span class="line">new Tab(&#x27;#tab&#x27;);</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
-        <category>Vue</category>
+        <category>ES5</category>
       </categories>
       <tags>
-        <tag>Vue</tag>
+        <tag>ES5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6剩余参数</title>
+    <url>/2022/08/01/ES6%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="ES6剩余参数"><a href="#ES6剩余参数" class="headerlink" title="ES6剩余参数"></a>ES6剩余参数</h1><ol>
+<li><p>剩余参数：当实参个数大于形参个数时，将剩余的不定数量的参数表示为一个数组</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const fn = (first, ...args) =&gt; &#123;</span><br><span class="line">    console.log(first); // 1</span><br><span class="line">    // args为一个数组</span><br><span class="line">    console.log(args); // [2, 3, 4]</span><br><span class="line">    console.log(...args); // 2 3 4</span><br><span class="line">  &#125;</span><br><span class="line">  fn(1, 2, 3, 4);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例：求任意个数据相加之和</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const sum = (...args) =&gt; &#123;</span><br><span class="line">    let result = 0;</span><br><span class="line">    // 遍历数组</span><br><span class="line">    args.forEach(value =&gt; result += value)</span><br><span class="line">    // args.forEach((value) =&gt; &#123;</span><br><span class="line">    //     result += value;</span><br><span class="line">    // &#125;)</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(sum(10, 20, 30)); // 60</span><br><span class="line">  console.log(sum(10, 20, 30, 40)); // 100</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>剩余参数与解构配合使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [&#x27;张三&#x27;, &#x27;李四&#x27;, &#x27;王五&#x27;];</span><br><span class="line">  let [arr1, ...arr2] = arr;</span><br><span class="line">  console.log(arr1); // 张三</span><br><span class="line">  // arr2为数组</span><br><span class="line">  console.log(arr2); // Array(2) [&#x27;李四&#x27;, &#x27;王五&#x27;]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6对象的扩展</title>
+    <url>/2022/08/01/ES6%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<h1 id="ES6对象的扩展"><a href="#ES6对象的扩展" class="headerlink" title="ES6对象的扩展"></a>ES6对象的扩展</h1><h3 id="属性的简写"><a href="#属性的简写" class="headerlink" title="属性的简写"></a>属性的简写</h3><ol>
+<li>当属性名和属性值名称相同时，属性值可以不写，只写一个属性名即可</li>
+</ol>
+<h3 id="Obeject-keys-方法"><a href="#Obeject-keys-方法" class="headerlink" title="Obeject.keys()方法"></a>Obeject.keys()方法</h3><ol>
+<li><p>获取对象的所有属性名或方法名（不包括原型的内容），返回一个数组</p>
+</li>
+<li><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name: &quot;john&quot;,</span><br><span class="line">  age: &quot;21&quot;, </span><br><span class="line">  getName: function () &#123; </span><br><span class="line">    alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(Object.keys(obj));                 // [&quot;name&quot;, &quot;age&quot;, &quot;getName&quot;] </span><br><span class="line">console.log(Object.keys(obj).length);          // 3 </span><br><span class="line">console.log(Object.keys([&quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;]));  // [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;] </span><br><span class="line">console.log(Object.keys(&quot;abcdef&quot;));            // [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Object-assign-方法"><a href="#Object-assign-方法" class="headerlink" title="Object.assign()方法"></a>Object.assign()方法</h3><ol>
+<li><p>assign 方法将多个原对象的属性和方法都合并到了目标对象上面</p>
+</li>
+<li><p>第一个参数是目标对象，后面的都是源对象</p>
+</li>
+<li><p>例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var target = &#123;&#125;; //目标对象 </span><br><span class="line">var source1 = &#123;name : &#x27;ming&#x27;, age: &#x27;19&#x27;&#125;; //源对象 1 </span><br><span class="line">var source2 = &#123;sex : &#x27;女&#x27;&#125;; //源对象2 </span><br><span class="line">var source3 = &#123;sex : &#x27;男&#x27;&#125;; //源对象3，和source2 中的对象有同名属性sex ，则覆盖同名属性sex</span><br><span class="line">Object.assign(target, source1, source2, source3); </span><br><span class="line">console.log(target); //&#123;name : &#x27;ming&#x27;, age: &#x27;19&#x27;, sex: &#x27;男&#x27;&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -4350,31 +4351,30 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6对象的扩展</title>
-    <url>/2022/08/01/ES6%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<h1 id="ES6对象的扩展"><a href="#ES6对象的扩展" class="headerlink" title="ES6对象的扩展"></a>ES6对象的扩展</h1><h3 id="属性的简写"><a href="#属性的简写" class="headerlink" title="属性的简写"></a>属性的简写</h3><ol>
-<li>当属性名和属性值名称相同时，属性值可以不写，只写一个属性名即可</li>
+    <title>ES6模块化的导入和导出</title>
+    <url>/2022/08/02/ES6%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA/</url>
+    <content><![CDATA[<h1 id="ES6模块化的导入和导出"><a href="#ES6模块化的导入和导出" class="headerlink" title="ES6模块化的导入和导出"></a>ES6模块化的导入和导出</h1><h2 id="ES6的模块化"><a href="#ES6的模块化" class="headerlink" title="ES6的模块化"></a>ES6的模块化</h2><ol>
+<li>在引入js文件时，在标签内部加上属性type&#x3D;’module’，也就是将类型设置为module；如果这样引入js文件，则表示是以模块化的思想对js文件进行使用的，一旦以模块化思想进行使用，就意味着被引入的这个js代码就是一个模块，单独的模块有单独的作用域</li>
 </ol>
-<h3 id="Obeject-keys-方法"><a href="#Obeject-keys-方法" class="headerlink" title="Obeject.keys()方法"></a>Obeject.keys()方法</h3><ol>
-<li><p>获取对象的所有属性名或方法名（不包括原型的内容），返回一个数组</p>
-</li>
-<li><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  name: &quot;john&quot;,</span><br><span class="line">  age: &quot;21&quot;, </span><br><span class="line">  getName: function () &#123; </span><br><span class="line">    alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(Object.keys(obj));                 // [&quot;name&quot;, &quot;age&quot;, &quot;getName&quot;] </span><br><span class="line">console.log(Object.keys(obj).length);          // 3 </span><br><span class="line">console.log(Object.keys([&quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;]));  // [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;] </span><br><span class="line">console.log(Object.keys(&quot;abcdef&quot;));            // [&quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span><br></pre></td></tr></table></figure></li>
+<h2 id="export和import基本使用"><a href="#export和import基本使用" class="headerlink" title="export和import基本使用"></a>export和import基本使用</h2><ol>
+<li>模块化的用于导出变量（export）有两种方法<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002435.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002508.png" alt="img"></li>
+<li>模块化导入变量（import)<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002524.png" alt="img"></li>
 </ol>
-<h3 id="Object-assign-方法"><a href="#Object-assign-方法" class="headerlink" title="Object.assign()方法"></a>Object.assign()方法</h3><ol>
-<li><p>assign 方法将多个原对象的属性和方法都合并到了目标对象上面</p>
-</li>
-<li><p>第一个参数是目标对象，后面的都是源对象</p>
-</li>
-<li><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var target = &#123;&#125;; //目标对象 </span><br><span class="line">var source1 = &#123;name : &#x27;ming&#x27;, age: &#x27;19&#x27;&#125;; //源对象 1 </span><br><span class="line">var source2 = &#123;sex : &#x27;女&#x27;&#125;; //源对象2 </span><br><span class="line">var source3 = &#123;sex : &#x27;男&#x27;&#125;; //源对象3，和source2 中的对象有同名属性sex ，则覆盖同名属性sex</span><br><span class="line">Object.assign(target, source1, source2, source3); </span><br><span class="line">console.log(target); //&#123;name : &#x27;ming&#x27;, age: &#x27;19&#x27;, sex: &#x27;男&#x27;&#125;</span><br></pre></td></tr></table></figure></li>
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><ol>
+<li>某些情况下，一个模块中包含某个功能，我们并不希望给这个功能命名，而是让导入者可以自己命名</li>
+<li>这个时候就可以使用export default</li>
+<li>export default在同一个模块中，不允许同时存在多个<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002545.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002554.png" alt="img"></li>
+</ol>
+<h2 id="统一全部导入"><a href="#统一全部导入" class="headerlink" title="统一全部导入"></a>统一全部导入</h2><ol>
+<li>通过 * 可以导入模块中所有的export变量</li>
+<li>但是通常情况下我们需要给*取一个别名，方便后续使用<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011002626.png" alt="img"></li>
 </ol>
 ]]></content>
       <categories>
-        <category>ES6</category>
+        <category>Vue</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
+        <tag>Vue</tag>
       </tags>
   </entry>
   <entry>
@@ -4414,6 +4414,45 @@
 <li>includes()可以对<strong>字符串</strong>进行匹配，也可以对变量进行匹配，但<strong>不可以对正则表达式</strong>进行匹配</li>
 </ol>
 </li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6的String扩展方法</title>
+    <url>/2022/08/01/ES6%E7%9A%84String%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="ES6的String的扩展方法"><a href="#ES6的String的扩展方法" class="headerlink" title="ES6的String的扩展方法"></a>ES6的String的扩展方法</h1><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><ol>
+<li><p>ES6新增的创建字符串的方式，使用反引号定义</p>
+</li>
+<li><p><strong>模板字符串语法：${}</strong></p>
+</li>
+<li><p>模板字符串的特点</p>
+<ol>
+<li><p>模板字符串中可以解析变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let name = `张三`;</span><br><span class="line">let sayHello = `你好啊，我的朋友$&#123;name&#125;`;</span><br><span class="line">console.log(sayHello); // 你好啊，我的朋友张三</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模板字符串中可以实现换行</p>
+</li>
+<li><p>在模板字符串中可以调用函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let fn = () =&gt; &#123;</span><br><span class="line">    return `在干嘛`;</span><br><span class="line">&#125;</span><br><span class="line">let say = `你好呀，$&#123;fn()&#125;`;</span><br><span class="line">console.log(say);</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="实例方法：startsWith"><a href="#实例方法：startsWith" class="headerlink" title="实例方法：startsWith()"></a>实例方法：startsWith()</h3><ol>
+<li>startsWith()：表示参数字符串是否在原字符串的头部，返回布尔值</li>
+</ol>
+<h3 id="实例方法：endsWith"><a href="#实例方法：endsWith" class="headerlink" title="实例方法：endsWith()"></a>实例方法：endsWith()</h3><ol>
+<li><p>endsWith()：表示参数字符串是否在原字符串的尾部，返回布尔值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let str = &#x27;hello world!&#x27;;</span><br><span class="line">  var flag1 = str.startsWith(&#x27;hell&#x27;); // true</span><br><span class="line">  var flag2 = str.endsWith(&#x27;d!&#x27;); // true</span><br><span class="line">  console.log(flag1, flag2);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="实例方法：repeat"><a href="#实例方法：repeat" class="headerlink" title="实例方法：repeat()"></a>实例方法：repeat()</h3><ol>
+<li><p>repeat()：表示将原字符串重复n次，返回一个新的字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;你好呀&#x27;.repeat(5));</span><br></pre></td></tr></table></figure></li>
 </ol>
 ]]></content>
       <categories>
@@ -4481,45 +4520,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6的String扩展方法</title>
-    <url>/2022/08/01/ES6%E7%9A%84String%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="ES6的String的扩展方法"><a href="#ES6的String的扩展方法" class="headerlink" title="ES6的String的扩展方法"></a>ES6的String的扩展方法</h1><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><ol>
-<li><p>ES6新增的创建字符串的方式，使用反引号定义</p>
-</li>
-<li><p><strong>模板字符串语法：${}</strong></p>
-</li>
-<li><p>模板字符串的特点</p>
-<ol>
-<li><p>模板字符串中可以解析变量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let name = `张三`;</span><br><span class="line">let sayHello = `你好啊，我的朋友$&#123;name&#125;`;</span><br><span class="line">console.log(sayHello); // 你好啊，我的朋友张三</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模板字符串中可以实现换行</p>
-</li>
-<li><p>在模板字符串中可以调用函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let fn = () =&gt; &#123;</span><br><span class="line">    return `在干嘛`;</span><br><span class="line">&#125;</span><br><span class="line">let say = `你好呀，$&#123;fn()&#125;`;</span><br><span class="line">console.log(say);</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h3 id="实例方法：startsWith"><a href="#实例方法：startsWith" class="headerlink" title="实例方法：startsWith()"></a>实例方法：startsWith()</h3><ol>
-<li>startsWith()：表示参数字符串是否在原字符串的头部，返回布尔值</li>
-</ol>
-<h3 id="实例方法：endsWith"><a href="#实例方法：endsWith" class="headerlink" title="实例方法：endsWith()"></a>实例方法：endsWith()</h3><ol>
-<li><p>endsWith()：表示参数字符串是否在原字符串的尾部，返回布尔值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let str = &#x27;hello world!&#x27;;</span><br><span class="line">  var flag1 = str.startsWith(&#x27;hell&#x27;); // true</span><br><span class="line">  var flag2 = str.endsWith(&#x27;d!&#x27;); // true</span><br><span class="line">  console.log(flag1, flag2);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="实例方法：repeat"><a href="#实例方法：repeat" class="headerlink" title="实例方法：repeat()"></a>实例方法：repeat()</h3><ol>
-<li><p>repeat()：表示将原字符串重复n次，返回一个新的字符串</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;你好呀&#x27;.repeat(5));</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6的async和await</title>
     <url>/2022/08/01/ES6%E7%9A%84async%E5%92%8Cawait/</url>
     <content><![CDATA[<h1 id="ES6的async和await"><a href="#ES6的async和await" class="headerlink" title="ES6的async和await"></a>ES6的async和await</h1><ol>
@@ -4527,27 +4527,6 @@
 <li>async用于声明一个function是异步的</li>
 <li>await用于等待一个异步方法执行完成，返回一个Promise对象resolve回调函数的返回值</li>
 <li>async和await必须同时使用，且await只能出现在async函数中<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211014010801.png" alt="img"></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES6的import和export</title>
-    <url>/2022/08/01/ES6%E7%9A%84import%E5%92%8Cexport/</url>
-    <content><![CDATA[<h1 id="ES6的import和export"><a href="#ES6的import和export" class="headerlink" title="ES6的import和export"></a>ES6的import和export</h1><ol>
-<li>ES6标准中，JavaScript原生支持模块(module)</li>
-<li>即将JS代码分割成不同功能的小块进行模块化，将不同功能的代码分别写在不同文件中，各模块只需导出公共接口部分，然后通过模块的导入的方式可以在其他地方使用</li>
-<li>export：用于对外输出本模块（一个文件可以理解为一个模块）变量的接口</li>
-<li>import：用于在一个模块中加载另一个含有export接口的模块</li>
-<li>注意<ol>
-<li>import和export命令只能书写在模块的顶部，不能在代码块之中</li>
-</ol>
-</li>
 </ol>
 ]]></content>
       <categories>
@@ -4588,6 +4567,27 @@
 </li>
 <li><p>遍历set</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const s = new Set([&#x27;a&#x27;, 1, &#x27;b&#x27;]);</span><br><span class="line">  s.forEach((value) =&gt; &#123;</span><br><span class="line">    console.log(value);</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6的import和export</title>
+    <url>/2022/08/01/ES6%E7%9A%84import%E5%92%8Cexport/</url>
+    <content><![CDATA[<h1 id="ES6的import和export"><a href="#ES6的import和export" class="headerlink" title="ES6的import和export"></a>ES6的import和export</h1><ol>
+<li>ES6标准中，JavaScript原生支持模块(module)</li>
+<li>即将JS代码分割成不同功能的小块进行模块化，将不同功能的代码分别写在不同文件中，各模块只需导出公共接口部分，然后通过模块的导入的方式可以在其他地方使用</li>
+<li>export：用于对外输出本模块（一个文件可以理解为一个模块）变量的接口</li>
+<li>import：用于在一个模块中加载另一个含有export接口的模块</li>
+<li>注意<ol>
+<li>import和export命令只能书写在模块的顶部，不能在代码块之中</li>
+</ol>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -8101,8 +8101,8 @@ style后面跟的是一个数组类型，多个值以，分割即可
 </ul>
 <p>情况二：如果需要同时传入某个参数，同时需要event时，可以通过$event传入事件。</p>
 <h3 id="v-on修饰符"><a href="#v-on修饰符" class="headerlink" title="v-on修饰符"></a>v-on修饰符</h3><ul>
-<li>.stop - 调用 event.stopPropagation()。阻止冒泡<a href="mailto:&#45;&#64;&#x63;&#x6c;&#105;&#99;&#x6b;&#x2e;&#x73;&#116;&#111;&#x70;">&#45;&#64;&#x63;&#x6c;&#105;&#99;&#x6b;&#x2e;&#x73;&#116;&#111;&#x70;</a></li>
-<li>.prevent - 调用 event.preventDefault()。阻止默认行为<a href="mailto:&#x2d;&#x40;&#x63;&#108;&#105;&#x63;&#107;&#46;&#x70;&#114;&#x65;&#118;&#x65;&#x6e;&#x74;">&#x2d;&#x40;&#x63;&#108;&#105;&#x63;&#107;&#46;&#x70;&#114;&#x65;&#118;&#x65;&#x6e;&#x74;</a></li>
+<li>.stop - 调用 event.stopPropagation()。阻止冒泡<a href="mailto:&#45;&#x40;&#x63;&#x6c;&#x69;&#99;&#x6b;&#x2e;&#115;&#x74;&#111;&#x70;">&#45;&#x40;&#x63;&#x6c;&#x69;&#99;&#x6b;&#x2e;&#115;&#x74;&#111;&#x70;</a></li>
+<li>.prevent - 调用 event.preventDefault()。阻止默认行为<a href="mailto:&#45;&#x40;&#99;&#x6c;&#x69;&#x63;&#x6b;&#46;&#x70;&#x72;&#x65;&#x76;&#x65;&#110;&#x74;">&#45;&#x40;&#99;&#x6c;&#x69;&#x63;&#x6b;&#46;&#x70;&#x72;&#x65;&#x76;&#x65;&#110;&#x74;</a></li>
 <li>.{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。</li>
 <li>.native - 监听组件根元素的原生事件。</li>
 <li>.once - 只触发一次回调。</li>
@@ -8469,7 +8469,7 @@ style后面跟的是一个数组类型，多个值以，分割即可
 <li>将子组件放入.vue文件中，将template模板、js文件都放入其中，在vue文件中还可以书写css样式<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004038.png" alt="img"></li>
 </ol>
 </li>
-<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#118;&#x75;&#x65;&#x2d;&#x6c;&#x6f;&#97;&#100;&#x65;&#114;&#64;&#x31;&#51;&#46;&#x30;&#46;&#48;">&#118;&#x75;&#x65;&#x2d;&#x6c;&#x6f;&#97;&#100;&#x65;&#114;&#64;&#x31;&#51;&#46;&#x30;&#46;&#48;</a> <a href="mailto:&#x76;&#117;&#101;&#x2d;&#x74;&#x65;&#x6d;&#x70;&#108;&#x61;&#x74;&#101;&#45;&#x63;&#111;&#109;&#112;&#105;&#x6c;&#x65;&#x72;&#x40;&#50;&#46;&#54;&#x2e;&#x31;&#x34;">&#x76;&#117;&#101;&#x2d;&#x74;&#x65;&#x6d;&#x70;&#108;&#x61;&#x74;&#101;&#45;&#x63;&#111;&#109;&#112;&#105;&#x6c;&#x65;&#x72;&#x40;&#50;&#46;&#54;&#x2e;&#x31;&#x34;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
+<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#118;&#x75;&#x65;&#45;&#108;&#x6f;&#97;&#100;&#x65;&#x72;&#x40;&#x31;&#x33;&#46;&#x30;&#x2e;&#48;">&#118;&#x75;&#x65;&#45;&#108;&#x6f;&#97;&#100;&#x65;&#x72;&#x40;&#x31;&#x33;&#46;&#x30;&#x2e;&#48;</a> <a href="mailto:&#x76;&#117;&#101;&#x2d;&#x74;&#x65;&#109;&#112;&#x6c;&#x61;&#x74;&#101;&#x2d;&#x63;&#x6f;&#109;&#112;&#105;&#x6c;&#101;&#x72;&#64;&#50;&#x2e;&#54;&#x2e;&#x31;&#x34;">&#x76;&#117;&#101;&#x2d;&#x74;&#x65;&#109;&#112;&#x6c;&#x61;&#x74;&#101;&#x2d;&#x63;&#x6f;&#109;&#112;&#105;&#x6c;&#101;&#x72;&#64;&#50;&#x2e;&#54;&#x2e;&#x31;&#x34;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
 </ol>
 <h3 id="打包html的plugin"><a href="#打包html的plugin" class="headerlink" title="打包html的plugin"></a>打包html的plugin</h3><ol>
 <li><p>目前，index.html文件是存放在项目根目录的</p>
@@ -9849,56 +9849,6 @@ export default &#123;
       </tags>
   </entry>
   <entry>
-    <title>本地存储</title>
-    <url>/2022/08/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/</url>
-    <content><![CDATA[<h1 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h1><ol>
-<li>随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，HTML5规范提出了相关解决方案</li>
-</ol>
-<h2 id="本地存储特性"><a href="#本地存储特性" class="headerlink" title="本地存储特性"></a>本地存储特性</h2><ol>
-<li>数据存储在用户浏览器中</li>
-<li>设置、读取方便、甚至页面刷新不失数据</li>
-<li>容量较大，sessionStorage约5M、localStorage约20M</li>
-<li>只能存储字符串，可以将对象JSON.stringify()编码后存储</li>
-</ol>
-<h2 id="sessionStorage和localStorage"><a href="#sessionStorage和localStorage" class="headerlink" title="sessionStorage和localStorage"></a>sessionStorage和localStorage</h2><h3 id="sessionStorage概述"><a href="#sessionStorage概述" class="headerlink" title="sessionStorage概述"></a>sessionStorage概述</h3><ol>
-<li>生命周期为关闭浏览器窗口</li>
-<li>在同一个窗口（页面）下数据可以共享</li>
-<li>以键值对的形式存储使用</li>
-</ol>
-<h3 id="sessionStorage方法（重点）"><a href="#sessionStorage方法（重点）" class="headerlink" title="sessionStorage方法（重点）"></a>sessionStorage方法（重点）</h3><ol>
-<li><p>存储数据：sessionStorage.setItem(key, value);</p>
-</li>
-<li><p>获取数据：sessionStorage.getItem(key);</p>
-</li>
-<li><p>删除数据：sessionStorage.removeItem(key);</p>
-</li>
-<li><p>删除所有数据：sessionStorage.clear();</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        console.log(localStorage.getItem(&#x27;uname&#x27;));</span><br><span class="line"></span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            sessionStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">            sessionStorage.setItem(&#x27;pwd&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = sessionStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="localStorage概述"><a href="#localStorage概述" class="headerlink" title="localStorage概述"></a>localStorage概述</h3><ol>
-<li>生命周期永久生效，除非手动删除，否则关闭页面也会存在</li>
-<li>可以多窗口（页面）共享（同一浏览器可以共享）</li>
-<li>以键值对的形式存储使用</li>
-</ol>
-<h3 id="localStorage方法（重点）"><a href="#localStorage方法（重点）" class="headerlink" title="localStorage方法（重点）"></a>localStorage方法（重点）</h3><ol>
-<li><p>存储数据：localStorage.setItem(key, value);</p>
-</li>
-<li><p>获取数据：localStorage.getItem(key);</p>
-</li>
-<li><p>删除数据：localStorage.removeItem(key);</p>
-</li>
-<li><p>删除所有数据：localStorage.clear();</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            localStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = localStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>响应式布局和Bootstrap</title>
     <url>/2022/08/01/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E5%92%8CBootstrap/</url>
     <content><![CDATA[<h1 id="响应式开发"><a href="#响应式开发" class="headerlink" title="响应式开发"></a>响应式开发</h1><h2 id="响应式开发布局原理"><a href="#响应式开发布局原理" class="headerlink" title="响应式开发布局原理"></a>响应式开发布局原理</h2><ol>
@@ -10169,6 +10119,56 @@ export default &#123;
       </categories>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>本地存储</title>
+    <url>/2022/08/01/%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/</url>
+    <content><![CDATA[<h1 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h1><ol>
+<li>随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，HTML5规范提出了相关解决方案</li>
+</ol>
+<h2 id="本地存储特性"><a href="#本地存储特性" class="headerlink" title="本地存储特性"></a>本地存储特性</h2><ol>
+<li>数据存储在用户浏览器中</li>
+<li>设置、读取方便、甚至页面刷新不失数据</li>
+<li>容量较大，sessionStorage约5M、localStorage约20M</li>
+<li>只能存储字符串，可以将对象JSON.stringify()编码后存储</li>
+</ol>
+<h2 id="sessionStorage和localStorage"><a href="#sessionStorage和localStorage" class="headerlink" title="sessionStorage和localStorage"></a>sessionStorage和localStorage</h2><h3 id="sessionStorage概述"><a href="#sessionStorage概述" class="headerlink" title="sessionStorage概述"></a>sessionStorage概述</h3><ol>
+<li>生命周期为关闭浏览器窗口</li>
+<li>在同一个窗口（页面）下数据可以共享</li>
+<li>以键值对的形式存储使用</li>
+</ol>
+<h3 id="sessionStorage方法（重点）"><a href="#sessionStorage方法（重点）" class="headerlink" title="sessionStorage方法（重点）"></a>sessionStorage方法（重点）</h3><ol>
+<li><p>存储数据：sessionStorage.setItem(key, value);</p>
+</li>
+<li><p>获取数据：sessionStorage.getItem(key);</p>
+</li>
+<li><p>删除数据：sessionStorage.removeItem(key);</p>
+</li>
+<li><p>删除所有数据：sessionStorage.clear();</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        console.log(localStorage.getItem(&#x27;uname&#x27;));</span><br><span class="line"></span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            sessionStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">            sessionStorage.setItem(&#x27;pwd&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = sessionStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="localStorage概述"><a href="#localStorage概述" class="headerlink" title="localStorage概述"></a>localStorage概述</h3><ol>
+<li>生命周期永久生效，除非手动删除，否则关闭页面也会存在</li>
+<li>可以多窗口（页面）共享（同一浏览器可以共享）</li>
+<li>以键值对的形式存储使用</li>
+</ol>
+<h3 id="localStorage方法（重点）"><a href="#localStorage方法（重点）" class="headerlink" title="localStorage方法（重点）"></a>localStorage方法（重点）</h3><ol>
+<li><p>存储数据：localStorage.setItem(key, value);</p>
+</li>
+<li><p>获取数据：localStorage.getItem(key);</p>
+</li>
+<li><p>删除数据：localStorage.removeItem(key);</p>
+</li>
+<li><p>删除所有数据：localStorage.clear();</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            localStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = localStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -10590,6 +10590,140 @@ export default &#123;
       </tags>
   </entry>
   <entry>
+    <title>移动端的基础和布局</title>
+    <url>/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%9F%BA%E7%A1%80%E5%92%8C%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h1 id="移动端基础"><a href="#移动端基础" class="headerlink" title="移动端基础"></a>移动端基础</h1><h3 id="移动端调试方法"><a href="#移动端调试方法" class="headerlink" title="移动端调试方法"></a>移动端调试方法</h3><ol>
+<li>Chrome DevTools (谷歌浏览器)的模拟手机调试</li>
+<li>搭建本地web服务器,手机和服务器个局域网内,通过手机访问服务器</li>
+<li>使用外网服务器,直接IP或域名访问</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>移动端浏览器我们主要对webkit内核进行兼容</li>
+<li>我们现在开发的移动端主要针对手机端开发</li>
+<li>现在移动端碎片化比较严重,分辨率和屏幕尺寸大小不一</li>
+<li>学会用谷歌浏览器模拟手机界面以及调试</li>
+</ol>
+<h2 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h2><ol>
+<li>视口（viewport）就是浏览器显示页面内容的屏幕区域。视口可以分为布局视口，视觉视口，理想视口</li>
+</ol>
+<h3 id="布局视口-layout-viewport"><a href="#布局视口-layout-viewport" class="headerlink" title="布局视口 layout viewport"></a>布局视口 layout viewport</h3><ol>
+<li>一般移动设备的浏览器都默认设置 了一个布局视口,用于解决早期的PC端页面在手机上显示的问题</li>
+<li>iOS, Android基本都将这个视口分辨率设置为980px ,所以PC上的网页大多都能在手机上呈现，只不过元素看上去很小，一般默认可以通过手动缩放网页</li>
+</ol>
+<h3 id="视觉视口-visual-viewport"><a href="#视觉视口-visual-viewport" class="headerlink" title="视觉视口 visual viewport"></a>视觉视口 visual viewport</h3><ol>
+<li>指用户正在看到的网站的区域，注意：是网站的区域</li>
+<li>可以通过缩放去操作视觉视口，但不会影响布局视口，布局视口仍保持原来的宽度</li>
+</ol>
+<h3 id="理想视口-ideal-viewport"><a href="#理想视口-ideal-viewport" class="headerlink" title="理想视口 ideal viewport"></a>理想视口 ideal viewport</h3><ol>
+<li>为了使网站在移动端有最理想的浏览和阅读宽度而设定</li>
+<li>理想视口,对设备来讲,是最理想的视口尺寸</li>
+<li>需要手动添写meta视口标签通知浏览器操作</li>
+<li>meta视口标签的主要目的:布局视口的宽度应该与理想视口的宽度一致,简单理解就是设备有多宽,我们布局的视口就多宽</li>
+</ol>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>视口就是浏览器显示页面内容的屏幕区域</li>
+<li>视口分为布局视口、视觉视口和理想视口</li>
+<li>移动端布局想要的是理想视口就是手机屏幕有多宽,我们的布局视口就有多宽想要理想视口</li>
+<li>需要给我们的移动端页面添加meta视口标签</li>
+</ol>
+<h2 id="meta视口标签"><a href="#meta视口标签" class="headerlink" title="meta视口标签"></a>meta视口标签</h2><h3 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h3><ol>
+<li><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   | 属性          | 解释说明                                             |</span><br><span class="line">   | ------------- | ---------------------------------------------------- |</span><br><span class="line">   | width         | 宽度设置的是viewport宽度，可以设置device-width特殊值 |</span><br><span class="line">   | user-scalable | 用户是否可以缩放，yes或no（1或0）                    |</span><br><span class="line">   | initial-scale | 初始缩放比，大于0的数字                              |</span><br><span class="line">   | maximum-scale | 最大缩放比，大于0的数字                              |</span><br><span class="line">   | minimum-scale | 最小缩放比，大于0的数字                              |</span><br><span class="line"></span><br><span class="line">### 标准viewport设置</span><br><span class="line"></span><br><span class="line">1. 视口宽度和设备保持一致</span><br><span class="line">2. 视口的默认缩放比例1.0</span><br><span class="line">3. 不允许用户自行缩放</span><br><span class="line">4. 最大允许的缩放比例1.0</span><br><span class="line">5. 最小允许的缩放比例1.0</span><br><span class="line"></span><br><span class="line">## 二倍图</span><br><span class="line"></span><br><span class="line">### 物理像素和物理像素比</span><br><span class="line"></span><br><span class="line">1. 物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的。这是厂商在出厂时就设置好的</span><br><span class="line">2. 我们开发时候的1px不是一定等于1个物理像素的</span><br><span class="line">3. PC端页面，1个px等于1个物理像素的，但是移动端就不尽相同</span><br><span class="line">4. 一个px的能显示的物理像素点的个数，称为物理像素比或屏幕像素比</span><br><span class="line">5. PC端和早前的手机屏幕/普通手机屏幕: 1CSS像素= 1 物理像素的</span><br><span class="line">6. Retina (视网膜屏幕)是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里，从而达到更高的分辨率，并提高屏幕显示的细腻程度</span><br><span class="line"></span><br><span class="line">### 背景缩放 background-size</span><br><span class="line"></span><br><span class="line">1. background-size: 背景图片宽度 背景图片高度；</span><br><span class="line"></span><br><span class="line">   1. 单位：长度 | 百分比 | cover | contain</span><br><span class="line"></span><br><span class="line">   2. cover把背景图片扩展至足够大，使背景图像完全覆盖背景区域</span><br><span class="line"></span><br><span class="line">   3. contain把图像扩展至最大尺寸，使其宽度和高度完全适应内容区域</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+   &lt;head&gt;
+       &lt;meta charset=&quot;UTF-8&quot;&gt;
+       &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+       &lt;meta name=&quot;viewport&quot;
+           content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;&gt;
+       &lt;title&gt;Document&lt;/title&gt;
+       &lt;style&gt;
+           div &#123;
+               width: 400px;
+               height: 400px;
+               border: 2px solid pink;
+               background: url(../images/dog.jpg) no-repeat;
+               /* 
+               1.单位：长度  若只写一个参数，则为省略高度，会进行等比缩放
+               background-size: 400px 400px;
+               background-size: 400px;
+               */
+   
+               /* 
+               2.单位：百分比 相对于父盒子的百分比 
+               background-size: 50%;
+               */
+   
+               /* 
+               3.单位：cover 等比例拉伸 要完全覆盖div盒子 可能有部分背景图片显示不完全 
+               background-size: cover;
+               */
+   
+               /*
+               4.单位： contain 高度和宽度等比例拉伸，当宽度或者高度铺满div盒子就不再进行拉伸 可能有部分空白区域*/
+               background-size: contain;
+           &#125;
+       &lt;/style&gt;
+   &lt;/head&gt;
+</code></pre>
+</li>
+</ol>
+<h1 id="移动端开发"><a href="#移动端开发" class="headerlink" title="移动端开发"></a>移动端开发</h1><h2 id="移动端开发选择"><a href="#移动端开发选择" class="headerlink" title="移动端开发选择"></a>移动端开发选择</h2><h3 id="单独移动端页面（主流）"><a href="#单独移动端页面（主流）" class="headerlink" title="单独移动端页面（主流）"></a>单独移动端页面（主流）</h3><ol>
+<li>通常情况下，网址域名前面加m（mobile）可以打开移动端。通过判断设备，如果是移动设备打开，则跳到移动端页面<ol>
+<li>流式布局（百分比布局）</li>
+<li>flex弹性布局（强烈推荐）</li>
+<li>less + rem + 媒体查询布局</li>
+<li>混合布局</li>
+</ol>
+</li>
+</ol>
+<h3 id="响应式兼容PC移动端"><a href="#响应式兼容PC移动端" class="headerlink" title="响应式兼容PC移动端"></a>响应式兼容PC移动端</h3><ol>
+<li>通过判断屏幕的宽度来改变样式，以适应不同终端</li>
+<li>缺点：制作麻烦，需要花很大精力去调兼容性问题<ol>
+<li>媒体查询</li>
+<li>bootstarp</li>
+</ol>
+</li>
+</ol>
+<h2 id="移动端技术解决方案"><a href="#移动端技术解决方案" class="headerlink" title="移动端技术解决方案"></a>移动端技术解决方案</h2><h3 id="CSS3盒子模型"><a href="#CSS3盒子模型" class="headerlink" title="CSS3盒子模型"></a>CSS3盒子模型</h3><ol>
+<li>CSS3中的盒子模型，padding和border不会撑大盒子<ul>
+<li>box-sizing: border-box;</li>
+</ul>
+</li>
+<li>传统盒子模型(默认不写)<ul>
+<li>box-sizing： content-box；</li>
+</ul>
+</li>
+</ol>
+<h3 id="如何选择使用"><a href="#如何选择使用" class="headerlink" title="如何选择使用"></a>如何选择使用</h3><ol>
+<li>移动端可以全部使用CSS3盒子模型</li>
+<li>PC端如果需要兼容，就使用传统模式，不考虑兼容性则选择CSS3盒子模型</li>
+</ol>
+<h3 id="特殊样式（重点）"><a href="#特殊样式（重点）" class="headerlink" title="特殊样式（重点）"></a>特殊样式（重点）</h3><ol>
+<li>CSS3盒子模型<ul>
+<li>-webkit-box-sizing: border-box;</li>
+</ul>
+</li>
+<li>点击高亮我们需要进行清除 设置为transparent 完成透明<ul>
+<li>*{-webket-tap-highlight-color: transparent;}</li>
+</ul>
+</li>
+<li>在移动端浏览器默认的外观在ios上加上这个属性才能给按钮和输入框自定义样式<ul>
+<li>input {-webkit-appearance: none;}</li>
+</ul>
+</li>
+<li>禁用长按页面时的弹出菜单<ul>
+<li>img, a {-webkit-touch-callout: none;}</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>移动端的网页特效</title>
     <url>/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/</url>
     <content><![CDATA[<h1 id="触屏事件"><a href="#触屏事件" class="headerlink" title="触屏事件"></a>触屏事件</h1><h2 id="触屏事件概述"><a href="#触屏事件概述" class="headerlink" title="触屏事件概述"></a>触屏事件概述</h2><ol>
@@ -10814,140 +10948,6 @@ export default &#123;
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>移动端的基础和布局</title>
-    <url>/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E5%9F%BA%E7%A1%80%E5%92%8C%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<h1 id="移动端基础"><a href="#移动端基础" class="headerlink" title="移动端基础"></a>移动端基础</h1><h3 id="移动端调试方法"><a href="#移动端调试方法" class="headerlink" title="移动端调试方法"></a>移动端调试方法</h3><ol>
-<li>Chrome DevTools (谷歌浏览器)的模拟手机调试</li>
-<li>搭建本地web服务器,手机和服务器个局域网内,通过手机访问服务器</li>
-<li>使用外网服务器,直接IP或域名访问</li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>移动端浏览器我们主要对webkit内核进行兼容</li>
-<li>我们现在开发的移动端主要针对手机端开发</li>
-<li>现在移动端碎片化比较严重,分辨率和屏幕尺寸大小不一</li>
-<li>学会用谷歌浏览器模拟手机界面以及调试</li>
-</ol>
-<h2 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h2><ol>
-<li>视口（viewport）就是浏览器显示页面内容的屏幕区域。视口可以分为布局视口，视觉视口，理想视口</li>
-</ol>
-<h3 id="布局视口-layout-viewport"><a href="#布局视口-layout-viewport" class="headerlink" title="布局视口 layout viewport"></a>布局视口 layout viewport</h3><ol>
-<li>一般移动设备的浏览器都默认设置 了一个布局视口,用于解决早期的PC端页面在手机上显示的问题</li>
-<li>iOS, Android基本都将这个视口分辨率设置为980px ,所以PC上的网页大多都能在手机上呈现，只不过元素看上去很小，一般默认可以通过手动缩放网页</li>
-</ol>
-<h3 id="视觉视口-visual-viewport"><a href="#视觉视口-visual-viewport" class="headerlink" title="视觉视口 visual viewport"></a>视觉视口 visual viewport</h3><ol>
-<li>指用户正在看到的网站的区域，注意：是网站的区域</li>
-<li>可以通过缩放去操作视觉视口，但不会影响布局视口，布局视口仍保持原来的宽度</li>
-</ol>
-<h3 id="理想视口-ideal-viewport"><a href="#理想视口-ideal-viewport" class="headerlink" title="理想视口 ideal viewport"></a>理想视口 ideal viewport</h3><ol>
-<li>为了使网站在移动端有最理想的浏览和阅读宽度而设定</li>
-<li>理想视口,对设备来讲,是最理想的视口尺寸</li>
-<li>需要手动添写meta视口标签通知浏览器操作</li>
-<li>meta视口标签的主要目的:布局视口的宽度应该与理想视口的宽度一致,简单理解就是设备有多宽,我们布局的视口就多宽</li>
-</ol>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ol>
-<li>视口就是浏览器显示页面内容的屏幕区域</li>
-<li>视口分为布局视口、视觉视口和理想视口</li>
-<li>移动端布局想要的是理想视口就是手机屏幕有多宽,我们的布局视口就有多宽想要理想视口</li>
-<li>需要给我们的移动端页面添加meta视口标签</li>
-</ol>
-<h2 id="meta视口标签"><a href="#meta视口标签" class="headerlink" title="meta视口标签"></a>meta视口标签</h2><h3 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h3><ol>
-<li><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">   | 属性          | 解释说明                                             |</span><br><span class="line">   | ------------- | ---------------------------------------------------- |</span><br><span class="line">   | width         | 宽度设置的是viewport宽度，可以设置device-width特殊值 |</span><br><span class="line">   | user-scalable | 用户是否可以缩放，yes或no（1或0）                    |</span><br><span class="line">   | initial-scale | 初始缩放比，大于0的数字                              |</span><br><span class="line">   | maximum-scale | 最大缩放比，大于0的数字                              |</span><br><span class="line">   | minimum-scale | 最小缩放比，大于0的数字                              |</span><br><span class="line"></span><br><span class="line">### 标准viewport设置</span><br><span class="line"></span><br><span class="line">1. 视口宽度和设备保持一致</span><br><span class="line">2. 视口的默认缩放比例1.0</span><br><span class="line">3. 不允许用户自行缩放</span><br><span class="line">4. 最大允许的缩放比例1.0</span><br><span class="line">5. 最小允许的缩放比例1.0</span><br><span class="line"></span><br><span class="line">## 二倍图</span><br><span class="line"></span><br><span class="line">### 物理像素和物理像素比</span><br><span class="line"></span><br><span class="line">1. 物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的。这是厂商在出厂时就设置好的</span><br><span class="line">2. 我们开发时候的1px不是一定等于1个物理像素的</span><br><span class="line">3. PC端页面，1个px等于1个物理像素的，但是移动端就不尽相同</span><br><span class="line">4. 一个px的能显示的物理像素点的个数，称为物理像素比或屏幕像素比</span><br><span class="line">5. PC端和早前的手机屏幕/普通手机屏幕: 1CSS像素= 1 物理像素的</span><br><span class="line">6. Retina (视网膜屏幕)是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里，从而达到更高的分辨率，并提高屏幕显示的细腻程度</span><br><span class="line"></span><br><span class="line">### 背景缩放 background-size</span><br><span class="line"></span><br><span class="line">1. background-size: 背景图片宽度 背景图片高度；</span><br><span class="line"></span><br><span class="line">   1. 单位：长度 | 百分比 | cover | contain</span><br><span class="line"></span><br><span class="line">   2. cover把背景图片扩展至足够大，使背景图像完全覆盖背景区域</span><br><span class="line"></span><br><span class="line">   3. contain把图像扩展至最大尺寸，使其宽度和高度完全适应内容区域</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-   &lt;head&gt;
-       &lt;meta charset=&quot;UTF-8&quot;&gt;
-       &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
-       &lt;meta name=&quot;viewport&quot;
-           content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no&quot;&gt;
-       &lt;title&gt;Document&lt;/title&gt;
-       &lt;style&gt;
-           div &#123;
-               width: 400px;
-               height: 400px;
-               border: 2px solid pink;
-               background: url(../images/dog.jpg) no-repeat;
-               /* 
-               1.单位：长度  若只写一个参数，则为省略高度，会进行等比缩放
-               background-size: 400px 400px;
-               background-size: 400px;
-               */
-   
-               /* 
-               2.单位：百分比 相对于父盒子的百分比 
-               background-size: 50%;
-               */
-   
-               /* 
-               3.单位：cover 等比例拉伸 要完全覆盖div盒子 可能有部分背景图片显示不完全 
-               background-size: cover;
-               */
-   
-               /*
-               4.单位： contain 高度和宽度等比例拉伸，当宽度或者高度铺满div盒子就不再进行拉伸 可能有部分空白区域*/
-               background-size: contain;
-           &#125;
-       &lt;/style&gt;
-   &lt;/head&gt;
-</code></pre>
-</li>
-</ol>
-<h1 id="移动端开发"><a href="#移动端开发" class="headerlink" title="移动端开发"></a>移动端开发</h1><h2 id="移动端开发选择"><a href="#移动端开发选择" class="headerlink" title="移动端开发选择"></a>移动端开发选择</h2><h3 id="单独移动端页面（主流）"><a href="#单独移动端页面（主流）" class="headerlink" title="单独移动端页面（主流）"></a>单独移动端页面（主流）</h3><ol>
-<li>通常情况下，网址域名前面加m（mobile）可以打开移动端。通过判断设备，如果是移动设备打开，则跳到移动端页面<ol>
-<li>流式布局（百分比布局）</li>
-<li>flex弹性布局（强烈推荐）</li>
-<li>less + rem + 媒体查询布局</li>
-<li>混合布局</li>
-</ol>
-</li>
-</ol>
-<h3 id="响应式兼容PC移动端"><a href="#响应式兼容PC移动端" class="headerlink" title="响应式兼容PC移动端"></a>响应式兼容PC移动端</h3><ol>
-<li>通过判断屏幕的宽度来改变样式，以适应不同终端</li>
-<li>缺点：制作麻烦，需要花很大精力去调兼容性问题<ol>
-<li>媒体查询</li>
-<li>bootstarp</li>
-</ol>
-</li>
-</ol>
-<h2 id="移动端技术解决方案"><a href="#移动端技术解决方案" class="headerlink" title="移动端技术解决方案"></a>移动端技术解决方案</h2><h3 id="CSS3盒子模型"><a href="#CSS3盒子模型" class="headerlink" title="CSS3盒子模型"></a>CSS3盒子模型</h3><ol>
-<li>CSS3中的盒子模型，padding和border不会撑大盒子<ul>
-<li>box-sizing: border-box;</li>
-</ul>
-</li>
-<li>传统盒子模型(默认不写)<ul>
-<li>box-sizing： content-box；</li>
-</ul>
-</li>
-</ol>
-<h3 id="如何选择使用"><a href="#如何选择使用" class="headerlink" title="如何选择使用"></a>如何选择使用</h3><ol>
-<li>移动端可以全部使用CSS3盒子模型</li>
-<li>PC端如果需要兼容，就使用传统模式，不考虑兼容性则选择CSS3盒子模型</li>
-</ol>
-<h3 id="特殊样式（重点）"><a href="#特殊样式（重点）" class="headerlink" title="特殊样式（重点）"></a>特殊样式（重点）</h3><ol>
-<li>CSS3盒子模型<ul>
-<li>-webkit-box-sizing: border-box;</li>
-</ul>
-</li>
-<li>点击高亮我们需要进行清除 设置为transparent 完成透明<ul>
-<li>*{-webket-tap-highlight-color: transparent;}</li>
-</ul>
-</li>
-<li>在移动端浏览器默认的外观在ios上加上这个属性才能给按钮和输入框自定义样式<ul>
-<li>input {-webkit-appearance: none;}</li>
-</ul>
-</li>
-<li>禁用长按页面时的弹出菜单<ul>
-<li>img, a {-webkit-touch-callout: none;}</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
