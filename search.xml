@@ -604,364 +604,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS三大特性、盒子模型和其他样式</title>
-    <url>/2022/08/01/CSS%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E3%80%81%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%B7%E5%BC%8F/</url>
-    <content><![CDATA[<h1 id="CSS三大特性"><a href="#CSS三大特性" class="headerlink" title="CSS三大特性"></a>CSS三大特性</h1><h2 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h2><ol>
-<li>相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题</li>
-<li>层叠性原则:<ol>
-<li>样式冲突，遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式</li>
-<li>样式不冲突，不会层叠</li>
-</ol>
-</li>
-</ol>
-<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
-<li><p>CSS中的继承: 子标签会继承父标签的某些样式，如文本颜色和字号。恰当地使用继承可以简化代码，降低 CSS 样式的复杂性。</p>
-</li>
-<li><p>子元素可以继承父元素的样式：（text-，font-，line-这些元素开头的可以继承，以及color属性）</p>
-</li>
-<li><p>行高的继承性：</p>
-<ol>
-<li>代码</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> font:12px/1.5 Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>行高可以跟单位也可以不跟单位</li>
-<li>如果子元素没有设置行高，则会继承父元素的行高为 1.5</li>
-<li>此时子元素的行高是：当前子元素的文字大小 * 1.5</li>
-<li>body行高1.5这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高</li>
-</ol>
-</li>
-</ol>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>当同一个元素指定多个选择器，就会有优先级的产生。</p>
-<ul>
-<li>选择器相同，则执行层叠性</li>
-<li>选择器不同，则根据选择器权重执行</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>选择器权重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>继承或*</td>
-<td>0,0,0,0</td>
-</tr>
-<tr>
-<td>元素选择器</td>
-<td>0,0,0,1</td>
-</tr>
-<tr>
-<td>类选择器</td>
-<td>伪类选择器 0,0,1,0</td>
-</tr>
-<tr>
-<td>ID选择器</td>
-<td>0,1,0,0</td>
-</tr>
-<tr>
-<td>行内样式</td>
-<td>style&#x3D;”” 1,0,0,0</td>
-</tr>
-<tr>
-<td>!important</td>
-<td>重要的 无穷大</td>
-</tr>
-</tbody></table>
-<h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><ol>
-<li><p>权重是有4组数字组成,但是不会有进位。</p>
-</li>
-<li><p>可以理解为类选择器永远大于元素选择器, id选择器永远大于类选择器,以此类推..</p>
-</li>
-<li><p>等级判断从左向右，如果某一位数值相同，则判断下一位数值。</p>
-</li>
-<li><p>可以简单记忆法:  通配符和继承权重为0, 标签选择器为1,类(伪类)选择器为 10, id选择器 100, 行内样式表为 1000, !important 无穷大.</p>
-</li>
-<li><p>继承的权重是0， 如果该元素没有直接选中，不管父元素权重多高，子元素得到的权重都是 0。</p>
-</li>
-</ol>
-<h3 id="权重的叠加"><a href="#权重的叠加" class="headerlink" title="权重的叠加"></a>权重的叠加</h3><ol>
-<li>权重叠加：如果是复合选择器，则会有权重叠加，需要计算权重。</li>
-<li>计算</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>复合选择器</th>
-<th>权重</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>div ul li</td>
-<td>0,0,0,3</td>
-</tr>
-<tr>
-<td>.nav ul li</td>
-<td>0,0,1,2</td>
-</tr>
-<tr>
-<td>a:hover</td>
-<td>0,0,1,1</td>
-</tr>
-<tr>
-<td>.nav a</td>
-<td>0,0,1,1</td>
-</tr>
-</tbody></table>
-<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="网页布局的本质"><a href="#网页布局的本质" class="headerlink" title="网页布局的本质"></a>网页布局的本质</h2><ol>
-<li>网页布局的核心本质： 就是利用 CSS 摆盒子。</li>
-<li>网页布局过程：<ol>
-<li>先准备好相关的网页元素，网页元素基本都是盒子 Box 。</li>
-<li>利用 CSS 设置好盒子样式，然后摆放到相应位置。</li>
-<li>往盒子里面装内容</li>
-</ol>
-</li>
-</ol>
-<h2 id="盒子模型（Box-Model）组成"><a href="#盒子模型（Box-Model）组成" class="headerlink" title="盒子模型（Box Model）组成"></a>盒子模型（Box Model）组成</h2><ol>
-<li>盒子模型：把 HTML 页面中的布局元素看作是一个矩形的盒子，也就是一个盛装内容的容器。</li>
-<li>CSS 盒子模型本质上是一个盒子，封装周围的 HTML 元素，它包括：<strong>边框</strong>、<strong>外边距</strong>、<strong>内边距</strong>、和 <strong>实际内容</strong></li>
-</ol>
-<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><ol>
-<li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border : border-width || border-style || border-color;   </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>边框样式 border-style 可以设置如下值：</p>
-<ol>
-<li>none：没有边框即忽略所有边框的宽度（默认值）</li>
-<li>solid：边框为单实线(最为常用的)</li>
-<li>dashed：边框为虚线  </li>
-<li>dotted：边框为点线</li>
-</ol>
-</li>
-<li><p>边框的合写分写</p>
-<ol>
-<li>边框简写：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border: 1px solid red;  </span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>边框分开写法：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-top: 1px solid red;  /* 只设定上边框， 其余同理 */   </span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
-<li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-collapse:collapse; </span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
-<h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
-<li>边框会额外增加盒子的实际大小。有两种方案解决：<ol>
-<li>测量盒子大小的时候,不量边框。</li>
-<li>如果测量的时候包含了边框,则需要 width&#x2F;height 减去边框宽度</li>
-</ol>
-</li>
-</ol>
-<h2 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h2><ol>
-<li><p>padding 属性用于设置内边距，即边框与内容之间的距离。</p>
-</li>
-<li><p>语法：</p>
-<ol>
-<li><p>padding：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding: 20px;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding-top（上）</span><br><span class="line">padding-bottom（下）</span><br><span class="line">padding-left（左）</span><br><span class="line">padding-right（右）</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h3 id="padding的复合属性"><a href="#padding的复合属性" class="headerlink" title="padding的复合属性"></a>padding的复合属性</h3><ol>
-<li>padding属性（简写属性）可以右一到四个值</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>值的个数</th>
-<th>表达意思</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>padding:5px</td>
-<td>1个值，代表上下左右都有5px像素内边距</td>
-</tr>
-<tr>
-<td>padding:5px 10px</td>
-<td>2个值，代表上下内边距是5像素左右内边距是10像素</td>
-</tr>
-<tr>
-<td>padding:5px 10px 20px</td>
-<td>代表上内边距5像素左右内边距10像素下内边距20像素</td>
-</tr>
-<tr>
-<td>padding:5px 10px 20px 30px</td>
-<td>上是5像素右10像素下20像素左是30像素 顺时针</td>
-</tr>
-</tbody></table>
-<h2 id="内边距会影响盒子实际大小"><a href="#内边距会影响盒子实际大小" class="headerlink" title="内边距会影响盒子实际大小"></a>内边距会影响盒子实际大小</h2><ol>
-<li><p>当我们给盒子指定 padding 值之后，发生了 2 件事情：</p>
-<ol>
-<li>内容和边框有了距离，添加了内边距。</li>
-<li>padding影响了盒子实际大小。</li>
-</ol>
-</li>
-<li><p>内边距对盒子大小的影响：</p>
-<ol>
-<li>如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子。</li>
-<li>如何盒子本身没有指定width&#x2F;height属性, 则此时padding不会撑开盒子大小。</li>
-</ol>
-</li>
-<li><p>解决方案：</p>
-<ol>
-<li>如果保证盒子跟效果图大小保持一致，则让 width&#x2F;height 减去多出来的内边距大小即可。</li>
-</ol>
-</li>
-</ol>
-<h2 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h2><ol>
-<li><p>margin 属性用于设置外边距，即控制盒子和盒子之间的距离。</p>
-</li>
-<li><p>语法：</p>
-<ol>
-<li><p>margin：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin: 20px;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-top（上）</span><br><span class="line">margin-bottom（下）</span><br><span class="line">margin-left（左）</span><br><span class="line">margin-right（右）</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<h2 id="外边距典型应用"><a href="#外边距典型应用" class="headerlink" title="外边距典型应用"></a>外边距典型应用</h2><ol>
-<li><p>外边距可以让块级盒子水平居中的两个条件：</p>
-<ol>
-<li>盒子必须指定了宽度（width）</li>
-<li>盒子左右的外边距都设置为 auto</li>
-</ol>
-</li>
-<li><p>常见的写法有三种：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-left: auto;   margin-right: auto;</span><br><span class="line">margin: auto;</span><br><span class="line">margin: 0 auto;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
-</li>
-</ol>
-<h2 id="嵌套块元素垂直外边距的塌陷"><a href="#嵌套块元素垂直外边距的塌陷" class="headerlink" title="嵌套块元素垂直外边距的塌陷"></a>嵌套块元素垂直外边距的塌陷</h2><ol>
-<li><p>对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。</p>
-</li>
-<li><p>解决方案：</p>
-<ol>
-<li>可以为父元素定义上边框。</li>
-<li>可以为父元素定义上内边距。</li>
-<li>可以为父元素添加 overflow:hidden。</li>
-</ol>
-</li>
-</ol>
-<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><ol>
-<li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
-</li>
-<li><p>语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  padding:0;   /* 清除内边距 */</span><br><span class="line">  margin:0;    /* 清除外边距 */</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
-</li>
-</ol>
-<h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-radius:length;    </span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>参数值可以为数值或百分比的形式</li>
-<li>如果是正方形想要设置为一个圆就把数值修改为高度或者宽度的一半，或者直接写为 50%</li>
-<li>该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角</li>
-<li>分开写：border-top-left-radius、border-top-right-radius、border-bottom-right-radius 和border-bottom-left-radius</li>
-</ol>
-</li>
-</ol>
-<h3 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h3><ol>
-<li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>属性</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>h-shadow</td>
-<td>必需水平阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>v-shadow</td>
-<td>必需垂直阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>可选模糊距离（阴影实虚）</td>
-</tr>
-<tr>
-<td>spread</td>
-<td>可选阴影的尺寸（阴影大小）</td>
-</tr>
-<tr>
-<td>color</td>
-<td>可选阴影的颜色，参阅CSS颜色值</td>
-</tr>
-<tr>
-<td>inset</td>
-<td>可选将外部阴影（outset）改为内部阴影</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><ol>
-<li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
-</li>
-<li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>属性</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>h-shadow</td>
-<td>必需水平阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>v-shadow</td>
-<td>必需垂直阴影的位置，允许负值</td>
-</tr>
-<tr>
-<td>blur</td>
-<td>可选模糊距离（阴影实虚）</td>
-</tr>
-<tr>
-<td>color</td>
-<td>可选阴影颜色，参阅CSS颜色值</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS3和HTML5的新特性</title>
     <url>/2022/08/01/CSS3%E5%92%8CHTML5%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[<h1 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h1><h2 id="CSS初始化"><a href="#CSS初始化" class="headerlink" title="CSS初始化"></a>CSS初始化</h2><ol>
@@ -1681,6 +1323,364 @@
 </li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">body &#123;</span><br><span class="line">    perspective: 300px;</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    margin: 100px auto;</span><br><span class="line">    transition: all 1s;</span><br><span class="line">    /* 代码写给父级，但是影响的是子盒子 */</span><br><span class="line">    transform-style: preserve-3d;</span><br><span class="line">&#125;</span><br><span class="line">.box:hover &#123;</span><br><span class="line">    transform: rotateY(60deg);</span><br><span class="line">&#125;</span><br><span class="line">.box div &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.one &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">.two &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">    transform: rotateX(60deg);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;one&quot;&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;two&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS三大特性、盒子模型和其他样式</title>
+    <url>/2022/08/01/CSS%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E3%80%81%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E6%A0%B7%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="CSS三大特性"><a href="#CSS三大特性" class="headerlink" title="CSS三大特性"></a>CSS三大特性</h1><h2 id="层叠性"><a href="#层叠性" class="headerlink" title="层叠性"></a>层叠性</h2><ol>
+<li>相同选择器给设置相同的样式，此时一个样式就会覆盖（层叠）另一个冲突的样式。层叠性主要解决样式冲突的问题</li>
+<li>层叠性原则:<ol>
+<li>样式冲突，遵循的原则是就近原则，哪个样式离结构近，就执行哪个样式</li>
+<li>样式不冲突，不会层叠</li>
+</ol>
+</li>
+</ol>
+<h2 id="继承性"><a href="#继承性" class="headerlink" title="继承性"></a>继承性</h2><ol>
+<li><p>CSS中的继承: 子标签会继承父标签的某些样式，如文本颜色和字号。恰当地使用继承可以简化代码，降低 CSS 样式的复杂性。</p>
+</li>
+<li><p>子元素可以继承父元素的样式：（text-，font-，line-这些元素开头的可以继承，以及color属性）</p>
+</li>
+<li><p>行高的继承性：</p>
+<ol>
+<li>代码</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> font:12px/1.5 Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>行高可以跟单位也可以不跟单位</li>
+<li>如果子元素没有设置行高，则会继承父元素的行高为 1.5</li>
+<li>此时子元素的行高是：当前子元素的文字大小 * 1.5</li>
+<li>body行高1.5这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高</li>
+</ol>
+</li>
+</ol>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>当同一个元素指定多个选择器，就会有优先级的产生。</p>
+<ul>
+<li>选择器相同，则执行层叠性</li>
+<li>选择器不同，则根据选择器权重执行</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>选择器权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>继承或*</td>
+<td>0,0,0,0</td>
+</tr>
+<tr>
+<td>元素选择器</td>
+<td>0,0,0,1</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>伪类选择器 0,0,1,0</td>
+</tr>
+<tr>
+<td>ID选择器</td>
+<td>0,1,0,0</td>
+</tr>
+<tr>
+<td>行内样式</td>
+<td>style&#x3D;”” 1,0,0,0</td>
+</tr>
+<tr>
+<td>!important</td>
+<td>重要的 无穷大</td>
+</tr>
+</tbody></table>
+<h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><ol>
+<li><p>权重是有4组数字组成,但是不会有进位。</p>
+</li>
+<li><p>可以理解为类选择器永远大于元素选择器, id选择器永远大于类选择器,以此类推..</p>
+</li>
+<li><p>等级判断从左向右，如果某一位数值相同，则判断下一位数值。</p>
+</li>
+<li><p>可以简单记忆法:  通配符和继承权重为0, 标签选择器为1,类(伪类)选择器为 10, id选择器 100, 行内样式表为 1000, !important 无穷大.</p>
+</li>
+<li><p>继承的权重是0， 如果该元素没有直接选中，不管父元素权重多高，子元素得到的权重都是 0。</p>
+</li>
+</ol>
+<h3 id="权重的叠加"><a href="#权重的叠加" class="headerlink" title="权重的叠加"></a>权重的叠加</h3><ol>
+<li>权重叠加：如果是复合选择器，则会有权重叠加，需要计算权重。</li>
+<li>计算</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>复合选择器</th>
+<th>权重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>div ul li</td>
+<td>0,0,0,3</td>
+</tr>
+<tr>
+<td>.nav ul li</td>
+<td>0,0,1,2</td>
+</tr>
+<tr>
+<td>a:hover</td>
+<td>0,0,1,1</td>
+</tr>
+<tr>
+<td>.nav a</td>
+<td>0,0,1,1</td>
+</tr>
+</tbody></table>
+<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><h2 id="网页布局的本质"><a href="#网页布局的本质" class="headerlink" title="网页布局的本质"></a>网页布局的本质</h2><ol>
+<li>网页布局的核心本质： 就是利用 CSS 摆盒子。</li>
+<li>网页布局过程：<ol>
+<li>先准备好相关的网页元素，网页元素基本都是盒子 Box 。</li>
+<li>利用 CSS 设置好盒子样式，然后摆放到相应位置。</li>
+<li>往盒子里面装内容</li>
+</ol>
+</li>
+</ol>
+<h2 id="盒子模型（Box-Model）组成"><a href="#盒子模型（Box-Model）组成" class="headerlink" title="盒子模型（Box Model）组成"></a>盒子模型（Box Model）组成</h2><ol>
+<li>盒子模型：把 HTML 页面中的布局元素看作是一个矩形的盒子，也就是一个盛装内容的容器。</li>
+<li>CSS 盒子模型本质上是一个盒子，封装周围的 HTML 元素，它包括：<strong>边框</strong>、<strong>外边距</strong>、<strong>内边距</strong>、和 <strong>实际内容</strong></li>
+</ol>
+<h2 id="边框（border）"><a href="#边框（border）" class="headerlink" title="边框（border）"></a>边框（border）</h2><ol>
+<li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border : border-width || border-style || border-color;   </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>边框样式 border-style 可以设置如下值：</p>
+<ol>
+<li>none：没有边框即忽略所有边框的宽度（默认值）</li>
+<li>solid：边框为单实线(最为常用的)</li>
+<li>dashed：边框为虚线  </li>
+<li>dotted：边框为点线</li>
+</ol>
+</li>
+<li><p>边框的合写分写</p>
+<ol>
+<li>边框简写：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border: 1px solid red;  </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>边框分开写法：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-top: 1px solid red;  /* 只设定上边框， 其余同理 */   </span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
+<li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-collapse:collapse; </span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
+<h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
+<li>边框会额外增加盒子的实际大小。有两种方案解决：<ol>
+<li>测量盒子大小的时候,不量边框。</li>
+<li>如果测量的时候包含了边框,则需要 width&#x2F;height 减去边框宽度</li>
+</ol>
+</li>
+</ol>
+<h2 id="内边距（padding）"><a href="#内边距（padding）" class="headerlink" title="内边距（padding）"></a>内边距（padding）</h2><ol>
+<li><p>padding 属性用于设置内边距，即边框与内容之间的距离。</p>
+</li>
+<li><p>语法：</p>
+<ol>
+<li><p>padding：上下左右四边距统一设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding: 20px;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各边距分别设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">padding-top（上）</span><br><span class="line">padding-bottom（下）</span><br><span class="line">padding-left（左）</span><br><span class="line">padding-right（右）</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h3 id="padding的复合属性"><a href="#padding的复合属性" class="headerlink" title="padding的复合属性"></a>padding的复合属性</h3><ol>
+<li>padding属性（简写属性）可以右一到四个值</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>值的个数</th>
+<th>表达意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>padding:5px</td>
+<td>1个值，代表上下左右都有5px像素内边距</td>
+</tr>
+<tr>
+<td>padding:5px 10px</td>
+<td>2个值，代表上下内边距是5像素左右内边距是10像素</td>
+</tr>
+<tr>
+<td>padding:5px 10px 20px</td>
+<td>代表上内边距5像素左右内边距10像素下内边距20像素</td>
+</tr>
+<tr>
+<td>padding:5px 10px 20px 30px</td>
+<td>上是5像素右10像素下20像素左是30像素 顺时针</td>
+</tr>
+</tbody></table>
+<h2 id="内边距会影响盒子实际大小"><a href="#内边距会影响盒子实际大小" class="headerlink" title="内边距会影响盒子实际大小"></a>内边距会影响盒子实际大小</h2><ol>
+<li><p>当我们给盒子指定 padding 值之后，发生了 2 件事情：</p>
+<ol>
+<li>内容和边框有了距离，添加了内边距。</li>
+<li>padding影响了盒子实际大小。</li>
+</ol>
+</li>
+<li><p>内边距对盒子大小的影响：</p>
+<ol>
+<li>如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子。</li>
+<li>如何盒子本身没有指定width&#x2F;height属性, 则此时padding不会撑开盒子大小。</li>
+</ol>
+</li>
+<li><p>解决方案：</p>
+<ol>
+<li>如果保证盒子跟效果图大小保持一致，则让 width&#x2F;height 减去多出来的内边距大小即可。</li>
+</ol>
+</li>
+</ol>
+<h2 id="外边距（margin）"><a href="#外边距（margin）" class="headerlink" title="外边距（margin）"></a>外边距（margin）</h2><ol>
+<li><p>margin 属性用于设置外边距，即控制盒子和盒子之间的距离。</p>
+</li>
+<li><p>语法：</p>
+<ol>
+<li><p>margin：上下左右四边距统一设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin: 20px;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>各边距分别设置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-top（上）</span><br><span class="line">margin-bottom（下）</span><br><span class="line">margin-left（左）</span><br><span class="line">margin-right（右）</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<h2 id="外边距典型应用"><a href="#外边距典型应用" class="headerlink" title="外边距典型应用"></a>外边距典型应用</h2><ol>
+<li><p>外边距可以让块级盒子水平居中的两个条件：</p>
+<ol>
+<li>盒子必须指定了宽度（width）</li>
+<li>盒子左右的外边距都设置为 auto</li>
+</ol>
+</li>
+<li><p>常见的写法有三种：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">margin-left: auto;   margin-right: auto;</span><br><span class="line">margin: auto;</span><br><span class="line">margin: 0 auto;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
+</li>
+</ol>
+<h2 id="嵌套块元素垂直外边距的塌陷"><a href="#嵌套块元素垂直外边距的塌陷" class="headerlink" title="嵌套块元素垂直外边距的塌陷"></a>嵌套块元素垂直外边距的塌陷</h2><ol>
+<li><p>对于两个嵌套关系（父子关系）的块元素，父元素有上外边距同时子元素也有上外边距，此时父元素会塌陷较大的外边距值。</p>
+</li>
+<li><p>解决方案：</p>
+<ol>
+<li>可以为父元素定义上边框。</li>
+<li>可以为父元素定义上内边距。</li>
+<li>可以为父元素添加 overflow:hidden。</li>
+</ol>
+</li>
+</ol>
+<h2 id="清除内外边距"><a href="#清除内外边距" class="headerlink" title="清除内外边距"></a>清除内外边距</h2><ol>
+<li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
+</li>
+<li><p>语法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  padding:0;   /* 清除内边距 */</span><br><span class="line">  margin:0;    /* 清除外边距 */</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
+</li>
+</ol>
+<h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">border-radius:length;    </span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>参数值可以为数值或百分比的形式</li>
+<li>如果是正方形想要设置为一个圆就把数值修改为高度或者宽度的一半，或者直接写为 50%</li>
+<li>该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角</li>
+<li>分开写：border-top-left-radius、border-top-right-radius、border-bottom-right-radius 和border-bottom-left-radius</li>
+</ol>
+</li>
+</ol>
+<h3 id="盒子阴影"><a href="#盒子阴影" class="headerlink" title="盒子阴影"></a>盒子阴影</h3><ol>
+<li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需水平阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需垂直阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选模糊距离（阴影实虚）</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>可选阴影的尺寸（阴影大小）</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选阴影的颜色，参阅CSS颜色值</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>可选将外部阴影（outset）改为内部阴影</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h3 id="文字阴影"><a href="#文字阴影" class="headerlink" title="文字阴影"></a>文字阴影</h3><ol>
+<li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">text-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>属性</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h-shadow</td>
+<td>必需水平阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需垂直阴影的位置，允许负值</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选模糊距离（阴影实虚）</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选阴影颜色，参阅CSS颜色值</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>CSS</category>
@@ -4481,6 +4481,23 @@
       </tags>
   </entry>
   <entry>
+    <title>ES6的async和await</title>
+    <url>/2022/08/01/ES6%E7%9A%84async%E5%92%8Cawait/</url>
+    <content><![CDATA[<h1 id="ES6的async和await"><a href="#ES6的async和await" class="headerlink" title="ES6的async和await"></a>ES6的async和await</h1><ol>
+<li>使用async&#x2F;await，搭配Promise，可以通过编写形似同步的代码来处理异步流程，提高代码的简洁性和可读性</li>
+<li>async用于声明一个function是异步的</li>
+<li>await用于等待一个异步方法执行完成，返回一个Promise对象resolve回调函数的返回值</li>
+<li>async和await必须同时使用，且await只能出现在async函数中<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211014010801.png" alt="img"></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES6的String扩展方法</title>
     <url>/2022/08/01/ES6%E7%9A%84String%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h1 id="ES6的String的扩展方法"><a href="#ES6的String的扩展方法" class="headerlink" title="ES6的String的扩展方法"></a>ES6的String的扩展方法</h1><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><ol>
@@ -4510,23 +4527,6 @@
 <h3 id="实例方法：repeat"><a href="#实例方法：repeat" class="headerlink" title="实例方法：repeat()"></a>实例方法：repeat()</h3><ol>
 <li><p>repeat()：表示将原字符串重复n次，返回一个新的字符串</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;你好呀&#x27;.repeat(5));</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES6的async和await</title>
-    <url>/2022/08/01/ES6%E7%9A%84async%E5%92%8Cawait/</url>
-    <content><![CDATA[<h1 id="ES6的async和await"><a href="#ES6的async和await" class="headerlink" title="ES6的async和await"></a>ES6的async和await</h1><ol>
-<li>使用async&#x2F;await，搭配Promise，可以通过编写形似同步的代码来处理异步流程，提高代码的简洁性和可读性</li>
-<li>async用于声明一个function是异步的</li>
-<li>await用于等待一个异步方法执行完成，返回一个Promise对象resolve回调函数的返回值</li>
-<li>async和await必须同时使用，且await只能出现在async函数中<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211014010801.png" alt="img"></li>
 </ol>
 ]]></content>
       <categories>
@@ -5573,617 +5573,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JavaScript基础</title>
-    <url>/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/</url>
-    <content><![CDATA[<h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript"></a>什么是JavaScript</h2><ul>
-<li>JavaScript是一种运行在客户端的脚本语言</li>
-<li>脚本语言：不需要编译，运行过程由js解释器逐行进行解释并执行</li>
-<li>现在也可以基于Node.js技术进行服务器端编程</li>
-</ul>
-<h2 id="JavaScript作用"><a href="#JavaScript作用" class="headerlink" title="JavaScript作用"></a>JavaScript作用</h2><ul>
-<li>表单动态校验（密码强度检测）（JS产生最初的目的）</li>
-<li>网页特效</li>
-<li>服务端开发（Node.js)</li>
-<li>桌面程序（Electron）</li>
-<li>App（Cordova）</li>
-<li>控制硬件-物联网（Ruff）</li>
-<li>游戏开发（cocos2d-js）</li>
-</ul>
-<h2 id="浏览器执行JS简介"><a href="#浏览器执行JS简介" class="headerlink" title="浏览器执行JS简介"></a>浏览器执行JS简介</h2><p>浏览器分成两部分：渲染引擎和 JS 引擎</p>
-<ul>
-<li>渲染引擎：用来解析HTML与CSS，俗称内核，比如 chrome 浏览器的 blink ，老版本的 webkit</li>
-<li>JS 引擎：也称为 JS 解释器。 用来读取网页中的JavaScript代码，对其处理后运行，比如 chrome 浏览器的 V8</li>
-</ul>
-<p>浏览器本身并不会执行JS代码，而是通过内置 JavaScript 引擎(解释器) 来执行 JS 代码 。JS 引擎执行代码时逐行解释每一句源码（转换为机器语言），然后由计算机去执行，所以 JavaScript 语言归为脚本语言，会逐行解释执行。</p>
-<h2 id="JS的组成"><a href="#JS的组成" class="headerlink" title="JS的组成"></a>JS的组成</h2><p>JavaScript 包括 ECMAScript、DOM、BOM</p>
-<ul>
-<li><p>ECMAScript</p>
-<p>ECMAScript：ECMAScript 规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。</p>
-</li>
-<li><p>DOM文档对象模型<br>文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标记语言的标准编程接口。通过 DOM 提供的接口可以对页面上的各种元素进行操作（大小、位置、颜色等）。</p>
-</li>
-<li><p>BOM浏览器对象模型<br>BOM (Browser Object Model，简称BOM) 是指浏览器对象模型，它提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。通过BOM可以操作浏览器窗口，比如弹出框、控制浏览器跳转、获取分辨率等。</p>
-</li>
-</ul>
-<h1 id="JS基本语法"><a href="#JS基本语法" class="headerlink" title="JS基本语法"></a>JS基本语法</h1><h2 id="输入输出语句"><a href="#输入输出语句" class="headerlink" title="输入输出语句"></a>输入输出语句</h2><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>说明</th>
-<th>归属</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>alert(msg);</td>
-<td>浏览器弹出警示框</td>
-<td>浏览器</td>
-</tr>
-<tr>
-<td>console.log(msg);</td>
-<td>浏览器控制台打印输出信息</td>
-<td>浏览器</td>
-</tr>
-<tr>
-<td>prompt(info);</td>
-<td>浏览看弹出输入框，用户可以输入</td>
-<td>浏览器</td>
-</tr>
-</tbody></table>
-<ul>
-<li><code>alert()</code> 主要用来显示消息给用户</li>
-<li><code>console.log()</code> 用来给程序员看自己运行时的消息</li>
-</ul>
-<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用于存放数据的容器，我们通过变量名获取数据，甚至数据可以修改</p>
-<p>本质：变量是程序在内存中申请的一块用来存放数据的空间</p>
-<h2 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2><p>var是一个JS关键字，用来声明变量(variable变量的意思)。使用该关键字声明变量后，计算机会自动为变量分配内存空间。</p>
-<p>age 是程序员定义的变量名，我们要通过变量名来访问内存中分配的空间<br>&#x2F;&#x2F;声明变量同时赋值为18<br>var age &#x3D; 18;<br>&#x2F;&#x2F;同时声明多个变量时，只需要写一个 var， 多个变量名之间使用英文逗号隔开。</p>
-<p>var age &#x3D; 18, address &#x3D;’火影村’,salary &#x3D; 15000;</p>
-<h2 id="声明变量特殊情况"><a href="#声明变量特殊情况" class="headerlink" title="声明变量特殊情况"></a>声明变量特殊情况</h2><table>
-<thead>
-<tr>
-<th>情况</th>
-<th>说明</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>var age; console.log(age);</td>
-<td>只声明，不赋值</td>
-<td>undefined</td>
-</tr>
-<tr>
-<td>console.log(age)</td>
-<td>不声明 不赋值 直接使用</td>
-<td>报错</td>
-</tr>
-<tr>
-<td>age &#x3D; 10;console.log(age);</td>
-<td>不声明 只赋值</td>
-<td>10</td>
-</tr>
-</tbody></table>
-<h2 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h2><ul>
-<li><p>由字母(A-Z,a-z)，数字(0-9)，下划线(_)，美元符号($)组成，如:usrAge,num01,__name</p>
-</li>
-<li><p>严格区分大小写。 var app; 和 var App; 是两个变量</p>
-</li>
-<li><p>不能以数字开头。</p>
-</li>
-<li><p>不能是关键字，保留字。例如：var,for,while</p>
-</li>
-<li><p>遵循驼峰命名法。首字母小写，后面单词的首字母需要大写。myFirstName</p>
-</li>
-<li><p>推荐翻译网站：有道 爱词霸</p>
-</li>
-<li><p>name尽量不使用来命名，在有些网站有特殊意义</p>
-</li>
-</ul>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>1.JavaScript <strong>是一种弱类型或者说动态语言。</strong>这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var age = 10; 			 //这是一个数字型</span><br><span class="line">var areYouOk = &#x27;使得&#x27;;	//这是一个字符串</span><br></pre></td></tr></table></figure>
-
-<p>在代码运行时，变量的数据类型是由 JS引擎 根据 &#x3D; 右边变量值的数据类型来判断 的，运行完毕之后， 变量就确定了数据类型。</p>
-<p>2.JavaScript 拥有动态类型，同时也意味着相同的变量可用作不同的类型</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var x = 6;		//x为数字</span><br><span class="line">var x = &quot;Bill&quot;;	//x为字符串</span><br></pre></td></tr></table></figure>
-
-<p>JS 把数据类型分为两类：</p>
-<ul>
-<li>基本数据类型(Number,String,Boolean,Undefined,Null)</li>
-<li>复杂数据类型(Object)</li>
-</ul>
-<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><table>
-<thead>
-<tr>
-<th>简单数据类型</th>
-<th>说明</th>
-<th>默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Number</td>
-<td>数字型，包含整数型和浮点型</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Boolean</td>
-<td>布尔值类型，true（加法运算中当1看）和false（加法运算中当0看）</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String</td>
-<td>字符串类型</td>
-<td>“”</td>
-</tr>
-<tr>
-<td>Undefined</td>
-<td>var a; 声明了变量a但是没有给值，此时a &#x3D; undefined</td>
-<td>undefined</td>
-</tr>
-<tr>
-<td>Null</td>
-<td>var a &#x3D; null; 声明了变量a为空值</td>
-<td>null</td>
-</tr>
-</tbody></table>
-<h2 id="数字型进制"><a href="#数字型进制" class="headerlink" title="数字型进制"></a>数字型进制</h2><p>最常见的进制有二进制、八进制、十进制、十六进制。</p>
-<p>1.八进制数字序列范围：0~7</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var num1 = 07; 		//对应十进制的7</span><br><span class="line">var Num2 = 019;		//对应十进制的19</span><br><span class="line">var num3 = 08;		//对应十进制的8</span><br></pre></td></tr></table></figure>
-
-<p>2.十六进制数字序列范围：0<del>9以及A</del>F</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var num = 0xA;</span><br></pre></td></tr></table></figure>
-
-<p><strong>⭐在JS中八进制前面加0，十六进制前面加 0x</strong></p>
-<ol>
-<li><p>数字型范围<br>JS中数值的最大值：Number.MAX_VALUE<br>JS中数值的最小值：Number.MIN_VALUE</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">consol.log(Number.MAX_VALUE);</span><br><span class="line">consol.log(Number.MIN_VALUE);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数字型的三个特殊值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(Infinity); 	//Infinity(无穷大)</span><br><span class="line">alert(-Infinity); 	//-Infinity(无穷小)</span><br><span class="line">alert(NaN);       	//NaN - Not a Number ,代表任何一个非数值</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Infinity ，代表无穷大，大于任何数值</li>
-<li>-Infinity ，代表无穷小，小于任何数值</li>
-<li>Nan ，Not a Number，代表一个非数值</li>
-</ol>
-</li>
-<li><p>isNaN(): 这个方法用来判断非数字，并且返回一个值，如果是数字返回的是false，如果不是数字返回的是true</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var userAge = 21;</span><br><span class="line">var isOk = isNan(userAge);</span><br><span class="line">console.log(isOk);		//false,21不是一个非数字</span><br><span class="line"></span><br><span class="line">var userName = &quot;andy&quot;;</span><br><span class="line">console.log(isNan(userName));	//true,&quot;andy&quot;是一个非数字</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="字符串型String"><a href="#字符串型String" class="headerlink" title="字符串型String"></a>字符串型String</h2><p>字符串型可以是引号中的任意文本，其语法为 “双引号” 和 “单引号’’</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var strMsg = &quot;我爱北京天安门~&quot;;		//使用双引号表示字符串</span><br><span class="line">var strMsg = &#x27;我爱北京&#x27;;			  //使用单引号表示字符串</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>因为 HTML 标签里面的属性使用的是双引号，JS 这里我们更推荐使用单引号。</li>
-</ul>
-<ol>
-<li><p>字符串引号嵌套<br>JS可以用 单引号嵌套双引号，或者用 双引号嵌套单引号（外双内单，外单内双）</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var strMsg =&#x27;我是一个“天才”&#x27; //可以用 &#x27; &#x27; 包含 &quot; &quot;</span><br><span class="line">var strMsg2 =&quot;我是&#x27;天才&#x27;&quot; //可以用&quot; &quot;  包含  &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-</li>
-<li><p>字符串转义符<br>类似HTML里面的特殊字符，字符串中也有特殊字符，我们称之为转义符。</p>
-</li>
-</ol>
-<p>转义符都是 \ 开头的，常用的转义符及其说明如下：</p>
-<table>
-<thead>
-<tr>
-<th>转义符</th>
-<th>解释说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>\n</td>
-<td>换行符，n是newline</td>
-</tr>
-<tr>
-<td>\ \</td>
-<td>斜杠\</td>
-</tr>
-<tr>
-<td>\ ’</td>
-<td>’ 单引号</td>
-</tr>
-<tr>
-<td>\ ‘’</td>
-<td>‘’ 双引号</td>
-</tr>
-<tr>
-<td>\ t</td>
-<td>tab 缩进</td>
-</tr>
-<tr>
-<td>\ b</td>
-<td>空格，b是blank的意思</td>
-</tr>
-</tbody></table>
-<ol start="3">
-<li><p>字符串长度<br>字符串是由若干字符组成的，这些字符的数量就是字符串的长度。通过字符串的 length 属性可以获取整个字符串的长度。</p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//通过字符串的length属性可以获取整个字符串的长度</span><br><span class="line">var strMsg = &quot;我是天才！&quot;;</span><br><span class="line">alert(strMsg.length);     //显示5</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>字符串的拼接</p>
-<ol>
-<li><p>多个字符串之间可以使用 + 进行拼接，其拼接方式为 字符串 + 任何类型 &#x3D; 拼接之后的新字符串</p>
-</li>
-<li><p>拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串</p>
-</li>
-<li><p>注意：字符串 + 任何类型 &#x3D;拼接之后的新字符串</p>
-<ol>
-<li>字符串相加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;hello&#x27; + &#x27; &#x27; + &#x27;World&#x27;);  //hello World</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>数值字符串相加</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;100&#x27; + &#x27;100&#x27;); //100100</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>数值字符串+数值</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;12&#x27;+12); //1212</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>数值+数值</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(12+12); //24</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
-<p>⭐<strong>号总结口诀：数值相加，字符相连</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var  age = 18;</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);  //引引加加，最终也是上面的形式</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>字符串拼接加强</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;老师&#x27; + 18);			//只要有字符就会相连</span><br><span class="line">var age = 18;</span><br><span class="line">// console.log(&#x27;老师age岁了&#x27;);	//这样不行,会输出&quot;老师age岁了&quot;</span><br><span class="line">console.log(&#x27;老师&#x27; + age);		 // 老师18</span><br><span class="line">console.log(&#x27;老师&#x27; + age + &#x27;岁啦&#x27;);	// 老师18岁啦</span><br></pre></td></tr></table></figure>
-
-<p>我们经常会将字符串和变量来拼接，因为变量可以很方便地修改里面的值<br>变量是不能添加引号的，因为加引号的变量会变成字符串<br>如果变量两侧都有字符串拼接，口诀&#x3D;&#x3D;“引引加加 ”，删掉数字&#x3D;&#x3D;变量写加中间</p>
-<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h3><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-<th>案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>toString()</td>
-<td>转换为字符串</td>
-<td>var num &#x3D; 1; alert(num.toString());</td>
-</tr>
-<tr>
-<td>String()强制转换</td>
-<td>转换为字符串</td>
-<td>var num &#x3D; 1; alert(String(num));</td>
-</tr>
-<tr>
-<td>加号拼接字符串</td>
-<td>和字符串拼接的结果都是字符串</td>
-<td>var num &#x3D; 1; alert(num + “我是字符串”);</td>
-</tr>
-</tbody></table>
-<ol>
-<li>toString()和String()使用方式不一样</li>
-<li>三种转换方式,更喜欢用第三种加号拼接字符串转换方式，这一种方式也称之为隐式转换</li>
-</ol>
-<h3 id="转换为数字型（重点）"><a href="#转换为数字型（重点）" class="headerlink" title="转换为数字型（重点）"></a>转换为数字型（重点）</h3><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-<th>案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>parseInt(string)函数</td>
-<td>将string类型转成整数数值型(可以用于去除单位)</td>
-<td>parseInt(‘78’)</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转成整数数值型</span><br><span class="line">var str = &#x27;10.32&#x27;;</span><br><span class="line">console.log(parseInt(str)); //10 取整</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseInt(&#x27;12px&#x27;)); //12</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>parseFloat(string)函数</td>
-<td>将string类型转成浮点数数值型(可以用于去除单位) parseFloat(‘78.21’)</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转成浮点数数值型</span><br><span class="line">var str1 = &#x27;10.24&#x27;;</span><br><span class="line">console.log(parseFloat(str1)); //10.24</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseFloat(&#x27;120px&#x27;)); //120</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-<th>案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Number强制转换函数</td>
-<td>将string类型转换为数值型</td>
-<td>Number(‘12’)</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转换为数值型</span><br><span class="line">var str2 = &#x27;123&#x27;;</span><br><span class="line">console.log(Number(str2)); //123</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-<th>案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>js隐式转换(- * &#x2F;)</td>
-<td>利用算术运算隐式转换为数值</td>
-<td>‘12’-0</td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 利用算术运算隐式转换为数值</span><br><span class="line">console.log(&#x27;12&#x27; - 0); //12</span><br><span class="line">console.log(&#x27;120&#x27; / 10); //12</span><br><span class="line">console.log(&#x27;12&#x27; * 1); //12</span><br></pre></td></tr></table></figure>
-
-<h3 id="转换为布尔型"><a href="#转换为布尔型" class="headerlink" title="转换为布尔型"></a>转换为布尔型</h3><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>说明</th>
-<th>案例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>boolean()函数</td>
-<td>其他类型转成布尔型</td>
-<td>Boolean(‘true’)</td>
-</tr>
-</tbody></table>
-<ol>
-<li>代表空、否定的值都会被转换为false，如’’、0、NaN、null、undefined</li>
-<li>其余值都会被转换为true</li>
-</ol>
-<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><ol>
-<li>运算符(operator)也被称为操作符,是用于实现赋值、比较和执行算数运算等功能的符号</li>
-<li>JavaScript中常用的运算符有：<ol>
-<li>算术运算符</li>
-<li>递增和递减运算符</li>
-<li>比较运算符</li>
-<li>逻辑运算符</li>
-<li>赋值运算符</li>
-</ol>
-</li>
-</ol>
-<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ol>
-<li><p>概念：算术运算使用的符号，用于执行两个变量或值的算术运算</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>实例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>‘+’</td>
-<td>加</td>
-<td>10 + 20 &#x3D; 30</td>
-</tr>
-<tr>
-<td>‘-‘</td>
-<td>减</td>
-<td>10 - 20 &#x3D; -10</td>
-</tr>
-<tr>
-<td>‘*’</td>
-<td>乘</td>
-<td>10 * 20 &#x3D; 200</td>
-</tr>
-<tr>
-<td>‘&#x2F;‘</td>
-<td>除</td>
-<td>10 &#x2F; 20 &#x3D; 0.5</td>
-</tr>
-<tr>
-<td>‘%’</td>
-<td>取余数(取模)</td>
-<td>返回除法的余数</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>表达式：由数字、运算符、变量等以能求得数值的有意义排列方法所得的组合</p>
-</li>
-</ol>
-<h2 id="递增和递减运算符"><a href="#递增和递减运算符" class="headerlink" title="递增和递减运算符"></a>递增和递减运算符</h2><ol>
-<li>递增（++）和递减（–）</li>
-<li>在JavaScript中,递增(++)和递减(–)既可以放在变量前面,也可以放在变量后面<ol>
-<li>放在变量前面时，称为前置递增(递减)运算符<ul>
-<li>++num：先自增（自减），后返回值</li>
-</ul>
-</li>
-<li>放在变量后面时，称为后置递增(递减)运算符<ul>
-<li>num++：先返回值，后自增（自减）</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>递增和递减运算符必须和变量配合使用</li>
-</ol>
-<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ol>
-<li><p>概念：比较运算符（关系运算符）是两个数据进行比较时所使用的运算符，比较运算后，会返回一个布尔值（true&#x2F;false）作为比较运算的结果</p>
-<table>
-<thead>
-<tr>
-<th>运算符名称</th>
-<th>说明</th>
-<th>案例</th>
-<th>结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>‘&lt;’</td>
-<td>小于</td>
-<td>1 &lt; 2</td>
-<td>true</td>
-</tr>
-<tr>
-<td>‘&gt;’</td>
-<td>大于</td>
-<td>1 &gt; 2</td>
-<td>false</td>
-</tr>
-<tr>
-<td>‘&gt;&#x3D;’</td>
-<td>大于等于</td>
-<td>2 &gt;&#x3D; 2</td>
-<td>true</td>
-</tr>
-<tr>
-<td>‘&lt;&#x3D;’</td>
-<td>小于等于</td>
-<td>3 &lt;&#x3D; 2</td>
-<td>false</td>
-</tr>
-<tr>
-<td>‘&#x3D;&#x3D;’</td>
-<td>判等（会转型）</td>
-<td>37 &#x3D;&#x3D; 37</td>
-<td>true</td>
-</tr>
-<tr>
-<td>‘!&#x3D;’</td>
-<td>不等于</td>
-<td>37 !&#x3D; 37</td>
-<td>false</td>
-</tr>
-<tr>
-<td>‘&#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;’</td>
-<td>全等（要求值和数据类型都一致）</td>
-<td>37 &#x3D;&#x3D;&#x3D; ‘37’</td>
-<td>false</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>小结</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>作用</th>
-<th>用法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&#x3D; 赋值</td>
-<td>把右边给左边</td>
-<td></td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D;</td>
-<td>判断</td>
-<td>判断两边值是否相等（注意此时有隐式转换）</td>
-</tr>
-<tr>
-<td>&#x3D;&#x3D;&#x3D;</td>
-<td>全等</td>
-<td>判断两边的值和数据类型是否完全相等</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ol>
-<li>概念：逻辑运算符是用来进行布尔值运算的运算符,其返回值是布尔值；后面开发中经常用于多个条件的判断<ol>
-<li>&amp;&amp;：”逻辑与”，简称”与” and（一假则假，全真为真）</li>
-<li>||：”逻辑或”，简称”或” or（一真则真，全假为假 ）</li>
-<li>!（取反符）：”逻辑非”，简称”非” not</li>
-</ol>
-</li>
-</ol>
-<h3 id="短路运算（逻辑中断重点）"><a href="#短路运算（逻辑中断重点）" class="headerlink" title="短路运算（逻辑中断重点）"></a>短路运算（逻辑中断重点）</h3><ol>
-<li>短路运算原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值</li>
-<li>逻辑与短路运算<ol>
-<li>语法：表达式1 &amp;&amp; 表达式2<ul>
-<li>如果第一个表达式的值为真，则返回表达式2</li>
-<li>如果第一个表达式的值为假，则返回表达式1</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>逻辑或短路运算<ol>
-<li>语法：表达式1 || 表达式2<ul>
-<li>如果第一个表达式的值为真，则返回表达式1</li>
-<li>如果第一个表达式的值为假，则返回表达式2</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ol>
-<li>基本赋值运算符：&#x3D;</li>
-<li>扩展的赋值运算符：+&#x3D;，-&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;</li>
-<li>先执行等号右边再赋值给左边</li>
-</ol>
-<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
-<thead>
-<tr>
-<th>优先级</th>
-<th>运算符</th>
-<th>顺序</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>小括号</td>
-<td>()</td>
-</tr>
-<tr>
-<td>2</td>
-<td>一元运算符</td>
-<td>++ – !</td>
-</tr>
-<tr>
-<td>3</td>
-<td>算术运算符</td>
-<td>先* &#x2F; %，后+ -</td>
-</tr>
-<tr>
-<td>4</td>
-<td>关系运算符</td>
-<td>&gt; &gt;&#x3D; &lt; &lt;&#x3D;</td>
-</tr>
-<tr>
-<td>5</td>
-<td>相等运算符</td>
-<td>&#x3D;&#x3D; !&#x3D; &#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;</td>
-</tr>
-<tr>
-<td>6</td>
-<td>逻辑运算符</td>
-<td>先&amp;&amp;，后</td>
-</tr>
-<tr>
-<td>7</td>
-<td>赋值运算符</td>
-<td>&#x3D;</td>
-</tr>
-<tr>
-<td>8</td>
-<td>逗号运算符</td>
-<td>,</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JavaScript内置对象和数据类型</title>
     <url>/2022/08/01/JavaScript%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h1 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h1><ol>
@@ -6817,6 +6206,617 @@
       </tags>
   </entry>
   <entry>
+    <title>JavaScript基础</title>
+    <url>/2022/08/01/JavaScript%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript"></a>什么是JavaScript</h2><ul>
+<li>JavaScript是一种运行在客户端的脚本语言</li>
+<li>脚本语言：不需要编译，运行过程由js解释器逐行进行解释并执行</li>
+<li>现在也可以基于Node.js技术进行服务器端编程</li>
+</ul>
+<h2 id="JavaScript作用"><a href="#JavaScript作用" class="headerlink" title="JavaScript作用"></a>JavaScript作用</h2><ul>
+<li>表单动态校验（密码强度检测）（JS产生最初的目的）</li>
+<li>网页特效</li>
+<li>服务端开发（Node.js)</li>
+<li>桌面程序（Electron）</li>
+<li>App（Cordova）</li>
+<li>控制硬件-物联网（Ruff）</li>
+<li>游戏开发（cocos2d-js）</li>
+</ul>
+<h2 id="浏览器执行JS简介"><a href="#浏览器执行JS简介" class="headerlink" title="浏览器执行JS简介"></a>浏览器执行JS简介</h2><p>浏览器分成两部分：渲染引擎和 JS 引擎</p>
+<ul>
+<li>渲染引擎：用来解析HTML与CSS，俗称内核，比如 chrome 浏览器的 blink ，老版本的 webkit</li>
+<li>JS 引擎：也称为 JS 解释器。 用来读取网页中的JavaScript代码，对其处理后运行，比如 chrome 浏览器的 V8</li>
+</ul>
+<p>浏览器本身并不会执行JS代码，而是通过内置 JavaScript 引擎(解释器) 来执行 JS 代码 。JS 引擎执行代码时逐行解释每一句源码（转换为机器语言），然后由计算机去执行，所以 JavaScript 语言归为脚本语言，会逐行解释执行。</p>
+<h2 id="JS的组成"><a href="#JS的组成" class="headerlink" title="JS的组成"></a>JS的组成</h2><p>JavaScript 包括 ECMAScript、DOM、BOM</p>
+<ul>
+<li><p>ECMAScript</p>
+<p>ECMAScript：ECMAScript 规定了JS的编程语法和基础核心知识，是所有浏览器厂商共同遵守的一套JS语法工业标准。</p>
+</li>
+<li><p>DOM文档对象模型<br>文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标记语言的标准编程接口。通过 DOM 提供的接口可以对页面上的各种元素进行操作（大小、位置、颜色等）。</p>
+</li>
+<li><p>BOM浏览器对象模型<br>BOM (Browser Object Model，简称BOM) 是指浏览器对象模型，它提供了独立于内容的、可以与浏览器窗口进行互动的对象结构。通过BOM可以操作浏览器窗口，比如弹出框、控制浏览器跳转、获取分辨率等。</p>
+</li>
+</ul>
+<h1 id="JS基本语法"><a href="#JS基本语法" class="headerlink" title="JS基本语法"></a>JS基本语法</h1><h2 id="输入输出语句"><a href="#输入输出语句" class="headerlink" title="输入输出语句"></a>输入输出语句</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+<th>归属</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alert(msg);</td>
+<td>浏览器弹出警示框</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>console.log(msg);</td>
+<td>浏览器控制台打印输出信息</td>
+<td>浏览器</td>
+</tr>
+<tr>
+<td>prompt(info);</td>
+<td>浏览看弹出输入框，用户可以输入</td>
+<td>浏览器</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>alert()</code> 主要用来显示消息给用户</li>
+<li><code>console.log()</code> 用来给程序员看自己运行时的消息</li>
+</ul>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量是用于存放数据的容器，我们通过变量名获取数据，甚至数据可以修改</p>
+<p>本质：变量是程序在内存中申请的一块用来存放数据的空间</p>
+<h2 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2><p>var是一个JS关键字，用来声明变量(variable变量的意思)。使用该关键字声明变量后，计算机会自动为变量分配内存空间。</p>
+<p>age 是程序员定义的变量名，我们要通过变量名来访问内存中分配的空间<br>&#x2F;&#x2F;声明变量同时赋值为18<br>var age &#x3D; 18;<br>&#x2F;&#x2F;同时声明多个变量时，只需要写一个 var， 多个变量名之间使用英文逗号隔开。</p>
+<p>var age &#x3D; 18, address &#x3D;’火影村’,salary &#x3D; 15000;</p>
+<h2 id="声明变量特殊情况"><a href="#声明变量特殊情况" class="headerlink" title="声明变量特殊情况"></a>声明变量特殊情况</h2><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>说明</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>var age; console.log(age);</td>
+<td>只声明，不赋值</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>console.log(age)</td>
+<td>不声明 不赋值 直接使用</td>
+<td>报错</td>
+</tr>
+<tr>
+<td>age &#x3D; 10;console.log(age);</td>
+<td>不声明 只赋值</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<h2 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h2><ul>
+<li><p>由字母(A-Z,a-z)，数字(0-9)，下划线(_)，美元符号($)组成，如:usrAge,num01,__name</p>
+</li>
+<li><p>严格区分大小写。 var app; 和 var App; 是两个变量</p>
+</li>
+<li><p>不能以数字开头。</p>
+</li>
+<li><p>不能是关键字，保留字。例如：var,for,while</p>
+</li>
+<li><p>遵循驼峰命名法。首字母小写，后面单词的首字母需要大写。myFirstName</p>
+</li>
+<li><p>推荐翻译网站：有道 爱词霸</p>
+</li>
+<li><p>name尽量不使用来命名，在有些网站有特殊意义</p>
+</li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>1.JavaScript <strong>是一种弱类型或者说动态语言。</strong>这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var age = 10; 			 //这是一个数字型</span><br><span class="line">var areYouOk = &#x27;使得&#x27;;	//这是一个字符串</span><br></pre></td></tr></table></figure>
+
+<p>在代码运行时，变量的数据类型是由 JS引擎 根据 &#x3D; 右边变量值的数据类型来判断 的，运行完毕之后， 变量就确定了数据类型。</p>
+<p>2.JavaScript 拥有动态类型，同时也意味着相同的变量可用作不同的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var x = 6;		//x为数字</span><br><span class="line">var x = &quot;Bill&quot;;	//x为字符串</span><br></pre></td></tr></table></figure>
+
+<p>JS 把数据类型分为两类：</p>
+<ul>
+<li>基本数据类型(Number,String,Boolean,Undefined,Null)</li>
+<li>复杂数据类型(Object)</li>
+</ul>
+<h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><table>
+<thead>
+<tr>
+<th>简单数据类型</th>
+<th>说明</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number</td>
+<td>数字型，包含整数型和浮点型</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>布尔值类型，true（加法运算中当1看）和false（加法运算中当0看）</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串类型</td>
+<td>“”</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>var a; 声明了变量a但是没有给值，此时a &#x3D; undefined</td>
+<td>undefined</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>var a &#x3D; null; 声明了变量a为空值</td>
+<td>null</td>
+</tr>
+</tbody></table>
+<h2 id="数字型进制"><a href="#数字型进制" class="headerlink" title="数字型进制"></a>数字型进制</h2><p>最常见的进制有二进制、八进制、十进制、十六进制。</p>
+<p>1.八进制数字序列范围：0~7</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var num1 = 07; 		//对应十进制的7</span><br><span class="line">var Num2 = 019;		//对应十进制的19</span><br><span class="line">var num3 = 08;		//对应十进制的8</span><br></pre></td></tr></table></figure>
+
+<p>2.十六进制数字序列范围：0<del>9以及A</del>F</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var num = 0xA;</span><br></pre></td></tr></table></figure>
+
+<p><strong>⭐在JS中八进制前面加0，十六进制前面加 0x</strong></p>
+<ol>
+<li><p>数字型范围<br>JS中数值的最大值：Number.MAX_VALUE<br>JS中数值的最小值：Number.MIN_VALUE</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">consol.log(Number.MAX_VALUE);</span><br><span class="line">consol.log(Number.MIN_VALUE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字型的三个特殊值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(Infinity); 	//Infinity(无穷大)</span><br><span class="line">alert(-Infinity); 	//-Infinity(无穷小)</span><br><span class="line">alert(NaN);       	//NaN - Not a Number ,代表任何一个非数值</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Infinity ，代表无穷大，大于任何数值</li>
+<li>-Infinity ，代表无穷小，小于任何数值</li>
+<li>Nan ，Not a Number，代表一个非数值</li>
+</ol>
+</li>
+<li><p>isNaN(): 这个方法用来判断非数字，并且返回一个值，如果是数字返回的是false，如果不是数字返回的是true</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var userAge = 21;</span><br><span class="line">var isOk = isNan(userAge);</span><br><span class="line">console.log(isOk);		//false,21不是一个非数字</span><br><span class="line"></span><br><span class="line">var userName = &quot;andy&quot;;</span><br><span class="line">console.log(isNan(userName));	//true,&quot;andy&quot;是一个非数字</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="字符串型String"><a href="#字符串型String" class="headerlink" title="字符串型String"></a>字符串型String</h2><p>字符串型可以是引号中的任意文本，其语法为 “双引号” 和 “单引号’’</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var strMsg = &quot;我爱北京天安门~&quot;;		//使用双引号表示字符串</span><br><span class="line">var strMsg = &#x27;我爱北京&#x27;;			  //使用单引号表示字符串</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>因为 HTML 标签里面的属性使用的是双引号，JS 这里我们更推荐使用单引号。</li>
+</ul>
+<ol>
+<li><p>字符串引号嵌套<br>JS可以用 单引号嵌套双引号，或者用 双引号嵌套单引号（外双内单，外单内双）</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var strMsg =&#x27;我是一个“天才”&#x27; //可以用 &#x27; &#x27; 包含 &quot; &quot;</span><br><span class="line">var strMsg2 =&quot;我是&#x27;天才&#x27;&quot; //可以用&quot; &quot;  包含  &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>字符串转义符<br>类似HTML里面的特殊字符，字符串中也有特殊字符，我们称之为转义符。</p>
+</li>
+</ol>
+<p>转义符都是 \ 开头的，常用的转义符及其说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>转义符</th>
+<th>解释说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\n</td>
+<td>换行符，n是newline</td>
+</tr>
+<tr>
+<td>\ \</td>
+<td>斜杠\</td>
+</tr>
+<tr>
+<td>\ ’</td>
+<td>’ 单引号</td>
+</tr>
+<tr>
+<td>\ ‘’</td>
+<td>‘’ 双引号</td>
+</tr>
+<tr>
+<td>\ t</td>
+<td>tab 缩进</td>
+</tr>
+<tr>
+<td>\ b</td>
+<td>空格，b是blank的意思</td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><p>字符串长度<br>字符串是由若干字符组成的，这些字符的数量就是字符串的长度。通过字符串的 length 属性可以获取整个字符串的长度。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//通过字符串的length属性可以获取整个字符串的长度</span><br><span class="line">var strMsg = &quot;我是天才！&quot;;</span><br><span class="line">alert(strMsg.length);     //显示5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符串的拼接</p>
+<ol>
+<li><p>多个字符串之间可以使用 + 进行拼接，其拼接方式为 字符串 + 任何类型 &#x3D; 拼接之后的新字符串</p>
+</li>
+<li><p>拼接前会把与字符串相加的任何类型转成字符串，再拼接成一个新的字符串</p>
+</li>
+<li><p>注意：字符串 + 任何类型 &#x3D;拼接之后的新字符串</p>
+<ol>
+<li>字符串相加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;hello&#x27; + &#x27; &#x27; + &#x27;World&#x27;);  //hello World</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>数值字符串相加</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;100&#x27; + &#x27;100&#x27;); //100100</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>数值字符串+数值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;12&#x27;+12); //1212</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>数值+数值</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(12+12); //24</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
+<p>⭐<strong>号总结口诀：数值相加，字符相连</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var  age = 18;</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);</span><br><span class="line">console.log(&#x27;我今年&#x27;+age+&#x27;岁&#x27;);  //引引加加，最终也是上面的形式</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>字符串拼接加强</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">console.log(&#x27;老师&#x27; + 18);			//只要有字符就会相连</span><br><span class="line">var age = 18;</span><br><span class="line">// console.log(&#x27;老师age岁了&#x27;);	//这样不行,会输出&quot;老师age岁了&quot;</span><br><span class="line">console.log(&#x27;老师&#x27; + age);		 // 老师18</span><br><span class="line">console.log(&#x27;老师&#x27; + age + &#x27;岁啦&#x27;);	// 老师18岁啦</span><br></pre></td></tr></table></figure>
+
+<p>我们经常会将字符串和变量来拼接，因为变量可以很方便地修改里面的值<br>变量是不能添加引号的，因为加引号的变量会变成字符串<br>如果变量两侧都有字符串拼接，口诀&#x3D;&#x3D;“引引加加 ”，删掉数字&#x3D;&#x3D;变量写加中间</p>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>toString()</td>
+<td>转换为字符串</td>
+<td>var num &#x3D; 1; alert(num.toString());</td>
+</tr>
+<tr>
+<td>String()强制转换</td>
+<td>转换为字符串</td>
+<td>var num &#x3D; 1; alert(String(num));</td>
+</tr>
+<tr>
+<td>加号拼接字符串</td>
+<td>和字符串拼接的结果都是字符串</td>
+<td>var num &#x3D; 1; alert(num + “我是字符串”);</td>
+</tr>
+</tbody></table>
+<ol>
+<li>toString()和String()使用方式不一样</li>
+<li>三种转换方式,更喜欢用第三种加号拼接字符串转换方式，这一种方式也称之为隐式转换</li>
+</ol>
+<h3 id="转换为数字型（重点）"><a href="#转换为数字型（重点）" class="headerlink" title="转换为数字型（重点）"></a>转换为数字型（重点）</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseInt(string)函数</td>
+<td>将string类型转成整数数值型(可以用于去除单位)</td>
+<td>parseInt(‘78’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转成整数数值型</span><br><span class="line">var str = &#x27;10.32&#x27;;</span><br><span class="line">console.log(parseInt(str)); //10 取整</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseInt(&#x27;12px&#x27;)); //12</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>parseFloat(string)函数</td>
+<td>将string类型转成浮点数数值型(可以用于去除单位) parseFloat(‘78.21’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转成浮点数数值型</span><br><span class="line">var str1 = &#x27;10.24&#x27;;</span><br><span class="line">console.log(parseFloat(str1)); //10.24</span><br><span class="line">// 可以用于去除单位</span><br><span class="line">console.log(parseFloat(&#x27;120px&#x27;)); //120</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Number强制转换函数</td>
+<td>将string类型转换为数值型</td>
+<td>Number(‘12’)</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将string类型转换为数值型</span><br><span class="line">var str2 = &#x27;123&#x27;;</span><br><span class="line">console.log(Number(str2)); //123</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>js隐式转换(- * &#x2F;)</td>
+<td>利用算术运算隐式转换为数值</td>
+<td>‘12’-0</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 利用算术运算隐式转换为数值</span><br><span class="line">console.log(&#x27;12&#x27; - 0); //12</span><br><span class="line">console.log(&#x27;120&#x27; / 10); //12</span><br><span class="line">console.log(&#x27;12&#x27; * 1); //12</span><br></pre></td></tr></table></figure>
+
+<h3 id="转换为布尔型"><a href="#转换为布尔型" class="headerlink" title="转换为布尔型"></a>转换为布尔型</h3><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>说明</th>
+<th>案例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>boolean()函数</td>
+<td>其他类型转成布尔型</td>
+<td>Boolean(‘true’)</td>
+</tr>
+</tbody></table>
+<ol>
+<li>代表空、否定的值都会被转换为false，如’’、0、NaN、null、undefined</li>
+<li>其余值都会被转换为true</li>
+</ol>
+<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><ol>
+<li>运算符(operator)也被称为操作符,是用于实现赋值、比较和执行算数运算等功能的符号</li>
+<li>JavaScript中常用的运算符有：<ol>
+<li>算术运算符</li>
+<li>递增和递减运算符</li>
+<li>比较运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+</ol>
+</li>
+</ol>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><ol>
+<li><p>概念：算术运算使用的符号，用于执行两个变量或值的算术运算</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘+’</td>
+<td>加</td>
+<td>10 + 20 &#x3D; 30</td>
+</tr>
+<tr>
+<td>‘-‘</td>
+<td>减</td>
+<td>10 - 20 &#x3D; -10</td>
+</tr>
+<tr>
+<td>‘*’</td>
+<td>乘</td>
+<td>10 * 20 &#x3D; 200</td>
+</tr>
+<tr>
+<td>‘&#x2F;‘</td>
+<td>除</td>
+<td>10 &#x2F; 20 &#x3D; 0.5</td>
+</tr>
+<tr>
+<td>‘%’</td>
+<td>取余数(取模)</td>
+<td>返回除法的余数</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>表达式：由数字、运算符、变量等以能求得数值的有意义排列方法所得的组合</p>
+</li>
+</ol>
+<h2 id="递增和递减运算符"><a href="#递增和递减运算符" class="headerlink" title="递增和递减运算符"></a>递增和递减运算符</h2><ol>
+<li>递增（++）和递减（–）</li>
+<li>在JavaScript中,递增(++)和递减(–)既可以放在变量前面,也可以放在变量后面<ol>
+<li>放在变量前面时，称为前置递增(递减)运算符<ul>
+<li>++num：先自增（自减），后返回值</li>
+</ul>
+</li>
+<li>放在变量后面时，称为后置递增(递减)运算符<ul>
+<li>num++：先返回值，后自增（自减）</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>递增和递减运算符必须和变量配合使用</li>
+</ol>
+<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><ol>
+<li><p>概念：比较运算符（关系运算符）是两个数据进行比较时所使用的运算符，比较运算后，会返回一个布尔值（true&#x2F;false）作为比较运算的结果</p>
+<table>
+<thead>
+<tr>
+<th>运算符名称</th>
+<th>说明</th>
+<th>案例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>‘&lt;’</td>
+<td>小于</td>
+<td>1 &lt; 2</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘&gt;’</td>
+<td>大于</td>
+<td>1 &gt; 2</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&gt;&#x3D;’</td>
+<td>大于等于</td>
+<td>2 &gt;&#x3D; 2</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘&lt;&#x3D;’</td>
+<td>小于等于</td>
+<td>3 &lt;&#x3D; 2</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&#x3D;&#x3D;’</td>
+<td>判等（会转型）</td>
+<td>37 &#x3D;&#x3D; 37</td>
+<td>true</td>
+</tr>
+<tr>
+<td>‘!&#x3D;’</td>
+<td>不等于</td>
+<td>37 !&#x3D; 37</td>
+<td>false</td>
+</tr>
+<tr>
+<td>‘&#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;’</td>
+<td>全等（要求值和数据类型都一致）</td>
+<td>37 &#x3D;&#x3D;&#x3D; ‘37’</td>
+<td>false</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>小结</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D; 赋值</td>
+<td>把右边给左边</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>判断</td>
+<td>判断两边值是否相等（注意此时有隐式转换）</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;&#x3D;</td>
+<td>全等</td>
+<td>判断两边的值和数据类型是否完全相等</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ol>
+<li>概念：逻辑运算符是用来进行布尔值运算的运算符,其返回值是布尔值；后面开发中经常用于多个条件的判断<ol>
+<li>&amp;&amp;：”逻辑与”，简称”与” and（一假则假，全真为真）</li>
+<li>||：”逻辑或”，简称”或” or（一真则真，全假为假 ）</li>
+<li>!（取反符）：”逻辑非”，简称”非” not</li>
+</ol>
+</li>
+</ol>
+<h3 id="短路运算（逻辑中断重点）"><a href="#短路运算（逻辑中断重点）" class="headerlink" title="短路运算（逻辑中断重点）"></a>短路运算（逻辑中断重点）</h3><ol>
+<li>短路运算原理：当有多个表达式（值）时，左边的表达式值可以确定结果时，就不再继续运算右边的表达式的值</li>
+<li>逻辑与短路运算<ol>
+<li>语法：表达式1 &amp;&amp; 表达式2<ul>
+<li>如果第一个表达式的值为真，则返回表达式2</li>
+<li>如果第一个表达式的值为假，则返回表达式1</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>逻辑或短路运算<ol>
+<li>语法：表达式1 || 表达式2<ul>
+<li>如果第一个表达式的值为真，则返回表达式1</li>
+<li>如果第一个表达式的值为假，则返回表达式2</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><ol>
+<li>基本赋值运算符：&#x3D;</li>
+<li>扩展的赋值运算符：+&#x3D;，-&#x3D;，*&#x3D;，&#x2F;&#x3D;，%&#x3D;</li>
+<li>先执行等号右边再赋值给左边</li>
+</ol>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>顺序</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>小括号</td>
+<td>()</td>
+</tr>
+<tr>
+<td>2</td>
+<td>一元运算符</td>
+<td>++ – !</td>
+</tr>
+<tr>
+<td>3</td>
+<td>算术运算符</td>
+<td>先* &#x2F; %，后+ -</td>
+</tr>
+<tr>
+<td>4</td>
+<td>关系运算符</td>
+<td>&gt; &gt;&#x3D; &lt; &lt;&#x3D;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>相等运算符</td>
+<td>&#x3D;&#x3D; !&#x3D; &#x3D;&#x3D;&#x3D; !&#x3D;&#x3D;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑运算符</td>
+<td>先&amp;&amp;，后</td>
+</tr>
+<tr>
+<td>7</td>
+<td>赋值运算符</td>
+<td>&#x3D;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>逗号运算符</td>
+<td>,</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript对象</title>
     <url>/2022/08/01/JavaScript%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h2><ol>
@@ -6873,6 +6873,64 @@
 <li>方法：对象里面的函数称为方法，方法不需要声明，使用”对象.方法名()”的方式就可以调用，方法用来描述该对象的行为和功能</li>
 </ol>
 </li></ol>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript数组</title>
+    <url>/2022/08/01/JavaScript%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h2><ol>
+<li>数组（Array）：一组数据的集合</li>
+<li>数组里面的数据要用逗号进行分隔</li>
+<li>数组中可以存放任意类型的数据，例如字符串，数字，布尔值等</li>
+<li>JS中创建数组有两种方式</li>
+</ol>
+<h3 id="利用new创建数组"><a href="#利用new创建数组" class="headerlink" title="利用new创建数组"></a>利用new创建数组</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = new Array();</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用数组字面量创建数组（常用）"><a href="#利用数组字面量创建数组（常用）" class="headerlink" title="利用数组字面量创建数组（常用）"></a>利用数组字面量创建数组（常用）</h3><ol>
+<li><p>[]：表示数组的字面量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [];</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="获取数组元素"><a href="#获取数组元素" class="headerlink" title="获取数组元素"></a>获取数组元素</h2><ol>
+<li>数组的索引<ol>
+<li>索引（下标）：用来访问数组元素的序号（数组下标从0开始）</li>
+<li>数组可以通过索引来访问、设置、修改对应的数组元素，可以通过<code>数组名[索引]</code>的形式来获取数组中的元素</li>
+</ol>
+</li>
+</ol>
+<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><ol>
+<li>遍历数组：把数组的元素从头到尾访问一次</li>
+</ol>
+<h3 id="数组长度"><a href="#数组长度" class="headerlink" title="数组长度"></a>数组长度</h3><ol>
+<li>使用“数组名.length”可以访问数组元素的数量（数组长度）</li>
+<li>arr.length动态监测数组元素的个数</li>
+</ol>
+<h2 id="数组中新增元素"><a href="#数组中新增元素" class="headerlink" title="数组中新增元素"></a>数组中新增元素</h2><h3 id="修改length长度"><a href="#修改length长度" class="headerlink" title="修改length长度"></a>修改length长度</h3><ol>
+<li><p>通过修改length长度来实现数组扩容目的</p>
+</li>
+<li><p>length属性是可读写的</p>
+</li>
+<li><p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr.length = 数组长度;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="修改索引号"><a href="#修改索引号" class="headerlink" title="修改索引号"></a>修改索引号</h3><ol>
+<li><p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr[3] = 4;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过追加索引号，并为该索引号对应的元素赋值的方式新增元素</p>
+</li>
+<li><p>若索引号为已经存在，赋值则替换原来该索引位置的数组元素</p>
+</li>
+<li><p>不能直接给数组名赋值，否则会覆盖掉以前的数据</p>
+</li>
+</ol>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [2, 5, 11, 85, 3, 16, 24, 9, 7];</span><br><span class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    for (var j = 0; j &lt; arr.length - 1 - i; j++) &#123;</span><br><span class="line">      if (arr[j] &lt; arr[j + 1]) &#123;</span><br><span class="line">        var temp = arr[j];</span><br><span class="line">        arr[j] = arr[j + 1];</span><br><span class="line">        arr[j + 1] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -7022,64 +7080,6 @@
 <li><p>只有函数才有arguments对象而且是每个函数都内置好了这个arguments</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript数组</title>
-    <url>/2022/08/01/JavaScript%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><h2 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h2><ol>
-<li>数组（Array）：一组数据的集合</li>
-<li>数组里面的数据要用逗号进行分隔</li>
-<li>数组中可以存放任意类型的数据，例如字符串，数字，布尔值等</li>
-<li>JS中创建数组有两种方式</li>
-</ol>
-<h3 id="利用new创建数组"><a href="#利用new创建数组" class="headerlink" title="利用new创建数组"></a>利用new创建数组</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = new Array();</span><br></pre></td></tr></table></figure>
-
-<h3 id="利用数组字面量创建数组（常用）"><a href="#利用数组字面量创建数组（常用）" class="headerlink" title="利用数组字面量创建数组（常用）"></a>利用数组字面量创建数组（常用）</h3><ol>
-<li><p>[]：表示数组的字面量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [];</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="获取数组元素"><a href="#获取数组元素" class="headerlink" title="获取数组元素"></a>获取数组元素</h2><ol>
-<li>数组的索引<ol>
-<li>索引（下标）：用来访问数组元素的序号（数组下标从0开始）</li>
-<li>数组可以通过索引来访问、设置、修改对应的数组元素，可以通过<code>数组名[索引]</code>的形式来获取数组中的元素</li>
-</ol>
-</li>
-</ol>
-<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><ol>
-<li>遍历数组：把数组的元素从头到尾访问一次</li>
-</ol>
-<h3 id="数组长度"><a href="#数组长度" class="headerlink" title="数组长度"></a>数组长度</h3><ol>
-<li>使用“数组名.length”可以访问数组元素的数量（数组长度）</li>
-<li>arr.length动态监测数组元素的个数</li>
-</ol>
-<h2 id="数组中新增元素"><a href="#数组中新增元素" class="headerlink" title="数组中新增元素"></a>数组中新增元素</h2><h3 id="修改length长度"><a href="#修改length长度" class="headerlink" title="修改length长度"></a>修改length长度</h3><ol>
-<li><p>通过修改length长度来实现数组扩容目的</p>
-</li>
-<li><p>length属性是可读写的</p>
-</li>
-<li><p>语法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr.length = 数组长度;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="修改索引号"><a href="#修改索引号" class="headerlink" title="修改索引号"></a>修改索引号</h3><ol>
-<li><p>语法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr[3] = 4;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过追加索引号，并为该索引号对应的元素赋值的方式新增元素</p>
-</li>
-<li><p>若索引号为已经存在，赋值则替换原来该索引位置的数组元素</p>
-</li>
-<li><p>不能直接给数组名赋值，否则会覆盖掉以前的数据</p>
-</li>
-</ol>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var arr = [2, 5, 11, 85, 3, 16, 24, 9, 7];</span><br><span class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    for (var j = 0; j &lt; arr.length - 1 - i; j++) &#123;</span><br><span class="line">      if (arr[j] &lt; arr[j + 1]) &#123;</span><br><span class="line">        var temp = arr[j];</span><br><span class="line">        arr[j] = arr[j + 1];</span><br><span class="line">        arr[j + 1] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -7667,6 +7667,112 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue-CLI</title>
+    <url>/2022/08/02/Vue-CLI/</url>
+    <content><![CDATA[<h1 id="Vue-CLI（Vue脚手架）"><a href="#Vue-CLI（Vue脚手架）" class="headerlink" title="Vue CLI（Vue脚手架）"></a>Vue CLI（Vue脚手架）</h1><h2 id="Vue-CLI介绍和安装"><a href="#Vue-CLI介绍和安装" class="headerlink" title="Vue CLI介绍和安装"></a>Vue CLI介绍和安装</h2><h3 id="什么是Vue-CLI"><a href="#什么是Vue-CLI" class="headerlink" title="什么是Vue CLI"></a>什么是Vue CLI</h3><ol>
+<li>在开发大型项目时，需要使用到Vue CLI<ol>
+<li>使用Vue.js开发大型应用时，需要考虑代码目录结构、项目结构和部署、热加载、代码单元测试等事情</li>
+<li>如果每个项目都要手动完成这些工作，无疑效率比较低效，所以通常我们会使用一些脚手架工具来帮助完成这些事情</li>
+</ol>
+</li>
+</ol>
+<h3 id="CLI是什么"><a href="#CLI是什么" class="headerlink" title="CLI是什么"></a>CLI是什么</h3><ol>
+<li>CLI是Command-Line Interface，翻译为命令行界面，但是俗称脚手架</li>
+<li>Vue CLI是一个官方发布vue.js项目脚手架</li>
+<li>使用vue-cli可以快速搭建Vue开发环境以及对应的webpack配置</li>
+</ol>
+<h3 id="什么是npm"><a href="#什么是npm" class="headerlink" title="什么是npm"></a>什么是npm</h3><ol>
+<li>NPM的全称是Node Package Manager</li>
+<li>是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块(包)的标准</li>
+<li>后续会经常使用NPM来安装一些开发过程中依赖包</li>
+</ol>
+<h3 id="cnpm安装"><a href="#cnpm安装" class="headerlink" title="cnpm安装"></a>cnpm安装</h3><ol>
+<li>由于国内直接使用npm的官方镜像是非常慢的，这里推荐使用淘宝NPM镜像</li>
+<li>可以使用淘宝定制的cnpm（gzip压缩支持）命令行工具代替默认的npm<ul>
+<li>npm install -g cnpm –registry&#x3D;<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></li>
+</ul>
+</li>
+<li>这样就可以使用cnpm命令来安装模块<ul>
+<li>cnpm install [name]</li>
+</ul>
+</li>
+</ol>
+<h3 id="安装Vue脚手架"><a href="#安装Vue脚手架" class="headerlink" title="安装Vue脚手架"></a>安装Vue脚手架</h3><ol>
+<li>直接在终端输入指令：npm install -g @vue&#x2F;cli<ol>
+<li>-g：进行全局安装</li>
+</ol>
+</li>
+<li>注意以上安装的是Vue CLI3或4的版本，如果需要按照Vue CLI2的方式初始化项目时，是不可以的</li>
+<li>Vue CLI3和旧版使用了相同的vue命令，所以Vue CLI2(vue-cli)被覆盖了，如果仍然需要使用旧版本的vue init功能，需要全局安装一个桥接工具<ol>
+<li>安装指令：npm install @vue&#x2F;cli-init</li>
+<li>安装这个就是为了使用Vue CLI2</li>
+</ol>
+</li>
+</ol>
+<h3 id="Vue初始化项目"><a href="#Vue初始化项目" class="headerlink" title="Vue初始化项目"></a>Vue初始化项目</h3><ol>
+<li>Vue CLI3初始化项目：vue create my-project</li>
+<li>Vue CLI2初始化项目：vue init webpack my-project<ol>
+<li>vue init webpack my-project：会根据这个名称my-project创建一个文件夹，存放之后的项目，该名称也会作为默认的项目名称，但是不能包含大写字母</li>
+<li>? Project name (my-project)：项目名称，不能包含大写</li>
+<li>? Project description (A Vue.js project)：项目描述</li>
+<li>? Author (CHHwn <a href="mailto:3355949795@qq.com">1258842059@qq.com</a>)：作者信息，会默认从git中读取信息</li>
+<li>? Vue build standalone：runtime-only和runtime-compiler两个vue版本选择</li>
+<li>? Install vue-router? (Y&#x2F;n)：是否选择vue路由，选择no，后面自己安装</li>
+<li>? Use ESLint to lint your code? (Y&#x2F;n)：ESlint检测代码规范，根据自身情况选择</li>
+<li>? Set up unit tests (Y&#x2F;n)：单元测试，根据公司要求，一般为no</li>
+<li>? Setup e2e tests with Nightwatch? (Y&#x2F;n)：e2e测试，安装Nightwatch，是利用selenium或webdriver或phantomjs等进行自动化测试的框架</li>
+<li>? Should we run <code>npm install</code> for you after the project has been created? (recommended)：选择使用npm或yarn</li>
+</ol>
+</li>
+<li>若脚手架安装失败可尝试将npm-cache文件夹删除，文件夹路径：C:\Users\大哥和臭憨憨\AppData\Roaming\npm-cache</li>
+</ol>
+<h3 id="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"><a href="#runtime-compiler和runtime-only两个vue版本的区别（面试常问）" class="headerlink" title="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"></a>runtime-compiler和runtime-only两个vue版本的区别（面试常问）</h3><ol>
+<li>两者的区别只在于main.js文件<ol>
+<li>runtime-complier版本<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010746.png" alt="img"></li>
+<li>runtime-only版本<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010805.png" alt="img">- 其中render函数的参数h，也是一个函数，h的本质是createElement这个函数，h相当于是一个代号 - 在createElement函数里面，是可以传入一个组件进行注册的，然后通过return直接将注册的组件返回给render函数，这样就相当于跳过了template -&gt; ast -&gt;render步骤（该步骤属于Vue运行过程的一部分） - render: h &#x3D;&gt; h(App)</li>
+</ol>
+</li>
+<li>Vue运行过程<ol>
+<li>在以后的开发中会将html代码都写成template模板，然后解析template将其转化为ast抽象语法树，之后进行编译将ast抽象语法树中的所有东西转化为render函数，render函数会形成一个虚拟dom树，最后转化为真实dom</li>
+<li>执行过程<ul>
+<li>template -&gt; ast -&gt;render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>两个vue版本的执行过程对比<ol>
+<li>对于runtime-complier的vue版本，执行过程如下<ul>
+<li>template -&gt; ast -&gt;render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
+</ul>
+</li>
+<li>对于runtime-only的vue版本，执行过程如下<ul>
+<li>render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>两者对比<ol>
+<li>runtime-only的执行过程更简单，性能更高</li>
+<li>runtime-only跳过了template -&gt; ast -&gt;render步骤，代码执行时，内部处理代码更少<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010830.png" alt="img"></li>
+<li>这里在创建vue选择版本时，runtime-only描述中表示轻6kb就是因为跳过了template -&gt; ast -&gt;render步骤</li>
+</ol>
+</li>
+<li>因此在以后工作中一般选择runtime-only版本vue</li>
+<li>疑问：既然使用runtime-only版本vue会跳过template -&gt; ast -&gt;render过程，那么.vue文件中的template是由谁处理的呢？<ol>
+<li>是由vue-tempate-compiler插件直接将template转化为了render</li>
+<li>该插件在脚手架中已经配置完成</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vuex</title>
     <url>/2022/08/02/Vuex/</url>
     <content><![CDATA[<h1 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h1><ol>
@@ -7797,112 +7903,6 @@
 <h4 id="调用commit"><a href="#调用commit" class="headerlink" title="调用commit"></a>调用commit</h4><ol>
 <li><p>开启命名空间后，在组件中调用commit</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 调用increment，并传参为num --&gt;</span><br><span class="line">&lt;span @click=&quot;increment(num)&quot;&gt;&lt;/span&gt;</span><br><span class="line">   </span><br><span class="line">// 方式一：通过$store.dispatch</span><br><span class="line">this.$store.commit(&#x27;Vuex模块化名称/Mutations中的方法名称&#x27;, value)</span><br><span class="line">   </span><br><span class="line">// 方式二：通过mapMutations方法简写</span><br><span class="line">methods: &#123;</span><br><span class="line">    ...mapMutations(&#x27;Vuex模块化名称&#x27;, &#123;increment: &#x27;Mutations中的方法名称&#x27;, ...&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue-CLI</title>
-    <url>/2022/08/02/Vue-CLI/</url>
-    <content><![CDATA[<h1 id="Vue-CLI（Vue脚手架）"><a href="#Vue-CLI（Vue脚手架）" class="headerlink" title="Vue CLI（Vue脚手架）"></a>Vue CLI（Vue脚手架）</h1><h2 id="Vue-CLI介绍和安装"><a href="#Vue-CLI介绍和安装" class="headerlink" title="Vue CLI介绍和安装"></a>Vue CLI介绍和安装</h2><h3 id="什么是Vue-CLI"><a href="#什么是Vue-CLI" class="headerlink" title="什么是Vue CLI"></a>什么是Vue CLI</h3><ol>
-<li>在开发大型项目时，需要使用到Vue CLI<ol>
-<li>使用Vue.js开发大型应用时，需要考虑代码目录结构、项目结构和部署、热加载、代码单元测试等事情</li>
-<li>如果每个项目都要手动完成这些工作，无疑效率比较低效，所以通常我们会使用一些脚手架工具来帮助完成这些事情</li>
-</ol>
-</li>
-</ol>
-<h3 id="CLI是什么"><a href="#CLI是什么" class="headerlink" title="CLI是什么"></a>CLI是什么</h3><ol>
-<li>CLI是Command-Line Interface，翻译为命令行界面，但是俗称脚手架</li>
-<li>Vue CLI是一个官方发布vue.js项目脚手架</li>
-<li>使用vue-cli可以快速搭建Vue开发环境以及对应的webpack配置</li>
-</ol>
-<h3 id="什么是npm"><a href="#什么是npm" class="headerlink" title="什么是npm"></a>什么是npm</h3><ol>
-<li>NPM的全称是Node Package Manager</li>
-<li>是一个NodeJS包管理和分发工具，已经成为了非官方的发布Node模块(包)的标准</li>
-<li>后续会经常使用NPM来安装一些开发过程中依赖包</li>
-</ol>
-<h3 id="cnpm安装"><a href="#cnpm安装" class="headerlink" title="cnpm安装"></a>cnpm安装</h3><ol>
-<li>由于国内直接使用npm的官方镜像是非常慢的，这里推荐使用淘宝NPM镜像</li>
-<li>可以使用淘宝定制的cnpm（gzip压缩支持）命令行工具代替默认的npm<ul>
-<li>npm install -g cnpm –registry&#x3D;<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></li>
-</ul>
-</li>
-<li>这样就可以使用cnpm命令来安装模块<ul>
-<li>cnpm install [name]</li>
-</ul>
-</li>
-</ol>
-<h3 id="安装Vue脚手架"><a href="#安装Vue脚手架" class="headerlink" title="安装Vue脚手架"></a>安装Vue脚手架</h3><ol>
-<li>直接在终端输入指令：npm install -g @vue&#x2F;cli<ol>
-<li>-g：进行全局安装</li>
-</ol>
-</li>
-<li>注意以上安装的是Vue CLI3或4的版本，如果需要按照Vue CLI2的方式初始化项目时，是不可以的</li>
-<li>Vue CLI3和旧版使用了相同的vue命令，所以Vue CLI2(vue-cli)被覆盖了，如果仍然需要使用旧版本的vue init功能，需要全局安装一个桥接工具<ol>
-<li>安装指令：npm install @vue&#x2F;cli-init</li>
-<li>安装这个就是为了使用Vue CLI2</li>
-</ol>
-</li>
-</ol>
-<h3 id="Vue初始化项目"><a href="#Vue初始化项目" class="headerlink" title="Vue初始化项目"></a>Vue初始化项目</h3><ol>
-<li>Vue CLI3初始化项目：vue create my-project</li>
-<li>Vue CLI2初始化项目：vue init webpack my-project<ol>
-<li>vue init webpack my-project：会根据这个名称my-project创建一个文件夹，存放之后的项目，该名称也会作为默认的项目名称，但是不能包含大写字母</li>
-<li>? Project name (my-project)：项目名称，不能包含大写</li>
-<li>? Project description (A Vue.js project)：项目描述</li>
-<li>? Author (CHHwn <a href="mailto:3355949795@qq.com">1258842059@qq.com</a>)：作者信息，会默认从git中读取信息</li>
-<li>? Vue build standalone：runtime-only和runtime-compiler两个vue版本选择</li>
-<li>? Install vue-router? (Y&#x2F;n)：是否选择vue路由，选择no，后面自己安装</li>
-<li>? Use ESLint to lint your code? (Y&#x2F;n)：ESlint检测代码规范，根据自身情况选择</li>
-<li>? Set up unit tests (Y&#x2F;n)：单元测试，根据公司要求，一般为no</li>
-<li>? Setup e2e tests with Nightwatch? (Y&#x2F;n)：e2e测试，安装Nightwatch，是利用selenium或webdriver或phantomjs等进行自动化测试的框架</li>
-<li>? Should we run <code>npm install</code> for you after the project has been created? (recommended)：选择使用npm或yarn</li>
-</ol>
-</li>
-<li>若脚手架安装失败可尝试将npm-cache文件夹删除，文件夹路径：C:\Users\大哥和臭憨憨\AppData\Roaming\npm-cache</li>
-</ol>
-<h3 id="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"><a href="#runtime-compiler和runtime-only两个vue版本的区别（面试常问）" class="headerlink" title="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"></a>runtime-compiler和runtime-only两个vue版本的区别（面试常问）</h3><ol>
-<li>两者的区别只在于main.js文件<ol>
-<li>runtime-complier版本<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010746.png" alt="img"></li>
-<li>runtime-only版本<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010805.png" alt="img">- 其中render函数的参数h，也是一个函数，h的本质是createElement这个函数，h相当于是一个代号 - 在createElement函数里面，是可以传入一个组件进行注册的，然后通过return直接将注册的组件返回给render函数，这样就相当于跳过了template -&gt; ast -&gt;render步骤（该步骤属于Vue运行过程的一部分） - render: h &#x3D;&gt; h(App)</li>
-</ol>
-</li>
-<li>Vue运行过程<ol>
-<li>在以后的开发中会将html代码都写成template模板，然后解析template将其转化为ast抽象语法树，之后进行编译将ast抽象语法树中的所有东西转化为render函数，render函数会形成一个虚拟dom树，最后转化为真实dom</li>
-<li>执行过程<ul>
-<li>template -&gt; ast -&gt;render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>两个vue版本的执行过程对比<ol>
-<li>对于runtime-complier的vue版本，执行过程如下<ul>
-<li>template -&gt; ast -&gt;render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
-</ul>
-</li>
-<li>对于runtime-only的vue版本，执行过程如下<ul>
-<li>render -&gt; virtual(虚拟) dom -&gt; 真实dom</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>两者对比<ol>
-<li>runtime-only的执行过程更简单，性能更高</li>
-<li>runtime-only跳过了template -&gt; ast -&gt;render步骤，代码执行时，内部处理代码更少<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011010830.png" alt="img"></li>
-<li>这里在创建vue选择版本时，runtime-only描述中表示轻6kb就是因为跳过了template -&gt; ast -&gt;render步骤</li>
-</ol>
-</li>
-<li>因此在以后工作中一般选择runtime-only版本vue</li>
-<li>疑问：既然使用runtime-only版本vue会跳过template -&gt; ast -&gt;render过程，那么.vue文件中的template是由谁处理的呢？<ol>
-<li>是由vue-tempate-compiler插件直接将template转化为了render</li>
-<li>该插件在脚手架中已经配置完成</li>
-</ol>
-</li>
 </ol>
 ]]></content>
       <categories>
@@ -8101,8 +8101,8 @@ style后面跟的是一个数组类型，多个值以，分割即可
 </ul>
 <p>情况二：如果需要同时传入某个参数，同时需要event时，可以通过$event传入事件。</p>
 <h3 id="v-on修饰符"><a href="#v-on修饰符" class="headerlink" title="v-on修饰符"></a>v-on修饰符</h3><ul>
-<li>.stop - 调用 event.stopPropagation()。阻止冒泡<a href="mailto:&#x2d;&#x40;&#99;&#108;&#105;&#x63;&#x6b;&#46;&#x73;&#116;&#111;&#112;">&#x2d;&#x40;&#99;&#108;&#105;&#x63;&#x6b;&#46;&#x73;&#116;&#111;&#112;</a></li>
-<li>.prevent - 调用 event.preventDefault()。阻止默认行为<a href="mailto:&#45;&#64;&#99;&#108;&#105;&#x63;&#x6b;&#x2e;&#x70;&#x72;&#x65;&#x76;&#x65;&#110;&#x74;">&#45;&#64;&#99;&#108;&#105;&#x63;&#x6b;&#x2e;&#x70;&#x72;&#x65;&#x76;&#x65;&#110;&#x74;</a></li>
+<li>.stop - 调用 event.stopPropagation()。阻止冒泡<a href="mailto:&#x2d;&#x40;&#x63;&#x6c;&#x69;&#x63;&#107;&#x2e;&#x73;&#x74;&#x6f;&#x70;">&#x2d;&#x40;&#x63;&#x6c;&#x69;&#x63;&#107;&#x2e;&#x73;&#x74;&#x6f;&#x70;</a></li>
+<li>.prevent - 调用 event.preventDefault()。阻止默认行为<a href="mailto:&#x2d;&#64;&#x63;&#x6c;&#x69;&#x63;&#107;&#x2e;&#x70;&#x72;&#101;&#x76;&#x65;&#110;&#116;">&#x2d;&#64;&#x63;&#x6c;&#x69;&#x63;&#107;&#x2e;&#x70;&#x72;&#101;&#x76;&#x65;&#110;&#116;</a></li>
 <li>.{keyCode | keyAlias} - 只当事件是从特定键触发时才触发回调。</li>
 <li>.native - 监听组件根元素的原生事件。</li>
 <li>.once - 只触发一次回调。</li>
@@ -8401,6 +8401,293 @@ style后面跟的是一个数组类型，多个值以，分割即可
       </tags>
   </entry>
   <entry>
+    <title>Webpack的安装与配置</title>
+    <url>/2022/08/02/Webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h1 id="Webpack的安装与配置"><a href="#Webpack的安装与配置" class="headerlink" title="Webpack的安装与配置"></a>Webpack的安装与配置</h1><h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><ol>
+<li>Webpack：Webpack是一个现代的JavaScript应用的静态模块打包工具</li>
+<li>模块和打包<ol>
+<li>模块化：webpack其中一个核心就是尽可能进行模块化开发，并且帮助处理模块间的依赖关系，不仅仅是JavaScript文件，CSS、图片、json文件等在webpack中都可以当做模块来使用，这就是webpack模块化</li>
+<li>打包：将webpack中的各种资源进行打包合并成一个或多个包，并且在打包的过程中，对资源进行处理；比如压缩图片、讲scss转成css，将ES6语法转成ES5语法，讲TypeScript转成JavaScript等操作</li>
+</ol>
+</li>
+<li>webpack的使用是依赖于node环境的，使用模块化方式进行开发时，不能将js&#x2F;png&#x2F;less&#x2F;css直接放到服务器中，因此需要在这中间使用webpack进行模块化打包，打包完成后会生成一个文件夹，然后把这个文件夹放到服务器进行部署</li>
+<li>webpack、node和npm之间的关系<ol>
+<li>webpack的为了可以正常使用是依赖于node环境，node环境为了可以正常的执行很多代码，必须其中包含各种依赖的包，为了使用这些包，我们就需要使用npm，npm就是一个包管理工具</li>
+</ol>
+</li>
+</ol>
+<h2 id="webpack安装"><a href="#webpack安装" class="headerlink" title="webpack安装"></a>webpack安装</h2><ol>
+<li>安装webpack首先需要安装Node.js，Node.js自带了软件包管理工具npm</li>
+<li>查看node版本：node -v</li>
+<li>全局安装webpack：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> -g<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003252.png" alt="img"></li>
+<li>webpack（后续才需要）：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> –save-dev<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003330.png" alt="img"></li>
+<li>为什么全局安装后，还需要局部安装呢？<ol>
+<li>在终端直接执行webpack命令，使用的全局安装的webpack</li>
+<li>当在package.json中定义了scripts时，其中包含了webpack命令，那么使用的是局部webpack</li>
+</ol>
+</li>
+</ol>
+<h2 id="webpack准备工作"><a href="#webpack准备工作" class="headerlink" title="webpack准备工作"></a>webpack准备工作</h2><h3 id="文件和文件夹解析"><a href="#文件和文件夹解析" class="headerlink" title="文件和文件夹解析"></a>文件和文件夹解析</h3><ol>
+<li>dist文件夹：用于存放之后打包的文件</li>
+<li>src文件夹：用于存放我们写的源文件<ol>
+<li>main.js：项目文件的入口文件</li>
+<li>mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用</li>
+</ol>
+</li>
+<li>index.html：浏览器打开展示的首页html</li>
+<li>package.json：通过npm init生成的，npm包管理的文件</li>
+</ol>
+<h2 id="webpack的基本使用过程"><a href="#webpack的基本使用过程" class="headerlink" title="webpack的基本使用过程"></a>webpack的基本使用过程</h2><h3 id="js文件的打包"><a href="#js文件的打包" class="headerlink" title="js文件的打包"></a>js文件的打包</h3><ol>
+<li>打开终端，在vscode中按下ctrl + ~</li>
+<li>通过cd命令进入根目录</li>
+<li>输入：npx webpack .&#x2F;src&#x2F;main.js .&#x2F;dist&#x2F;bundle.js<ol>
+<li>这句话的作用是：用webpack将.&#x2F;src&#x2F;main.js文件（入口文件）进行打包，打包到.&#x2F;dist&#x2F;bundle.js</li>
+<li>webpack在打包.&#x2F;src&#x2F;main.js时，会查看该文件是否依赖其他文件，webpack会自动处理模块之间的依赖，然后对依赖文件也进行自动打包</li>
+<li>打包时给webpack一个入口文件即可</li>
+</ol>
+</li>
+<li>使用打包后的文件：将打包文件bundle.js打包到dist文件夹后，将打包文件bundle.js引入index.html文件内，模块化代码即可运行<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003356.png" alt="img"></li>
+</ol>
+<h3 id="webpack-config-js的入口出口文件配置"><a href="#webpack-config-js的入口出口文件配置" class="headerlink" title="webpack.config.js的入口出口文件配置"></a>webpack.config.js的入口出口文件配置</h3><ol>
+<li>如果当每次使用webpack的命令都需要写上入口和出口作为参数，就非常麻烦；因此就需要将这两个参数写到配置中在运行时直接读取，就需要创建一个webpack.config.js文件</li>
+<li>入口和出口的配置，见以下代码<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003419.png" alt="img"></li>
+</ol>
+<h3 id="package-josn配置"><a href="#package-josn配置" class="headerlink" title="package.josn配置"></a>package.josn配置</h3><ol>
+<li>package.josn会在对npm（包管理工具）进行初始化npm init后生成</li>
+<li>在npm初始化过程中会需要在终端输入一系列值，目前只需要输入package name即可，可以任意输入但是保证是纯英文</li>
+<li>文件生成后主要配置”scripts”<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003437.png" alt="img"></li>
+</ol>
+<h3 id="局部安装webpack"><a href="#局部安装webpack" class="headerlink" title="局部安装webpack"></a>局部安装webpack</h3><ol>
+<li>目前，我们使用的webpack是全局的webpack<ol>
+<li>因为一个项目往往依赖特定的webpack版本，全局的版本可能很这个项目的webpack版本不一致，导出打包出现问题</li>
+<li>所以通常一个项目，都有自己局部的webpack</li>
+</ol>
+</li>
+<li>第一步：项目中需要安装自己的局部的webpack<ol>
+<li>这里我们让局部安装webpack3.6.0</li>
+<li>webpack局部安装：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> –save-dev<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003455.png" alt="img"></li>
+</ol>
+</li>
+<li>第二步：在package.json中的scripts中定义执行脚本，package.json中的scripts脚本执行时，会按照一定的顺序寻找命令对应的位置<ol>
+<li>首先会寻找本地路径中对应的命令</li>
+<li>如果没有找到，会去全局的环境变量中寻找</li>
+<li>执行build指令 – npm run build<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003512.png" alt="img"></li>
+<li>设置这个脚本就是为了让webpack优先执行本地的</li>
+</ol>
+</li>
+</ol>
+<h2 id="Webpack的配置（重点）"><a href="#Webpack的配置（重点）" class="headerlink" title="Webpack的配置（重点）"></a>Webpack的配置（重点）</h2><h3 id="处理css文件的loader"><a href="#处理css文件的loader" class="headerlink" title="处理css文件的loader"></a>处理css文件的loader</h3><ol>
+<li><p>loader是webpack中一个非常核心的概念</p>
+</li>
+<li><p>webpack的用处</p>
+<ol>
+<li>在之前的实例中，我们主要是用webpack来处理写的js代码，并且webpack会自动处理js之间相关的依赖</li>
+<li>但是，在开发中我们不仅仅有基本的js代码处理，我们也需要加载css、图片，也包括一些高级的将ES6转成ES5代码，将TypeScript转成ES5代码，将scss、less转成css，将.jsx、.vue文件转成js文件等等</li>
+<li>对于webpack本身的能力来说，对于这些转化是不支持的，此时就需要给webpack扩展对应的loader</li>
+</ol>
+</li>
+<li><p>在书写css文件后，需要让给main.js对css文件进行依赖，此时对文件进行打包（npm run build）会报错，报错原因就是因为没有安装css-loader</p>
+</li>
+<li><p>css文件处理 — css-loader和style-loader使用过程</p>
+<ol>
+<li>步骤一：通过npm安装需要使用的loader：css-loader和style-loader<ul>
+<li>css-loader安装（安装时注意版本问题）：npm install –save-dev css-loader<ul>
+<li>css-loader只负责对文件进行加载，不负责解析，css样式不会生效<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003549.png" alt="img"></li>
+</ul>
+</li>
+<li>style-loader安装（安装时注意版本问题）：npm install –save-dev style-loader<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003605.png" alt="img"></li>
+</ul>
+</li>
+<li>步骤二：在webpack.config.js中的module关键字下进行配置<ul>
+<li>配置时style-loader需要放在css-loader的前面</li>
+<li>因为在处理css文件的过程中，先由css-loader加载css文件，然后再由style-loder进行处理解析，将样式添加到DOM中</li>
+<li>又由于在webpack读取使用loader的过程中，是按照从右到左的顺序读取的，因此style-loader需要放在css-loader的前面<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003620.png" alt="img"></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>对应loader的安装方法在webpack的官网中的loader文档中有详细说明</p>
+</li>
+<li><p>其他需要使用到的loader都可以在webpack官网中根据文档进行安装，比如less与less-loader，安装指令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install less less-loader --save-dev    </span><br></pre></td></tr></table></figure>
+
+<h3 id="处理图片文件的loader"><a href="#处理图片文件的loader" class="headerlink" title="处理图片文件的loader"></a>处理图片文件的loader</h3></li>
+<li><p>资源准备</p>
+<ol>
+<li>一张较小的图片test01.jpg(小于8kb)，一张较大的图片test02.jpg(大于8kb)</li>
+<li>待会儿我们会针对这两张图片进行不同的处理</li>
+</ol>
+</li>
+<li><p>首先将test01.jpg（小于8kb）作为css样式背景，此时打包会报错，说明缺少loader</p>
+<ol>
+<li>图片处理，使用url-loader，安装loader：npm install –save-dev url-loader</li>
+<li>安装完毕后，修改webpack.config.js配置文件<ul>
+<li>当加载的图片，小于limit时，会将图片编译成base64字符串形式，</li>
+<li>当加载的图片，大于limit时，需要使用file-loader模块进行加载<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003644.png" alt="img"></li>
+</ul>
+</li>
+<li>再次打包，运行index.html，就会发现背景图片已经选出来了<ul>
+<li>但是背景图片是通过base64显示的，这就是limit属性的作用，当图片小于8kb时，对图片进行base64编码<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003705.png" alt="img"></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>然后让test01.jgp（大于8kb）作为css样式背景，此时再次运行会报错，需要通过file-loader进行处理</p>
+<ol>
+<li>安装file-loader：npm install –save-dev file-loader</li>
+<li>再次打包，就会发现第三条文件夹下多了一个图片文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003722.png" alt="img"></li>
+<li>webpack自动帮我们生成一个非常长的名字<ul>
+<li>这是一个32位hash值，目的是防止名字重复</li>
+<li>但是，真实开发中，我们可能对打包的图片名字有一定的要求</li>
+<li>比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复</li>
+</ul>
+</li>
+<li>所以我们需要在webpack.config.js配置文件的options中添加上以下选项<ul>
+<li>img：文件要打包到的文件夹</li>
+<li>name：获取图片原来的名字，放在该位置</li>
+<li>hash:8：为了防止图片名称冲突，依然使用hash，但是我们只保留8位</li>
+<li>ext：使用图片原来的扩展名<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003741.png" alt="img"></li>
+</ul>
+</li>
+<li>但是此时图片并没有显示出来，这是因为图片路径使用不正确<ul>
+<li>默认情况下，webpack会将生成的路径直接返回给使用者</li>
+<li>但是我们整个程序是打包在dist文件夹下的，所以这里我们需要在路径下再添加一个dist&#x2F;<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003758.png" alt="img"></li>
+</ul>
+</li>
+<li>此时再次npm run build，配置成功<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003812.png" alt="img"></li>
+</ol>
+</li>
+</ol>
+<h3 id="ES6转转ES5的loader"><a href="#ES6转转ES5的loader" class="headerlink" title="ES6转转ES5的loader"></a>ES6转转ES5的loader</h3><ol>
+<li>仔细阅读webpack打包的js文件，发现写的ES6语法并没有转成ES5，那么就意味着可能一些对ES6还不支持的浏览器没有办法很好的运行我们的代码</li>
+<li>在前面说过，如果希望将ES6的语法转成ES5，那么就需要使用babel<ol>
+<li>在webpack中，直接使用babel-loader就可以</li>
+</ol>
+</li>
+<li>安装babel-loader：npm install -save-dev babel-loader@7 babel-core babel-preset-es2015</li>
+<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003905.png" alt="img"></li>
+<li>此时npm run build，配置成功，es6成功全部转化为es5</li>
+</ol>
+<h3 id="使用Vue的配置过程"><a href="#使用Vue的配置过程" class="headerlink" title="使用Vue的配置过程"></a>使用Vue的配置过程</h3><ol>
+<li>后续项目中，我们会使用Vuejs进行开发，而且会以特殊的文件来组织vue的组件</li>
+<li>我们希望在项目中使用Vuejs，那么必然需要对其有依赖，所以需要先进行安装<ol>
+<li>因为我们后续是在实际项目中也会使用vue的，所以并不是开发时依赖</li>
+<li>安装vue：npm install –save vue</li>
+</ol>
+</li>
+<li>安装完成后，重新打包运行刚刚在main文件中编写并引用完成的vue的程序<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003923.png" alt="img">1. 打包过程没有任何错误(因为只是多打包了一个vue的js文件而已) 2. 但是运行程序，没有出现想要的效果，而且浏览器中有报错 3. 这个错误说的是我们使用的是runtime-only版本的Vue 4. 报错原因：Vue不同版本构建；后续我具体学习runtime-only和runtime-compiler两个vue版本的区别 - runtime-only：代码中不可以有任何的template - runtime-compiler：代码中，可以有template，因为有compiler可以用于编译template 5. 解决方法：配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003943.png" alt="img"></li>
+</ol>
+<h3 id="el和template区别"><a href="#el和template区别" class="headerlink" title="el和template区别"></a>el和template区别</h3><ol>
+<li>定义template属性：使用template内容替换el绑定的元素<ol>
+<li>在前面的Vue实例中，我们定义了el属性，用于和index.htmI中的#app进行绑定，让Vue实例之后可以管理它其中的内容</li>
+<li>这里，我们可以将div元素中的{message}}内容删掉，只保留一个基本的id为div的元素</li>
+<li>但是如果我依然希望在其中显示的内容，就应该定义一个template属性<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004000.png" alt="img"></li>
+</ol>
+</li>
+</ol>
+<h3 id="vue的终极使用方案"><a href="#vue的终极使用方案" class="headerlink" title="vue的终极使用方案"></a>vue的终极使用方案</h3><ol>
+<li>.vue文件的封装处理<ol>
+<li>在vscode中安装Vetur插件，在vue文件夹中创建.vue文件，并利用快捷键“&lt;&gt;”快速生成代码，生成的代码是默认使用export default导出子组件的</li>
+<li>将子组件放入.vue文件中，将template模板、js文件都放入其中，在vue文件中还可以书写css样式<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004038.png" alt="img"></li>
+</ol>
+</li>
+<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#x76;&#x75;&#101;&#45;&#108;&#x6f;&#x61;&#x64;&#101;&#114;&#64;&#x31;&#51;&#x2e;&#48;&#46;&#48;">&#x76;&#x75;&#101;&#45;&#108;&#x6f;&#x61;&#x64;&#101;&#114;&#64;&#x31;&#51;&#x2e;&#48;&#46;&#48;</a> <a href="mailto:&#x76;&#117;&#101;&#45;&#116;&#x65;&#109;&#112;&#108;&#x61;&#x74;&#101;&#x2d;&#99;&#111;&#x6d;&#x70;&#x69;&#x6c;&#101;&#x72;&#64;&#50;&#46;&#x36;&#x2e;&#49;&#x34;">&#x76;&#117;&#101;&#45;&#116;&#x65;&#109;&#112;&#108;&#x61;&#x74;&#101;&#x2d;&#99;&#111;&#x6d;&#x70;&#x69;&#x6c;&#101;&#x72;&#64;&#50;&#46;&#x36;&#x2e;&#49;&#x34;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
+</ol>
+<h3 id="打包html的plugin"><a href="#打包html的plugin" class="headerlink" title="打包html的plugin"></a>打包html的plugin</h3><ol>
+<li><p>目前，index.html文件是存放在项目根目录的</p>
+<ol>
+<li><p>在真实发布项目时，发布的是dist文件夹中的内容，但是dist文件夹中如果没有index.html文件，那么打包的js等文件也就没有意义了</p>
+</li>
+<li><p>所以，我们需要将index.html文件打包到dist文件夹中，这个时候就可以使用html-webpack-plugin插件</p>
+<ul>
+<li>npm install –save-dev <a href="mailto:html-webpack-plugin@3.2.0">html-webpack-plugin@3.2.0</a></li>
+</ul>
+</li>
+<li><p>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004157.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004206.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004215.png" alt="img"></p>
+</li>
+<li><p>删除根目录下index.html文件script标签的文件引入，因为当npm run build后html-webpack-plugin插件会自动在dist文件夹下生成index.html文件，并自动完成引入bundle.js文件和自动生成</p>
+</li>
+<li><p>配置成功<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004234.png" alt="img"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="压缩丑化的plugin"><a href="#压缩丑化的plugin" class="headerlink" title="压缩丑化的plugin"></a>压缩丑化的plugin</h3><ol>
+<li>在项目发布之前，我们需要对js等文件进行压缩处理<ol>
+<li>这里需要使用一个第三方插件uglifyjs-webpack-plugin，并且指定版本号1.1.1，和CLI2保持一致<ul>
+<li>npm install <a href="mailto:uglifyjs-webpack-plugin@1.1.1">uglifyjs-webpack-plugin@1.1.1</a> –save-dev</li>
+</ul>
+</li>
+<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004253.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004300.png" alt="img"></li>
+</ol>
+</li>
+<li>配置成功，bundle.js丑化成功</li>
+</ol>
+<h3 id="搭建本地服务器"><a href="#搭建本地服务器" class="headerlink" title="搭建本地服务器"></a>搭建本地服务器</h3><ol>
+<li>webpack提供了一个可选的本地开发服务器，这个本地服务器基于node.js搭建，内部使用express框架，可以实现我们想要的让浏览器自动刷新显示我们修改后的结果</li>
+<li>不过它是一个单独的模块，在webpack中使用之前需要先安装它<ul>
+<li>npm install –save-dev <a href="mailto:webpack-dev-server@2.9.3">webpack-dev-server@2.9.3</a></li>
+</ul>
+</li>
+<li>devserver也是作为webpack中的一个选项，选项本身可以设置如下属性<ol>
+<li>contentBase：为哪一个文件夹提供本地服务，默认是根文件夹，我们这里要填写.&#x2F;dist</li>
+<li>port：端口号</li>
+<li>inline：页面实时刷新</li>
+<li>historyApiFallback：在SPA页面中，依赖HTML5的history模式</li>
+</ol>
+</li>
+<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004321.png" alt="img"></li>
+<li>再去package.json中配置一个scripts<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004338.png" alt="img"></li>
+<li>使用npm run dev命令运行成功，点击终端中生成的本地8080端口网址，项目在本地成功运行<ol>
+<li>此时在本地运行的项目，会实时根据代码的改变自动刷新，在开发时测试通常使用此方法</li>
+<li>项目测试成功后最后使用npm run build，进行最后的打包，然后进入服务器进行最后的部署<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004357.png" alt="img"></li>
+</ol>
+</li>
+<li>在package.json文件中配置一个scripts时加上–open参数表示npm run dev后不需要点击生成的本地链接直接打开浏览器<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004414.png" alt="img"></li>
+</ol>
+<h3 id="配置文件和分离"><a href="#配置文件和分离" class="headerlink" title="配置文件和分离"></a>配置文件和分离</h3><ol>
+<li>由于开发时，经常会需要调试，所以不建议进行丑化代码；只有打包阶段时，才需要进行丑化</li>
+<li>而搭建本地服务器时，需要给webpack的devserver选项配置一些属性</li>
+<li>因此在webpack.config.js文件中，一些配置是开发时才会使用的（丑化代码），有一些配置是生产时使用的（搭建本地服务器给webpack的devserver选项配置属性）<ol>
+<li>为了防止将这些配置全部放在webpack.config.js文件而造成冲突</li>
+<li>创建一个build文件夹，在其中创建三个js文件，将webpack.config.js文件进行分离<ul>
+<li>base.config.js：公共配置，开发和生产时都需要依赖</li>
+<li>dev.config.js：仅开发时需要依赖</li>
+<li>prod.config.js：仅生产时需要依赖</li>
+</ul>
+</li>
+<li>将配置文件分离后<ul>
+<li>在开发时需要用到base.config.js和dev.config.js文件</li>
+<li>在生产时需要用到base.config.js和prod.config.js文件</li>
+</ul>
+</li>
+<li>如上，为了在开发时能将项目所需配置文件合并在一起，则需要安装插件webpack-merge<ul>
+<li>npm install <a href="mailto:webpack-merge@4.1.5">webpack-merge@4.1.5</a> –save-dev</li>
+</ul>
+</li>
+<li>下载完毕后在dev.config.js和prod.config.js文件中需要进行导入插件，然后在两者中都引入base.config.js文件，最后利用插件进行合并文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004450.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004500.png" alt="img"></li>
+<li>由于已经将webpack.config.js文件已经进行了配置分离，然后就可以删除webpack.config.js文件了，删除之后npm run build会报错，报错原因是系统找不到webpack.config.js文件<ul>
+<li>因此我们就需要到package.json文件中去修改scripts的build和dev值<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004531.png" alt="img"></li>
+</ul>
+</li>
+<li>由于把分离后的三个js文件放到了build文件夹中，则打包后的dist文件夹也会创建在build文件夹中<ul>
+<li>原因：这是因为在原来的webpack.config.js文件的output对象中的path属性的路径值问题造成的</li>
+<li>解决方案：将base.config.js文件中的output对象的path属性的路径修改为相对于dist文件夹的相对路径即可<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004546.png" alt="img"></li>
+</ul>
+</li>
+<li>配置成功</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>axios</title>
     <url>/2022/08/02/axios/</url>
     <content><![CDATA[<h1 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h1><ol>
@@ -8631,293 +8918,6 @@ style后面跟的是一个数组类型，多个值以，分割即可
       </categories>
       <tags>
         <tag>eCharts</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Webpack的安装与配置</title>
-    <url>/2022/08/02/Webpack%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="Webpack的安装与配置"><a href="#Webpack的安装与配置" class="headerlink" title="Webpack的安装与配置"></a>Webpack的安装与配置</h1><h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><ol>
-<li>Webpack：Webpack是一个现代的JavaScript应用的静态模块打包工具</li>
-<li>模块和打包<ol>
-<li>模块化：webpack其中一个核心就是尽可能进行模块化开发，并且帮助处理模块间的依赖关系，不仅仅是JavaScript文件，CSS、图片、json文件等在webpack中都可以当做模块来使用，这就是webpack模块化</li>
-<li>打包：将webpack中的各种资源进行打包合并成一个或多个包，并且在打包的过程中，对资源进行处理；比如压缩图片、讲scss转成css，将ES6语法转成ES5语法，讲TypeScript转成JavaScript等操作</li>
-</ol>
-</li>
-<li>webpack的使用是依赖于node环境的，使用模块化方式进行开发时，不能将js&#x2F;png&#x2F;less&#x2F;css直接放到服务器中，因此需要在这中间使用webpack进行模块化打包，打包完成后会生成一个文件夹，然后把这个文件夹放到服务器进行部署</li>
-<li>webpack、node和npm之间的关系<ol>
-<li>webpack的为了可以正常使用是依赖于node环境，node环境为了可以正常的执行很多代码，必须其中包含各种依赖的包，为了使用这些包，我们就需要使用npm，npm就是一个包管理工具</li>
-</ol>
-</li>
-</ol>
-<h2 id="webpack安装"><a href="#webpack安装" class="headerlink" title="webpack安装"></a>webpack安装</h2><ol>
-<li>安装webpack首先需要安装Node.js，Node.js自带了软件包管理工具npm</li>
-<li>查看node版本：node -v</li>
-<li>全局安装webpack：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> -g<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003252.png" alt="img"></li>
-<li>webpack（后续才需要）：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> –save-dev<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003330.png" alt="img"></li>
-<li>为什么全局安装后，还需要局部安装呢？<ol>
-<li>在终端直接执行webpack命令，使用的全局安装的webpack</li>
-<li>当在package.json中定义了scripts时，其中包含了webpack命令，那么使用的是局部webpack</li>
-</ol>
-</li>
-</ol>
-<h2 id="webpack准备工作"><a href="#webpack准备工作" class="headerlink" title="webpack准备工作"></a>webpack准备工作</h2><h3 id="文件和文件夹解析"><a href="#文件和文件夹解析" class="headerlink" title="文件和文件夹解析"></a>文件和文件夹解析</h3><ol>
-<li>dist文件夹：用于存放之后打包的文件</li>
-<li>src文件夹：用于存放我们写的源文件<ol>
-<li>main.js：项目文件的入口文件</li>
-<li>mathUtils.js：定义了一些数学工具函数，可以在其他地方引用，并且使用</li>
-</ol>
-</li>
-<li>index.html：浏览器打开展示的首页html</li>
-<li>package.json：通过npm init生成的，npm包管理的文件</li>
-</ol>
-<h2 id="webpack的基本使用过程"><a href="#webpack的基本使用过程" class="headerlink" title="webpack的基本使用过程"></a>webpack的基本使用过程</h2><h3 id="js文件的打包"><a href="#js文件的打包" class="headerlink" title="js文件的打包"></a>js文件的打包</h3><ol>
-<li>打开终端，在vscode中按下ctrl + ~</li>
-<li>通过cd命令进入根目录</li>
-<li>输入：npx webpack .&#x2F;src&#x2F;main.js .&#x2F;dist&#x2F;bundle.js<ol>
-<li>这句话的作用是：用webpack将.&#x2F;src&#x2F;main.js文件（入口文件）进行打包，打包到.&#x2F;dist&#x2F;bundle.js</li>
-<li>webpack在打包.&#x2F;src&#x2F;main.js时，会查看该文件是否依赖其他文件，webpack会自动处理模块之间的依赖，然后对依赖文件也进行自动打包</li>
-<li>打包时给webpack一个入口文件即可</li>
-</ol>
-</li>
-<li>使用打包后的文件：将打包文件bundle.js打包到dist文件夹后，将打包文件bundle.js引入index.html文件内，模块化代码即可运行<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003356.png" alt="img"></li>
-</ol>
-<h3 id="webpack-config-js的入口出口文件配置"><a href="#webpack-config-js的入口出口文件配置" class="headerlink" title="webpack.config.js的入口出口文件配置"></a>webpack.config.js的入口出口文件配置</h3><ol>
-<li>如果当每次使用webpack的命令都需要写上入口和出口作为参数，就非常麻烦；因此就需要将这两个参数写到配置中在运行时直接读取，就需要创建一个webpack.config.js文件</li>
-<li>入口和出口的配置，见以下代码<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003419.png" alt="img"></li>
-</ol>
-<h3 id="package-josn配置"><a href="#package-josn配置" class="headerlink" title="package.josn配置"></a>package.josn配置</h3><ol>
-<li>package.josn会在对npm（包管理工具）进行初始化npm init后生成</li>
-<li>在npm初始化过程中会需要在终端输入一系列值，目前只需要输入package name即可，可以任意输入但是保证是纯英文</li>
-<li>文件生成后主要配置”scripts”<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003437.png" alt="img"></li>
-</ol>
-<h3 id="局部安装webpack"><a href="#局部安装webpack" class="headerlink" title="局部安装webpack"></a>局部安装webpack</h3><ol>
-<li>目前，我们使用的webpack是全局的webpack<ol>
-<li>因为一个项目往往依赖特定的webpack版本，全局的版本可能很这个项目的webpack版本不一致，导出打包出现问题</li>
-<li>所以通常一个项目，都有自己局部的webpack</li>
-</ol>
-</li>
-<li>第一步：项目中需要安装自己的局部的webpack<ol>
-<li>这里我们让局部安装webpack3.6.0</li>
-<li>webpack局部安装：npm install <a href="mailto:webpack@3.6.0">webpack@3.6.0</a> –save-dev<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003455.png" alt="img"></li>
-</ol>
-</li>
-<li>第二步：在package.json中的scripts中定义执行脚本，package.json中的scripts脚本执行时，会按照一定的顺序寻找命令对应的位置<ol>
-<li>首先会寻找本地路径中对应的命令</li>
-<li>如果没有找到，会去全局的环境变量中寻找</li>
-<li>执行build指令 – npm run build<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003512.png" alt="img"></li>
-<li>设置这个脚本就是为了让webpack优先执行本地的</li>
-</ol>
-</li>
-</ol>
-<h2 id="Webpack的配置（重点）"><a href="#Webpack的配置（重点）" class="headerlink" title="Webpack的配置（重点）"></a>Webpack的配置（重点）</h2><h3 id="处理css文件的loader"><a href="#处理css文件的loader" class="headerlink" title="处理css文件的loader"></a>处理css文件的loader</h3><ol>
-<li><p>loader是webpack中一个非常核心的概念</p>
-</li>
-<li><p>webpack的用处</p>
-<ol>
-<li>在之前的实例中，我们主要是用webpack来处理写的js代码，并且webpack会自动处理js之间相关的依赖</li>
-<li>但是，在开发中我们不仅仅有基本的js代码处理，我们也需要加载css、图片，也包括一些高级的将ES6转成ES5代码，将TypeScript转成ES5代码，将scss、less转成css，将.jsx、.vue文件转成js文件等等</li>
-<li>对于webpack本身的能力来说，对于这些转化是不支持的，此时就需要给webpack扩展对应的loader</li>
-</ol>
-</li>
-<li><p>在书写css文件后，需要让给main.js对css文件进行依赖，此时对文件进行打包（npm run build）会报错，报错原因就是因为没有安装css-loader</p>
-</li>
-<li><p>css文件处理 — css-loader和style-loader使用过程</p>
-<ol>
-<li>步骤一：通过npm安装需要使用的loader：css-loader和style-loader<ul>
-<li>css-loader安装（安装时注意版本问题）：npm install –save-dev css-loader<ul>
-<li>css-loader只负责对文件进行加载，不负责解析，css样式不会生效<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003549.png" alt="img"></li>
-</ul>
-</li>
-<li>style-loader安装（安装时注意版本问题）：npm install –save-dev style-loader<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003605.png" alt="img"></li>
-</ul>
-</li>
-<li>步骤二：在webpack.config.js中的module关键字下进行配置<ul>
-<li>配置时style-loader需要放在css-loader的前面</li>
-<li>因为在处理css文件的过程中，先由css-loader加载css文件，然后再由style-loder进行处理解析，将样式添加到DOM中</li>
-<li>又由于在webpack读取使用loader的过程中，是按照从右到左的顺序读取的，因此style-loader需要放在css-loader的前面<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003620.png" alt="img"></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>对应loader的安装方法在webpack的官网中的loader文档中有详细说明</p>
-</li>
-<li><p>其他需要使用到的loader都可以在webpack官网中根据文档进行安装，比如less与less-loader，安装指令为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install less less-loader --save-dev    </span><br></pre></td></tr></table></figure>
-
-<h3 id="处理图片文件的loader"><a href="#处理图片文件的loader" class="headerlink" title="处理图片文件的loader"></a>处理图片文件的loader</h3></li>
-<li><p>资源准备</p>
-<ol>
-<li>一张较小的图片test01.jpg(小于8kb)，一张较大的图片test02.jpg(大于8kb)</li>
-<li>待会儿我们会针对这两张图片进行不同的处理</li>
-</ol>
-</li>
-<li><p>首先将test01.jpg（小于8kb）作为css样式背景，此时打包会报错，说明缺少loader</p>
-<ol>
-<li>图片处理，使用url-loader，安装loader：npm install –save-dev url-loader</li>
-<li>安装完毕后，修改webpack.config.js配置文件<ul>
-<li>当加载的图片，小于limit时，会将图片编译成base64字符串形式，</li>
-<li>当加载的图片，大于limit时，需要使用file-loader模块进行加载<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003644.png" alt="img"></li>
-</ul>
-</li>
-<li>再次打包，运行index.html，就会发现背景图片已经选出来了<ul>
-<li>但是背景图片是通过base64显示的，这就是limit属性的作用，当图片小于8kb时，对图片进行base64编码<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003705.png" alt="img"></li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p>然后让test01.jgp（大于8kb）作为css样式背景，此时再次运行会报错，需要通过file-loader进行处理</p>
-<ol>
-<li>安装file-loader：npm install –save-dev file-loader</li>
-<li>再次打包，就会发现第三条文件夹下多了一个图片文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003722.png" alt="img"></li>
-<li>webpack自动帮我们生成一个非常长的名字<ul>
-<li>这是一个32位hash值，目的是防止名字重复</li>
-<li>但是，真实开发中，我们可能对打包的图片名字有一定的要求</li>
-<li>比如，将所有的图片放在一个文件夹中，跟上图片原来的名称，同时也要防止重复</li>
-</ul>
-</li>
-<li>所以我们需要在webpack.config.js配置文件的options中添加上以下选项<ul>
-<li>img：文件要打包到的文件夹</li>
-<li>name：获取图片原来的名字，放在该位置</li>
-<li>hash:8：为了防止图片名称冲突，依然使用hash，但是我们只保留8位</li>
-<li>ext：使用图片原来的扩展名<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003741.png" alt="img"></li>
-</ul>
-</li>
-<li>但是此时图片并没有显示出来，这是因为图片路径使用不正确<ul>
-<li>默认情况下，webpack会将生成的路径直接返回给使用者</li>
-<li>但是我们整个程序是打包在dist文件夹下的，所以这里我们需要在路径下再添加一个dist&#x2F;<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003758.png" alt="img"></li>
-</ul>
-</li>
-<li>此时再次npm run build，配置成功<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003812.png" alt="img"></li>
-</ol>
-</li>
-</ol>
-<h3 id="ES6转转ES5的loader"><a href="#ES6转转ES5的loader" class="headerlink" title="ES6转转ES5的loader"></a>ES6转转ES5的loader</h3><ol>
-<li>仔细阅读webpack打包的js文件，发现写的ES6语法并没有转成ES5，那么就意味着可能一些对ES6还不支持的浏览器没有办法很好的运行我们的代码</li>
-<li>在前面说过，如果希望将ES6的语法转成ES5，那么就需要使用babel<ol>
-<li>在webpack中，直接使用babel-loader就可以</li>
-</ol>
-</li>
-<li>安装babel-loader：npm install -save-dev babel-loader@7 babel-core babel-preset-es2015</li>
-<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003905.png" alt="img"></li>
-<li>此时npm run build，配置成功，es6成功全部转化为es5</li>
-</ol>
-<h3 id="使用Vue的配置过程"><a href="#使用Vue的配置过程" class="headerlink" title="使用Vue的配置过程"></a>使用Vue的配置过程</h3><ol>
-<li>后续项目中，我们会使用Vuejs进行开发，而且会以特殊的文件来组织vue的组件</li>
-<li>我们希望在项目中使用Vuejs，那么必然需要对其有依赖，所以需要先进行安装<ol>
-<li>因为我们后续是在实际项目中也会使用vue的，所以并不是开发时依赖</li>
-<li>安装vue：npm install –save vue</li>
-</ol>
-</li>
-<li>安装完成后，重新打包运行刚刚在main文件中编写并引用完成的vue的程序<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003923.png" alt="img">1. 打包过程没有任何错误(因为只是多打包了一个vue的js文件而已) 2. 但是运行程序，没有出现想要的效果，而且浏览器中有报错 3. 这个错误说的是我们使用的是runtime-only版本的Vue 4. 报错原因：Vue不同版本构建；后续我具体学习runtime-only和runtime-compiler两个vue版本的区别 - runtime-only：代码中不可以有任何的template - runtime-compiler：代码中，可以有template，因为有compiler可以用于编译template 5. 解决方法：配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011003943.png" alt="img"></li>
-</ol>
-<h3 id="el和template区别"><a href="#el和template区别" class="headerlink" title="el和template区别"></a>el和template区别</h3><ol>
-<li>定义template属性：使用template内容替换el绑定的元素<ol>
-<li>在前面的Vue实例中，我们定义了el属性，用于和index.htmI中的#app进行绑定，让Vue实例之后可以管理它其中的内容</li>
-<li>这里，我们可以将div元素中的{message}}内容删掉，只保留一个基本的id为div的元素</li>
-<li>但是如果我依然希望在其中显示的内容，就应该定义一个template属性<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004000.png" alt="img"></li>
-</ol>
-</li>
-</ol>
-<h3 id="vue的终极使用方案"><a href="#vue的终极使用方案" class="headerlink" title="vue的终极使用方案"></a>vue的终极使用方案</h3><ol>
-<li>.vue文件的封装处理<ol>
-<li>在vscode中安装Vetur插件，在vue文件夹中创建.vue文件，并利用快捷键“&lt;&gt;”快速生成代码，生成的代码是默认使用export default导出子组件的</li>
-<li>将子组件放入.vue文件中，将template模板、js文件都放入其中，在vue文件中还可以书写css样式<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004038.png" alt="img"></li>
-</ol>
-</li>
-<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#118;&#x75;&#101;&#x2d;&#x6c;&#111;&#x61;&#x64;&#101;&#114;&#x40;&#49;&#51;&#46;&#x30;&#x2e;&#48;">&#118;&#x75;&#101;&#x2d;&#x6c;&#111;&#x61;&#x64;&#101;&#114;&#x40;&#49;&#51;&#46;&#x30;&#x2e;&#48;</a> <a href="mailto:&#x76;&#x75;&#101;&#45;&#116;&#x65;&#109;&#x70;&#108;&#97;&#x74;&#101;&#x2d;&#99;&#x6f;&#109;&#112;&#105;&#108;&#101;&#114;&#x40;&#50;&#46;&#54;&#46;&#x31;&#52;">&#x76;&#x75;&#101;&#45;&#116;&#x65;&#109;&#x70;&#108;&#97;&#x74;&#101;&#x2d;&#99;&#x6f;&#109;&#112;&#105;&#108;&#101;&#114;&#x40;&#50;&#46;&#54;&#46;&#x31;&#52;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
-</ol>
-<h3 id="打包html的plugin"><a href="#打包html的plugin" class="headerlink" title="打包html的plugin"></a>打包html的plugin</h3><ol>
-<li><p>目前，index.html文件是存放在项目根目录的</p>
-<ol>
-<li><p>在真实发布项目时，发布的是dist文件夹中的内容，但是dist文件夹中如果没有index.html文件，那么打包的js等文件也就没有意义了</p>
-</li>
-<li><p>所以，我们需要将index.html文件打包到dist文件夹中，这个时候就可以使用html-webpack-plugin插件</p>
-<ul>
-<li>npm install –save-dev <a href="mailto:html-webpack-plugin@3.2.0">html-webpack-plugin@3.2.0</a></li>
-</ul>
-</li>
-<li><p>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004157.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004206.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004215.png" alt="img"></p>
-</li>
-<li><p>删除根目录下index.html文件script标签的文件引入，因为当npm run build后html-webpack-plugin插件会自动在dist文件夹下生成index.html文件，并自动完成引入bundle.js文件和自动生成</p>
-</li>
-<li><p>配置成功<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004234.png" alt="img"></p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="压缩丑化的plugin"><a href="#压缩丑化的plugin" class="headerlink" title="压缩丑化的plugin"></a>压缩丑化的plugin</h3><ol>
-<li>在项目发布之前，我们需要对js等文件进行压缩处理<ol>
-<li>这里需要使用一个第三方插件uglifyjs-webpack-plugin，并且指定版本号1.1.1，和CLI2保持一致<ul>
-<li>npm install <a href="mailto:uglifyjs-webpack-plugin@1.1.1">uglifyjs-webpack-plugin@1.1.1</a> –save-dev</li>
-</ul>
-</li>
-<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004253.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004300.png" alt="img"></li>
-</ol>
-</li>
-<li>配置成功，bundle.js丑化成功</li>
-</ol>
-<h3 id="搭建本地服务器"><a href="#搭建本地服务器" class="headerlink" title="搭建本地服务器"></a>搭建本地服务器</h3><ol>
-<li>webpack提供了一个可选的本地开发服务器，这个本地服务器基于node.js搭建，内部使用express框架，可以实现我们想要的让浏览器自动刷新显示我们修改后的结果</li>
-<li>不过它是一个单独的模块，在webpack中使用之前需要先安装它<ul>
-<li>npm install –save-dev <a href="mailto:webpack-dev-server@2.9.3">webpack-dev-server@2.9.3</a></li>
-</ul>
-</li>
-<li>devserver也是作为webpack中的一个选项，选项本身可以设置如下属性<ol>
-<li>contentBase：为哪一个文件夹提供本地服务，默认是根文件夹，我们这里要填写.&#x2F;dist</li>
-<li>port：端口号</li>
-<li>inline：页面实时刷新</li>
-<li>historyApiFallback：在SPA页面中，依赖HTML5的history模式</li>
-</ol>
-</li>
-<li>配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004321.png" alt="img"></li>
-<li>再去package.json中配置一个scripts<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004338.png" alt="img"></li>
-<li>使用npm run dev命令运行成功，点击终端中生成的本地8080端口网址，项目在本地成功运行<ol>
-<li>此时在本地运行的项目，会实时根据代码的改变自动刷新，在开发时测试通常使用此方法</li>
-<li>项目测试成功后最后使用npm run build，进行最后的打包，然后进入服务器进行最后的部署<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004357.png" alt="img"></li>
-</ol>
-</li>
-<li>在package.json文件中配置一个scripts时加上–open参数表示npm run dev后不需要点击生成的本地链接直接打开浏览器<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004414.png" alt="img"></li>
-</ol>
-<h3 id="配置文件和分离"><a href="#配置文件和分离" class="headerlink" title="配置文件和分离"></a>配置文件和分离</h3><ol>
-<li>由于开发时，经常会需要调试，所以不建议进行丑化代码；只有打包阶段时，才需要进行丑化</li>
-<li>而搭建本地服务器时，需要给webpack的devserver选项配置一些属性</li>
-<li>因此在webpack.config.js文件中，一些配置是开发时才会使用的（丑化代码），有一些配置是生产时使用的（搭建本地服务器给webpack的devserver选项配置属性）<ol>
-<li>为了防止将这些配置全部放在webpack.config.js文件而造成冲突</li>
-<li>创建一个build文件夹，在其中创建三个js文件，将webpack.config.js文件进行分离<ul>
-<li>base.config.js：公共配置，开发和生产时都需要依赖</li>
-<li>dev.config.js：仅开发时需要依赖</li>
-<li>prod.config.js：仅生产时需要依赖</li>
-</ul>
-</li>
-<li>将配置文件分离后<ul>
-<li>在开发时需要用到base.config.js和dev.config.js文件</li>
-<li>在生产时需要用到base.config.js和prod.config.js文件</li>
-</ul>
-</li>
-<li>如上，为了在开发时能将项目所需配置文件合并在一起，则需要安装插件webpack-merge<ul>
-<li>npm install <a href="mailto:webpack-merge@4.1.5">webpack-merge@4.1.5</a> –save-dev</li>
-</ul>
-</li>
-<li>下载完毕后在dev.config.js和prod.config.js文件中需要进行导入插件，然后在两者中都引入base.config.js文件，最后利用插件进行合并文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004450.png" alt="img"><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004500.png" alt="img"></li>
-<li>由于已经将webpack.config.js文件已经进行了配置分离，然后就可以删除webpack.config.js文件了，删除之后npm run build会报错，报错原因是系统找不到webpack.config.js文件<ul>
-<li>因此我们就需要到package.json文件中去修改scripts的build和dev值<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004531.png" alt="img"></li>
-</ul>
-</li>
-<li>由于把分离后的三个js文件放到了build文件夹中，则打包后的dist文件夹也会创建在build文件夹中<ul>
-<li>原因：这是因为在原来的webpack.config.js文件的output对象中的path属性的路径值问题造成的</li>
-<li>解决方案：将base.config.js文件中的output对象的path属性的路径修改为相对于dist文件夹的相对路径即可<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004546.png" alt="img"></li>
-</ul>
-</li>
-<li>配置成功</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
       </tags>
   </entry>
   <entry>
@@ -9423,6 +9423,39 @@ style后面跟的是一个数组类型，多个值以，分割即可
       </tags>
   </entry>
   <entry>
+    <title>instanceof与typeof的区别</title>
+    <url>/2022/08/01/instanceof%E4%B8%8Etypeof%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h1 id="instanceof与typeof的区别"><a href="#instanceof与typeof的区别" class="headerlink" title="instanceof与typeof的区别"></a>instanceof与typeof的区别</h1><ol>
+<li><p>typeof：用于判断数据类型，返回值为6个字符串，分别为string, boolean, number, function, object, undefined</p>
+<ol>
+<li><p>代码演示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a =[34,4,3,54],</span><br><span class="line">b =34,</span><br><span class="line">c =&#x27;adsfas&#x27;,</span><br><span class="line">d=function()&#123;console.log(&#x27;我是函数&#x27;)&#125;,</span><br><span class="line">e =true,</span><br><span class="line">f=null,</span><br><span class="line">g;</span><br><span class="line">console.log(typeof(a));  //object</span><br><span class="line">console.log(typeof(b));  //number</span><br><span class="line">console.log(typeof(c));  //string</span><br><span class="line">console.log(typeof(d));  //function</span><br><span class="line">console.log(typeof(e));  //boolean</span><br><span class="line">console.log(typeof(f));  //object</span><br><span class="line">console.log(typeof(g));  //undefined</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>instanceof：对象运算符，判断该对象是谁的实例，返回值为布尔值</p>
+<ol>
+<li>判断就是根据原型链进行搜寻</li>
+<li>在对象obj1的原型链上如果存在另一个对象obj2的原型属性，那么表达式（obj1 instanceof obj2）返回值为true；否则返回false</li>
+</ol>
+</li>
+<li><p>区别</p>
+<ol>
+<li>typeof判断所有变量的类型，返回值有number，boolean，string，function，object，undefined</li>
+<li>typeof在判断null、array、object以及函数实例对象是得到的都是Object</li>
+<li>instanceof用来判断对象，代码形式为obj1 instanceof obj2（obj1是否是obj2的实例），obj2必须为对象，否则会报错，其返回值为布尔值</li>
+<li>instanceof可以对不同的对象实例进行判断，判断方法是根据对象的原型链依次向下查询，如果obj2的原型属性存在obj1的原型链上，（obj1 instanceof obj2）值为true</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES5</category>
+      </categories>
+      <tags>
+        <tag>ES5</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue-router路由</title>
     <url>/2022/08/02/vue-router%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<h1 id="vue-router路由"><a href="#vue-router路由" class="headerlink" title="vue-router路由"></a>vue-router路由</h1><h2 id="前端渲染后端渲染和前端路由后端路由"><a href="#前端渲染后端渲染和前端路由后端路由" class="headerlink" title="前端渲染后端渲染和前端路由后端路由"></a>前端渲染后端渲染和前端路由后端路由</h2><h3 id="后端路由阶段"><a href="#后端路由阶段" class="headerlink" title="后端路由阶段"></a>后端路由阶段</h3><ol>
@@ -9813,39 +9846,6 @@ export default &#123;
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>instanceof与typeof的区别</title>
-    <url>/2022/08/01/instanceof%E4%B8%8Etypeof%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h1 id="instanceof与typeof的区别"><a href="#instanceof与typeof的区别" class="headerlink" title="instanceof与typeof的区别"></a>instanceof与typeof的区别</h1><ol>
-<li><p>typeof：用于判断数据类型，返回值为6个字符串，分别为string, boolean, number, function, object, undefined</p>
-<ol>
-<li><p>代码演示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var a =[34,4,3,54],</span><br><span class="line">b =34,</span><br><span class="line">c =&#x27;adsfas&#x27;,</span><br><span class="line">d=function()&#123;console.log(&#x27;我是函数&#x27;)&#125;,</span><br><span class="line">e =true,</span><br><span class="line">f=null,</span><br><span class="line">g;</span><br><span class="line">console.log(typeof(a));  //object</span><br><span class="line">console.log(typeof(b));  //number</span><br><span class="line">console.log(typeof(c));  //string</span><br><span class="line">console.log(typeof(d));  //function</span><br><span class="line">console.log(typeof(e));  //boolean</span><br><span class="line">console.log(typeof(f));  //object</span><br><span class="line">console.log(typeof(g));  //undefined</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>instanceof：对象运算符，判断该对象是谁的实例，返回值为布尔值</p>
-<ol>
-<li>判断就是根据原型链进行搜寻</li>
-<li>在对象obj1的原型链上如果存在另一个对象obj2的原型属性，那么表达式（obj1 instanceof obj2）返回值为true；否则返回false</li>
-</ol>
-</li>
-<li><p>区别</p>
-<ol>
-<li>typeof判断所有变量的类型，返回值有number，boolean，string，function，object，undefined</li>
-<li>typeof在判断null、array、object以及函数实例对象是得到的都是Object</li>
-<li>instanceof用来判断对象，代码形式为obj1 instanceof obj2（obj1是否是obj2的实例），obj2必须为对象，否则会报错，其返回值为布尔值</li>
-<li>instanceof可以对不同的对象实例进行判断，判断方法是根据对象的原型链依次向下查询，如果obj2的原型属性存在obj1的原型链上，（obj1 instanceof obj2）值为true</li>
-</ol>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES5</category>
-      </categories>
-      <tags>
-        <tag>ES5</tag>
       </tags>
   </entry>
   <entry>
@@ -10724,69 +10724,6 @@ export default &#123;
       </tags>
   </entry>
   <entry>
-    <title>继承</title>
-    <url>/2022/08/01/%E7%BB%A7%E6%89%BF/</url>
-    <content><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><ol>
-<li>ES6之前并没有给我们提供extends继承。我们可以通过构造函数+原型对象模拟实现继承，被称为组合继承</li>
-</ol>
-<h2 id="借用父构造函数继承属性和方法"><a href="#借用父构造函数继承属性和方法" class="headerlink" title="借用父构造函数继承属性和方法"></a>借用父构造函数继承属性和方法</h2><h3 id="借用父构造函数继承属性"><a href="#借用父构造函数继承属性" class="headerlink" title="借用父构造函数继承属性"></a>借用父构造函数继承属性</h3><ol>
-<li><p>核心原理：通过call()把父类型的this指向子类型的this，这样就可以实现子类型继承父类型的属性</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  function Father(uname, age) &#123;</span><br><span class="line">    this.uname = uname;</span><br><span class="line">    this.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  function son(uname, age, sex) &#123;</span><br><span class="line">    // 借用父构造函数继承属性</span><br><span class="line">    Father.call(this, uname, age);</span><br><span class="line">    this.sex = sex;</span><br><span class="line">  &#125;</span><br><span class="line">  var son = new son(&#x27;张三&#x27;, 15, &#x27;女&#x27;);</span><br><span class="line">  console.log(son);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="借用父构造函数继承方法"><a href="#借用父构造函数继承方法" class="headerlink" title="借用父构造函数继承方法"></a>借用父构造函数继承方法</h3><ol>
-<li><p>因为构造函数的方法会放在原型对象中，因此父构造函数的方法放在父原型对象内部，若子构造函数的实例对象要想继承使用父原型对象内部的方法，则进行如下过程</p>
-<ol>
-<li>将父构造函数实例化，让子原型对象指向父实例化对象，因为父实例化对象的原型（<code>__proto__</code>）为父原型对象，因此父实例化对象可以使用父原型对象中的方法，从而让指向父实例对象的子原型对象继承到父原型对象中的方法</li>
-<li>注意：让子原型对象指向父实例对象后，会让父实例对象覆盖子原型对象，此时需要利用constructor指回子构造函数</li>
-</ol>
-</li>
-<li><p>注意：千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function Father(uname, age) &#123;</span><br><span class="line">      this.uname = uname;</span><br><span class="line">      this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    function Son(uname, age, sex) &#123;</span><br><span class="line">      // 借用父构造函数继承属性</span><br><span class="line">      Father.call(this, uname, age);</span><br><span class="line">      this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在父原型对象中添加方法</span><br><span class="line">    Father.prototype.money = function () &#123;</span><br><span class="line">      console.log(&#x27;赚钱赚钱&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</span><br><span class="line">    Son.prototype = Father.prototype;</span><br><span class="line"></span><br><span class="line">    // 借用父构造函数继承方法</span><br><span class="line">    // 父构造函数实例化，让子原型对象指向父实例化对象</span><br><span class="line">    Son.prototype = new Father();</span><br><span class="line">    // 因为new Father()创建了一个对象，覆盖了子原型对象，因此需要让子原型对象手动指回构造函数</span><br><span class="line">    Son.prototype.constructor = Son;</span><br><span class="line"></span><br><span class="line">    // 子原型对象成功继承父原型对象中的方法</span><br><span class="line">    Son.prototype.money(); // 输出：赚钱赚钱</span><br><span class="line">    console.log(Son.prototype); // 子原型对象指向父实例对象</span><br><span class="line">    console.log(Son.prototype.constructor); // 指向子构造函数</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007005323.png" alt="img"></p>
-]]></content>
-      <categories>
-        <category>ES5</category>
-      </categories>
-      <tags>
-        <tag>ES5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>闭包</title>
-    <url>/2022/08/01/%E9%97%AD%E5%8C%85/</url>
-    <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><ol>
-<li>变量根据作用域的不同分为两种：全局变量和局部变量</li>
-<li>函数内部可以使用全局变量</li>
-<li>函数外部不可以使用局部变量</li>
-<li>当函数执行完毕后，本作用域内的局部变量会被销毁</li>
-</ol>
-<h2 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h2><ol>
-<li>闭包（closure）指有权访问另一个函数作用域中变量的函数</li>
-<li>简单理解：一个作用域可以访问另外一个函数内部的局部变量，则这个被访问的局部变量所在的函数就是闭包</li>
-<li>闭包的主要作用：延伸了变量的作用范围</li>
-<li>闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰</li>
-<li>直观的说就是形成一个不销毁的栈环境</li>
-</ol>
-<h2 id="闭包应用"><a href="#闭包应用" class="headerlink" title="闭包应用"></a>闭包应用</h2><ol>
-<li><p>循环注册点击事件</p>
-<ol>
-<li><p>经典面试题：利用闭包的方式得到当前小li的索引号</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">  for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">      // 利用for循环创建了四个立即执行函数</span><br><span class="line">      // 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 </span><br><span class="line">      (function (i) &#123;</span><br><span class="line">          lis[i].onclick = function () &#123;</span><br><span class="line">              console.log(i);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>循环中的setTimeout()</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;li&gt;1&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;2&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;3&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;4&lt;/li&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">     // for循环为同步任务</span><br><span class="line">     for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">         (function (i) &#123;</span><br><span class="line">             // 定时器为异步任务</span><br><span class="line">             setTimeout(function () &#123;</span><br><span class="line">                 console.log(i);</span><br><span class="line">             &#125;, 2000)</span><br><span class="line">         &#125;)(i);</span><br><span class="line">     &#125;</span><br><span class="line"> &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>ES5</category>
-      </categories>
-      <tags>
-        <tag>ES5</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端的网页特效</title>
     <url>/2022/08/01/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/</url>
     <content><![CDATA[<h1 id="触屏事件"><a href="#触屏事件" class="headerlink" title="触屏事件"></a>触屏事件</h1><h2 id="触屏事件概述"><a href="#触屏事件概述" class="headerlink" title="触屏事件概述"></a>触屏事件概述</h2><ol>
@@ -11011,6 +10948,69 @@ export default &#123;
       </categories>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>继承</title>
+    <url>/2022/08/01/%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><ol>
+<li>ES6之前并没有给我们提供extends继承。我们可以通过构造函数+原型对象模拟实现继承，被称为组合继承</li>
+</ol>
+<h2 id="借用父构造函数继承属性和方法"><a href="#借用父构造函数继承属性和方法" class="headerlink" title="借用父构造函数继承属性和方法"></a>借用父构造函数继承属性和方法</h2><h3 id="借用父构造函数继承属性"><a href="#借用父构造函数继承属性" class="headerlink" title="借用父构造函数继承属性"></a>借用父构造函数继承属性</h3><ol>
+<li><p>核心原理：通过call()把父类型的this指向子类型的this，这样就可以实现子类型继承父类型的属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  function Father(uname, age) &#123;</span><br><span class="line">    this.uname = uname;</span><br><span class="line">    this.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">  function son(uname, age, sex) &#123;</span><br><span class="line">    // 借用父构造函数继承属性</span><br><span class="line">    Father.call(this, uname, age);</span><br><span class="line">    this.sex = sex;</span><br><span class="line">  &#125;</span><br><span class="line">  var son = new son(&#x27;张三&#x27;, 15, &#x27;女&#x27;);</span><br><span class="line">  console.log(son);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="借用父构造函数继承方法"><a href="#借用父构造函数继承方法" class="headerlink" title="借用父构造函数继承方法"></a>借用父构造函数继承方法</h3><ol>
+<li><p>因为构造函数的方法会放在原型对象中，因此父构造函数的方法放在父原型对象内部，若子构造函数的实例对象要想继承使用父原型对象内部的方法，则进行如下过程</p>
+<ol>
+<li>将父构造函数实例化，让子原型对象指向父实例化对象，因为父实例化对象的原型（<code>__proto__</code>）为父原型对象，因此父实例化对象可以使用父原型对象中的方法，从而让指向父实例对象的子原型对象继承到父原型对象中的方法</li>
+<li>注意：让子原型对象指向父实例对象后，会让父实例对象覆盖子原型对象，此时需要利用constructor指回子构造函数</li>
+</ol>
+</li>
+<li><p>注意：千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    function Father(uname, age) &#123;</span><br><span class="line">      this.uname = uname;</span><br><span class="line">      this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    function Son(uname, age, sex) &#123;</span><br><span class="line">      // 借用父构造函数继承属性</span><br><span class="line">      Father.call(this, uname, age);</span><br><span class="line">      this.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 在父原型对象中添加方法</span><br><span class="line">    Father.prototype.money = function () &#123;</span><br><span class="line">      console.log(&#x27;赚钱赚钱&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</span><br><span class="line">    Son.prototype = Father.prototype;</span><br><span class="line"></span><br><span class="line">    // 借用父构造函数继承方法</span><br><span class="line">    // 父构造函数实例化，让子原型对象指向父实例化对象</span><br><span class="line">    Son.prototype = new Father();</span><br><span class="line">    // 因为new Father()创建了一个对象，覆盖了子原型对象，因此需要让子原型对象手动指回构造函数</span><br><span class="line">    Son.prototype.constructor = Son;</span><br><span class="line"></span><br><span class="line">    // 子原型对象成功继承父原型对象中的方法</span><br><span class="line">    Son.prototype.money(); // 输出：赚钱赚钱</span><br><span class="line">    console.log(Son.prototype); // 子原型对象指向父实例对象</span><br><span class="line">    console.log(Son.prototype.constructor); // 指向子构造函数</span><br><span class="line"></span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007005323.png" alt="img"></p>
+]]></content>
+      <categories>
+        <category>ES5</category>
+      </categories>
+      <tags>
+        <tag>ES5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>闭包</title>
+    <url>/2022/08/01/%E9%97%AD%E5%8C%85/</url>
+    <content><![CDATA[<h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1><h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><ol>
+<li>变量根据作用域的不同分为两种：全局变量和局部变量</li>
+<li>函数内部可以使用全局变量</li>
+<li>函数外部不可以使用局部变量</li>
+<li>当函数执行完毕后，本作用域内的局部变量会被销毁</li>
+</ol>
+<h2 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h2><ol>
+<li>闭包（closure）指有权访问另一个函数作用域中变量的函数</li>
+<li>简单理解：一个作用域可以访问另外一个函数内部的局部变量，则这个被访问的局部变量所在的函数就是闭包</li>
+<li>闭包的主要作用：延伸了变量的作用范围</li>
+<li>闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰</li>
+<li>直观的说就是形成一个不销毁的栈环境</li>
+</ol>
+<h2 id="闭包应用"><a href="#闭包应用" class="headerlink" title="闭包应用"></a>闭包应用</h2><ol>
+<li><p>循环注册点击事件</p>
+<ol>
+<li><p>经典面试题：利用闭包的方式得到当前小li的索引号</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">  for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">      // 利用for循环创建了四个立即执行函数</span><br><span class="line">      // 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 </span><br><span class="line">      (function (i) &#123;</span><br><span class="line">          lis[i].onclick = function () &#123;</span><br><span class="line">              console.log(i);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>循环中的setTimeout()</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;li&gt;1&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;2&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;3&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;4&lt;/li&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">     // for循环为同步任务</span><br><span class="line">     for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">         (function (i) &#123;</span><br><span class="line">             // 定时器为异步任务</span><br><span class="line">             setTimeout(function () &#123;</span><br><span class="line">                 console.log(i);</span><br><span class="line">             &#125;, 2000)</span><br><span class="line">         &#125;)(i);</span><br><span class="line">     &#125;</span><br><span class="line"> &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>ES5</category>
+      </categories>
+      <tags>
+        <tag>ES5</tag>
       </tags>
   </entry>
 </search>
