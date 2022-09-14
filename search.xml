@@ -7724,7 +7724,7 @@
 <li>? Should we run <code>npm install</code> for you after the project has been created? (recommended)：选择使用npm或yarn</li>
 </ol>
 </li>
-<li>若脚手架安装失败可尝试将npm-cache文件夹删除，文件夹路径：C:\Users\大哥和臭憨憨\AppData\Roaming\npm-cache</li>
+<li>若脚手架安装失败可尝试将npm-cache文件夹删除</li>
 </ol>
 <h3 id="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"><a href="#runtime-compiler和runtime-only两个vue版本的区别（面试常问）" class="headerlink" title="runtime-compiler和runtime-only两个vue版本的区别（面试常问）"></a>runtime-compiler和runtime-only两个vue版本的区别（面试常问）</h3><ol>
 <li>两者的区别只在于main.js文件<ol>
