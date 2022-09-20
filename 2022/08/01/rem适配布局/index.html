@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇rem适配布局的学习笔记">
@@ -273,7 +275,9 @@
 <li>媒体查询一般按照从大到小或者从小到大的顺序来</li>
 <li>目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询</li>
 </ol>
-<h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@media mediatype and | on | only (media feature) &#125;</span><br><span class="line">  CSS-code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><pre class="line-numbers language-none"><code class="language-none">@media mediatype and | on | only (media feature) &#125;
+  CSS-code;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ol>
 <li>用@media开头 注意@符号</li>
@@ -337,13 +341,75 @@
 </tbody></table>
 </li>
 <li><p>案例：屏幕尺寸改变屏幕背景颜色</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    @media screen and (max-width: 639px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @media screen and (min-width: 640px) and (max-width: 799px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: skyblue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @media screen and (min-width: 800px) &#123;</span><br><span class="line">        body &#123;</span><br><span class="line">            background-color: tomato;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;head&gt;
+&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+&lt;title&gt;Document&lt;&#x2F;title&gt;
+&lt;style&gt;
+    @media screen and (max-width: 639px) &#123;
+        body &#123;
+            background-color: pink;
+        &#125;
+    &#125;
+
+    @media screen and (min-width: 640px) and (max-width: 799px) &#123;
+        body &#123;
+            background-color: skyblue;
+        &#125;
+    &#125;
+
+    @media screen and (min-width: 800px) &#123;
+        body &#123;
+            background-color: tomato;
+        &#125;
+    &#125;
+&lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="媒体查询-rem实现元素动态大小变化"><a href="#媒体查询-rem实现元素动态大小变化" class="headerlink" title="媒体查询+rem实现元素动态大小变化"></a>媒体查询+rem实现元素动态大小变化</h3><ol>
 <li><p>媒体查询+rem：可以实现不同的设备宽度，实现页面元素大小的动态变化</p>
 </li>
 <li><p>案例：屏幕尺寸改变字体大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    /* 屏幕尺寸小于639px时，html字体大小为50px */</span><br><span class="line">    @media screen and (max-width: 639px) &#123;</span><br><span class="line">      html &#123;</span><br><span class="line">        font-size: 50px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* 屏幕尺寸大于640px时，html字体大小为100px */</span><br><span class="line">    @media screen and (min-width: 640px) &#123;</span><br><span class="line">      html &#123;</span><br><span class="line">        font-size: 100px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    div &#123;</span><br><span class="line">        height: 1rem;</span><br><span class="line">        font-size: .7rem;</span><br><span class="line">        color: #fff;</span><br><span class="line">        background-color: skyblue;</span><br><span class="line">        text-align: center;</span><br><span class="line">        line-height: 1rem;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;主页&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+
+&lt;head&gt;
+&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+&lt;title&gt;Document&lt;&#x2F;title&gt;
+&lt;style&gt;
+    &#x2F;* 屏幕尺寸小于639px时，html字体大小为50px *&#x2F;
+    @media screen and (max-width: 639px) &#123;
+      html &#123;
+        font-size: 50px;
+      &#125;
+    &#125;
+
+    &#x2F;* 屏幕尺寸大于640px时，html字体大小为100px *&#x2F;
+    @media screen and (min-width: 640px) &#123;
+      html &#123;
+        font-size: 100px;
+      &#125;
+    &#125;
+
+    div &#123;
+        height: 1rem;
+        font-size: .7rem;
+        color: #fff;
+        background-color: skyblue;
+        text-align: center;
+        line-height: 1rem;
+    &#125;
+&lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+
+&lt;body&gt;
+    &lt;div&gt;主页&lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="引入资源"><a href="#引入资源" class="headerlink" title="引入资源"></a>引入资源</h3><ol>
 <li><p>当样式比较繁多的时候，我们可以针对不同的媒体使用不同的stylesheets（样式表）</p>
@@ -355,7 +421,50 @@
 <li><p>引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件</p>
 </li>
 <li><p>演示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 建议：媒体查询最好的方法是从小到大</span><br><span class="line">    引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件 --&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (min-width: 300px)&quot; href=&quot;style300.css&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; media=&quot;screen and (min-width: 800px)&quot; href=&quot;style800.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;1&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;2&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line">/* style300.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* style800.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+
+    &lt;!-- 建议：媒体查询最好的方法是从小到大
+    引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件 --&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; media&#x3D;&quot;screen and (min-width: 300px)&quot; href&#x3D;&quot;style300.css&quot;&gt;
+    &lt;link rel&#x3D;&quot;stylesheet&quot; media&#x3D;&quot;screen and (min-width: 800px)&quot; href&#x3D;&quot;style800.css&quot;&gt;
+&lt;&#x2F;head&gt;
+
+&lt;body&gt;
+    &lt;div&gt;1&lt;&#x2F;div&gt;
+    &lt;div&gt;2&lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;
+
+&#x2F;* style300.css文件 *&#x2F;
+div &#123;
+    width: 100%;
+    height: 100px;
+&#125;
+div:nth-child(1) &#123;
+    background-color: pink;
+&#125;
+div:nth-child(2) &#123;
+    background-color: skyblue;
+&#125;
+
+&#x2F;* style800.css文件 *&#x2F;
+div &#123;
+    float: left;
+    width: 50%;
+    height: 100px;
+&#125;
+div:nth-child(1) &#123;
+    background-color: pink;
+&#125;
+div:nth-child(2) &#123;
+    background-color: skyblue;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>语法规范<code>&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;style.css&quot;&gt;</code></p>
 </li>
@@ -448,7 +557,14 @@
 </li>
 <li>link：把一个样式文件引入到html页面里面</li>
 </ol>
-<h3 id="body样式"><a href="#body样式" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    min-width: 320px;</span><br><span class="line">    width: 15rem;</span><br><span class="line">    margin: 0 auto;</span><br><span class="line">    line-height: 1.5;</span><br><span class="line">    font-family: Arial, Helvetica;</span><br><span class="line">    background: #f2f2f2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="body样式"><a href="#body样式" class="headerlink" title="body样式"></a>body样式</h3><pre class="line-numbers language-none"><code class="language-none">body &#123;
+    min-width: 320px;
+    width: 15rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-family: Arial, Helvetica;
+    background: #f2f2f2;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="新建index-less文件"><a href="#新建index-less文件" class="headerlink" title="新建index.less文件"></a>新建index.less文件</h3><ol>
 <li>新建index.less，用于写首页样式</li>
@@ -469,7 +585,16 @@
 <h3 id="引入flexible-js文件"><a href="#引入flexible-js文件" class="headerlink" title="引入flexible.js文件"></a>引入flexible.js文件</h3><ol>
 <li>语法：<code>&lt;script src=&quot;js/flexible.js&quot;&gt;&lt;script&gt;</code></li>
 </ol>
-<h3 id="body样式-1"><a href="#body样式-1" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">  min-width: 320px;</span><br><span class="line">  max-width: 750px;</span><br><span class="line">  /* flexible.js给我们划分了10等份 */</span><br><span class="line">  width: 10rem;</span><br><span class="line">  margin: 0 auto;</span><br><span class="line">  line-height: 1.5;</span><br><span class="line">  font-family: Arial, Helvetica;</span><br><span class="line">  background: #f2f2f2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="body样式-1"><a href="#body样式-1" class="headerlink" title="body样式"></a>body样式</h3><pre class="line-numbers language-none"><code class="language-none">body &#123;
+  min-width: 320px;
+  max-width: 750px;
+  &#x2F;* flexible.js给我们划分了10等份 *&#x2F;
+  width: 10rem;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: Arial, Helvetica;
+  background: #f2f2f2;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="cssrem插件px转换为rem"><a href="#cssrem插件px转换为rem" class="headerlink" title="cssrem插件px转换为rem"></a>cssrem插件px转换为rem</h3><ol>
 <li>VScode安装插件重启即可</li>
@@ -661,7 +786,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

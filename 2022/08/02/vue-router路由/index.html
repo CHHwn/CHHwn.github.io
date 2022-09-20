@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇vue-router路由的学习笔记">
@@ -321,7 +323,38 @@
 <li><p>第二步：创建并导出路由实例，并且配置路由映射（配置路由和组件之间的映射关系）</p>
 </li>
 <li><p>第三步：在Vue实例中挂载创建的路由实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">// 导入路由对象</span><br><span class="line">import VueRouter from &#x27;vue-router&#x27;</span><br><span class="line"></span><br><span class="line">// 使用路由</span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">// 创建并导出路由实例</span><br><span class="line">export default new VueRouer (&#123;</span><br><span class="line">    // 配置路由映射</span><br><span class="line">    routes: [</span><br><span class="line">        &#123;</span><br><span class="line">            // 配置路径</span><br><span class="line">            path: &#x27;/about&#x27;,</span><br><span class="line">            // 导入路由组件</span><br><span class="line">            component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">        &#125;,</span><br><span class="line">        ...</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 在mian.js中将router进行挂载</span><br><span class="line">import router from &#x27;./router&#x27;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;).$mount(&#x27;#app&#x27;)</span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">import Vue from &#39;vue&#39;
+&#x2F;&#x2F; 导入路由对象
+import VueRouter from &#39;vue-router&#39;
+
+&#x2F;&#x2F; 使用路由
+Vue.use(VueRouter)
+
+&#x2F;&#x2F; 创建并导出路由实例
+export default new VueRouer (&#123;
+    &#x2F;&#x2F; 配置路由映射
+    routes: [
+        &#123;
+            &#x2F;&#x2F; 配置路径
+            path: &#39;&#x2F;about&#39;,
+            &#x2F;&#x2F; 导入路由组件
+            component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+        &#125;,
+        ...
+    ]
+&#125;)
+
+
+&#x2F;&#x2F; 在mian.js中将router进行挂载
+import router from &#39;.&#x2F;router&#39;
+
+new Vue(&#123;
+  router,
+  store,
+  render: h &#x3D;&gt; h(App)
+&#125;).$mount(&#39;#app&#39;)
+
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="使用vue-router"><a href="#使用vue-router" class="headerlink" title="使用vue-router"></a>使用vue-router</h3><ol>
 <li><p>使用路由 — 通过<code>&lt;router-link&gt;</code>和<code>&lt;router-view&gt;</code></p>
@@ -331,7 +364,14 @@
 <li><p><code>&lt;router-view&gt;&lt;/router-view&gt;</code>：用于指定组件的展示位置。当路由跳转时，该路由对应的组件就会在该位置渲染，替换掉<code>&lt;router-view&gt;&lt;/router-view&gt;</code></p>
 </li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/about&quot; active-class=&quot;active&quot;&gt;&lt;/router-link&gt; </span><br><span class="line">&lt;router-view&gt;&lt;/router-view&gt; </span><br><span class="line"></span><br><span class="line">// css样式，当标签中to属性指定的路由被使用时有效 </span><br><span class="line">.active &#123;   </span><br><span class="line">    ... </span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;router-link to&#x3D;&quot;&#x2F;about&quot; active-class&#x3D;&quot;active&quot;&gt;&lt;&#x2F;router-link&gt; 
+&lt;router-view&gt;&lt;&#x2F;router-view&gt; 
+
+&#x2F;&#x2F; css样式，当标签中to属性指定的路由被使用时有效 
+.active &#123;   
+    ... 
+&#125; 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="router-link补充"><a href="#router-link补充" class="headerlink" title="router-link补充"></a>router-link补充</h3><ol>
 <li><p><code>&lt;router-link&gt;</code></p>
@@ -371,16 +411,40 @@
 <li><p>配置路由规则，使用children配置项</p>
 </li>
 <li><p>在子路由中的path配置项中，<strong>配置的路径不要加&#x2F;</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        // 配置路径</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        // 导入路由组件</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;),</span><br><span class="line">        children: [</span><br><span class="line">            &#123;</span><br><span class="line">                path: &#x27;user&#x27;, // 此处千万不要写：/user</span><br><span class="line">                component: () =&gt; import(&#x27;../views/user.vue&#x27;)</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,    </span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">routes: [
+    &#123;
+        &#x2F;&#x2F; 配置路径
+        path: &#39;&#x2F;about&#39;,
+        &#x2F;&#x2F; 导入路由组件
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;),
+        children: [
+            &#123;
+                path: &#39;user&#39;, &#x2F;&#x2F; 此处千万不要写：&#x2F;user
+                component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;user.vue&#39;)
+            &#125;
+        ]
+    &#125;,    
+    ...
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><code>&lt;router-link&gt;&lt;/router-link&gt;</code>中to指定的路径必须要写完整路由路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to=&quot;/about/user&quot;&gt;&lt;/router-link&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;router-link to&#x3D;&quot;&#x2F;about&#x2F;user&quot;&gt;&lt;&#x2F;router-link&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <h3 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h3><ol>
 <li><p>作用：可以简化路由的跳转</p>
 </li>
 <li><p>使用代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        // 给该路由命名为guanyv</span><br><span class="line">        name: &#x27;guanyv&#x27;,</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">    &#125;,    </span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">routes: [
+    &#123;
+        &#x2F;&#x2F; 给该路由命名为guanyv
+        name: &#39;guanyv&#39;,
+        path: &#39;&#x2F;about&#39;,
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+    &#125;,    
+    ...
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="编程式路由导航"><a href="#编程式路由导航" class="headerlink" title="编程式路由导航"></a>编程式路由导航</h3><ol>
 <li><p>不借助<code>&lt;router-link&gt;</code>标签进行路由跳转</p>
@@ -388,19 +452,22 @@
 <li><p>$router属性是创建出的路由对象的属性，可以调用一些方法，进行<strong>相关路由跳转</strong></p>
 <ol>
 <li><p>**push()**：跳转到指定路径，采用push浏览器历史记录模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.push(&#x27;/home&#x27;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">this.$router.push(&#39;&#x2F;home&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>repalce()：</strong>跳转到指定路径，采用replace浏览器历史记录模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.replace(&#x27;/home&#x27;)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">this.$router.replace(&#39;&#x2F;home&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>back()：</strong>跳转到前一个路由</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.back()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">this.$router.back()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p><strong>forward()：</strong>跳转到后一个路由</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$router.forward()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">this.$router.forward()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>**go()**：跳转到前几个路由，或后几个路由</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 跳转到前一个路由</span><br><span class="line">this.$router.go(-1)</span><br><span class="line">// 跳转到后一个路由</span><br><span class="line">this.$router.go(1)</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 跳转到前一个路由
+this.$router.go(-1)
+&#x2F;&#x2F; 跳转到后一个路由
+this.$router.go(1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -412,13 +479,38 @@
 <li><p>在实际开发中只需要将部分组件进行缓存，通过<code>&lt;keep-alive&gt;&lt;/keep-alive&gt;</code>标签中的include属性实现，指定include属性的属性值为需要进行缓存的组件名即可；</p>
 </li>
 <li><p>若需要指定多个进行缓存的组件，将include属性的属性值为数组，在数组中放入组件名即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 缓存在&lt;router-view&gt;&lt;/router-view&gt;位置处展示的所有组件</span><br><span class="line">&lt;keep-alive&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"></span><br><span class="line">// 缓存在&lt;router-view&gt;&lt;/router-view&gt;位置处展示的单个指定组件</span><br><span class="line">&lt;keep-alive include=&quot;组件名&quot;&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"></span><br><span class="line">// 缓存在&lt;router-view&gt;&lt;/router-view&gt;位置处展示的多个指定组件</span><br><span class="line">&lt;keep-alive include=&quot;[&#x27;组件名1&#x27;, &#x27;组件名2&#x27;]&quot;&gt;</span><br><span class="line">    &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/keep-alive&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 缓存在&lt;router-view&gt;&lt;&#x2F;router-view&gt;位置处展示的所有组件
+&lt;keep-alive&gt;
+    &lt;router-view&gt;&lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;
+
+&#x2F;&#x2F; 缓存在&lt;router-view&gt;&lt;&#x2F;router-view&gt;位置处展示的单个指定组件
+&lt;keep-alive include&#x3D;&quot;组件名&quot;&gt;
+    &lt;router-view&gt;&lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;
+
+&#x2F;&#x2F; 缓存在&lt;router-view&gt;&lt;&#x2F;router-view&gt;位置处展示的多个指定组件
+&lt;keep-alive include&#x3D;&quot;[&#39;组件名1&#39;, &#39;组件名2&#39;]&quot;&gt;
+    &lt;router-view&gt;&lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="meta配置项"><a href="#meta配置项" class="headerlink" title="meta配置项"></a>meta配置项</h3><ol>
 <li><p>meta被称为路由元信息，是路由中携带的信息，可以通过自定义meta来实现一些路由时的功能</p>
 </li>
 <li><p>使用场景：比如给每一个路由对应的页面设置标题、以及判断某个页面是否需要进行权限校验</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        // 给该路由命名为guanyv</span><br><span class="line">        name: &#x27;guanyv&#x27;,</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">        // 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验</span><br><span class="line">        meta: &#123; title: &#x27;关于&#x27;, isAuth: true&#125;</span><br><span class="line">    &#125;,    </span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">routes: [
+    &#123;
+        &#x2F;&#x2F; 给该路由命名为guanyv
+        name: &#39;guanyv&#39;,
+        path: &#39;&#x2F;about&#39;,
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+        &#x2F;&#x2F; 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验
+        meta: &#123; title: &#39;关于&#39;, isAuth: true&#125;
+    &#125;,    
+    ...
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="activated与deactivated"><a href="#activated与deactivated" class="headerlink" title="activated与deactivated"></a>activated与deactivated</h3><ol>
 <li><p>两个生命周期钩子，是路由所独有的生命周期钩子，用于捕获路由组件的激活和失活状态</p>
@@ -426,7 +518,13 @@
 <li><p><strong>activated</strong>：路由组件被激活时触发</p>
 </li>
 <li><p><strong>deactivated</strong>：路由组件失活时触发</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">activated () &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;,</span><br><span class="line">deactivated () &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">activated () &#123;
+    ....
+&#125;,
+deactivated () &#123;
+    ...
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h2 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h2><h3 id="全局路由守卫-前置、后置"><a href="#全局路由守卫-前置、后置" class="headerlink" title="全局路由守卫 - 前置、后置"></a>全局路由守卫 - 前置、后置</h3><ol>
 <li><p>全局前置路由守卫<strong>beforeEach</strong>：进行初始化时执行，<strong>在每一次路由切换前执行</strong></p>
@@ -447,11 +545,65 @@
 </ol>
 </li>
 <li><p>例：使用全局前置路由守卫对页面进行鉴权、使用全局前置路由守卫修改页面标题</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 路由配置文件中</span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        // 给该路由命名为guanyv</span><br><span class="line">        name: &#x27;guanyv&#x27;,</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">        // 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验</span><br><span class="line">        meta: &#123; title: &#x27;关于&#x27;, isAuth: true&#125;</span><br><span class="line">    &#125;,    </span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">// 使用全局前置路由守卫对页面进行鉴权</span><br><span class="line">router.beforeEach((to, form, next) =&gt; &#123;</span><br><span class="line">    // 通过判断是否需要进行鉴权</span><br><span class="line">    if (to.meta.isAuth) &#123;</span><br><span class="line">        if (localStroage.getItem(&#x27;token&#x27;) === &#x27;xxxx&#x27;) &#123;</span><br><span class="line">            // 符合条件，放行进入下一路由</span><br><span class="line">            next()</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.log(&#x27;校验失败&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 使用全局前置路由守卫修改页面标题</span><br><span class="line">router.afterEach((to, form, next) =&gt; &#123;</span><br><span class="line">    // 判断即将进入的页面路由元信息中是否有title属性</span><br><span class="line">    if (form.meta.title) &#123;</span><br><span class="line">        document.title = to.meta.title // 修改网页标题</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 路由配置文件中
+routes: [
+    &#123;
+        &#x2F;&#x2F; 给该路由命名为guanyv
+        name: &#39;guanyv&#39;,
+        path: &#39;&#x2F;about&#39;,
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+        &#x2F;&#x2F; 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验
+        meta: &#123; title: &#39;关于&#39;, isAuth: true&#125;
+    &#125;,    
+    ...
+]
+
+&#x2F;&#x2F; 使用全局前置路由守卫对页面进行鉴权
+router.beforeEach((to, form, next) &#x3D;&gt; &#123;
+    &#x2F;&#x2F; 通过判断是否需要进行鉴权
+    if (to.meta.isAuth) &#123;
+        if (localStroage.getItem(&#39;token&#39;) &#x3D;&#x3D;&#x3D; &#39;xxxx&#39;) &#123;
+            &#x2F;&#x2F; 符合条件，放行进入下一路由
+            next()
+        &#125; else &#123;
+            console.log(&#39;校验失败&#39;)
+        &#125;
+    &#125;
+&#125;)
+
+&#x2F;&#x2F; 使用全局前置路由守卫修改页面标题
+router.afterEach((to, form, next) &#x3D;&gt; &#123;
+    &#x2F;&#x2F; 判断即将进入的页面路由元信息中是否有title属性
+    if (form.meta.title) &#123;
+        document.title &#x3D; to.meta.title &#x2F;&#x2F; 修改网页标题
+    &#125;
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="独享路由守卫"><a href="#独享路由守卫" class="headerlink" title="独享路由守卫"></a>独享路由守卫</h3><ol>
 <li><p><strong>beforeEnter</strong>：某一个组件路由单独使用的路由守卫，在进入该组件之前进行调用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#x27;guanyv&#x27;,</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">        // 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验</span><br><span class="line">        meta: &#123; title: &#x27;关于&#x27;, isAuth: true&#125;</span><br><span class="line">        beforeEnter: (to, form, next) &#123;</span><br><span class="line">            // 通过判断是否需要进行鉴权</span><br><span class="line">            if (to.meta.isAuth) &#123;</span><br><span class="line">                if (localStroage.getItem(&#x27;token&#x27;) === &#x27;xxxx&#x27;) &#123;</span><br><span class="line">                    // 符合条件，放行进入当前组件路由</span><br><span class="line">                    next()</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    console.log(&#x27;校验失败&#x27;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,    </span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">routes: [
+    &#123;
+        name: &#39;guanyv&#39;,
+        path: &#39;&#x2F;about&#39;,
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+        &#x2F;&#x2F; 自定义title属性和isAuth属性，用于在路由导航守卫中使用，给页面设置标题和权限校验
+        meta: &#123; title: &#39;关于&#39;, isAuth: true&#125;
+        beforeEnter: (to, form, next) &#123;
+            &#x2F;&#x2F; 通过判断是否需要进行鉴权
+            if (to.meta.isAuth) &#123;
+                if (localStroage.getItem(&#39;token&#39;) &#x3D;&#x3D;&#x3D; &#39;xxxx&#39;) &#123;
+                    &#x2F;&#x2F; 符合条件，放行进入当前组件路由
+                    next()
+                &#125; else &#123;
+                    console.log(&#39;校验失败&#39;)
+                &#125;
+            &#125;
+        &#125;
+    &#125;,    
+    ...
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="组件内路由守卫-前置、后置"><a href="#组件内路由守卫-前置、后置" class="headerlink" title="组件内路由守卫 - 前置、后置"></a>组件内路由守卫 - 前置、后置</h3><ol>
 <li><p>组件前置路由守卫<strong>beforeRouteEnter</strong>：通过路由规则进入该组件时调用</p>
@@ -465,11 +617,29 @@
 </ol>
 </li>
 <li><p>在需要使用的组件中进行使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;&#125;,</span><br><span class="line">    beforeRouteEnter(to, form, next) &#123;&#125;,</span><br><span class="line">    beforeRouteLeave(to, form, next) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">export default &#123;
+    data() &#123;
+        return &#123;&#125;
+    &#125;,
+    methods: &#123;&#125;,
+    beforeRouteEnter(to, form, next) &#123;&#125;,
+    beforeRouteLeave(to, form, next) &#123;&#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h3><ol>
 <li><p>配置路由映射</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // 映射路径</span><br><span class="line">  path: &#x27;/payWait&#x27;,</span><br><span class="line">  // 组件名</span><br><span class="line">  name: &#x27;payWait&#x27;, </span><br><span class="line">  // 组件位置</span><br><span class="line">  component: () =&gt; import(&#x27;@/views/canteenRecharge/payWait&#x27;),</span><br><span class="line">  // title路由元信息自定义的属性，通过全局后置导航守卫为页面添加标题</span><br><span class="line">  meta: &#123; title: &#x27;食堂码&#x27; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&#123;
+  &#x2F;&#x2F; 映射路径
+  path: &#39;&#x2F;payWait&#39;,
+  &#x2F;&#x2F; 组件名
+  name: &#39;payWait&#39;, 
+  &#x2F;&#x2F; 组件位置
+  component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;canteenRecharge&#x2F;payWait&#39;),
+  &#x2F;&#x2F; title路由元信息自定义的属性，通过全局后置导航守卫为页面添加标题
+  meta: &#123; title: &#39;食堂码&#39; &#125;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>当需要将参数从一个组件传递到另外一个组件时，可以参考以下</p>
 <ol>
@@ -482,7 +652,17 @@
 <li><p>需要使用命名路由，即需要配置 name: ‘xxx’；因为params只能用name来引入路由，如果这里写成了path，接收参数页面会是undefined</p>
 </li>
 <li><p>被传参的页面若跳到别的页面或者刷新页面的时候<strong>参数会丢失</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 通过params传参</span><br><span class="line">this.$router.push(&#123;</span><br><span class="line">    name: &quot;newPage&quot;, // params对应路由跳转命名路由</span><br><span class="line">    params: &#123;</span><br><span class="line">        id: this.id</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 另外一个页面使用params接收参数</span><br><span class="line">console.log(this.$route.params.id)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 通过params传参
+this.$router.push(&#123;
+    name: &quot;newPage&quot;, &#x2F;&#x2F; params对应路由跳转命名路由
+    params: &#123;
+        id: this.id
+    &#125;
+&#125;);
+
+&#x2F;&#x2F; 另外一个页面使用params接收参数
+console.log(this.$route.params.id)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 <li><p><strong>query传参</strong></p>
@@ -492,7 +672,17 @@
 <li><p>需要配置 path: ‘xxx’；通过路径进行跳转传参</p>
 </li>
 <li><p>使用query接受参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 通过query传参</span><br><span class="line">this.$router.push(&#123;</span><br><span class="line">    path: &quot;/newPage&quot;, // query对应路由跳转为path方式</span><br><span class="line">    query: &#123;</span><br><span class="line">        id: this.id</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 另外一个页面使用query接收参数</span><br><span class="line">console.log(this.$route.query.id)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 通过query传参
+this.$router.push(&#123;
+    path: &quot;&#x2F;newPage&quot;, &#x2F;&#x2F; query对应路由跳转为path方式
+    query: &#123;
+        id: this.id
+    &#125;
+&#125;);
+
+&#x2F;&#x2F; 另外一个页面使用query接收参数
+console.log(this.$route.query.id)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 </ol>
@@ -512,7 +702,15 @@
 <li><p>如果我们一次性从服务器请求下来这个页面，可能需要花费一 定的时间，甚至用户的电脑上还出现了短暂空白的情况</p>
 </li>
 <li><p>因此就需要用到懒加载，只有路由被访问时，才加载对应组件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#x27;guanyv&#x27;</span><br><span class="line">        path: &#x27;/about&#x27;,</span><br><span class="line">        // 路由懒加载</span><br><span class="line">        component: () =&gt; import(&#x27;../views/About.vue&#x27;)</span><br><span class="line">    &#125;,    </span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">routes: [
+    &#123;
+        name: &#39;guanyv&#39;
+        path: &#39;&#x2F;about&#39;,
+        &#x2F;&#x2F; 路由懒加载
+        component: () &#x3D;&gt; import(&#39;..&#x2F;views&#x2F;About.vue&#39;)
+    &#125;,    
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -754,7 +952,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

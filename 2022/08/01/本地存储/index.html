@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇本地存储的学习笔记">
@@ -273,7 +275,45 @@
 <li><p>删除数据：sessionStorage.removeItem(key);</p>
 </li>
 <li><p>删除所有数据：sessionStorage.clear();</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        console.log(localStorage.getItem(&#x27;uname&#x27;));</span><br><span class="line"></span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            sessionStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">            sessionStorage.setItem(&#x27;pwd&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = sessionStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            sessionStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;input type&#x3D;&quot;text&quot;&gt;
+    &lt;button class&#x3D;&quot;set&quot;&gt;存储数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;get&quot;&gt;获取数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;remove&quot;&gt;删除数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;clear&quot;&gt;删除所有数据&lt;&#x2F;button&gt;
+
+    &lt;script&gt;
+        console.log(localStorage.getItem(&#39;uname&#39;));
+
+        var ipt &#x3D; document.querySelector(&#39;input&#39;)
+        var set &#x3D; document.querySelector(&#39;.set&#39;);
+        var get &#x3D; document.querySelector(&#39;.get&#39;);
+        var remove &#x3D; document.querySelector(&#39;.remove&#39;);
+        var clear &#x3D; document.querySelector(&#39;.clear&#39;);
+        &#x2F;&#x2F; 存储数据
+        set.addEventListener(&#39;click&#39;, function () &#123;
+            var v_set &#x3D; ipt.value;
+            sessionStorage.setItem(&#39;uname&#39;, v_set);
+            sessionStorage.setItem(&#39;pwd&#39;, v_set);
+        &#125;)
+
+        &#x2F;&#x2F; 获取数据
+        get.addEventListener(&#39;click&#39;, function () &#123;
+            var v_get &#x3D; sessionStorage.getItem(&#39;uname&#39;);
+            console.log(v_get);
+        &#125;)
+
+        &#x2F;&#x2F; 删除数据
+        remove.addEventListener(&#39;click&#39;, function () &#123;
+            sessionStorage.removeItem(&#39;uname&#39;);
+        &#125;)
+
+        &#x2F;&#x2F; 删除所有数据
+        clear.addEventListener(&#39;click&#39;, function () &#123;
+            sessionStorage.clear();
+        &#125;)
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="localStorage概述"><a href="#localStorage概述" class="headerlink" title="localStorage概述"></a>localStorage概述</h3><ol>
 <li>生命周期永久生效，除非手动删除，否则关闭页面也会存在</li>
@@ -288,7 +328,42 @@
 <li><p>删除数据：localStorage.removeItem(key);</p>
 </li>
 <li><p>删除所有数据：localStorage.clear();</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;&gt;</span><br><span class="line">    &lt;button class=&quot;set&quot;&gt;存储数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;get&quot;&gt;获取数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;remove&quot;&gt;删除数据&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;clear&quot;&gt;删除所有数据&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var ipt = document.querySelector(&#x27;input&#x27;)</span><br><span class="line">        var set = document.querySelector(&#x27;.set&#x27;);</span><br><span class="line">        var get = document.querySelector(&#x27;.get&#x27;);</span><br><span class="line">        var remove = document.querySelector(&#x27;.remove&#x27;);</span><br><span class="line">        var clear = document.querySelector(&#x27;.clear&#x27;);</span><br><span class="line">        // 存储数据</span><br><span class="line">        set.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_set = ipt.value;</span><br><span class="line">            localStorage.setItem(&#x27;uname&#x27;, v_set);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 获取数据</span><br><span class="line">        get.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            var v_get = localStorage.getItem(&#x27;uname&#x27;);</span><br><span class="line">            console.log(v_get);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除数据</span><br><span class="line">        remove.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.removeItem(&#x27;uname&#x27;);</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        // 删除所有数据</span><br><span class="line">        clear.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            localStorage.clear();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;input type&#x3D;&quot;text&quot;&gt;
+    &lt;button class&#x3D;&quot;set&quot;&gt;存储数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;get&quot;&gt;获取数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;remove&quot;&gt;删除数据&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;clear&quot;&gt;删除所有数据&lt;&#x2F;button&gt;
+
+    &lt;script&gt;
+        var ipt &#x3D; document.querySelector(&#39;input&#39;)
+        var set &#x3D; document.querySelector(&#39;.set&#39;);
+        var get &#x3D; document.querySelector(&#39;.get&#39;);
+        var remove &#x3D; document.querySelector(&#39;.remove&#39;);
+        var clear &#x3D; document.querySelector(&#39;.clear&#39;);
+        &#x2F;&#x2F; 存储数据
+        set.addEventListener(&#39;click&#39;, function () &#123;
+            var v_set &#x3D; ipt.value;
+            localStorage.setItem(&#39;uname&#39;, v_set);
+        &#125;)
+
+        &#x2F;&#x2F; 获取数据
+        get.addEventListener(&#39;click&#39;, function () &#123;
+            var v_get &#x3D; localStorage.getItem(&#39;uname&#39;);
+            console.log(v_get);
+        &#125;)
+
+        &#x2F;&#x2F; 删除数据
+        remove.addEventListener(&#39;click&#39;, function () &#123;
+            localStorage.removeItem(&#39;uname&#39;);
+        &#125;)
+
+        &#x2F;&#x2F; 删除所有数据
+        clear.addEventListener(&#39;click&#39;, function () &#123;
+            localStorage.clear();
+        &#125;)
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -460,7 +535,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

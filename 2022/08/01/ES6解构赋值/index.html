@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES6解构赋值的学习笔记">
@@ -258,21 +260,70 @@
 <li><p>数组解构允许按照一一对应的关系从数组中提取值，然后将值赋值给变量</p>
 </li>
 <li><p>如果解构不成功，变量的值为undefined</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [1, &#x27;a&#x27;, 2];</span><br><span class="line">  // 按照一一对应的关系从数组中提取值，然后将值赋值给变量</span><br><span class="line">  let [a, b, c] = arr;</span><br><span class="line">  console.log(a); // 1</span><br><span class="line">  console.log(b); // a</span><br><span class="line">  console.log(c); // 2</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr &#x3D; [1, &#39;a&#39;, 2];
+  &#x2F;&#x2F; 按照一一对应的关系从数组中提取值，然后将值赋值给变量
+  let [a, b, c] &#x3D; arr;
+  console.log(a); &#x2F;&#x2F; 1
+  console.log(b); &#x2F;&#x2F; a
+  console.log(c); &#x2F;&#x2F; 2
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [1, &#x27;a&#x27;, 2];</span><br><span class="line">  // 按照一一对应的关系从数组中提取值，然后将值赋值给变量</span><br><span class="line">  let [a, b] = arr;</span><br><span class="line">  console.log(a); // 1</span><br><span class="line">  console.log(b); // a</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr &#x3D; [1, &#39;a&#39;, 2];
+  &#x2F;&#x2F; 按照一一对应的关系从数组中提取值，然后将值赋值给变量
+  let [a, b] &#x3D; arr;
+  console.log(a); &#x2F;&#x2F; 1
+  console.log(b); &#x2F;&#x2F; a
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [1, &#x27;a&#x27;, 2];</span><br><span class="line">  // 按照一一对应的关系从数组中提取值，然后将值赋值给变量</span><br><span class="line">  let [a, b, c, d] = arr;</span><br><span class="line">  console.log(a); // 1</span><br><span class="line">  console.log(b); // a</span><br><span class="line">  console.log(c); // 2</span><br><span class="line">  console.log(d); //undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr &#x3D; [1, &#39;a&#39;, 2];
+  &#x2F;&#x2F; 按照一一对应的关系从数组中提取值，然后将值赋值给变量
+  let [a, b, c, d] &#x3D; arr;
+  console.log(a); &#x2F;&#x2F; 1
+  console.log(b); &#x2F;&#x2F; a
+  console.log(c); &#x2F;&#x2F; 2
+  console.log(d); &#x2F;&#x2F;undefined
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h3><ol>
 <li><p>对象解构必须根据属性名进行匹配</p>
 </li>
 <li><p>如果解构不成功，变量的值为undefined</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let person = &#123;</span><br><span class="line">    name: &#x27;zhangsan&#x27;,</span><br><span class="line">    age: &#x27;不详&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">  // 对象解构</span><br><span class="line">  let &#123; name, age &#125; = person;</span><br><span class="line">  console.log(name); // zhangsan</span><br><span class="line">  console.log(age); // 不详</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let person &#x3D; &#123;
+    name: &#39;zhangsan&#39;,
+    age: &#39;不详&#39;
+  &#125;
+  &#x2F;&#x2F; 对象解构
+  let &#123; name, age &#125; &#x3D; person;
+  console.log(name); &#x2F;&#x2F; zhangsan
+  console.log(age); &#x2F;&#x2F; 不详
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let person = &#123;</span><br><span class="line">    name: &#x27;zhangsan&#x27;,</span><br><span class="line">    age: &#x27;不详&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">  // 冒号左侧的变量只用于匹配，赋值给冒号右边的变量</span><br><span class="line">  let &#123; name: myname, age: myage &#125; = person;</span><br><span class="line">  // 当对象解构成功，属性匹配成功，则将属性对应的值赋值给冒号左侧的变量</span><br><span class="line">  console.log(myname); // zhangsan</span><br><span class="line">  console.log(myage); // 不详</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let person &#x3D; &#123;
+    name: &#39;zhangsan&#39;,
+    age: &#39;不详&#39;
+  &#125;
+  &#x2F;&#x2F; 冒号左侧的变量只用于匹配，赋值给冒号右边的变量
+  let &#123; name: myname, age: myage &#125; &#x3D; person;
+  &#x2F;&#x2F; 当对象解构成功，属性匹配成功，则将属性对应的值赋值给冒号左侧的变量
+  console.log(myname); &#x2F;&#x2F; zhangsan
+  console.log(myage); &#x2F;&#x2F; 不详
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let person = &#123;</span><br><span class="line">    name: &#x27;zhangsan&#x27;,</span><br><span class="line">    age: &#x27;不详&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">  // 必须利用属性名进行匹配</span><br><span class="line">  let &#123; n, a &#125; = person;</span><br><span class="line">  console.log(n); // undefined</span><br><span class="line">  console.log(a); // undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let person &#x3D; &#123;
+    name: &#39;zhangsan&#39;,
+    age: &#39;不详&#39;
+  &#125;
+  &#x2F;&#x2F; 必须利用属性名进行匹配
+  let &#123; n, a &#125; &#x3D; person;
+  console.log(n); &#x2F;&#x2F; undefined
+  console.log(a); &#x2F;&#x2F; undefined
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -444,7 +495,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

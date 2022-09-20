@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇移动端的基础和布局的学习笔记">
@@ -287,7 +289,44 @@
 </ol>
 <h2 id="meta视口标签"><a href="#meta视口标签" class="headerlink" title="meta视口标签"></a>meta视口标签</h2><h3 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h3><ol>
 <li><pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   | 属性          | 解释说明                                             |</span><br><span class="line">   | ------------- | ---------------------------------------------------- |</span><br><span class="line">   | width         | 宽度设置的是viewport宽度，可以设置device-width特殊值 |</span><br><span class="line">   | user-scalable | 用户是否可以缩放，yes或no（1或0）                    |</span><br><span class="line">   | initial-scale | 初始缩放比，大于0的数字                              |</span><br><span class="line">   | maximum-scale | 最大缩放比，大于0的数字                              |</span><br><span class="line">   | minimum-scale | 最小缩放比，大于0的数字                              |</span><br><span class="line"></span><br><span class="line">### 标准viewport设置</span><br><span class="line"></span><br><span class="line">1. 视口宽度和设备保持一致</span><br><span class="line">2. 视口的默认缩放比例1.0</span><br><span class="line">3. 不允许用户自行缩放</span><br><span class="line">4. 最大允许的缩放比例1.0</span><br><span class="line">5. 最小允许的缩放比例1.0</span><br><span class="line"></span><br><span class="line">## 二倍图</span><br><span class="line"></span><br><span class="line">### 物理像素和物理像素比</span><br><span class="line"></span><br><span class="line">1. 物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的。这是厂商在出厂时就设置好的</span><br><span class="line">2. 我们开发时候的1px不是一定等于1个物理像素的</span><br><span class="line">3. PC端页面，1个px等于1个物理像素的，但是移动端就不尽相同</span><br><span class="line">4. 一个px的能显示的物理像素点的个数，称为物理像素比或屏幕像素比</span><br><span class="line">5. PC端和早前的手机屏幕/普通手机屏幕: 1CSS像素= 1 物理像素的</span><br><span class="line">6. Retina (视网膜屏幕)是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里，从而达到更高的分辨率，并提高屏幕显示的细腻程度</span><br><span class="line"></span><br><span class="line">### 背景缩放 background-size</span><br><span class="line"></span><br><span class="line">1. background-size: 背景图片宽度 背景图片高度；</span><br><span class="line"></span><br><span class="line">   1. 单位：长度 | 百分比 | cover | contain</span><br><span class="line"></span><br><span class="line">   2. cover把背景图片扩展至足够大，使背景图像完全覆盖背景区域</span><br><span class="line"></span><br><span class="line">   3. contain把图像扩展至最大尺寸，使其宽度和高度完全适应内容区域</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">
+   | 属性          | 解释说明                                             |
+   | ------------- | ---------------------------------------------------- |
+   | width         | 宽度设置的是viewport宽度，可以设置device-width特殊值 |
+   | user-scalable | 用户是否可以缩放，yes或no（1或0）                    |
+   | initial-scale | 初始缩放比，大于0的数字                              |
+   | maximum-scale | 最大缩放比，大于0的数字                              |
+   | minimum-scale | 最小缩放比，大于0的数字                              |
+
+### 标准viewport设置
+
+1. 视口宽度和设备保持一致
+2. 视口的默认缩放比例1.0
+3. 不允许用户自行缩放
+4. 最大允许的缩放比例1.0
+5. 最小允许的缩放比例1.0
+
+## 二倍图
+
+### 物理像素和物理像素比
+
+1. 物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的。这是厂商在出厂时就设置好的
+2. 我们开发时候的1px不是一定等于1个物理像素的
+3. PC端页面，1个px等于1个物理像素的，但是移动端就不尽相同
+4. 一个px的能显示的物理像素点的个数，称为物理像素比或屏幕像素比
+5. PC端和早前的手机屏幕&#x2F;普通手机屏幕: 1CSS像素&#x3D; 1 物理像素的
+6. Retina (视网膜屏幕)是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里，从而达到更高的分辨率，并提高屏幕显示的细腻程度
+
+### 背景缩放 background-size
+
+1. background-size: 背景图片宽度 背景图片高度；
+
+   1. 单位：长度 | 百分比 | cover | contain
+
+   2. cover把背景图片扩展至足够大，使背景图像完全覆盖背景区域
+
+   3. contain把图像扩展至最大尺寸，使其宽度和高度完全适应内容区域
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
    &lt;head&gt;
        &lt;meta charset=&quot;UTF-8&quot;&gt;
        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
@@ -544,7 +583,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

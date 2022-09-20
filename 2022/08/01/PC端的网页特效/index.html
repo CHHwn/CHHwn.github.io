@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇PC端网页特效的学习笔记">
@@ -416,7 +418,9 @@
 <li><p>方式一：(function() {})()</p>
 <ul>
 <li><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function(a, b) &#123;</span><br><span class="line">  console.log(a + b);</span><br><span class="line">&#125;)(1, 2);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">(function(a, b) &#123;
+  console.log(a + b);
+&#125;)(1, 2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>第二个小括号可以看作是调用函数</p>
 </li>
@@ -425,7 +429,9 @@
 <li><p>方式二：(function() {} ())</p>
 <ul>
 <li><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function sum(a, b) &#123;</span><br><span class="line">  console.log(a + b);</span><br><span class="line">&#125; (2, 3));</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">(function sum(a, b) &#123;
+  console.log(a + b);
+&#125; (2, 3));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 </ol>
@@ -447,13 +453,64 @@
 <li><p>加一个结束定时器的条件</p>
 </li>
 <li><p>注意此元素需要添加定位，才能使用element.style.left</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 1. 获得盒子当前位置</span><br><span class="line">        // 2. 让盒子在当前位置加上1个移动距离</span><br><span class="line">        // 3. 利用定时器不断重复这个操作</span><br><span class="line">        // 4. 加一个结束定时器的条件</span><br><span class="line">        // 5. 注意此元素需要添加定位，才能使用element.style.left</span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var timer = setInterval(function () &#123;</span><br><span class="line">            if (div.offsetLeft &gt;= 400) &#123;</span><br><span class="line">                // 停止动画，本质是停止计时器</span><br><span class="line">                clearInterval(timer);</span><br><span class="line">            &#125;</span><br><span class="line">            div.style.left = div.offsetLeft + 1 + &#x27;px&#x27;;</span><br><span class="line">        &#125;, 50);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;script&gt;
+        &#x2F;&#x2F; 1. 获得盒子当前位置
+        &#x2F;&#x2F; 2. 让盒子在当前位置加上1个移动距离
+        &#x2F;&#x2F; 3. 利用定时器不断重复这个操作
+        &#x2F;&#x2F; 4. 加一个结束定时器的条件
+        &#x2F;&#x2F; 5. 注意此元素需要添加定位，才能使用element.style.left
+        var div &#x3D; document.querySelector(&#39;div&#39;);
+        var timer &#x3D; setInterval(function () &#123;
+            if (div.offsetLeft &gt;&#x3D; 400) &#123;
+                &#x2F;&#x2F; 停止动画，本质是停止计时器
+                clearInterval(timer);
+            &#125;
+            div.style.left &#x3D; div.offsetLeft + 1 + &#39;px&#39;;
+        &#125;, 50);
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
 <h2 id="简单动画函数封装"><a href="#简单动画函数封装" class="headerlink" title="简单动画函数封装"></a>简单动画函数封装</h2><ol>
 <li><p>简单动画函数封装两个参数：obj目标对象、target目标位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;启动蓝色盒子&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 封装动画函数</span><br><span class="line">        function animate(obj, target) &#123;</span><br><span class="line">            // 当没有这句代码时，会存在一个bug：当不断点击按钮使动画函数不断被调用，计时器会开启的越来越多，导致元素的动画速度越来越快</span><br><span class="line">            // 解决方法：让元素只有一个计时器执行</span><br><span class="line">            // 优化二：在执行下一个计时器时，清除之前的计时器；计时器第一次执行时，因为之前没有执行过计时器，则代码无效</span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line"></span><br><span class="line">            // 优化一：obj.timer 这样做的目的是 给不同的元素指定了不同的计时器</span><br><span class="line">            obj.timer = setInterval(function () &#123;</span><br><span class="line">                if (obj.offsetLeft &gt;= target) &#123;</span><br><span class="line">                    // 停止动画，本质是停止计时器</span><br><span class="line">                    clearInterval(obj.timer);</span><br><span class="line">                &#125;</span><br><span class="line">                obj.style.left = obj.offsetLeft + 1 + &#x27;px&#x27;;</span><br><span class="line">            &#125;, 50);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var span = document.querySelector(&#x27;span&#x27;);</span><br><span class="line">        var btn = document.querySelector(&#x27;button&#x27;);</span><br><span class="line"></span><br><span class="line">        // 调用函数</span><br><span class="line">        animate(div, 400);</span><br><span class="line"></span><br><span class="line">        btn.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            // 调用函数</span><br><span class="line">            animate(span, 300);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;button&gt;启动蓝色盒子&lt;&#x2F;button&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;span&gt;&lt;&#x2F;span&gt;
+    &lt;script&gt;
+        &#x2F;&#x2F; 封装动画函数
+        function animate(obj, target) &#123;
+            &#x2F;&#x2F; 当没有这句代码时，会存在一个bug：当不断点击按钮使动画函数不断被调用，计时器会开启的越来越多，导致元素的动画速度越来越快
+            &#x2F;&#x2F; 解决方法：让元素只有一个计时器执行
+            &#x2F;&#x2F; 优化二：在执行下一个计时器时，清除之前的计时器；计时器第一次执行时，因为之前没有执行过计时器，则代码无效
+            clearInterval(obj.timer);
+
+            &#x2F;&#x2F; 优化一：obj.timer 这样做的目的是 给不同的元素指定了不同的计时器
+            obj.timer &#x3D; setInterval(function () &#123;
+                if (obj.offsetLeft &gt;&#x3D; target) &#123;
+                    &#x2F;&#x2F; 停止动画，本质是停止计时器
+                    clearInterval(obj.timer);
+                &#125;
+                obj.style.left &#x3D; obj.offsetLeft + 1 + &#39;px&#39;;
+            &#125;, 50);
+        &#125;
+
+        var div &#x3D; document.querySelector(&#39;div&#39;);
+        var span &#x3D; document.querySelector(&#39;span&#39;);
+        var btn &#x3D; document.querySelector(&#39;button&#39;);
+
+        &#x2F;&#x2F; 调用函数
+        animate(div, 400);
+
+        btn.addEventListener(&#39;click&#39;, function () &#123;
+            &#x2F;&#x2F; 调用函数
+            animate(span, 300);
+        &#125;)
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h2 id="缓动动画原理"><a href="#缓动动画原理" class="headerlink" title="缓动动画原理"></a>缓动动画原理</h2><ol>
 <li>缓动动画就是让元素运动速度有所变化,最常见的是让速度慢慢停下来</li>
@@ -476,7 +533,50 @@
 <li><p>回调函数原理：函数可以作为一个参数；将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数，这个过程就叫做回调</p>
 </li>
 <li><p>例：当缓动动画移动到终点后，盒子改变颜色</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button class=&quot;btn700&quot;&gt;移动到700&lt;/button&gt;</span><br><span class="line">    &lt;button class=&quot;btn1000&quot;&gt;移动到1000&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        function animate(obj, target, cellback) &#123;</span><br><span class="line">            obj.timer = setInterval(function () &#123;</span><br><span class="line">                // 步长值，步长值公式：（目标值target - 现在的位置） / 10</span><br><span class="line">                // 把步长值改为整数，不然会出现元素无法到指定位置的bug，因为在JS中小数不进行计算</span><br><span class="line">                // 步长为正数：向上取 整</span><br><span class="line">                // 步长为负数：向下取整</span><br><span class="line">                var step = (target - obj.offsetLeft) / 10;</span><br><span class="line">                step = step &gt; 0 ? Math.ceil(step) : Math.floor(step);</span><br><span class="line">                // 停止的条件：让当前盒子位置等于目标位置就停止定时器</span><br><span class="line">                if (obj.offsetLeft == target) &#123;</span><br><span class="line">                    clearInterval(obj.timer);</span><br><span class="line">                    // 回调函数写到定时器结束内</span><br><span class="line">                    // 判断是否接收到回调函数，若接收到则调用函数</span><br><span class="line">                    if (cellback) &#123;</span><br><span class="line">                        cellback();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    obj.style.left = obj.offsetLeft + step + &#x27;px&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, 15);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        var div = document.querySelector(&#x27;div&#x27;);</span><br><span class="line">        var btn700 = document.querySelector(&#x27;.btn700&#x27;);</span><br><span class="line">        var btn1000 = document.querySelector(&#x27;.btn1000&#x27;);</span><br><span class="line"></span><br><span class="line">        // 调用函数</span><br><span class="line">        btn700.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            animate(div, 700, function () &#123;</span><br><span class="line">                div.style.backgroundColor = &#x27;skyblue&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">        btn1000.addEventListener(&#x27;click&#x27;, function () &#123;</span><br><span class="line">            animate(div, 1000, function () &#123;</span><br><span class="line">                div.style.backgroundColor = &#x27;skyblue&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;button class&#x3D;&quot;btn700&quot;&gt;移动到700&lt;&#x2F;button&gt;
+    &lt;button class&#x3D;&quot;btn1000&quot;&gt;移动到1000&lt;&#x2F;button&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;script&gt;
+        function animate(obj, target, cellback) &#123;
+            obj.timer &#x3D; setInterval(function () &#123;
+                &#x2F;&#x2F; 步长值，步长值公式：（目标值target - 现在的位置） &#x2F; 10
+                &#x2F;&#x2F; 把步长值改为整数，不然会出现元素无法到指定位置的bug，因为在JS中小数不进行计算
+                &#x2F;&#x2F; 步长为正数：向上取 整
+                &#x2F;&#x2F; 步长为负数：向下取整
+                var step &#x3D; (target - obj.offsetLeft) &#x2F; 10;
+                step &#x3D; step &gt; 0 ? Math.ceil(step) : Math.floor(step);
+                &#x2F;&#x2F; 停止的条件：让当前盒子位置等于目标位置就停止定时器
+                if (obj.offsetLeft &#x3D;&#x3D; target) &#123;
+                    clearInterval(obj.timer);
+                    &#x2F;&#x2F; 回调函数写到定时器结束内
+                    &#x2F;&#x2F; 判断是否接收到回调函数，若接收到则调用函数
+                    if (cellback) &#123;
+                        cellback();
+                    &#125;
+                &#125; else &#123;
+                    obj.style.left &#x3D; obj.offsetLeft + step + &#39;px&#39;;
+                &#125;
+            &#125;, 15);
+        &#125;
+
+        var div &#x3D; document.querySelector(&#39;div&#39;);
+        var btn700 &#x3D; document.querySelector(&#39;.btn700&#39;);
+        var btn1000 &#x3D; document.querySelector(&#39;.btn1000&#39;);
+
+        &#x2F;&#x2F; 调用函数
+        btn700.addEventListener(&#39;click&#39;, function () &#123;
+            animate(div, 700, function () &#123;
+                div.style.backgroundColor &#x3D; &#39;skyblue&#39;;
+            &#125;);
+        &#125;)
+        btn1000.addEventListener(&#39;click&#39;, function () &#123;
+            animate(div, 1000, function () &#123;
+                div.style.backgroundColor &#x3D; &#39;skyblue&#39;;
+            &#125;);
+        &#125;)
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h1 id="常见网页特效案例"><a href="#常见网页特效案例" class="headerlink" title="常见网页特效案例"></a>常见网页特效案例</h1><h2 id="网页轮播图"><a href="#网页轮播图" class="headerlink" title="网页轮播图"></a>网页轮播图</h2><ol>
 <li>轮播图也称为焦点图，是网页中比较常见的网页特效</li>
@@ -708,7 +808,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

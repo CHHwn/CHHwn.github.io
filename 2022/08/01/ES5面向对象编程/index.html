@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES5面向对象编程的学习笔记">
@@ -320,10 +322,187 @@
 </ol>
 <h3 id="面向对象版tab栏切换-—-代码演示"><a href="#面向对象版tab栏切换-—-代码演示" class="headerlink" title="面向对象版tab栏切换 — 代码演示"></a>面向对象版tab栏切换 — 代码演示</h3><ol>
 <li><p>html结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/index.css&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h3&gt;JS面向对象 动态添加标签页&lt;/h3&gt;</span><br><span class="line">    &lt;div class=&quot;tab&quot; id=&quot;tab&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;tab-top&quot;&gt;</span><br><span class="line">            &lt;ul&gt;</span><br><span class="line">                &lt;li class=&quot;backcolor&quot;&gt;</span><br><span class="line">                    测试1</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试2</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;li&gt;</span><br><span class="line">                    测试3</span><br><span class="line">                    &lt;span&gt;&lt;/span&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;div class=&quot;append&quot;&gt;+&lt;/div&gt;</span><br><span class="line">            &lt;/ul&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;tab-content&quot;&gt;</span><br><span class="line">            &lt;section class=&#x27;block&#x27;&gt;测试一&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试二&lt;/section&gt;</span><br><span class="line">            &lt;section&gt;测试三&lt;/section&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+
+    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;css&#x2F;index.css&quot;&gt;
+&lt;&#x2F;head&gt;
+
+&lt;body&gt;
+    &lt;h3&gt;JS面向对象 动态添加标签页&lt;&#x2F;h3&gt;
+    &lt;div class&#x3D;&quot;tab&quot; id&#x3D;&quot;tab&quot;&gt;
+        &lt;div class&#x3D;&quot;tab-top&quot;&gt;
+            &lt;ul&gt;
+                &lt;li class&#x3D;&quot;backcolor&quot;&gt;
+                    测试1
+                    &lt;span&gt;&lt;&#x2F;span&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    测试2
+                    &lt;span&gt;&lt;&#x2F;span&gt;
+                &lt;&#x2F;li&gt;
+                &lt;li&gt;
+                    测试3
+                    &lt;span&gt;&lt;&#x2F;span&gt;
+                &lt;&#x2F;li&gt;
+                &lt;div class&#x3D;&quot;append&quot;&gt;+&lt;&#x2F;div&gt;
+            &lt;&#x2F;ul&gt;
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;tab-content&quot;&gt;
+            &lt;section class&#x3D;&#39;block&#39;&gt;测试一&lt;&#x2F;section&gt;
+            &lt;section&gt;测试二&lt;&#x2F;section&gt;
+            &lt;section&gt;测试三&lt;&#x2F;section&gt;
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+    &lt;script src&#x3D;&quot;js&#x2F;index.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;
+
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>js代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个tab类</span><br><span class="line">// var that;</span><br><span class="line">class Tab &#123;</span><br><span class="line">  constructor(id) &#123;</span><br><span class="line">    // that = this;</span><br><span class="line">    // 获取实例化对象中的元素</span><br><span class="line">    // 先获取整个tab</span><br><span class="line">    this.main = document.querySelector(id);</span><br><span class="line">    // 获取添加按钮</span><br><span class="line">    this.appends = this.main.querySelector(&#x27;.append&#x27;);</span><br><span class="line">    // 获取ul</span><br><span class="line">    this.ul = this.main.querySelector(&#x27;.tab-top ul:first-child&#x27;);</span><br><span class="line">    // 获取tab-content    </span><br><span class="line">    this.tab_content = this.main.querySelector(&#x27;.tab-content&#x27;);</span><br><span class="line">    // 实例化对象时即调用初始化函数</span><br><span class="line">    this.init();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 初始化函数</span><br><span class="line">  init() &#123;</span><br><span class="line">    // 初始化时，获取li和section</span><br><span class="line">    this.updateNode();</span><br><span class="line">    // 给appends绑定点击事件</span><br><span class="line">    // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">    this.appends.onclick = this.addTab.bind(this.appends, this);</span><br><span class="line">    // 给lis绑定点击事件</span><br><span class="line">    for (var i = 0; i &lt; this.lis.length; i++) &#123;</span><br><span class="line">      // 给每一个li设置索引号</span><br><span class="line">      this.lis[i].index = i;</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.lis[i].onclick = this.toggleTab.bind(this.lis[i], this);</span><br><span class="line">      // 给每一个span绑定点击事件</span><br><span class="line">      // 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用</span><br><span class="line">      this.spans[i].onclick = this.removeTab.bind(this.spans[i], this);</span><br><span class="line">      // 给每一个li绑定双击事件</span><br><span class="line">      this.lis[i].ondblclick = this.editTab;</span><br><span class="line">      this.sections[i].ondblclick = this.editTab;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 因为经常进行tab栏的添加删除，所以要多次获取li、section和span</span><br><span class="line">  updateNode() &#123;</span><br><span class="line">    // 获取所有的li</span><br><span class="line">    this.lis = this.main.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">    // 获取所有的section</span><br><span class="line">    this.sections = this.main.querySelectorAll(&#x27;section&#x27;);</span><br><span class="line">    // 获取所有的span</span><br><span class="line">    this.spans = this.main.querySelectorAll(&#x27;span&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 切换功能</span><br><span class="line">  toggleTab(that) &#123;</span><br><span class="line">    // tab-top实现切换功能</span><br><span class="line">    // 这里的that为指向实例化对象</span><br><span class="line">    that.clearClass();</span><br><span class="line">    // 留下自己，给被点击的li添加类名</span><br><span class="line">    this.className = &#x27;backcolor&#x27;;</span><br><span class="line"></span><br><span class="line">    // tab-content实现切换功能</span><br><span class="line">    // 留下自己，给被点击的li对应的section添加类名</span><br><span class="line">    that.sections[this.index].className = &#x27;block&#x27;;</span><br><span class="line">  &#125;</span><br><span class="line">  // 排他思想清除类函数</span><br><span class="line">  clearClass() &#123;</span><br><span class="line">    // 因为这个函数是由that调用的，所以this指向的是实例化对象</span><br><span class="line">    for (var j = 0; j &lt; this.lis.length; j++) &#123;</span><br><span class="line">      // 排他思想：干掉别人，让所有的li去掉类</span><br><span class="line">      this.lis[j].className = &#x27;&#x27;;</span><br><span class="line">      // 排他思想：干掉别人，清除每一个section的类</span><br><span class="line">      this.sections[j].className = &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 添加功能</span><br><span class="line">  addTab(that) &#123;</span><br><span class="line">    // 创建一个li和span节点，将span节点放入li中</span><br><span class="line">    // 创建li元素</span><br><span class="line">    var li = &#x27;&lt;li&gt;新选项卡&lt;span&gt;&lt;/span&gt;&lt;/li&gt;&#x27;;</span><br><span class="line">    // 将li元素插入ul中</span><br><span class="line">    that.ul.insertAdjacentHTML(&#x27;beforeend&#x27;, li);</span><br><span class="line"></span><br><span class="line">    // 创建section元素，添加入tab-content中</span><br><span class="line">    var section = &#x27;&lt;section&gt;请输入内容&lt;/section&gt;&#x27;;</span><br><span class="line">    // 将section元素添加进入ab-content中</span><br><span class="line">    that.tab_content.insertAdjacentHTML(&#x27;beforeend&#x27;, section);</span><br><span class="line">    // 每次添加li和section元素时，都需要重新初始化，重新调用li和section</span><br><span class="line">    that.init();</span><br><span class="line">  &#125;</span><br><span class="line">  // 删除功能</span><br><span class="line">  removeTab(that, e) &#123;</span><br><span class="line">    // 阻止冒泡，避免点击span&#x27;x&#x27;号后，冒泡触发点击li的事件</span><br><span class="line">    e.stopPropagation();</span><br><span class="line">    // 因为span没有索引，则获取当前被点击span的父元素的索引</span><br><span class="line">    var index = this.parentNode.index;</span><br><span class="line">    // 删除索引号对应的li和section</span><br><span class="line">    that.lis[index].remove();</span><br><span class="line">    that.sections[index].remove();</span><br><span class="line">    // 每次删除li和section元素时，都需要重新初始化</span><br><span class="line">    that.init();</span><br><span class="line">    // 当删除的是未被选中的tab选项时，被选中的tab选项不变</span><br><span class="line">    if (that.main.querySelector(&quot;.backcolor&quot;)) return;</span><br><span class="line">    // 当删除被选中的tab选项时，该tab选项的前一个tab选项会被自动选中</span><br><span class="line">    // 可以采用被自动点击的方式实现</span><br><span class="line">    index--;</span><br><span class="line">    // 当所有的tab选项被删除时，index为-1， that.lis[index]不存在则停止点击事件</span><br><span class="line">    that.lis[index] &amp;&amp; that.lis[index].click();</span><br><span class="line">  &#125;</span><br><span class="line">  // 修改功能</span><br><span class="line">  editTab() &#123;</span><br><span class="line">    // 取消默认双击选定文字</span><br><span class="line">    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();</span><br><span class="line">    // 获取li中的文字</span><br><span class="line">    var str = this.innerText;</span><br><span class="line">    // 每当li被双击时，就在span内部生成一个input表单替换span里面的文字</span><br><span class="line">    this.innerHTML = &#x27;&lt;input type=&quot;text&quot;&gt;&#x27;;</span><br><span class="line">    // 获取对应的input</span><br><span class="line">    var input = this.children[0];</span><br><span class="line">    // 将li中的文字赋值给文本框</span><br><span class="line">    input.value = str;</span><br><span class="line">    // 让文本框中的内容处于选中状态</span><br><span class="line">    input.select();</span><br><span class="line"></span><br><span class="line">    // 当文本框失去焦点或者按下enter键则将文本框的内容赋值给li</span><br><span class="line">    input.onblur = function () &#123;</span><br><span class="line">      // 这里的this指向input</span><br><span class="line">      this.parentNode.innerHTML = input.value + &#x27;&lt;span&gt;&lt;/span&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    // enter键的ASCII码值为13</span><br><span class="line">    input.onkeyup = function (e) &#123;</span><br><span class="line">      if (e.keyCode === 13) &#123;</span><br><span class="line">        this.blur();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 实例化一个tab对象</span><br><span class="line">new Tab(&#x27;#tab&#x27;);</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 创建一个tab类
+&#x2F;&#x2F; var that;
+class Tab &#123;
+  constructor(id) &#123;
+    &#x2F;&#x2F; that &#x3D; this;
+    &#x2F;&#x2F; 获取实例化对象中的元素
+    &#x2F;&#x2F; 先获取整个tab
+    this.main &#x3D; document.querySelector(id);
+    &#x2F;&#x2F; 获取添加按钮
+    this.appends &#x3D; this.main.querySelector(&#39;.append&#39;);
+    &#x2F;&#x2F; 获取ul
+    this.ul &#x3D; this.main.querySelector(&#39;.tab-top ul:first-child&#39;);
+    &#x2F;&#x2F; 获取tab-content    
+    this.tab_content &#x3D; this.main.querySelector(&#39;.tab-content&#39;);
+    &#x2F;&#x2F; 实例化对象时即调用初始化函数
+    this.init();
+  &#125;
+
+  &#x2F;&#x2F; 初始化函数
+  init() &#123;
+    &#x2F;&#x2F; 初始化时，获取li和section
+    this.updateNode();
+    &#x2F;&#x2F; 给appends绑定点击事件
+    &#x2F;&#x2F; 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用
+    this.appends.onclick &#x3D; this.addTab.bind(this.appends, this);
+    &#x2F;&#x2F; 给lis绑定点击事件
+    for (var i &#x3D; 0; i &lt; this.lis.length; i++) &#123;
+      &#x2F;&#x2F; 给每一个li设置索引号
+      this.lis[i].index &#x3D; i;
+      &#x2F;&#x2F; 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用
+      this.lis[i].onclick &#x3D; this.toggleTab.bind(this.lis[i], this);
+      &#x2F;&#x2F; 给每一个span绑定点击事件
+      &#x2F;&#x2F; 这里调用函数不要加()，因为此处是点击后才调用，加括号后则是页面加载即调用
+      this.spans[i].onclick &#x3D; this.removeTab.bind(this.spans[i], this);
+      &#x2F;&#x2F; 给每一个li绑定双击事件
+      this.lis[i].ondblclick &#x3D; this.editTab;
+      this.sections[i].ondblclick &#x3D; this.editTab;
+    &#125;
+  &#125;
+
+  &#x2F;&#x2F; 因为经常进行tab栏的添加删除，所以要多次获取li、section和span
+  updateNode() &#123;
+    &#x2F;&#x2F; 获取所有的li
+    this.lis &#x3D; this.main.querySelectorAll(&#39;li&#39;);
+    &#x2F;&#x2F; 获取所有的section
+    this.sections &#x3D; this.main.querySelectorAll(&#39;section&#39;);
+    &#x2F;&#x2F; 获取所有的span
+    this.spans &#x3D; this.main.querySelectorAll(&#39;span&#39;);
+  &#125;
+
+  &#x2F;&#x2F; 切换功能
+  toggleTab(that) &#123;
+    &#x2F;&#x2F; tab-top实现切换功能
+    &#x2F;&#x2F; 这里的that为指向实例化对象
+    that.clearClass();
+    &#x2F;&#x2F; 留下自己，给被点击的li添加类名
+    this.className &#x3D; &#39;backcolor&#39;;
+
+    &#x2F;&#x2F; tab-content实现切换功能
+    &#x2F;&#x2F; 留下自己，给被点击的li对应的section添加类名
+    that.sections[this.index].className &#x3D; &#39;block&#39;;
+  &#125;
+  &#x2F;&#x2F; 排他思想清除类函数
+  clearClass() &#123;
+    &#x2F;&#x2F; 因为这个函数是由that调用的，所以this指向的是实例化对象
+    for (var j &#x3D; 0; j &lt; this.lis.length; j++) &#123;
+      &#x2F;&#x2F; 排他思想：干掉别人，让所有的li去掉类
+      this.lis[j].className &#x3D; &#39;&#39;;
+      &#x2F;&#x2F; 排他思想：干掉别人，清除每一个section的类
+      this.sections[j].className &#x3D; &#39;&#39;;
+    &#125;
+  &#125;
+  &#x2F;&#x2F; 添加功能
+  addTab(that) &#123;
+    &#x2F;&#x2F; 创建一个li和span节点，将span节点放入li中
+    &#x2F;&#x2F; 创建li元素
+    var li &#x3D; &#39;&lt;li&gt;新选项卡&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;li&gt;&#39;;
+    &#x2F;&#x2F; 将li元素插入ul中
+    that.ul.insertAdjacentHTML(&#39;beforeend&#39;, li);
+
+    &#x2F;&#x2F; 创建section元素，添加入tab-content中
+    var section &#x3D; &#39;&lt;section&gt;请输入内容&lt;&#x2F;section&gt;&#39;;
+    &#x2F;&#x2F; 将section元素添加进入ab-content中
+    that.tab_content.insertAdjacentHTML(&#39;beforeend&#39;, section);
+    &#x2F;&#x2F; 每次添加li和section元素时，都需要重新初始化，重新调用li和section
+    that.init();
+  &#125;
+  &#x2F;&#x2F; 删除功能
+  removeTab(that, e) &#123;
+    &#x2F;&#x2F; 阻止冒泡，避免点击span&#39;x&#39;号后，冒泡触发点击li的事件
+    e.stopPropagation();
+    &#x2F;&#x2F; 因为span没有索引，则获取当前被点击span的父元素的索引
+    var index &#x3D; this.parentNode.index;
+    &#x2F;&#x2F; 删除索引号对应的li和section
+    that.lis[index].remove();
+    that.sections[index].remove();
+    &#x2F;&#x2F; 每次删除li和section元素时，都需要重新初始化
+    that.init();
+    &#x2F;&#x2F; 当删除的是未被选中的tab选项时，被选中的tab选项不变
+    if (that.main.querySelector(&quot;.backcolor&quot;)) return;
+    &#x2F;&#x2F; 当删除被选中的tab选项时，该tab选项的前一个tab选项会被自动选中
+    &#x2F;&#x2F; 可以采用被自动点击的方式实现
+    index--;
+    &#x2F;&#x2F; 当所有的tab选项被删除时，index为-1， that.lis[index]不存在则停止点击事件
+    that.lis[index] &amp;&amp; that.lis[index].click();
+  &#125;
+  &#x2F;&#x2F; 修改功能
+  editTab() &#123;
+    &#x2F;&#x2F; 取消默认双击选定文字
+    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+    &#x2F;&#x2F; 获取li中的文字
+    var str &#x3D; this.innerText;
+    &#x2F;&#x2F; 每当li被双击时，就在span内部生成一个input表单替换span里面的文字
+    this.innerHTML &#x3D; &#39;&lt;input type&#x3D;&quot;text&quot;&gt;&#39;;
+    &#x2F;&#x2F; 获取对应的input
+    var input &#x3D; this.children[0];
+    &#x2F;&#x2F; 将li中的文字赋值给文本框
+    input.value &#x3D; str;
+    &#x2F;&#x2F; 让文本框中的内容处于选中状态
+    input.select();
+
+    &#x2F;&#x2F; 当文本框失去焦点或者按下enter键则将文本框的内容赋值给li
+    input.onblur &#x3D; function () &#123;
+      &#x2F;&#x2F; 这里的this指向input
+      this.parentNode.innerHTML &#x3D; input.value + &#39;&lt;span&gt;&lt;&#x2F;span&gt;&#39;;
+    &#125;
+    &#x2F;&#x2F; enter键的ASCII码值为13
+    input.onkeyup &#x3D; function (e) &#123;
+      if (e.keyCode &#x3D;&#x3D;&#x3D; 13) &#123;
+        this.blur();
+      &#125;
+    &#125;
+  &#125;
+&#125;
+
+&#x2F;&#x2F; 实例化一个tab对象
+new Tab(&#39;#tab&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -495,7 +674,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

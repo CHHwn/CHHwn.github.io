@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES5构造函数和原型的学习笔记">
@@ -269,7 +271,33 @@
 <li><p>new Object()</p>
 </li>
 <li><p>自定义构造函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  // 方式一：通过字面量创建对象</span><br><span class="line">  var dog = &#123;</span><br><span class="line">    name: &#x27;熊二&#x27;,</span><br><span class="line">    type: &#x27;金毛&#x27;,</span><br><span class="line">    showFlie: function () &#123;</span><br><span class="line">      console.log(&#x27;hello world!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  // 利用object创建对象</span><br><span class="line">  var cat = new Object();</span><br><span class="line">  cat.name = &#x27;熊大&#x27;;</span><br><span class="line">  cat.type = &#x27;英短&#x27;;</span><br><span class="line">  cat.showFlie = function () &#123;</span><br><span class="line">    console.log(&#x27;hello world!&#x27;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 利用构造函数创建对象</span><br><span class="line">  function Star(name, sex) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.sex = sex;</span><br><span class="line">    this.showFlie = function () &#123;</span><br><span class="line">      console.log(&#x27;hello world!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  &#x2F;&#x2F; 方式一：通过字面量创建对象
+  var dog &#x3D; &#123;
+    name: &#39;熊二&#39;,
+    type: &#39;金毛&#39;,
+    showFlie: function () &#123;
+      console.log(&#39;hello world!&#39;);
+    &#125;
+  &#125;;
+
+  &#x2F;&#x2F; 利用object创建对象
+  var cat &#x3D; new Object();
+  cat.name &#x3D; &#39;熊大&#39;;
+  cat.type &#x3D; &#39;英短&#39;;
+  cat.showFlie &#x3D; function () &#123;
+    console.log(&#39;hello world!&#39;);
+  &#125;
+
+  &#x2F;&#x2F; 利用构造函数创建对象
+  function Star(name, sex) &#123;
+    this.name &#x3D; name;
+    this.sex &#x3D; sex;
+    this.showFlie &#x3D; function () &#123;
+      console.log(&#39;hello world!&#39;);
+    &#125;
+  &#125;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -301,7 +329,32 @@
 <li><p>静态成员是函数本身上添加的成员</p>
 </li>
 <li><p>静态成员只能通过构造函数来访问，不能通过实例化对象访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  // 构造函数</span><br><span class="line">  function Star(name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.sing = function (song) &#123;</span><br><span class="line">      console.log(song);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var ldh = new Star(&#x27;刘德华&#x27;, 47);</span><br><span class="line">  // 实例成员：构造函数内部通过this添加的成员 --- name，age，sing()</span><br><span class="line">  // 只能通过实例化对象来访问</span><br><span class="line">  console.log(ldh.name); // 刘德华</span><br><span class="line">  console.log(ldh.age); // 47</span><br><span class="line">  ldh.sing(&#x27;冰雨&#x27;); // 冰雨</span><br><span class="line">  // 不能通过构造函数来访问</span><br><span class="line">  console.log(Star.age); // undefined</span><br><span class="line"></span><br><span class="line">  // 静态成员：是函数本身上添加的成员</span><br><span class="line">  Star.sex = &#x27;男&#x27;;</span><br><span class="line">  // 只能通过构造函数来访问</span><br><span class="line">  console.log(Star.sex); // 男</span><br><span class="line">  // 不能通过实例化对象访问</span><br><span class="line">  console.log(ldh.sex); // undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  &#x2F;&#x2F; 构造函数
+  function Star(name, age) &#123;
+    this.name &#x3D; name;
+    this.age &#x3D; age;
+    this.sing &#x3D; function (song) &#123;
+      console.log(song);
+    &#125;
+  &#125;
+
+  var ldh &#x3D; new Star(&#39;刘德华&#39;, 47);
+  &#x2F;&#x2F; 实例成员：构造函数内部通过this添加的成员 --- name，age，sing()
+  &#x2F;&#x2F; 只能通过实例化对象来访问
+  console.log(ldh.name); &#x2F;&#x2F; 刘德华
+  console.log(ldh.age); &#x2F;&#x2F; 47
+  ldh.sing(&#39;冰雨&#39;); &#x2F;&#x2F; 冰雨
+  &#x2F;&#x2F; 不能通过构造函数来访问
+  console.log(Star.age); &#x2F;&#x2F; undefined
+
+  &#x2F;&#x2F; 静态成员：是函数本身上添加的成员
+  Star.sex &#x3D; &#39;男&#39;;
+  &#x2F;&#x2F; 只能通过构造函数来访问
+  console.log(Star.sex); &#x2F;&#x2F; 男
+  &#x2F;&#x2F; 不能通过实例化对象访问
+  console.log(ldh.sex); &#x2F;&#x2F; undefined
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -316,7 +369,18 @@
 <li><p>JavaScript规定，每一个构造函数都有一个prototype属性，指向另一个对象。注意这个prototype就是一个对象，这个对象的所有属性和方法，都会被构造函数所拥有</p>
 </li>
 <li><p>可以把这些不变的方法，直接定义在prototype对象上，这样所有对象的实例就可以共享这些方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Star(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 构造函数原型</span><br><span class="line">Star.prototype.sing = function () &#123;</span><br><span class="line">  console.log(&#x27;唱歌&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">Star.prototype.dance = function () &#123;</span><br><span class="line">  console.log(&#x27;跳舞&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">function Star(name, age) &#123;
+  this.name &#x3D; name;
+  this.age &#x3D; age;
+&#125;
+
+&#x2F;&#x2F; 构造函数原型
+Star.prototype.sing &#x3D; function () &#123;
+  console.log(&#39;唱歌&#39;);
+&#125;
+Star.prototype.dance &#x3D; function () &#123;
+  console.log(&#39;跳舞&#39;);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>问答：</p>
 <ol>
@@ -337,7 +401,21 @@
 <li><p>在对象上系统会自动添加一个<code>__proto__</code>，指向构造函数的原型对象</p>
 </li>
 <li><p><code>__proto__</code>对象原型和构造函数原型对象prototype是等价的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Star(name, age) &#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 构造函数原型</span><br><span class="line">Star.prototype.sing = function () &#123;</span><br><span class="line">  console.log(&#x27;唱歌&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">Star.prototype.dance = function () &#123;</span><br><span class="line">  console.log(&#x27;跳舞&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">var ldh = new Star(&#x27;刘德华&#x27;, 47);</span><br><span class="line">// ldh.__proto__: 对象原型     Star.prototype: 构造函数原型对象</span><br><span class="line">console.log(ldh.__proto__ === Star.prototype); // true</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">function Star(name, age) &#123;
+  this.name &#x3D; name;
+  this.age &#x3D; age;
+&#125;
+
+&#x2F;&#x2F; 构造函数原型
+Star.prototype.sing &#x3D; function () &#123;
+  console.log(&#39;唱歌&#39;);
+&#125;
+Star.prototype.dance &#x3D; function () &#123;
+  console.log(&#39;跳舞&#39;);
+&#125;
+var ldh &#x3D; new Star(&#39;刘德华&#39;, 47);
+&#x2F;&#x2F; ldh.__proto__: 对象原型     Star.prototype: 构造函数原型对象
+console.log(ldh.__proto__ &#x3D;&#x3D;&#x3D; Star.prototype); &#x2F;&#x2F; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p><code>__proto__</code>对象原型的意义就在于为对象的查找机制提供一个方向，或者说一条线路，但是它是一个非标准属性，因此实际开发中，不可以使用这个属性，它只是内部指向原型对象prototype<br><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007003736.png" alt="img"></p>
 </li>
@@ -352,7 +430,32 @@
 <li><p>对象原型（<code>__proto__</code>）和构造函数（prototype）原型对象里面都有一个属性constructor属性，constructor称为构造函数，因为它指回构造函数本身</p>
 </li>
 <li><p>很多情况下，需要手动利用constructor这个属性指回原来的构造函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  function Star(name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 修改Star的构造函数原型对象，并且给构造函数原型对象赋值为一个对象，这个对象就会覆盖原来的原型对象，因此需要手动利用constructor指回原来的构造函数</span><br><span class="line">  Star.prototype = &#123;</span><br><span class="line">    // 手动利用constructor这个属性指回原来的构造函数</span><br><span class="line">    constructor: Star,</span><br><span class="line">    sing: function () &#123;</span><br><span class="line">      console.log(&#x27;唱歌&#x27;);</span><br><span class="line">    &#125;,</span><br><span class="line">    dance: function () &#123;</span><br><span class="line">      console.log(&#x27;跳舞&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  var ldh = new Star(&#x27;张学友&#x27;, 50);</span><br><span class="line">  // 对象的原型</span><br><span class="line">  console.log(ldh.__proto__);</span><br><span class="line">  // 构造函数原型对象</span><br><span class="line">  console.log(Star.prototype);</span><br><span class="line">  // 对象原型（__proto__）和构造函数（prototype）原型对象里面都有一个属性constructor属性</span><br><span class="line">  console.log(ldh.__proto__.constructor);</span><br><span class="line">  console.log(Star.prototype.constructor);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  function Star(name, age) &#123;
+    this.name &#x3D; name;
+    this.age &#x3D; age;
+  &#125;
+
+  &#x2F;&#x2F; 修改Star的构造函数原型对象，并且给构造函数原型对象赋值为一个对象，这个对象就会覆盖原来的原型对象，因此需要手动利用constructor指回原来的构造函数
+  Star.prototype &#x3D; &#123;
+    &#x2F;&#x2F; 手动利用constructor这个属性指回原来的构造函数
+    constructor: Star,
+    sing: function () &#123;
+      console.log(&#39;唱歌&#39;);
+    &#125;,
+    dance: function () &#123;
+      console.log(&#39;跳舞&#39;);
+    &#125;
+  &#125;
+  var ldh &#x3D; new Star(&#39;张学友&#39;, 50);
+  &#x2F;&#x2F; 对象的原型
+  console.log(ldh.__proto__);
+  &#x2F;&#x2F; 构造函数原型对象
+  console.log(Star.prototype);
+  &#x2F;&#x2F; 对象原型（__proto__）和构造函数（prototype）原型对象里面都有一个属性constructor属性
+  console.log(ldh.__proto__.constructor);
+  console.log(Star.prototype.constructor);
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="构造函数、原型对象、实例对象之间的关系"><a href="#构造函数、原型对象、实例对象之间的关系" class="headerlink" title="构造函数、原型对象、实例对象之间的关系"></a>构造函数、原型对象、实例对象之间的关系</h3><p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007004449.png" alt="img"></p>
 <h3 id="原型链（面试必问重点）"><a href="#原型链（面试必问重点）" class="headerlink" title="原型链（面试必问重点）"></a>原型链（面试必问重点）</h3><p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007004537.png" alt="img"></p>
@@ -372,7 +475,19 @@
 <li><p>注意：数组和字符串内置对象不能给原型对象覆盖操作Array.prototype &#x3D; {}，只能是Array.prototype.方法名 &#x3D; function(){}的方式</p>
 </li>
 <li><p>例：给数组增加自定义求和的功能</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    // 给数组对象添加内置对象sum</span><br><span class="line">    Array.prototype.sum = function () &#123;</span><br><span class="line">      var sum = 0;</span><br><span class="line">      for (var i = 0; i &lt; this.length; i++) &#123;</span><br><span class="line">        sum += this[i];</span><br><span class="line">      &#125;</span><br><span class="line">      return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    var arr = new Array(1, 2, 3);</span><br><span class="line">    console.log(arr.sum());</span><br><span class="line">    console.log(Array.prototype);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+    &#x2F;&#x2F; 给数组对象添加内置对象sum
+    Array.prototype.sum &#x3D; function () &#123;
+      var sum &#x3D; 0;
+      for (var i &#x3D; 0; i &lt; this.length; i++) &#123;
+        sum +&#x3D; this[i];
+      &#125;
+      return sum;
+    &#125;
+    var arr &#x3D; new Array(1, 2, 3);
+    console.log(arr.sum());
+    console.log(Array.prototype);
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -544,7 +659,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇CSS的精灵图、字体图标和用户界面样式的学习笔记">
@@ -311,11 +313,62 @@
 <li><p>在CSS样式中全局声明字体：简单理解把这些字体文件通过css引入到我们页面中；要注意字体文件路径的问题</p>
 <ul>
 <li><p>文件路径问题：路径需要根据字体图标文件夹icomoon中的style.css文件调用font文件夹中四个文件的路径而改变</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@font-face &#123;</span><br><span class="line">    font-family: &#x27;icomoon&#x27;;</span><br><span class="line">    src: url(&#x27;fonts/icomoon.eot?8axf2s&#x27;);</span><br><span class="line">    src: url(&#x27;fonts/icomoon.eot?8axf2s#iefix&#x27;) format(&#x27;embedded-opentype&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.ttf?8axf2s&#x27;) format(&#x27;truetype&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.woff?8axf2s&#x27;) format(&#x27;woff&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.svg?8axf2s#icomoon&#x27;) format(&#x27;svg&#x27;);</span><br><span class="line">    font-weight: normal;</span><br><span class="line">    font-style: normal;</span><br><span class="line">    font-display: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">@font-face &#123;
+    font-family: &#39;icomoon&#39;;
+    src: url(&#39;fonts&#x2F;icomoon.eot?8axf2s&#39;);
+    src: url(&#39;fonts&#x2F;icomoon.eot?8axf2s#iefix&#39;) format(&#39;embedded-opentype&#39;),
+        url(&#39;fonts&#x2F;icomoon.ttf?8axf2s&#39;) format(&#39;truetype&#39;),
+        url(&#39;fonts&#x2F;icomoon.woff?8axf2s&#39;) format(&#39;woff&#39;),
+        url(&#39;fonts&#x2F;icomoon.svg?8axf2s#icomoon&#39;) format(&#39;svg&#39;);
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 </li>
 <li><p>html标签内添加字体图标</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    @font-face &#123;</span><br><span class="line">      font-family: &#x27;icomoon&#x27;;</span><br><span class="line">      src: url(&#x27;fonts/icomoon.eot?8axf2s&#x27;);</span><br><span class="line">      src: url(&#x27;fonts/icomoon.eot?8axf2s#iefix&#x27;) format(&#x27;embedded-opentype&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.ttf?8axf2s&#x27;) format(&#x27;truetype&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.woff?8axf2s&#x27;) format(&#x27;woff&#x27;),</span><br><span class="line">        url(&#x27;fonts/icomoon.svg?8axf2s#icomoon&#x27;) format(&#x27;svg&#x27;);</span><br><span class="line">      font-weight: normal;</span><br><span class="line">      font-style: normal;</span><br><span class="line">      font-display: block;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .one &#123;</span><br><span class="line">      /* font-family与上方导入的代码中的第一行需要保持相同 */</span><br><span class="line">      font-family: &#x27;icomoon&#x27;;</span><br><span class="line">      font-size: 50px;</span><br><span class="line">      color: pink;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .two &#123;</span><br><span class="line">      /* font-family与上方导入的代码中的第一行需要保持相同 */</span><br><span class="line">      font-family: &#x27;icomoon&#x27;;</span><br><span class="line">      font-size: 50px;</span><br><span class="line">      color: skyblue;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;span class=&quot;one&quot;&gt;&lt;/span&gt;</span><br><span class="line">  &lt;span class=&quot;two&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+  &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+  &lt;title&gt;Document&lt;&#x2F;title&gt;
+  &lt;style&gt;
+    @font-face &#123;
+      font-family: &#39;icomoon&#39;;
+      src: url(&#39;fonts&#x2F;icomoon.eot?8axf2s&#39;);
+      src: url(&#39;fonts&#x2F;icomoon.eot?8axf2s#iefix&#39;) format(&#39;embedded-opentype&#39;),
+        url(&#39;fonts&#x2F;icomoon.ttf?8axf2s&#39;) format(&#39;truetype&#39;),
+        url(&#39;fonts&#x2F;icomoon.woff?8axf2s&#39;) format(&#39;woff&#39;),
+        url(&#39;fonts&#x2F;icomoon.svg?8axf2s#icomoon&#39;) format(&#39;svg&#39;);
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+    &#125;
+
+    .one &#123;
+      &#x2F;* font-family与上方导入的代码中的第一行需要保持相同 *&#x2F;
+      font-family: &#39;icomoon&#39;;
+      font-size: 50px;
+      color: pink;
+    &#125;
+
+    .two &#123;
+      &#x2F;* font-family与上方导入的代码中的第一行需要保持相同 *&#x2F;
+      font-family: &#39;icomoon&#39;;
+      font-size: 50px;
+      color: skyblue;
+    &#125;
+  &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+
+&lt;body&gt;
+  &lt;span class&#x3D;&quot;one&quot;&gt;&lt;&#x2F;span&gt;
+  &lt;span class&#x3D;&quot;two&quot;&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="字体图标追加"><a href="#字体图标追加" class="headerlink" title="字体图标追加"></a>字体图标追加</h3><ol>
 <li>将压缩包内的selection.json重新上传即可，然后选中自己想要的新的图标，重新下载压缩包，并替换原来的文件</li>
@@ -336,7 +389,58 @@
 <h2 id="CSS三角"><a href="#CSS三角" class="headerlink" title="CSS三角"></a>CSS三角</h2><ol>
 <li>代码参考</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</span><br><span class="line">    &lt;title&gt;CSS 三角制作&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box1 &#123;</span><br><span class="line">            width: 0;</span><br><span class="line">            height: 0;</span><br><span class="line">            /* border: 10px solid pink; */</span><br><span class="line">            border-top: 10px solid pink;</span><br><span class="line">            border-right: 10px solid red;</span><br><span class="line">            border-bottom: 10px solid blue;</span><br><span class="line">            border-left: 10px solid green;</span><br><span class="line">        &#125;</span><br><span class="line">        .box2 &#123;</span><br><span class="line">            width: 0;</span><br><span class="line">            height: 0;</span><br><span class="line">            border: 50px solid transparent;</span><br><span class="line">            border-left-color: pink;</span><br><span class="line">            margin: 100px auto;</span><br><span class="line">        &#125;</span><br><span class="line">        .jd &#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            width: 120px;</span><br><span class="line">            height: 249px;</span><br><span class="line">            background-color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">        .jd span &#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            right: 15px;</span><br><span class="line">            top: -10px;</span><br><span class="line">            width: 0;</span><br><span class="line">            height: 0;</span><br><span class="line">            /* 为了照顾兼容性 */</span><br><span class="line">            line-height: 0;  </span><br><span class="line">            font-size: 0;</span><br><span class="line">            border: 5px solid transparent;</span><br><span class="line">            border-bottom-color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;jd&quot;&gt;</span><br><span class="line">        &lt;span&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;
+    &lt;title&gt;CSS 三角制作&lt;&#x2F;title&gt;
+    &lt;style&gt;
+        .box1 &#123;
+            width: 0;
+            height: 0;
+            &#x2F;* border: 10px solid pink; *&#x2F;
+            border-top: 10px solid pink;
+            border-right: 10px solid red;
+            border-bottom: 10px solid blue;
+            border-left: 10px solid green;
+        &#125;
+        .box2 &#123;
+            width: 0;
+            height: 0;
+            border: 50px solid transparent;
+            border-left-color: pink;
+            margin: 100px auto;
+        &#125;
+        .jd &#123;
+            position: relative;
+            width: 120px;
+            height: 249px;
+            background-color: pink;
+        &#125;
+        .jd span &#123;
+            position: absolute;
+            right: 15px;
+            top: -10px;
+            width: 0;
+            height: 0;
+            &#x2F;* 为了照顾兼容性 *&#x2F;
+            line-height: 0;  
+            font-size: 0;
+            border: 5px solid transparent;
+            border-bottom-color: pink;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;box1&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class&#x3D;&quot;box2&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class&#x3D;&quot;jd&quot;&gt;
+        &lt;span&gt;&lt;&#x2F;span&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -344,7 +448,9 @@
 <li><p>设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状</p>
 </li>
 <li><p>语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">li &#123;</span><br><span class="line">   cursor: pointer; </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">li &#123;
+   cursor: pointer; 
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>属性值</p>
 <table>
@@ -381,13 +487,17 @@
 <li><p>给表单添加 outline: 0; 或者outline: none; 样式之后，就可以去掉默认的蓝色边框。</p>
 </li>
 <li><p>语法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input &#123;</span><br><span class="line">     outline: none; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">input &#123;
+     outline: none; 
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h2 id="防止拖拽文本域resize"><a href="#防止拖拽文本域resize" class="headerlink" title="防止拖拽文本域resize"></a>防止拖拽文本域resize</h2><ol>
 <li><p>实际开发中，我们文本域右下角是不可以拖拽的。</p>
 </li>
 <li><p>语法</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">textarea</span>&#123; </span><br><span class="line">       <span class="attribute">resize</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">textarea</span><span class="token punctuation">&#123;</span> 
+       <span class="token property">resize</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h2 id="vertical-align属性应用"><a href="#vertical-align属性应用" class="headerlink" title="vertical-align属性应用"></a>vertical-align属性应用</h2><ol>
 <li><p>CSS的vertical-align属性使用场景：经常用于设置图片或者表单（行内块元素）和文字垂直对齐。</p>
@@ -395,7 +505,7 @@
 <li><p>官方解释: 用于设置一个元素的垂直对齐方式，但是它只针对于行内元素或者行内块元素有效。</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vertical-align : baseline | top | middle | bottom </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">vertical-align : baseline | top | middle | bottom <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -433,9 +543,29 @@
 </ol>
 </li>
 </ol>
-<h2 id="溢出的文字省略号显示"><a href="#溢出的文字省略号显示" class="headerlink" title="溢出的文字省略号显示"></a>溢出的文字省略号显示</h2><h3 id="单行文本溢出显示省略号"><a href="#单行文本溢出显示省略号" class="headerlink" title="单行文本溢出显示省略号"></a>单行文本溢出显示省略号</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/*1. 先强制一行内显示文本*/</span><br><span class="line">white-space: nowrap;  （ 默认 normal 自动换行）</span><br><span class="line">   </span><br><span class="line">/*2. 超出的部分隐藏*/</span><br><span class="line">overflow: hidden;</span><br><span class="line">   </span><br><span class="line">/*3. 文字用省略号替代超出的部分*/</span><br><span class="line">text-overflow: ellipsis;</span><br></pre></td></tr></table></figure>
+<h2 id="溢出的文字省略号显示"><a href="#溢出的文字省略号显示" class="headerlink" title="溢出的文字省略号显示"></a>溢出的文字省略号显示</h2><h3 id="单行文本溢出显示省略号"><a href="#单行文本溢出显示省略号" class="headerlink" title="单行文本溢出显示省略号"></a>单行文本溢出显示省略号</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;*1. 先强制一行内显示文本*&#x2F;
+white-space: nowrap;  （ 默认 normal 自动换行）
+   
+&#x2F;*2. 超出的部分隐藏*&#x2F;
+overflow: hidden;
+   
+&#x2F;*3. 文字用省略号替代超出的部分*&#x2F;
+text-overflow: ellipsis;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="多行文本溢出显示省略号（了解）"><a href="#多行文本溢出显示省略号（了解）" class="headerlink" title="多行文本溢出显示省略号（了解）"></a>多行文本溢出显示省略号（了解）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*1. 超出的部分隐藏 */</span><br><span class="line">overflow: hidden;</span><br><span class="line"></span><br><span class="line">/*2. 文字用省略号替代超出的部分 */</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line"></span><br><span class="line">/* 3. 弹性伸缩盒子模型显示 */</span><br><span class="line">display: -webkit-box;</span><br><span class="line"></span><br><span class="line">/* 4. 限制在一个块元素显示的文本的行数 */</span><br><span class="line">-webkit-line-clamp: 2;</span><br><span class="line"></span><br><span class="line">/* 5. 设置或检索伸缩盒对象的子元素的排列方式 */</span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure>
+<h3 id="多行文本溢出显示省略号（了解）"><a href="#多行文本溢出显示省略号（了解）" class="headerlink" title="多行文本溢出显示省略号（了解）"></a>多行文本溢出显示省略号（了解）</h3><pre class="line-numbers language-none"><code class="language-none">&#x2F;*1. 超出的部分隐藏 *&#x2F;
+overflow: hidden;
+
+&#x2F;*2. 文字用省略号替代超出的部分 *&#x2F;
+text-overflow: ellipsis;
+
+&#x2F;* 3. 弹性伸缩盒子模型显示 *&#x2F;
+display: -webkit-box;
+
+&#x2F;* 4. 限制在一个块元素显示的文本的行数 *&#x2F;
+-webkit-line-clamp: 2;
+
+&#x2F;* 5. 设置或检索伸缩盒对象的子元素的排列方式 *&#x2F;
+-webkit-box-orient: vertical;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -443,9 +573,72 @@
 <p>2.鼠标经过某个盒子的时候，提高当前盒子的层级即可（如果没有有定位，则加相对定位（保留位置），如果有定位，则加z-index）</p>
 <h2 id="文字围绕浮动元素"><a href="#文字围绕浮动元素" class="headerlink" title="文字围绕浮动元素"></a>文字围绕浮动元素</h2><ol>
 <li><p>文字会围绕图片显示，因为创造浮动的初衷就是做文字环绕效果的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        * &#123;</span><br><span class="line">            margin: 0;</span><br><span class="line">            padding: 0;</span><br><span class="line">        &#125;</span><br><span class="line">        .box &#123;</span><br><span class="line">            width: 270px;</span><br><span class="line">            height: 70px;</span><br><span class="line">            background-color: pink;</span><br><span class="line">            margin: 10px auto;</span><br><span class="line">            padding: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        .pic &#123;</span><br><span class="line">            float: left;</span><br><span class="line">            width: 120px;</span><br><span class="line">            height: 70px;</span><br><span class="line">            margin-right: 5px;</span><br><span class="line">        &#125;</span><br><span class="line">        img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;pic&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;../images/bear.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;p&gt;你好，你好呀&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;style&gt;
+        * &#123;
+            margin: 0;
+            padding: 0;
+        &#125;
+        .box &#123;
+            width: 270px;
+            height: 70px;
+            background-color: pink;
+            margin: 10px auto;
+            padding: 5px;
+        &#125;
+        .pic &#123;
+            float: left;
+            width: 120px;
+            height: 70px;
+            margin-right: 5px;
+        &#125;
+        img &#123;
+            width: 100%;
+            height: 100%;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;box&quot;&gt;
+        &lt;div class&#x3D;&quot;pic&quot;&gt;
+            &lt;img src&#x3D;&quot;..&#x2F;images&#x2F;bear.jpg&quot; alt&#x3D;&quot;&quot;&gt;
+        &lt;&#x2F;div&gt;
+        &lt;p&gt;你好，你好呀&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<h2 id="CSS三角强化"><a href="#CSS三角强化" class="headerlink" title="CSS三角强化"></a>CSS三角强化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .box1 &#123;</span><br><span class="line">        width: 0;</span><br><span class="line">        height: 0;</span><br><span class="line">        </span><br><span class="line">        /* 把上边框宽度调大 */</span><br><span class="line">        /* border-top: 100px solid transparent;</span><br><span class="line">        border-right: 50px solid skyblue; */</span><br><span class="line">        /* 左边和下边的边框宽度设置为0 */</span><br><span class="line">        /* border-bottom: 0 solid blue;</span><br><span class="line">        border-left: 0 solid green; */</span><br><span class="line">        </span><br><span class="line">        /* 1.只保留右边的边框有颜色 */</span><br><span class="line">        border-color: transparent red transparent transparent;</span><br><span class="line">        /* 2. 样式都是solid */</span><br><span class="line">        border-style: solid;</span><br><span class="line">        /* 3. 上边框宽度要大， 右边框 宽度稍小， 其余的边框该为 0 */</span><br><span class="line">        border-width: 100px 50px 0 0 ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="CSS三角强化"><a href="#CSS三角强化" class="headerlink" title="CSS三角强化"></a>CSS三角强化</h2><pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
+    .box1 &#123;
+        width: 0;
+        height: 0;
+        
+        &#x2F;* 把上边框宽度调大 *&#x2F;
+        &#x2F;* border-top: 100px solid transparent;
+        border-right: 50px solid skyblue; *&#x2F;
+        &#x2F;* 左边和下边的边框宽度设置为0 *&#x2F;
+        &#x2F;* border-bottom: 0 solid blue;
+        border-left: 0 solid green; *&#x2F;
+        
+        &#x2F;* 1.只保留右边的边框有颜色 *&#x2F;
+        border-color: transparent red transparent transparent;
+        &#x2F;* 2. 样式都是solid *&#x2F;
+        border-style: solid;
+        &#x2F;* 3. 上边框宽度要大， 右边框 宽度稍小， 其余的边框该为 0 *&#x2F;
+        border-width: 100px 50px 0 0 ;
+    &#125;
+
+&lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;box1&quot;&gt;&lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
     </div>
@@ -617,7 +810,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

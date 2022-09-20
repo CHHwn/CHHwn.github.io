@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES5中新增方法的学习笔记">
@@ -265,7 +267,12 @@
 <li><p>index：数组当前项的索引</p>
 </li>
 <li><p>arr：数组对象本身</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3];</span><br><span class="line">arr.forEach(function (value, index, arr) &#123;</span><br><span class="line">    console.log(value); // 输出数组元素</span><br><span class="line">    console.log(index); // 输出数组元素索引</span><br><span class="line">    console.log(arr); // 输出数组本身</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [1, 2, 3];
+arr.forEach(function (value, index, arr) &#123;
+    console.log(value); &#x2F;&#x2F; 输出数组元素
+    console.log(index); &#x2F;&#x2F; 输出数组元素索引
+    console.log(arr); &#x2F;&#x2F; 输出数组本身
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -280,7 +287,13 @@
 <li><p>filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，主要用于筛选数组</p>
 </li>
 <li><p>返回一个新数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var arr = [12, 5, 71, 19, 24];</span><br><span class="line">  // 方法的返回值是一个新数组</span><br><span class="line">  var newArr = arr.filter(function (value, index) &#123;</span><br><span class="line">    // 筛选出数组中的偶数，将值赋值给新的数组</span><br><span class="line">    return value % 2 === 0;</span><br><span class="line">  &#125;)</span><br><span class="line">  console.log(newArr);</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [12, 5, 71, 19, 24];
+  &#x2F;&#x2F; 方法的返回值是一个新数组
+  var newArr &#x3D; arr.filter(function (value, index) &#123;
+    &#x2F;&#x2F; 筛选出数组中的偶数，将值赋值给新的数组
+    return value % 2 &#x3D;&#x3D;&#x3D; 0;
+  &#125;)
+  console.log(newArr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3><ol>
 <li><p>some方法用于检测数组中是否存在满足指定条件的元素</p>
@@ -297,7 +310,12 @@
 <li><p>返回值为布尔值，如果查找到这个元素则返回true终止循环，否则返回false继续循环</p>
 </li>
 <li><p>若找到第一个满足条件的元素，则终止循环，不再进行查找，迭代效率更高</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 8, 41, 3];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var flag = arr.some(function (value, index, array) &#123;</span><br><span class="line">    return value &gt; 5;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(flag); // true</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [1, 2, 8, 41, 3];
+&#x2F;&#x2F; 方法返回值为布尔值
+var flag &#x3D; arr.some(function (value, index, array) &#123;
+    return value &gt; 5;
+&#125;)
+console.log(flag); &#x2F;&#x2F; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3><ol>
 <li><p>every() 方法用于检测数组所有元素是否都符合指定条件</p>
@@ -314,7 +332,12 @@
 <li><p>如果数组中检测到有一个元素不满足，则整个表达式返回false ，且剩余的元素不会再进行检测</p>
 </li>
 <li><p>如果所有元素都满足条件，则返回true</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [4, 6, 8, 41, 37];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var flag = arr.some(function (value, index, array) &#123;</span><br><span class="line">    return value &gt; 3;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(flag); // true</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [4, 6, 8, 41, 37];
+&#x2F;&#x2F; 方法返回值为布尔值
+var flag &#x3D; arr.some(function (value, index, array) &#123;
+    return value &gt; 3;
+&#125;)
+console.log(flag); &#x2F;&#x2F; true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><ol>
 <li><p>map()：通过指定函数处理数组的每个元素，并返回处理后的数组</p>
@@ -333,7 +356,14 @@
 </ol>
 </li>
 <li><p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4];</span><br><span class="line">// 方法返回值为布尔值</span><br><span class="line">var result = arr.map(item =&gt; &#123;</span><br><span class="line">    // ``为模板字符串</span><br><span class="line">    retrun `&lt;li class=&quot;name&quot;&gt;$&#123;item&#125;&lt;/li&gt;`</span><br><span class="line">&#125;)</span><br><span class="line">console.log(result);</span><br><span class="line">// [&lt;li class=&quot;name&quot;&gt;1&lt;/li&gt;, &lt;li class=&quot;name&quot;&gt;2&lt;/li&gt;. &lt;li class=&quot;name&quot;&gt;3&lt;/li&gt;, &lt;li class=&quot;name&quot;&gt;4&lt;/li&gt;]</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [1, 2, 3, 4];
+&#x2F;&#x2F; 方法返回值为布尔值
+var result &#x3D; arr.map(item &#x3D;&gt; &#123;
+    &#x2F;&#x2F; &#96;&#96;为模板字符串
+    retrun &#96;&lt;li class&#x3D;&quot;name&quot;&gt;$&#123;item&#125;&lt;&#x2F;li&gt;&#96;
+&#125;)
+console.log(result);
+&#x2F;&#x2F; [&lt;li class&#x3D;&quot;name&quot;&gt;1&lt;&#x2F;li&gt;, &lt;li class&#x3D;&quot;name&quot;&gt;2&lt;&#x2F;li&gt;. &lt;li class&#x3D;&quot;name&quot;&gt;3&lt;&#x2F;li&gt;, &lt;li class&#x3D;&quot;name&quot;&gt;4&lt;&#x2F;li&gt;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><ol>
 <li><p>findJ()：用于找出第一个符合条件的数组成员，<strong>返回值为该数组成员，若没有找到返回undefined</strong></p>
@@ -350,7 +380,21 @@
 <li>find() 对于空数组，函数是不会执行的</li>
 <li>find() 并没有改变数组的原始值</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    let array = [</span><br><span class="line">        &#123;</span><br><span class="line">            id: 1,</span><br><span class="line">            name: &#x27;张三&#x27;</span><br><span class="line">        &#125;, </span><br><span class="line">        &#123;</span><br><span class="line">            id: 2,</span><br><span class="line">            name: &#x27;李四&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">// 寻找id值为2的数组成员</span><br><span class="line">    var ary = array.find(item =&gt; item.id == 2);</span><br><span class="line">    console.log(ary); // &#123;id: 2, name: &quot;李四&quot;&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+    let array &#x3D; [
+        &#123;
+            id: 1,
+            name: &#39;张三&#39;
+        &#125;, 
+        &#123;
+            id: 2,
+            name: &#39;李四&#39;
+        &#125;
+    ]
+&#x2F;&#x2F; 寻找id值为2的数组成员
+    var ary &#x3D; array.find(item &#x3D;&gt; item.id &#x3D;&#x3D; 2);
+    console.log(ary); &#x2F;&#x2F; &#123;id: 2, name: &quot;李四&quot;&#125;
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="findIndex"><a href="#findIndex" class="headerlink" title="findIndex()"></a>findIndex()</h3><ol>
 <li><p>findIndex()：用于找出第一个符合条件的数组成员的位置，<strong>找到返回数组元素索引，若没有找到返回-1</strong></p>
@@ -367,7 +411,12 @@
 <li>find() 对于空数组，函数是不会执行的</li>
 <li>find() 并没有改变数组的原始值</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [4, 5, 77, 13, 49, 6];</span><br><span class="line">  // 查询数组中第一个大于10的元素位置索引</span><br><span class="line">  var result = arr.findIndex(value =&gt; value &gt; 10)</span><br><span class="line">  console.log(result); // 2</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr &#x3D; [4, 5, 77, 13, 49, 6];
+  &#x2F;&#x2F; 查询数组中第一个大于10的元素位置索引
+  var result &#x3D; arr.findIndex(value &#x3D;&gt; value &gt; 10)
+  console.log(result); &#x2F;&#x2F; 2
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h1 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h1><h3 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h3><ol>
 <li>语法<ul>
@@ -400,7 +449,13 @@
 </ul>
 </li>
 <li><p>代码示例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const person = &#123;</span><br><span class="line">    name: &#x27;张三&#x27;,</span><br><span class="line">    sex: &#x27;男&#x27;</span><br><span class="line">&#125;</span><br><span class="line">Object.defineProperty(person, &#x27;age&#x27;, &#123;</span><br><span class="line">    value: 18 // 设置age的属性值</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">const person &#x3D; &#123;
+    name: &#39;张三&#39;,
+    sex: &#39;男&#39;
+&#125;
+Object.defineProperty(person, &#39;age&#39;, &#123;
+    value: 18 &#x2F;&#x2F; 设置age的属性值
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -574,7 +629,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

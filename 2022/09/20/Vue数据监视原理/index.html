@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇Vue数据监视原理的学习笔记">
@@ -252,7 +254,26 @@
 <li><p>通过setter来实现对对象的监测，并且只有在创建Vue实例（new Vue）时就需要在data中设置好数据才能实现监测</p>
 </li>
 <li><p>对于在新建Vue实例（new Vue）后，往data中添加的数据，Vue不进行监视（响应式处理）</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">new Vue (&#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            student: &#123;</span><br><span class="line">                name: &#x27;张三&#x27;,</span><br><span class="line">                age: 18</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        this.addSex()</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addSex () &#123;</span><br><span class="line">            // 通过这种方式进行添加的数据，Vue不进行监视（响应式处理），sex属性也没有对应的setter和getter</span><br><span class="line">            this.student.sex = &#x27;男&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+  <pre class="line-numbers language-none"><code class="language-none">new Vue (&#123;
+    data() &#123;
+        return &#123;
+            student: &#123;
+                name: &#39;张三&#39;,
+                age: 18
+            &#125;
+        &#125;
+    &#125;,
+    created() &#123;
+        this.addSex()
+    &#125;,
+    methods: &#123;
+        addSex () &#123;
+            &#x2F;&#x2F; 通过这种方式进行添加的数据，Vue不进行监视（响应式处理），sex属性也没有对应的setter和getter
+            this.student.sex &#x3D; &#39;男&#39;
+        &#125;
+    &#125;
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>若需要给后加入的属性做响应式处理，则需要使用以下api</p>
 </li>
 </ol>
@@ -265,7 +286,27 @@
   2. propertyName/index：目标对象中的属性/目标数组中的索引
   3. value：添加的值
 </code></pre>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">new Vue (&#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            student: &#123;</span><br><span class="line">                name: &#x27;张三&#x27;,</span><br><span class="line">                age: 18</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        this.addSex()</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addSex () &#123;</span><br><span class="line">            // 通过此方式添加的数据，Vue可以进行监测，实现响应式处理</span><br><span class="line">            this.$set(this.student, &#x27;sex&#x27;, &#x27;男&#x27;)</span><br><span class="line">            // Vue.set(this.student, &#x27;sex&#x27;, &#x27;男&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <pre class="line-numbers language-none"><code class="language-none">new Vue (&#123;
+    data() &#123;
+        return &#123;
+            student: &#123;
+                name: &#39;张三&#39;,
+                age: 18
+            &#125;
+        &#125;
+    &#125;,
+    created() &#123;
+        this.addSex()
+    &#125;,
+    methods: &#123;
+        addSex () &#123;
+            &#x2F;&#x2F; 通过此方式添加的数据，Vue可以进行监测，实现响应式处理
+            this.$set(this.student, &#39;sex&#39;, &#39;男&#39;)
+            &#x2F;&#x2F; Vue.set(this.student, &#39;sex&#39;, &#39;男&#39;)
+        &#125;
+    &#125;
+&#125;)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="监测数组中的数据"><a href="#监测数组中的数据" class="headerlink" title="监测数组中的数据"></a>监测数组中的数据</h2><ol>
 <li>通过包裹数组更新元素的方法实现，本质上做了以下两件事情<br>1. 调用原生对应的方法对数组进行更新<br>2. 重新解析模板，更新页面</li>
@@ -307,10 +348,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/09/20/Vue%20CLI%E8%84%9A%E6%89%8B%E6%9E%B6%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" rel="prev" title="Vue CLI脚手架配置代理">
-      <i class="fa fa-chevron-left"></i> Vue CLI脚手架配置代理
+    <a href="/2022/09/20/%E5%85%A8%E5%B1%80%E4%BA%8B%E4%BB%B6%E6%80%BB%E7%BA%BF/" rel="prev" title="全局事件总线">
+      <i class="fa fa-chevron-left"></i> 全局事件总线
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/09/20/Vue%20CLI%E8%84%9A%E6%89%8B%E6%9E%B6%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86/" rel="next" title="Vue CLI脚手架配置代理">
+      Vue CLI脚手架配置代理 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -439,7 +483,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

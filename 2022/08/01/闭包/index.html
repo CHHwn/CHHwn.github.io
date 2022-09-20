@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES5闭包的学习笔记">
@@ -268,11 +270,45 @@
 <li><p>循环注册点击事件</p>
 <ol>
 <li><p>经典面试题：利用闭包的方式得到当前小li的索引号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;li&gt;1&lt;/li&gt;</span><br><span class="line">&lt;li&gt;2&lt;/li&gt;</span><br><span class="line">&lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;li&gt;4&lt;/li&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">  for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">      // 利用for循环创建了四个立即执行函数</span><br><span class="line">      // 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 </span><br><span class="line">      (function (i) &#123;</span><br><span class="line">          lis[i].onclick = function () &#123;</span><br><span class="line">              console.log(i);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;)(i);</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+&lt;li&gt;1&lt;&#x2F;li&gt;
+&lt;li&gt;2&lt;&#x2F;li&gt;
+&lt;li&gt;3&lt;&#x2F;li&gt;
+&lt;li&gt;4&lt;&#x2F;li&gt;
+&lt;script&gt;
+  var lis &#x3D; document.querySelectorAll(&#39;li&#39;);
+  for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
+      &#x2F;&#x2F; 利用for循环创建了四个立即执行函数
+      &#x2F;&#x2F; 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 
+      (function (i) &#123;
+          lis[i].onclick &#x3D; function () &#123;
+              console.log(i);
+          &#125;
+      &#125;)(i);
+  &#125;
+&lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 <li><p>循环中的setTimeout()</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> &lt;li&gt;1&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;2&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;3&lt;/li&gt;</span><br><span class="line"> &lt;li&gt;4&lt;/li&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">     var lis = document.querySelectorAll(&#x27;li&#x27;);</span><br><span class="line">     // for循环为同步任务</span><br><span class="line">     for (var i = 0; i &lt; lis.length; i++) &#123;</span><br><span class="line">         (function (i) &#123;</span><br><span class="line">             // 定时器为异步任务</span><br><span class="line">             setTimeout(function () &#123;</span><br><span class="line">                 console.log(i);</span><br><span class="line">             &#125;, 2000)</span><br><span class="line">         &#125;)(i);</span><br><span class="line">     &#125;</span><br><span class="line"> &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+ &lt;li&gt;1&lt;&#x2F;li&gt;
+ &lt;li&gt;2&lt;&#x2F;li&gt;
+ &lt;li&gt;3&lt;&#x2F;li&gt;
+ &lt;li&gt;4&lt;&#x2F;li&gt;
+ &lt;script&gt;
+     var lis &#x3D; document.querySelectorAll(&#39;li&#39;);
+     &#x2F;&#x2F; for循环为同步任务
+     for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
+         (function (i) &#123;
+             &#x2F;&#x2F; 定时器为异步任务
+             setTimeout(function () &#123;
+                 console.log(i);
+             &#125;, 2000)
+         &#125;)(i);
+     &#125;
+ &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -444,7 +480,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

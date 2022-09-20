@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES5浅拷贝和深拷贝的学习笔记">
@@ -277,7 +279,42 @@
 </ol>
 </li>
 <li><p>代码实现深拷贝</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">script&gt;</span><br><span class="line">    var obj = &#123;</span><br><span class="line">        name: &#x27;熊大&#x27;,</span><br><span class="line">        sex: &#x27;男&#x27;,</span><br><span class="line">        age: &#123;</span><br><span class="line">            one: 7,</span><br><span class="line">            two: 6</span><br><span class="line">        &#125;,</span><br><span class="line">        friend: [&#x27;吉吉&#x27;, &#x27;毛毛&#x27;, &#x27;蹦蹦&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">    var o = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 封装深拷贝函数</span><br><span class="line">    function deepClone(newObj, oldObj) &#123;</span><br><span class="line">        for (var k in oldObj) &#123;</span><br><span class="line">            // 获取属性值，k为属性名，oldObj[k]为属性值</span><br><span class="line">            var item = oldObj[k];</span><br><span class="line">            // 当属性值为数组时</span><br><span class="line">            // 判断数组必须放在判断对象之前，因为数组也为对象</span><br><span class="line">            if (item instanceof Array) &#123;</span><br><span class="line">                // newObj[k]为新对象的属性值</span><br><span class="line">                newObj[k] = [];</span><br><span class="line">                deepClone(newObj[k], item);</span><br><span class="line">            &#125; else if (item instanceof Object) &#123;</span><br><span class="line">                // 当属性值为对象时</span><br><span class="line">                newObj[k] = &#123;&#125;;</span><br><span class="line">                deepClone(newObj[k], item);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 当属性值为简单数据类型时</span><br><span class="line">                newObj[k] = item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    deepClone(o, obj);</span><br><span class="line">    console.log(o);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">script&gt;
+    var obj &#x3D; &#123;
+        name: &#39;熊大&#39;,
+        sex: &#39;男&#39;,
+        age: &#123;
+            one: 7,
+            two: 6
+        &#125;,
+        friend: [&#39;吉吉&#39;, &#39;毛毛&#39;, &#39;蹦蹦&#39;]
+    &#125;
+    var o &#x3D; &#123;&#125;
+
+    &#x2F;&#x2F; 封装深拷贝函数
+    function deepClone(newObj, oldObj) &#123;
+        for (var k in oldObj) &#123;
+            &#x2F;&#x2F; 获取属性值，k为属性名，oldObj[k]为属性值
+            var item &#x3D; oldObj[k];
+            &#x2F;&#x2F; 当属性值为数组时
+            &#x2F;&#x2F; 判断数组必须放在判断对象之前，因为数组也为对象
+            if (item instanceof Array) &#123;
+                &#x2F;&#x2F; newObj[k]为新对象的属性值
+                newObj[k] &#x3D; [];
+                deepClone(newObj[k], item);
+            &#125; else if (item instanceof Object) &#123;
+                &#x2F;&#x2F; 当属性值为对象时
+                newObj[k] &#x3D; &#123;&#125;;
+                deepClone(newObj[k], item);
+            &#125; else &#123;
+                &#x2F;&#x2F; 当属性值为简单数据类型时
+                newObj[k] &#x3D; item;
+            &#125;
+        &#125;
+    &#125;
+    deepClone(o, obj);
+    console.log(o);
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 
     </div>
@@ -449,7 +486,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

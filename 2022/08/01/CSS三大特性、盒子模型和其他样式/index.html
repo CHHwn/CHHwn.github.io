@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇CSS三大特性、盒子模型和其他样式的学习笔记">
@@ -268,7 +270,9 @@
 <ol>
 <li>代码</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> font:12px/1.5 Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">body &#123;
+ font:12px&#x2F;1.5 Microsoft YaHei;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <ol start="2">
 <li>行高可以跟单位也可以不跟单位</li>
@@ -372,7 +376,7 @@
 <li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border : border-width || border-style || border-color;   </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">border : border-width || border-style || border-color;   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>边框样式 border-style 可以设置如下值：</p>
 <ol>
@@ -386,18 +390,18 @@
 <ol>
 <li>边框简写：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border: 1px solid red;  </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">border: 1px solid red;  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>边框分开写法：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-top: 1px solid red;  /* 只设定上边框， 其余同理 */   </span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">border-top: 1px solid red;  &#x2F;* 只设定上边框， 其余同理 *&#x2F;   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
 <li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-collapse:collapse; </span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">border-collapse:collapse; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
 <h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
@@ -413,10 +417,13 @@
 <li><p>语法：</p>
 <ol>
 <li><p>padding：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">padding: 20px;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">padding: 20px;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">padding-top（上）</span><br><span class="line">padding-bottom（下）</span><br><span class="line">padding-left（左）</span><br><span class="line">padding-right（右）</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">padding-top（上）
+padding-bottom（下）
+padding-left（左）
+padding-right（右）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -472,10 +479,13 @@
 <li><p>语法：</p>
 <ol>
 <li><p>margin：上下左右四边距统一设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin: 20px;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">margin: 20px;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>各边距分别设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">margin-top（上）</span><br><span class="line">margin-bottom（下）</span><br><span class="line">margin-left（左）</span><br><span class="line">margin-right（右）</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">margin-top（上）
+margin-bottom（下）
+margin-left（左）
+margin-right（右）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -487,7 +497,9 @@
 </ol>
 </li>
 <li><p>常见的写法有三种：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">margin-left: auto;   margin-right: auto;</span><br><span class="line">margin: auto;</span><br><span class="line">margin: 0 auto;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">margin-left: auto;   margin-right: auto;
+margin: auto;
+margin: 0 auto;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
 </li>
@@ -507,14 +519,17 @@
 <li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
 </li>
 <li><p>语法:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  padding:0;   /* 清除内边距 */</span><br><span class="line">  margin:0;    /* 清除外边距 */</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">* &#123;
+  padding:0;   &#x2F;* 清除内边距 *&#x2F;
+  margin:0;    &#x2F;* 清除外边距 *&#x2F;
+ &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
 </li>
 </ol>
 <h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius:length;    </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">border-radius:length;    <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol>
 <li>参数值可以为数值或百分比的形式</li>
@@ -528,7 +543,7 @@
 <li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: h-shadow v-shadow blur spread color inset; </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">box-shadow: h-shadow v-shadow blur spread color inset; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>属性</p>
 <table>
@@ -569,7 +584,7 @@
 <li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: h-shadow v-shadow blur color;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">text-shadow: h-shadow v-shadow blur color;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
 <li><p>属性</p>
 <table>
@@ -768,7 +783,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

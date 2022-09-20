@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇CSS传统网页布局的三种方式和书写规范的学习笔记">
@@ -270,7 +272,7 @@
 <li><p>float 属性用于创建浮动框，将其移动到一边，直到左边缘或右边缘触及包含块或另一个浮动框的边缘。</p>
 </li>
 <li><p>语法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择器 &#123; float: 属性值; &#125;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">选择器 &#123; float: 属性值; &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <h3 id="浮动特性"><a href="#浮动特性" class="headerlink" title="浮动特性"></a>浮动特性</h3><ol>
 <li>浮动元素会脱离标准流(脱标：浮动的盒子不再保留原先的位置)</li>
@@ -292,7 +294,28 @@
 <li>先用标准流父元素排列上下位置, 之后内部子元素采取浮动排列左右位置.  符合网页布局第一准侧</li>
 </ol>
 <p><img src="/2022/08/01/CSS%E4%BC%A0%E7%BB%9F%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%92%8C%E4%B9%A6%E5%86%99%E8%A7%84%E8%8C%83/image-31.png" alt="image-31"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"> .box &#123;</span><br><span class="line">     width: 1200px;</span><br><span class="line">     height: 400px;</span><br><span class="line">     background: bisque;</span><br><span class="line">     margin: 20px auto;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> .left &#123;</span><br><span class="line">     float: left;</span><br><span class="line">     width: 230px;</span><br><span class="line">     height: 400px;</span><br><span class="line">     background: pink;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> .right &#123;</span><br><span class="line">     float: left;</span><br><span class="line">     width: 970px;</span><br><span class="line">     height: 400px;</span><br><span class="line">     background: skyblue;</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
+ .box &#123;
+     width: 1200px;
+     height: 400px;
+     background: bisque;
+     margin: 20px auto;
+ &#125;
+
+ .left &#123;
+     float: left;
+     width: 230px;
+     height: 400px;
+     background: pink;
+ &#125;
+
+ .right &#123;
+     float: left;
+     width: 970px;
+     height: 400px;
+     background: skyblue;
+ &#125;
+&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><ol>
 <li>由于父级盒子很多情况下，不方便给高度，但是子盒子浮动又不占有位置，最后父级盒子高度为 0时，就会影响下面的标准流盒子。</li>
@@ -310,7 +333,7 @@
 </ol>
 <h3 id="清除浮动样式"><a href="#清除浮动样式" class="headerlink" title="清除浮动样式"></a>清除浮动样式</h3><ol>
 <li><p>语法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择器&#123;<span class="attribute">clear</span>:属性值;&#125; </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">选择器</span><span class="token punctuation">&#123;</span><span class="token property">clear</span><span class="token punctuation">:</span>属性值<span class="token punctuation">;</span><span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -344,7 +367,7 @@
 <ul>
 <li>使用方式：额外标签法会在浮动元素末尾添加一个空的标签。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如 &lt;div style=&quot;clear:both&quot;&gt;&lt;/div&gt;，或者其他标签（如&lt;br /&gt;等）</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">例如 &lt;div style&#x3D;&quot;clear:both&quot;&gt;&lt;&#x2F;div&gt;，或者其他标签（如&lt;br &#x2F;&gt;等）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol>
 <li>优点：通俗易懂，书写方便</li>
@@ -357,7 +380,7 @@
 <li><p>父级添加overflow属性</p>
 <p>1.给父级添加 overflow 属性，将其属性值设置为 hidden、 auto 或 scroll 。</p>
 <p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">overflow:hidden | auto | scroll;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">overflow:hidden | auto | scroll;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol>
 <li>优点：代码简洁</li>
@@ -369,7 +392,16 @@
 <ol>
 <li>:after 方式是额外标签法的升级版。给父元素添加：</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:after &#123;  </span><br><span class="line">content: &quot;&quot;; </span><br><span class="line">display: block; </span><br><span class="line">height: 0; </span><br><span class="line">clear: both; </span><br><span class="line">visibility: hidden;  </span><br><span class="line">&#125; </span><br><span class="line">.clearfix &#123;   </span><br><span class="line">*zoom: 1;    /* IE6、7 专有 */</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">.clearfix:after &#123;  
+content: &quot;&quot;; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;  
+&#125; 
+.clearfix &#123;   
+*zoom: 1;    &#x2F;* IE6、7 专有 *&#x2F;
+&#125;   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol>
 <li>优点：没有增加标签，结构更简单</li>
@@ -380,7 +412,16 @@
 <ul>
 <li>给父元素添加</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.clearfix:before,.clearfix:after &#123;</span><br><span class="line">content:&quot;&quot;;</span><br><span class="line">display:table; </span><br><span class="line">&#125;</span><br><span class="line">.clearfix:after &#123;</span><br><span class="line">clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.clearfix &#123;</span><br><span class="line">*zoom:1;</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">.clearfix:before,.clearfix:after &#123;
+content:&quot;&quot;;
+display:table; 
+&#125;
+.clearfix:after &#123;
+clear:both;
+&#125;
+.clearfix &#123;
+*zoom:1;
+&#125;   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol>
 <li>优点：代码更简洁</li>
@@ -626,7 +667,51 @@
 <td>超出内容自动显示滚动条，不超出不显示滚动条</td>
 </tr>
 </tbody></table>
-<h3 id="案例：视频播放黑色遮罩层"><a href="#案例：视频播放黑色遮罩层" class="headerlink" title="案例：视频播放黑色遮罩层"></a>案例：视频播放黑色遮罩层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        .box &#123;</span><br><span class="line">            position: relative;</span><br><span class="line">            width: 422px;</span><br><span class="line">            height: 280px;</span><br><span class="line">            margin: 20px auto;</span><br><span class="line">            background-color: blanchedalmond;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .box img &#123;</span><br><span class="line">            width: 100%;</span><br><span class="line">            height: 100%;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .box .black &#123;</span><br><span class="line">            display: none;</span><br><span class="line">            position: absolute;</span><br><span class="line">            top: 0;</span><br><span class="line">            left: 0;</span><br><span class="line">            width: 422px;</span><br><span class="line">            height: 280px;</span><br><span class="line">            background: rgba(0, 0, 0, 0.4) url(images/paly.jpg) no-repeat center;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .box:hover .black &#123;</span><br><span class="line">            display: block;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">        &lt;img src=&quot;images/promo.jpg&quot; alt=&quot;&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;black&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="案例：视频播放黑色遮罩层"><a href="#案例：视频播放黑色遮罩层" class="headerlink" title="案例：视频播放黑色遮罩层"></a>案例：视频播放黑色遮罩层</h3><pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
+    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+    &lt;title&gt;Document&lt;&#x2F;title&gt;
+    &lt;style&gt;
+        .box &#123;
+            position: relative;
+            width: 422px;
+            height: 280px;
+            margin: 20px auto;
+            background-color: blanchedalmond;
+        &#125;
+
+        .box img &#123;
+            width: 100%;
+            height: 100%;
+        &#125;
+
+        .box .black &#123;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 422px;
+            height: 280px;
+            background: rgba(0, 0, 0, 0.4) url(images&#x2F;paly.jpg) no-repeat center;
+        &#125;
+
+        .box:hover .black &#123;
+            display: block;
+        &#125;
+    &lt;&#x2F;style&gt;
+&lt;&#x2F;head&gt;
+
+&lt;body&gt;
+    &lt;div class&#x3D;&quot;box&quot;&gt;
+        &lt;img src&#x3D;&quot;images&#x2F;promo.jpg&quot; alt&#x3D;&quot;&quot;&gt;
+        &lt;div class&#x3D;&quot;black&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -845,7 +930,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         

@@ -14,10 +14,12 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"chhwn.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="学习笔记：这是一篇ES6的Array扩展方法的学习笔记">
@@ -253,15 +255,41 @@
       
         <h1 id="ES6的Array的扩展方法"><a href="#ES6的Array的扩展方法" class="headerlink" title="ES6的Array的扩展方法"></a>ES6的Array的扩展方法</h1><h3 id="扩展运算符（展开语法）"><a href="#扩展运算符（展开语法）" class="headerlink" title="扩展运算符（展开语法）"></a>扩展运算符（展开语法）</h3><ol>
 <li><p>扩展运算符可以将数组或者对象转化为用逗号分隔的参数序列</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr = [1, 2, 3, 4];</span><br><span class="line">  // ...arr; 相当于1, 2, 3, 4</span><br><span class="line">  // 因此console.log(...arr);相当于console.log(1, 2, 3, 4);</span><br><span class="line">  // 在输出时，console.log();语句会自动将&#x27;,&#x27;看作分隔符，因此输出时没有逗号</span><br><span class="line">  console.log(...arr);</span><br><span class="line">  // console.log(1, 2, 3, 4);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr &#x3D; [1, 2, 3, 4];
+  &#x2F;&#x2F; ...arr; 相当于1, 2, 3, 4
+  &#x2F;&#x2F; 因此console.log(...arr);相当于console.log(1, 2, 3, 4);
+  &#x2F;&#x2F; 在输出时，console.log();语句会自动将&#39;,&#39;看作分隔符，因此输出时没有逗号
+  console.log(...arr);
+  &#x2F;&#x2F; console.log(1, 2, 3, 4);
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>扩展运算符可以应用</p>
 <ol>
 <li><p>数组合并</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  let arr1 = [1, 2, 3];</span><br><span class="line">  let arr2 = [&#x27;张三&#x27;, &#x27;李四&#x27;, &#x27;王五&#x27;];</span><br><span class="line">  // let arr = [...arr1, ...arr2];</span><br><span class="line">  arr1.push(...arr2);</span><br><span class="line">  console.log(arr1); // [1, 2, 3, &quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
+  let arr1 &#x3D; [1, 2, 3];
+  let arr2 &#x3D; [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;];
+  &#x2F;&#x2F; let arr &#x3D; [...arr1, ...arr2];
+  arr1.push(...arr2);
+  console.log(arr1); &#x2F;&#x2F; [1, 2, 3, &quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>将伪数组转化为数组，从而方便的调用数组中的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        let divs = document.querySelectorAll(&#x27;div&#x27;);</span><br><span class="line">        console.log(divs); // NodeList(5) [div, div, div, div, div]</span><br><span class="line">        // 将伪数组转化为数组 </span><br><span class="line">        var arr = [...divs];</span><br><span class="line">        console.log(arr); // [div, div, div, div, div]</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;div&gt;&lt;&#x2F;div&gt;
+    &lt;script&gt;
+        let divs &#x3D; document.querySelectorAll(&#39;div&#39;);
+        console.log(divs); &#x2F;&#x2F; NodeList(5) [div, div, div, div, div]
+        &#x2F;&#x2F; 将伪数组转化为数组 
+        var arr &#x3D; [...divs];
+        console.log(arr); &#x2F;&#x2F; [div, div, div, div, div]
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 </li>
 </ol>
@@ -269,10 +297,23 @@
 <li><p>将伪数组或可遍历的对象转换为真正的数组（伪数组内必须有length属性）</p>
 </li>
 <li><p>方法返回值为转换完毕后的数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arrayLink = &#123;</span><br><span class="line">    &#x27;0&#x27;: &#x27;张三&#x27;,</span><br><span class="line">    &#x27;1&#x27;: &#x27;男&#x27;,</span><br><span class="line">    &#x27;length&#x27;: &#x27;2&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">let arr = Array.from(arrayLink);</span><br><span class="line">console.log(arr);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">let arrayLink &#x3D; &#123;
+    &#39;0&#39;: &#39;张三&#39;,
+    &#39;1&#39;: &#39;男&#39;,
+    &#39;length&#39;: &#39;2&#39;
+&#125;;
+let arr &#x3D; Array.from(arrayLink);
+console.log(arr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>方法还可以接受第二个参数，用来对每个元素进行处理，将处理后的值放入返回的数组</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr1 = &#123;</span><br><span class="line">    &#x27;0&#x27;: &#x27;1&#x27;,</span><br><span class="line">    &#x27;1&#x27;: &#x27;2&#x27;,</span><br><span class="line">    &#x27;2&#x27;: &#x27;3&#x27;,</span><br><span class="line">    &#x27;length&#x27;: &#x27;3&#x27;</span><br><span class="line">&#125;</span><br><span class="line">var ary = Array.from(arr1, item =&gt; item * 2);</span><br><span class="line">console.log(ary);</span><br></pre></td></tr></table></figure></li>
+<pre class="line-numbers language-none"><code class="language-none">let arr1 &#x3D; &#123;
+    &#39;0&#39;: &#39;1&#39;,
+    &#39;1&#39;: &#39;2&#39;,
+    &#39;2&#39;: &#39;3&#39;,
+    &#39;length&#39;: &#39;3&#39;
+&#125;
+var ary &#x3D; Array.from(arr1, item &#x3D;&gt; item * 2);
+console.log(ary);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
 <h3 id="实例方法：includes"><a href="#实例方法：includes" class="headerlink" title="实例方法：includes()"></a>实例方法：includes()</h3><ol>
 <li>表示某个数组是否包含给定的值，返回布尔值<ul>
@@ -456,7 +497,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">CHHwn</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
 
         
