@@ -471,8 +471,7 @@
 <li><p>flex属性是flex-direction和flex-wrap属性的复合属性</p>
 </li>
 <li><p>演示</p>
-<pre class="line-numbers language-none"><code class="language-none">flex-direction: column;
-flex-wrap: wrap;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex-direction</span>: column;</span><br><span class="line"><span class="attribute">flex-wrap</span>: wrap;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>以上两句代码可以合并为一句代码：flex-flow: column wrap;</li>
@@ -483,9 +482,7 @@ flex-wrap: wrap;<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <li><p>flex属性定义子项分配剩余空间，用flex来表示占多少份数</p>
 </li>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">.item &#123;
-  flex: &lt;number&gt;;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="built_in">item</span> &#123;</span><br><span class="line">  flex: &lt;<span class="built_in">number</span>&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="align-self控制子项自己在侧轴上的排列方式"><a href="#align-self控制子项自己在侧轴上的排列方式" class="headerlink" title="align-self控制子项自己在侧轴上的排列方式"></a>align-self控制子项自己在侧轴上的排列方式</h3><ol>
 <li><p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性</p>
@@ -493,10 +490,7 @@ flex-wrap: wrap;<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <li><p>默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch</p>
 </li>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">span: nth-child(2) &#123;
-  &#x2F;* 设置自己在侧轴上的排列方式 *&#x2F;
-  align-self: flex-end;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">span</span>: <span class="built_in">nth-child</span>(<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="comment">/* 设置自己在侧轴上的排列方式 */</span></span><br><span class="line">  <span class="attribute">align-self</span>: flex-end;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="order属性定义项目的排列顺序"><a href="#order属性定义项目的排列顺序" class="headerlink" title="order属性定义项目的排列顺序"></a>order属性定义项目的排列顺序</h3><ol>
 <li>数值越小，排列越靠前，默认为0<ul>

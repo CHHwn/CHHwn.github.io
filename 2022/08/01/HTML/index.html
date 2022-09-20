@@ -274,8 +274,7 @@
 <li><p>一个html文件开始标签和结束标签:</p>
 </li>
 <li><p>html包含两部分内容</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;head&gt; 设置相关信息 &lt;&#x2F;head&gt;
-&lt;boby&gt; 显示在页面上的内容都写在boby里面 &lt;&#x2F;boby&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> 设置相关信息 <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">boby</span>&gt;</span> 显示在页面上的内容都写在boby里面 <span class="tag">&lt;/<span class="name">boby</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>html的标签有开始标签，也要有结束标签</p>
 <ul>
@@ -388,14 +387,14 @@
 </ol>
 <h2 id="标题标签、水平线标签和特殊字符"><a href="#标题标签、水平线标签和特殊字符" class="headerlink" title="标题标签、水平线标签和特殊字符"></a>标题标签、水平线标签和特殊字符</h2><ol>
 <li><p>标题标签</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;h1&gt;&lt;&#x2F;h1&gt; &lt;h2&gt;&lt;&#x2F;h2&gt; &lt;h3&gt;&lt;&#x2F;h3&gt; .. &lt;h6&gt;&lt;&#x2F;h6&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span> <span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span> <span class="tag">&lt;<span class="name">h3</span>&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span> .. <span class="tag">&lt;<span class="name">h6</span>&gt;</span><span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>从h1到h6，标题依次变小，同时会自动换行</li>
 </ol>
 </li>
 <li><p>水平线标签</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;hr&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;hr/&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>属性<ul>
@@ -405,7 +404,7 @@
 </li>
 <li>代码</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">&lt;hr size&#x3D;&quot;4&quot; color&#x3D;&quot;blue&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr <span class="attribute">size</span>=<span class="string">&quot;4&quot;</span> <span class="attribute">color</span>=<span class="string">&quot;blue&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>特殊字符</p>
 <ol>
@@ -438,7 +437,7 @@
 </ol>
 <h2 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h2><ol>
 <li><p>自定义标签（重点）</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;dl&gt;&lt;&#x2F;dl&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;dl&gt;</span><span class="section">&lt;/dl&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>在dl里面 <code>&lt;dt&gt; &lt;/dt&gt;</code>：上层内容</li>
@@ -448,14 +447,14 @@
 </ol>
 </li>
 <li><p>有序列表</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;ol&gt; &lt;&#x2F;ol&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;ol&gt;</span> <span class="section">&lt;/ol&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>属性 type：设置排序方式（1（默认），a，i）</p>
 </li>
 <li><p>在ol标签里面<code>&lt;li&gt;具体内容&lt;/li&gt;</code></p>
 </li>
 <li><p>无序列表(重点)</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;ul&gt; &lt;&#x2F;ul&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;ul&gt;</span> <span class="section">&lt;/ul&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>无序列表的各个列表项之间没有顺序级别之分，是并列的</li>
@@ -470,7 +469,7 @@
 </ol>
 <h2 id="图像标签（重点）"><a href="#图像标签（重点）" class="headerlink" title="图像标签（重点）"></a>图像标签（重点）</h2><ol>
 <li><p>图像标签</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;img src&#x3D;&quot;图片路径&quot; width&#x3D;&quot;宽度&quot; height&#x3D;&quot;高度&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img <span class="attribute">src</span>=<span class="string">&quot;图片路径&quot;</span> <span class="attribute">width</span>=<span class="string">&quot;宽度&quot;</span> <span class="attribute">height</span>=<span class="string">&quot;高度&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -561,7 +560,7 @@
 <li><p>表格的写法</p>
 <ol>
 <li><p>首先定义一个表格的范围使用</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;table&gt;&lt;&#x2F;table&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;table&gt;</span><span class="section">&lt;/table&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>定义一行使用一个<code>&lt;tr&gt;&lt;/tr&gt;</code></li>
@@ -587,7 +586,7 @@
 </ol>
 </li>
 <li><p>在table里面</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;tr&gt;&lt;&#x2F;tr&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;tr&gt;</span><span class="section">&lt;/tr&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>设置对齐方式：align(left center right)</li>
@@ -646,7 +645,7 @@
 <li><p>input输入表单元素</p>
 <ol>
 <li><p>普通输入项：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;input type&#x3D;&quot;text&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">&quot;text&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>maxlength：规定输入字段中的最大长度</li>
@@ -655,7 +654,7 @@
 <li><p>密码输入项：<code>&lt;input type=&quot;password&quot;/&gt;</code></p>
 </li>
 <li><p>单选输入项：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;input type&#x3D;&quot;radio&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">&quot;radio&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>在里面需要属性name</li>
@@ -666,7 +665,7 @@
 </ul>
 </li>
 <li><p>复选输入项：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;input type&#x3D;&quot;checkbox&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">&quot;checkbox&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>在里面需要属性name</li>
@@ -692,11 +691,7 @@
 <li><p>select下拉表单元素</p>
 <ol>
 <li><p>下拉输入项(不是在input标签里面的)：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;select name&#x3D;&quot;birth&quot;&gt;  
-  &lt;option value&#x3D;&quot;1991&quot;&gt;1991&lt;&#x2F;option&gt;  
-  &lt;option value&#x3D;&quot;1992&quot;&gt;1992&lt;&#x2F;option&gt;  
-  &lt;option value&#x3D;&quot;1993&quot;&gt;1993&lt;&#x2F;option&gt;  
-&lt;&#x2F;select&gt;  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">select</span> <span class="type">name</span>=&quot;birth&quot;&gt;  </span><br><span class="line">  &lt;<span class="keyword">option</span> <span class="keyword">value</span>=&quot;1991&quot;&gt;<span class="number">1991</span>&lt;/<span class="keyword">option</span>&gt;  </span><br><span class="line">  &lt;<span class="keyword">option</span> <span class="keyword">value</span>=&quot;1992&quot;&gt;<span class="number">1992</span>&lt;/<span class="keyword">option</span>&gt;  </span><br><span class="line">  &lt;<span class="keyword">option</span> <span class="keyword">value</span>=&quot;1993&quot;&gt;<span class="number">1993</span>&lt;/<span class="keyword">option</span>&gt;  </span><br><span class="line">&lt;/<span class="keyword">select</span>&gt;  </span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>实现默认选中的属性<br><code>selected=&quot;selected&quot;</code></li>
@@ -733,9 +728,9 @@
 </ol>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;label for &#x3D; &quot;sex&quot;&gt;男&lt;&#x2F;label&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span> = <span class="string">&quot;sex&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">&lt;input type &#x3D; &quot;radio&quot; name &#x3D; &quot;sex&quot; id &#x3D; &quot;sex&quot;&#x2F;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type <span class="operator">=</span> <span class="string">&quot;radio&quot;</span> name <span class="operator">=</span> <span class="string">&quot;sex&quot;</span> id <span class="operator">=</span> <span class="string">&quot;sex&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>核心：<code>&lt;label&gt;</code>标签的for属性应当与相关元素的id属性相同</li>

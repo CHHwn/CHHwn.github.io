@@ -285,11 +285,7 @@
 <li><p>XMLHttpRequest对象的属性</p>
 <ol>
 <li><p>onreadystatechange事件：onreadystatechange属性存有处理服务器响应的函数。下面的代码定义一个空的函数，可同时对onreadystatechange属性进行设置</p>
-<pre class="line-numbers language-none"><code class="language-none">xmlHttp.onreadystatechange &#x3D; function () &#123;
-  if (xhr.readyState &#x3D;&#x3D; 4 &amp;&amp; xhr.status &#x3D;&#x3D; 200) &#123;
-    ..      
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp.onreadystatechange = function <span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> <span class="params">(xhr.<span class="attr">readyState</span> == 4 &amp;&amp; xhr.<span class="attr">status</span> == 200)</span> &#123;</span><br><span class="line">    <span class="string">..</span>      </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>readyState属性：存有服务器响应的状态信息。每当readyState改变时，onreadystatechange函数就会被执行</p>
 <ul>
@@ -324,11 +320,7 @@
 </tbody></table>
 </li>
 <li><p>测试响应是否完成</p>
-<pre class="line-numbers language-none"><code class="language-none">xmlHttp.onreadystatechange &#x3D; function () &#123;
-  if(xmlHttp.readyState &#x3D;&#x3D; 4) &#123;
-    &#x2F;&#x2F; 从服务器的response获得数据
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xmlHttp<span class="selector-class">.onreadystatechange</span> = function () &#123;</span><br><span class="line">  <span class="built_in">if</span>(xmlHttp<span class="selector-class">.readyState</span> == <span class="number">4</span>) &#123;</span><br><span class="line">    <span class="comment">// 从服务器的response获得数据</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>responseText属性：通过responseText属性来取回由服务器返回的数据</p>
@@ -370,26 +362,21 @@
 <li><p>get请求</p>
 <ol>
 <li><p>一个简单的get请求</p>
-<pre class="line-numbers language-none"><code class="language-none">xhr.open(&#39;get&#39;, &#39;xxx.php&#39;);
-xhr.send(null);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;xxx.php&#x27;</span>)<span class="comment">;</span></span><br><span class="line">xhr.<span class="built_in">send</span>(<span class="literal">null</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过get发送信息请求，数据写在open()函数（第二个参数url后面）中，或者可在文件名后进行拼接字符串</p>
-<pre class="line-numbers language-none"><code class="language-none">xhr.open(&#39;get&#39;, &#39;xxx.php?name&#x3D;jack&amp;skill&#x3D;swim&#39;);
-xhr.send(null);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;xxx.php?name=jack&amp;skill=swim&#x27;</span>)<span class="comment">;</span></span><br><span class="line">xhr.<span class="built_in">send</span>(<span class="literal">null</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>post请求</p>
 <ol>
 <li><p>一个简单的post请求</p>
-<pre class="line-numbers language-none"><code class="language-none">xhr.open(&#39;post&#39;, &#39;xxx.php&#39;);
-xhr.send(null);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">&#x27;post&#x27;</span>, <span class="string">&#x27;xxx.php&#x27;</span>)<span class="comment">;</span></span><br><span class="line">xhr.<span class="built_in">send</span>(<span class="literal">null</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过post发送数据，需要使用setRequestHeader()来添加HTTP头，然后在send()方法中规定发送的数据</p>
 </li>
 <li><p>post方式发送请求，数据写在send()函数中，书写方式：key&#x3D;value&amp;key2&#x3D;value2，为字符串</p>
-<pre class="line-numbers language-none"><code class="language-none">xhr.open(&#39;post&#39;, &#39;xxx.php&#39;);
-xhr.setRequestHeader(&#39;Content-type&#39;, &#39;application&#x2F;x-www-form-urlencoded&#39;);
-xhr.send(&#39;name&#x3D;rose&amp;skill&#x3D;painting&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight sml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xhr.<span class="keyword">open</span>(<span class="symbol">&#x27;post&#x27;</span>, <span class="symbol">&#x27;xxx</span>.php&#x27;);</span><br><span class="line">xhr.setRequestHeader(<span class="symbol">&#x27;Content</span>-type&#x27;, <span class="symbol">&#x27;application</span>/x-www-form-urlencoded&#x27;);</span><br><span class="line">xhr.send(<span class="symbol">&#x27;name</span>=rose&amp;skill=painting&#x27;);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -536,11 +523,7 @@ xhr.send(&#39;name&#x3D;rose&amp;skill&#x3D;painting&#39;);<span aria-hidden="tr
 <li><p>是XMLHTTPRequset理想的替代方案</p>
 </li>
 <li><p>fetch请求的简单设置</p>
-<pre class="line-numbers language-none"><code class="language-none">fetch(&#39;http:&#x2F;&#x2F;example.com&#x2F;movies.json&#39;)
-    &#x2F;&#x2F; 获取到http响应，通过json()方法将http响应的body解析成JSON的promise
-    .then(response &#x3D;&gt; response.json())
-    &#x2F;&#x2F; JSON的promise成功返回调用then回调函数，得到data数据
-    .then(data &#x3D;&gt; console.log(data));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fetch(<span class="string">&#x27;http://example.com/movies.json&#x27;</span>)</span><br><span class="line">    <span class="comment">// 获取到http响应，通过json()方法将http响应的body解析成JSON的promise</span></span><br><span class="line">    .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">    <span class="comment">// JSON的promise成功返回调用then回调函数，得到data数据</span></span><br><span class="line">    .then(<span class="function"><span class="params">data</span> =&gt;</span> <span class="built_in">console</span>.<span class="built_in">log</span>(data));</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="fetch规范与-jQuery-ajax-的不同"><a href="#fetch规范与-jQuery-ajax-的不同" class="headerlink" title="fetch规范与 jQuery.ajax()的不同"></a>fetch规范与 jQuery.ajax()的不同</h3><ol>
 <li>当接收到一个代表错误的 HTTP 状态码时，从fetch返回的 Promise <strong>不会被标记为 reject</strong>，即使响应的 HTTP 状态码是 404 或 500</li>

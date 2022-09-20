@@ -270,9 +270,7 @@
 <ol>
 <li>代码</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">body &#123;
- font:12px&#x2F;1.5 Microsoft YaHei;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"> <span class="attribute">font</span>:<span class="number">12px</span>/<span class="number">1.5</span> Microsoft YaHei;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>行高可以跟单位也可以不跟单位</li>
@@ -376,7 +374,7 @@
 <li><p>border可以设置元素的边框。边框有三部分组成：边框宽度(粗细) 边框样式  边框颜色；</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">border : border-width || border-style || border-color;   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">border</span> : <span class="built_in">border</span>-<span class="built_in">width</span> || <span class="built_in">border</span>-<span class="built_in">style</span> || <span class="built_in">border</span>-<span class="built_in">color</span>;   </span><br></pre></td></tr></table></figure>
 </li>
 <li><p>边框样式 border-style 可以设置如下值：</p>
 <ol>
@@ -390,18 +388,18 @@
 <ol>
 <li>边框简写：</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">border: 1px solid red;  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid red;  </span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>边框分开写法：</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">border-top: 1px solid red;  &#x2F;* 只设定上边框， 其余同理 *&#x2F;   <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-top</span>: <span class="number">1px</span> solid red;  <span class="comment">/* 只设定上边框， 其余同理 */</span>   </span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="表格的细线边框"><a href="#表格的细线边框" class="headerlink" title="表格的细线边框"></a>表格的细线边框</h2><ol>
 <li><p>border-collapse 属性控制浏览器绘制表格边框的方式。它控制相邻单元格的边框。</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">border-collapse:collapse; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">border</span>-<span class="built_in">collapse</span>:<span class="built_in">collapse</span>; </span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>collapse 单词是合并的意思,所以border-collapse: collapse; 表示相邻边框合并在一起</p>
 <h2 id="边框会影响盒子实际大小"><a href="#边框会影响盒子实际大小" class="headerlink" title="边框会影响盒子实际大小"></a>边框会影响盒子实际大小</h2><ol>
@@ -417,13 +415,10 @@
 <li><p>语法：</p>
 <ol>
 <li><p>padding：上下左右四边距统一设置</p>
-<pre class="line-numbers language-none"><code class="language-none">padding: 20px;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">padding</span>: <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>各边距分别设置</p>
-<pre class="line-numbers language-none"><code class="language-none">padding-top（上）
-padding-bottom（下）
-padding-left（左）
-padding-right（右）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">padding-<span class="built_in">top</span>（上）</span><br><span class="line">padding-<span class="built_in">bottom</span>（下）</span><br><span class="line">padding-<span class="built_in">left</span>（左）</span><br><span class="line">padding-<span class="built_in">right</span>（右）</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -479,13 +474,10 @@ padding-right（右）<span aria-hidden="true" class="line-numbers-rows"><span><
 <li><p>语法：</p>
 <ol>
 <li><p>margin：上下左右四边距统一设置</p>
-<pre class="line-numbers language-none"><code class="language-none">margin: 20px;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin</span>: <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>各边距分别设置</p>
-<pre class="line-numbers language-none"><code class="language-none">margin-top（上）
-margin-bottom（下）
-margin-left（左）
-margin-right（右）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">margin-<span class="built_in">top</span>（上）</span><br><span class="line">margin-<span class="built_in">bottom</span>（下）</span><br><span class="line">margin-<span class="built_in">left</span>（左）</span><br><span class="line">margin-<span class="built_in">right</span>（右）</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -497,9 +489,7 @@ margin-right（右）<span aria-hidden="true" class="line-numbers-rows"><span></
 </ol>
 </li>
 <li><p>常见的写法有三种：</p>
-<pre class="line-numbers language-none"><code class="language-none">margin-left: auto;   margin-right: auto;
-margin: auto;
-margin: 0 auto;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">margin-left</span>: auto;   <span class="attribute">margin-right</span>: auto;</span><br><span class="line"><span class="attribute">margin</span>: auto;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可。</p>
 </li>
@@ -519,17 +509,14 @@ margin: 0 auto;<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <li><p>网页元素很多都带有默认的内外边距，而且不同浏览器默认的也不一致。因此我们在布局前，首先要清除下网页元素的内外边距。</p>
 </li>
 <li><p>语法:</p>
-<pre class="line-numbers language-none"><code class="language-none">* &#123;
-  padding:0;   &#x2F;* 清除内边距 *&#x2F;
-  margin:0;    &#x2F;* 清除外边距 *&#x2F;
- &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;   <span class="comment">/* 清除内边距 */</span></span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;    <span class="comment">/* 清除外边距 */</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。</p>
 </li>
 </ol>
 <h1 id="其他样式"><a href="#其他样式" class="headerlink" title="其他样式"></a>其他样式</h1><h2 id="圆角边框"><a href="#圆角边框" class="headerlink" title="圆角边框"></a>圆角边框</h2><ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">border-radius:length;    <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">border</span>-<span class="built_in">radius</span>:<span class="built_in">length</span>;    </span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>参数值可以为数值或百分比的形式</li>
@@ -543,7 +530,7 @@ margin: 0 auto;<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <li><p>CSS3 中新增了盒子阴影，我们可以使用 box-shadow 属性为盒子添加阴影。</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">box-shadow: h-shadow v-shadow blur spread color inset; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">box-shadow: </span>h-<span class="keyword">shadow </span>v-<span class="keyword">shadow </span><span class="keyword">blur </span>spread color <span class="keyword">inset; </span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>属性</p>
 <table>
@@ -584,7 +571,7 @@ margin: 0 auto;<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <li><p>在CSS3中，我们可以使用text-shadow属性将阴影应用于文本。</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">text-shadow: h-shadow v-shadow blur color;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-<span class="keyword">shadow: </span>h-<span class="keyword">shadow </span>v-<span class="keyword">shadow </span><span class="keyword">blur </span>color;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>属性</p>
 <table>

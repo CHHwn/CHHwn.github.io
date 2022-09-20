@@ -259,7 +259,7 @@
 <li><p>axios是一个基于Promise的HTTP库</p>
 </li>
 <li><p>安装方法：</p>
-<pre class="line-numbers language-none"><code class="language-none">npm install axios<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> axios</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="axios请求方式"><a href="#axios请求方式" class="headerlink" title="axios请求方式"></a>axios请求方式</h2><ol>
 <li><p>axios(config)请求方式</p>
@@ -339,26 +339,10 @@
 <li><p><strong>模块化封装的方法</strong>：创建一个network文件夹，并在文件夹内创建一个request.js文件，在其中进行封装</p>
 </li>
 <li><p><strong>创建实例</strong>：</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 引入axios
-import axios from &#39;axios&#39;
-
-&#x2F;&#x2F; 创建一个axios实例
-const instance &#x3D; axios.create(&#123;
-    &#x2F;&#x2F; axios常见的配置选项：请求根路径baseURL和超时设置timeout
-    baseURL: &#39;http:&#x2F;&#x2F;kumanxuan1.f3322.net:8001&#39;,
-    timeout: 5000
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span> 引入axios</span><br><span class="line">import axios from <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 创建一个axios实例</span><br><span class="line">const instance = axios.create(&#123;</span><br><span class="line">    <span class="regexp">//</span> axios常见的配置选项：请求根路径baseURL和超时设置timeout</span><br><span class="line">    baseURL: <span class="string">&#x27;http://kumanxuan1.f3322.net:8001&#x27;</span>,</span><br><span class="line">    timeout: <span class="number">5000</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>请求拦截</strong>：请求拦截后，必须对config进行返回，不然在内部进行发送请求时就拿不到config</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 请求拦截
-instance.interceptors.request.use(config &#x3D;&gt; &#123;
-    &#x2F;&#x2F; 拦截后的操作
-    &#x2F;&#x2F; console.log(config);
-    &#x2F;&#x2F; 请求拦截后，必须对config进行返回
-    return config;
-&#125;, err &#x3D;&gt; &#123;
-    return Promise.reject(err);
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求拦截</span></span><br><span class="line">instance.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 拦截后的操作</span></span><br><span class="line">    <span class="comment">// console.log(config);</span></span><br><span class="line">    <span class="comment">// 请求拦截后，必须对config进行返回</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>请求拦截的作用，在拦截请求后，对拦截数据可以进行以下操作<ul>
@@ -370,16 +354,10 @@ instance.interceptors.request.use(config &#x3D;&gt; &#123;
 </ol>
 </li>
 <li><p><strong>响应拦截</strong>：将响应回来的结果进行处理，一般只需要<strong>提取data数据</strong>即可</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 响应拦截
-instance.interceptors.response.use(res &#x3D;&gt; &#123;
-    &#x2F;&#x2F; 对响应的数据进行处理，返回data值
-    return res.data;
-&#125;, err &#x3D;&gt; &#123;
-    return Promise.reject(err);
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 响应拦截</span></span><br><span class="line">instance.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 对响应的数据进行处理，返回data值</span></span><br><span class="line">    <span class="keyword">return</span> res.<span class="property">data</span>;</span><br><span class="line">&#125;, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(err);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导出拦截器</p>
-<pre class="line-numbers language-none"><code class="language-none">export default instance;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span><span class="built_in"> default </span>instance;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>axios拦截器：request.js文件</p>
 <p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211128202806.png" alt="img"></p>
@@ -387,16 +365,10 @@ instance.interceptors.response.use(res &#x3D;&gt; &#123;
 </ol>
 <h3 id="拦截器使用"><a href="#拦截器使用" class="headerlink" title="拦截器使用"></a>拦截器使用</h3><ol>
 <li><p><strong>使用拦截器</strong>：在network文件夹夹内创建一个api.js接口文件</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 引入request.js文件
-import request from &#39;.&#x2F;request.js&#39;
-
-&#x2F;&#x2F; 按需导出api
-&#x2F;&#x2F; 请求首页数据
-export const GetHomeData &#x3D; () &#x3D;&gt; request.get(&#39;&#x2F;index&#x2F;index&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入request.js文件</span></span><br><span class="line"><span class="keyword">import</span> request from <span class="string">&#x27;./request.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按需导出api</span></span><br><span class="line"><span class="comment">// 请求首页数据</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> GetHomeData = () =&gt; request.<span class="keyword">get</span>(<span class="string">&#x27;/index/index&#x27;</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>在组件中引入需要使用的api</strong>：</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 在组件中引入api
-import &#123; GetHomeData &#125; from &quot;..&#x2F;request&#x2F;api.js&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在组件中引入api</span></span><br><span class="line"><span class="keyword">import</span> &#123; GetHomeData &#125; <span class="keyword">from</span> <span class="string">&quot;../request/api.js&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211128212147.png" alt="img"></p>
 </li>

@@ -321,7 +321,7 @@
 <li><p>getElementsByTagName(‘元素名称’)：根据元素名称获取元素对象集合，返回值为一个伪数组</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">document.getElementsByTagName(&#39;div&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;div&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>返回值是获取过来元素对象的集合，以伪数组的形式存储</p>
@@ -331,20 +331,7 @@
 <li><p>若页面中没有这个元素，返回的是空的伪数组的形式</p>
 </li>
 <li><p>想要依次打印里面的元素对象，可以采用遍历的方式</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-&lt;div&gt;煤球1&lt;&#x2F;div&gt;
-&lt;div&gt;煤球2&lt;&#x2F;div&gt;
-&lt;div&gt;煤球3&lt;&#x2F;div&gt;
-&lt;div&gt;煤球4&lt;&#x2F;div&gt;
-&lt;div&gt;煤球5&lt;&#x2F;div&gt;
-&lt;script&gt;
-  var divs &#x3D; document.getElementsByTagName(&#39;div&#39;);
-  console.log(divs);
-  for (var i &#x3D; 0; i &lt; divs.length; i++) &#123;
-      console.log(divs[i]);
-  &#125;
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>煤球1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>煤球2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>煤球3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>煤球4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>煤球5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> divs = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(divs);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; divs.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(divs[i]);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -354,28 +341,9 @@
 <li><p>注意：父元素必须是单个对象（必须指明是哪一个元素对象），获取时不包括父元素自己</p>
 </li>
 <li><p>常用语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">Element.getElementsByTagName(&#39;标签名&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Element</span>.getElementsByTagName(<span class="string">&#x27;标签名&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-  &lt;ol&gt;
-    &lt;li&gt;煤球1&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球2&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球3&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球4&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球5&lt;&#x2F;li&gt;
-  &lt;&#x2F;ol&gt;
-  &lt;ul id&#x3D;&#39;ul&#39;&gt;
-    &lt;li&gt;煤球球1&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球球2&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球球3&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球球4&lt;&#x2F;li&gt;
-    &lt;li&gt;煤球球5&lt;&#x2F;li&gt;
-  &lt;&#x2F;ul&gt;
-  &lt;script&gt;
-    var ul &#x3D; document.getElementById(&#39;ul&#39;);
-    var lis &#x3D; console.log(ul.getElementsByTagName(&#39;li&#39;));
-  &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&#x27;ul&#x27;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球球1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球球2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球球3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球球4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>煤球球5<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> ul = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> lis = <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;li&#x27;</span>));</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -388,17 +356,13 @@
 <li><p>querySelector()：返回指定选择器的第一个元素对象，切记：里面的选择器需要加符号（.box-代表类；#nav-代表id）</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">document.querySelector(&#39;.box&#39;);
-document.querySelector(&#39;#nav&#39;)
-document.querySelector(&#39;li&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>);</span><br><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">&#x27;#nav&#x27;</span>)</span><br><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">&#x27;li&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>querySelectorAll()：返回指定选择器的所有元素对象集合，切记：里面的选择器需要加符号（.box-代表类；#nav-代表id）</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">document.querySelectorAll(&#39;.box&#39;);
-document.querySelectorAll(&#39;#nav&#39;);
-document.querySelectorAll(&#39;li&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelectorAll</span>(<span class="string">&#x27;.box&#x27;</span>);</span><br><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelectorAll</span>(<span class="string">&#x27;#nav&#x27;</span>);</span><br><span class="line"><span class="built_in">document</span>.<span class="built_in">querySelectorAll</span>(<span class="string">&#x27;li&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -406,7 +370,7 @@ document.querySelectorAll(&#39;li&#39;);<span aria-hidden="true" class="line-num
 <li><p>获取body元素</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">document.body;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.body<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回body元素对象</li>
@@ -417,7 +381,7 @@ document.querySelectorAll(&#39;li&#39;);<span aria-hidden="true" class="line-num
 <li><p>获取html元素</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">document.documentElement;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回html元素对象</li>
@@ -514,9 +478,7 @@ document.querySelectorAll(&#39;li&#39;);<span aria-hidden="true" class="line-num
 <li><p>element.innerHTML（常用）：从起始位置到终止位置的全部内容，识别html标签，同时保留空格和换行</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 获取事件源
-var img &#x3D; document.querySelector(&#39;div&#39;);
-img.innerHTML &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取事件源</span></span><br><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">img.innerHTML = <span class="string">&#x27;要修改的内容&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -524,9 +486,7 @@ img.innerHTML &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class
 <li><p>修改src，href，id，alt，title等属性的操作</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 获取事件源
-var img &#x3D; document.querySelector(&#39;img&#39;);
-img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取事件源</span></span><br><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">img.src = <span class="string">&#x27;要修改的内容&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -534,17 +494,7 @@ img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line
 <li><p>修改表单元素中src，href，id，alt，title等属性的操作</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  &#x2F;&#x2F; 获取事件源
-  var btn &#x3D; document.querySelector(&#39;button&#39;);
-  var input &#x3D; document.querySelector(&#39;input&#39;);
-  &#x2F;&#x2F; 注册事件，添加事件处理程序
-  btn.onclick &#x3D; function () &#123;
-    input.value &#x3D; &#39;被点击了&#39;;
-    &#x2F;&#x2F; this指向的是事件函数的调用者
-    this.disabled &#x3D; true;
-  &#125;
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 获取事件源</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 注册事件，添加事件处理程序</span></span></span><br><span class="line"><span class="language-javascript">  btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    input.<span class="property">value</span> = <span class="string">&#x27;被点击了&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// this指向的是事件函数的调用者</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">this</span>.<span class="property">disabled</span> = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -555,18 +505,9 @@ img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line
 <p>element.style</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">element.style.样式属性 &#x3D; &#39;属性&#39;;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">element</span>.style.样式属性 = <span class="string">&#x27;属性&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<pre class="line-numbers language-none"><code class="language-none">&lt;div&gt;&lt;&#x2F;div&gt;
-&lt;script&gt;
-    &#x2F;&#x2F; 获取事件源
-    var div &#x3D; document.querySelector(&#39;div&#39;);
-    &#x2F;&#x2F; 注册事件，添加事件处理程序
-    div.onclick &#x3D; function () &#123;
-        this.style.backgroundColor &#x3D; &#39;pink&#39;;
-        this.style.width &#x3D; &#39;300px&#39;;
-    &#125;
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 获取事件源</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 注册事件，添加事件处理程序</span></span></span><br><span class="line"><span class="language-javascript">    div.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">style</span>.<span class="property">backgroundColor</span> = <span class="string">&#x27;pink&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">style</span>.<span class="property">width</span> = <span class="string">&#x27;300px&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>JS里面的样式采取驼峰命名法，如fontSize，backgroundColor</li>
@@ -698,21 +639,7 @@ img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line
 <p>（非标准）</p>
 <ol>
 <li><p>获取所有的子元素节点，不包含文本节点等，实际开发经常使用</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-&lt;ul&gt;
-  &lt;li&gt;1&lt;&#x2F;li&gt;
-  &lt;li&gt;2&lt;&#x2F;li&gt;
-  &lt;li&gt;3&lt;&#x2F;li&gt;
-  &lt;li&gt;4&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;script&gt;
-  var ul &#x3D; document.querySelector(&#39;ul&#39;);
-  &#x2F;&#x2F; 子节点 childNodes 获取所有的子节点，包含元素节点，文本节点等
-  console.log(ul.childNodes); &#x2F;&#x2F; NodeList(9)
-  &#x2F;&#x2F; 子节点 children 获取所有的子元素节点，不包含文本节点等，实际开发经常使用
-  console.log(ul.children); &#x2F;&#x2F; HTMLCollection(4)
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 子节点 childNodes 获取所有的子节点，包含元素节点，文本节点等</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">childNodes</span>); <span class="comment">// NodeList(9)</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 子节点 children 获取所有的子元素节点，不包含文本节点等，实际开发经常使用</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">children</span>); <span class="comment">// HTMLCollection(4)</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>获取第一个和最后一个子节点</p>
@@ -731,29 +658,7 @@ img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line
 <p>— 实际开发写法，既没有兼容性问题，又返回任意子元素</p>
 <ul>
 <li><p>先获取父元素，然后利用children获取所有子元素节点，此时父元素为一个伪数组，遍历用索引号获取子元素节点，代码如下</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-&lt;ul&gt;
-  &lt;li&gt;节点li1&lt;&#x2F;li&gt;
-  &lt;li&gt;节点li2&lt;&#x2F;li&gt;
-  &lt;li&gt;节点li3&lt;&#x2F;li&gt;
-  &lt;li&gt;节点li4&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;script&gt;
-  var ul &#x3D; document.querySelector(&#39;ul&#39;);
-  &#x2F;&#x2F; 获取第一个和最后一个子节点
-  &#x2F;&#x2F; 方法一 firstChild&#x2F;lastChild：第一个子节点，不管是文本节点还是元素节点
-  console.log(ul.firstChild); &#x2F;&#x2F; #text
-  console.log(ul.lastChild); &#x2F;&#x2F; #text
-
-  &#x2F;&#x2F; 方法二 firstElementChild&#x2F;lastElementChild：返回第一个子元素节点
-  console.log(ul.firstElementChild); &#x2F;&#x2F; &lt;li&gt;节点li1&lt;li&gt;
-  console.log(ul.lastElementChild); &#x2F;&#x2F; &lt;li&gt;节点li4&lt;li&gt;
-
-  &#x2F;&#x2F; 方法三 实际开发写法，既没有兼容性问题，又返回任意子元素
-  console.log(ul.children[0]); &#x2F;&#x2F; &lt;li&gt;节点li1&lt;li&gt;
-  console.log(ul.children[ul.children.length - 1]); &#x2F;&#x2F; &lt;li&gt;节点li4&lt;li&gt;
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span><span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  </span><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  </span><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  </span><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">  </span><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">var</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="comment">// 获取第一个和最后一个子节点</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="comment">// 方法一 firstChild/lastChild：第一个子节点，不管是文本节点还是元素节点</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">firstChild</span>); <span class="comment">// #text</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">lastChild</span>); <span class="comment">// #text</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="comment">// 方法二 firstElementChild/lastElementChild：返回第一个子元素节点</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">firstElementChild</span>); <span class="comment">// </span></span></span><span class="language-xml"><span class="language-handlebars"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li1</span></span></span><span class="language-xml"><span class="language-javascript">&lt;li&gt;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">lastElementChild</span>); <span class="comment">// </span></span></span><span class="language-xml"><span class="language-handlebars"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li4</span></span></span><span class="language-xml"><span class="language-javascript">&lt;li&gt;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="comment">// 方法三 实际开发写法，既没有兼容性问题，又返回任意子元素</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">children</span>[<span class="number">0</span>]); <span class="comment">// </span></span></span><span class="language-xml"><span class="language-handlebars"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li1</span></span></span><span class="language-xml"><span class="language-javascript">&lt;li&gt;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ul.<span class="property">children</span>[ul.<span class="property">children</span>.<span class="property">length</span> - <span class="number">1</span>]); <span class="comment">// </span></span></span><span class="language-xml"><span class="language-handlebars"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>节点li4</span></span></span><span class="language-xml"><span class="language-handlebars"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span></span></span><br><span class="line"><span class="language-xml"><span class="language-handlebars"><span class="language-xml"></span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -857,27 +762,7 @@ img.src &#x3D; &#39;要修改的内容&#39;;<span aria-hidden="true" class="line
 <li><p><strong>括号参数为空或者为false，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点</strong></p>
 </li>
 <li><p>括号参数为true，则是深拷贝，复制标签以及复制里面的内容</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-&lt;ul&gt;
-  &lt;li&gt;1111&lt;&#x2F;li&gt;
-  &lt;li&gt;2&lt;&#x2F;li&gt;
-  &lt;li&gt;3&lt;&#x2F;li&gt;
-&lt;&#x2F;ul&gt;
-&lt;script&gt;
-  &#x2F;&#x2F; 获取元素
-  var ul &#x3D; document.querySelector(&#39;ul&#39;);
-
-  &#x2F;&#x2F; 复制第一个li
-  &#x2F;&#x2F; 括号参数为空或者为false，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点
-  &#x2F;&#x2F; var li1 &#x3D; ul.children[0].cloneNode();
-
-  &#x2F;&#x2F; 括号参数为true，则是深拷贝，复制标签以及复制里面的内容
-  var li1 &#x3D; ul.children[0].cloneNode(true);
-
-  &#x2F;&#x2F; 添加节点
-  ul.appendChild(li1);
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 获取元素</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> ul = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;ul&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 复制第一个li</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 括号参数为空或者为false，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// var li1 = ul.children[0].cloneNode();</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 括号参数为true，则是深拷贝，复制标签以及复制里面的内容</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> li1 = ul.<span class="property">children</span>[<span class="number">0</span>].<span class="title function_">cloneNode</span>(<span class="literal">true</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 添加节点</span></span></span><br><span class="line"><span class="language-javascript">  ul.<span class="title function_">appendChild</span>(li1);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>

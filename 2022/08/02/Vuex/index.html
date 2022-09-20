@@ -265,28 +265,10 @@
 <li><p>在项目中新建store文件夹，在该文件夹下创建index.js文件</p>
 </li>
 <li><p>在index.js文件中进行Vuex配置</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 引入vue
-import Vue from &#39;vue&#39;
-&#x2F;&#x2F; 引入Vuex
-import Vuex from &#39;vuex&#39;
-&#x2F;&#x2F; 使用Vuex
-Vue.use(Vuex)
-
-&#x2F;&#x2F; 创建并且导出store
-export default new Vuex.Store(&#123;
-    state: &#123;&#125;,
-    actions: &#123;&#125;
-    mutations: &#123;&#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入vue</span></span><br><span class="line">import Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">// 引入Vuex</span></span><br><span class="line">import Vuex <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">// 使用Vuex</span></span><br><span class="line">Vue.<span class="keyword">use</span>(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并且导出store</span></span><br><span class="line">export <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title function_ invoke__">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;&#125;</span><br><span class="line">    <span class="attr">mutations</span>: &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在main.js文件中引入store并挂载</p>
-<pre class="line-numbers language-none"><code class="language-none">import store from &#39;.&#x2F;store&#x2F;index&#39;
-
-new Vue(&#123;
-    el: &#39;#app&#39;,
-    store,
-    render: h &#x3D;&gt; (App)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store/index&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">    store,</span><br><span class="line">    <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> (<span class="title class_">App</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="Vuex工作原理图"><a href="#Vuex工作原理图" class="headerlink" title="Vuex工作原理图"></a>Vuex工作原理图</h2><p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/image-20220723190452821.png" alt="image-20220723190452821"></p>
 <h2 id="Vuex核心概念"><a href="#Vuex核心概念" class="headerlink" title="Vuex核心概念"></a>Vuex核心概念</h2><h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><ol>
@@ -313,44 +295,7 @@ new Vue(&#123;
 </ol>
 <h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><ol>
 <li><p>在stroe&#x2F;index.js文件进行以下配置</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 引入vue
-import Vue from &#39;vue&#39;
-&#x2F;&#x2F; 引入Vuex
-import Vuex from &#39;vuex&#39;
-&#x2F;&#x2F; 使用Vuex
-Vue.use(Vuex)
-
-&#x2F;&#x2F; 创建并且导出store
-export default new Vuex.Store(&#123;
-    &#x2F;&#x2F; 用于保存公共数据
-    state: &#123;
-        num: 0
-    &#125;,
-    &#x2F;&#x2F; 用于进行处理异步操作、发送ajax请求、处理业务逻辑等操作
-    actions: &#123;
-        &#x2F;&#x2F; context中包含了commit等方法，方便在actions中进行异步处理后将数据commit给mutations进行数据更新
-        hronous(context, value) &#123;
-            &#x2F;&#x2F; 进行异步操作
-            ...
-            &#x2F;&#x2F; 将进行异步处理或经过业务逻辑处理后的value，通过commit提交Mutations进行数据更新
-            context.commit(&#39;HRONOUS&#39;, value)
-        &#125;
-    &#125;,
-    &#x2F;&#x2F; 用于更新state中的变量值
-    mutations: &#123;
-        &#x2F;&#x2F; 更新state中的数据num
-        &#x2F;&#x2F; 为了与Actions中的函数进行区分，mutations中的函数以全大写形式命名
-        HRONOUS(state, value) &#123;
-            state.num &#x3D; value
-        &#125;
-    &#125;,
-    &#x2F;&#x2F; 类似于computed计算属性
-    getter: &#123;
-        bigNum(state) &#123;
-            return state.num * 10
-        &#125;
-    &#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// 引入vue</span><br><span class="line">import Vue <span class="keyword">from</span> &#x27;vue&#x27;</span><br><span class="line">// 引入Vuex</span><br><span class="line">import Vuex <span class="keyword">from</span> &#x27;vuex&#x27;</span><br><span class="line">// 使用Vuex</span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line">// 创建并且导出store</span><br><span class="line">export <span class="keyword">default</span> new Vuex.Store(&#123;</span><br><span class="line">    // 用于保存公共数据</span><br><span class="line">    <span class="keyword">state</span>: &#123;</span><br><span class="line">        num: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    // 用于进行处理异步操作、发送ajax请求、处理业务逻辑等操作</span><br><span class="line">    actions: &#123;</span><br><span class="line">        // context中包含了commit等方法，方便在actions中进行异步处理后将数据commit给mutations进行数据更新</span><br><span class="line">        hronous(context, value) &#123;</span><br><span class="line">            // 进行异步操作</span><br><span class="line">            ...</span><br><span class="line">            // 将进行异步处理或经过业务逻辑处理后的value，通过commit提交Mutations进行数据更新</span><br><span class="line">            context.commit(&#x27;HRONOUS&#x27;, value)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 用于更新<span class="keyword">state</span>中的变量值</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        // 更新<span class="keyword">state</span>中的数据num</span><br><span class="line">        // 为了与Actions中的函数进行区分，mutations中的函数以全大写形式命名</span><br><span class="line">        HRONOUS(<span class="keyword">state</span>, value) &#123;</span><br><span class="line">            <span class="keyword">state</span>.num = value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 类似于computed计算属性</span><br><span class="line">    getter: &#123;</span><br><span class="line">        bigNum(<span class="keyword">state</span>) &#123;</span><br><span class="line">            return <span class="keyword">state</span>.num * <span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在组件中使用getter：<strong>this.$store.getter.属性</strong></p>
 </li>
@@ -375,30 +320,11 @@ export default new Vuex.Store(&#123;
 <li><p>对象写法</p>
 </li>
 <li><p>数组写法</p>
-<pre class="line-numbers language-none"><code class="language-none">import &#123;mapState&#125; from &#39;vuex&#39;
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;!-- 使用计算属性 --&gt;
-        &lt;span&gt;&#123;&#123;num&#125;&#125;&lt;&#x2F;span&gt;
-        &lt;span&gt;&#123;&#123;sum&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&#x2F;&#x2F; 实例化组件中的计算属性
-computed: &#123;
-    &#x2F;&#x2F; 对象写法：借助mapState生成计算属性num、sum
-    ...mapState(&#123; num: &#39;num&#39;, sum: &#39;sum&#39; &#125;)
-    &#x2F;&#x2F; 数组写法：借助mapState生成计算属性num
-    ...mapState([&#39;num&#39;, &#39;sum&#39;])
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapState&#125; from <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 使用计算属性 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><span class="language-xquery">&#123;&#123;num&#125;</span><span class="language-xml">&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><span class="language-xquery">&#123;<span class="built_in">&#123;sum</span>&#125;</span><span class="language-xml">&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">// 实例化组件中的计算属性</span><br><span class="line">computed: &#123;</span><br><span class="line">    // 对象写法：借助mapState生成计算属性num<span class="built_in">、sum</span></span><br><span class="line">    ...mapState(&#123; num: <span class="string">&#x27;num&#x27;</span>,<span class="built_in"> sum</span>: <span class="string">&#x27;sum&#x27;</span> &#125;)</span><br><span class="line">    // 数组写法：借助mapState生成计算属性num</span><br><span class="line">    ...mapState([<span class="string">&#x27;num&#x27;</span>, <span class="string">&#x27;sum&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>…mapState({ num: ‘num’, sum: ‘sum’ })中num: ‘num’实际上为：</p>
-<pre class="line-numbers language-none"><code class="language-none">computed: &#123;
-    num() &#123;
-        return this.$store.state.num
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    num() &#123;</span><br><span class="line">        return this.<span class="variable">$store</span>.<span class="keyword">state</span>.num</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="mapGetters"><a href="#mapGetters" class="headerlink" title="mapGetters"></a>mapGetters</h3><ol>
 <li><p>mapGetters方法：用于映射Vuex中getters的数据为计算属性</p>
@@ -410,178 +336,47 @@ computed: &#123;
 <li><p>对象写法</p>
 </li>
 <li><p>数组写法</p>
-<pre class="line-numbers language-none"><code class="language-none">import &#123;mapGetters&#125; from &#39;vuex&#39;
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;!-- 使用计算属性 --&gt;
-        &lt;span&gt;&#123;&#123;bigNum&#125;&#125;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&#x2F;&#x2F; 实例化组件中的计算属性
-computed: &#123;
-    &#x2F;&#x2F; 对象写法：借助mapGetters生成计算属性num
-    ...mapGetters(&#123; bigNum: &#39;bigNum&#39; &#125;)
-    &#x2F;&#x2F; 数组写法：借助mapState生成计算属性num
-    ...mapGetters([&#39;bigNum&#39;])
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapGetters&#125; <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 使用计算属性 --&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;bigNum&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化组件中的计算属性</span></span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="comment">// 对象写法：借助mapGetters生成计算属性num</span></span><br><span class="line">    ...<span class="title function_">mapGetters</span>(&#123; <span class="attr">bigNum</span>: <span class="string">&#x27;bigNum&#x27;</span> &#125;)</span><br><span class="line">    <span class="comment">// 数组写法：借助mapState生成计算属性num</span></span><br><span class="line">    ...<span class="title function_">mapGetters</span>([<span class="string">&#x27;bigNum&#x27;</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>…mapGetters({ bigNum: ‘bigNum’ })中的bigNum: ‘bigNum’实际上为：</p>
-<pre class="line-numbers language-none"><code class="language-none">computed: &#123;
-    bigNum() &#123;
-        return this.$store.getters.bigNum
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="title function_">bigNum</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">bigNum</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="mapActions"><a href="#mapActions" class="headerlink" title="mapActions"></a>mapActions</h3><ol>
 <li><p>mapActions方法：用于生成与Vuex中actions对话的方法，即：this.$store.dispatch(“方法名”)</p>
-<pre class="line-numbers language-none"><code class="language-none">import &#123;mapActions&#125; from &#39;vuex&#39;
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;!-- 调用incrementOdd，并传参为num --&gt;
-        &lt;span @click&#x3D;&quot;incrementOdd(num)&quot;&gt;&lt;&#x2F;span&gt;
-        &lt;!-- 调用decrementWait，并传参为num --&gt;
-        &lt;span @click&#x3D;&quot;decrementWait(num)&quot;&gt;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-data () &#123;
-    return &#123;
-        num: 0
-    &#125;
-&#125;
-&#x2F;&#x2F; 实例化组件中的methods
-methods: &#123;
-    &#x2F;&#x2F; 对象写法：生成incrementOdd、decrementWait分别用于与actions中jiaOdd、jianWait方法对话
-    &#x2F;&#x2F; 即为this.$store.dispatch(&#39;jiaOdd&#39;, num)、this.$store.dispatch(&#39;jianWait&#39;, num)的简写形式
-    ...mapActions(&#123; increment: &#39;jiaOdd&#39;, decrementWait: &#39;jianWait&#39; &#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapActions&#125; from <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 调用incrementOdd，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;incrementOdd(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 调用decrementWait，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;decrementWait(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        num: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 实例化组件中的methods</span><br><span class="line">methods: &#123;</span><br><span class="line">    // 对象写法：生成incrementOdd、decrementWait分别用于与actions中jiaOdd、jianWait方法对话</span><br><span class="line">    // 即为this.<span class="variable">$store</span>.dispatch(<span class="string">&#x27;jiaOdd&#x27;</span>, num)、this.<span class="variable">$store</span>.dispatch(<span class="string">&#x27;jianWait&#x27;</span>, num)的简写形式</span><br><span class="line">    ...mapActions(&#123; increment: <span class="string">&#x27;jiaOdd&#x27;</span>, decrementWait: <span class="string">&#x27;jianWait&#x27;</span> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>…mapActions({ increment: ‘jiaOdd’, decrementWait: ‘jianWait’ })中的increment: ‘jiaOdd’实际上为：</p>
-<pre class="line-numbers language-none"><code class="language-none">methods: &#123;
-    increment(num) &#123;
-        return this.$store.dispatch(&#39;jiaOdd&#39;, num)
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    increment(<span class="built_in">num</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.dispatch(<span class="string">&#x27;jiaOdd&#x27;</span>, <span class="built_in">num</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="mapMutations"><a href="#mapMutations" class="headerlink" title="mapMutations"></a>mapMutations</h3><ol>
 <li><p>mapMutations方法：用于生成与Vuex中mutations对话的方法，即：this.$store.commit(“方法名”)</p>
-<pre class="line-numbers language-none"><code class="language-none">import &#123;mapMutations&#125; from &#39;vuex&#39;
-&lt;template&gt;
-    &lt;div&gt;
-        &lt;!-- 调用increment，并传参为num --&gt;
-        &lt;span @click&#x3D;&quot;increment(num)&quot;&gt;&lt;&#x2F;span&gt;
-        &lt;!-- 调用decrement，并传参为num --&gt;
-        &lt;span @click&#x3D;&quot;decrement(num)&quot;&gt;&lt;&#x2F;span&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-data () &#123;
-    return &#123;
-        num: 0
-    &#125;
-&#125;
-&#x2F;&#x2F; 实例化组件中的methods
-methods: &#123;
-    &#x2F;&#x2F; 对象写法：生成increment、decrement分别用于与mutations中JIA、JIAN方法对话
-    &#x2F;&#x2F; 即为this.$store.commit(&#39;JIA&#39;, num)、this.$store.commit(&#39;JIAN&#39;, num)的简写形式
-    ...mapMutations(&#123; increment: &#39;JIA&#39;, decrement: &#39;JIAN&#39; &#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;mapMutations&#125; from <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 调用increment，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;increment(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="comment">&lt;!-- 调用decrement，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml">        </span><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;decrement(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        num: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 实例化组件中的methods</span><br><span class="line">methods: &#123;</span><br><span class="line">    // 对象写法：生成increment、decrement分别用于与mutations中JIA、JIAN方法对话</span><br><span class="line">    // 即为this.<span class="variable">$store</span>.commit(<span class="string">&#x27;JIA&#x27;</span>, num)、this.<span class="variable">$store</span>.commit(<span class="string">&#x27;JIAN&#x27;</span>, num)的简写形式</span><br><span class="line">    ...mapMutations(&#123; increment: <span class="string">&#x27;JIA&#x27;</span>, decrement: <span class="string">&#x27;JIAN&#x27;</span> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>…mapMutations({ increment: ‘JIA’, decrement: ‘JIAN’ })中的increment: ‘JIA’实际上为：</p>
-<pre class="line-numbers language-none"><code class="language-none">methods: &#123;
-    increment(num) &#123;
-        return this.$store.commit(&#39;JIA&#39;, num)
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">    increment(<span class="built_in">num</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.commit(<span class="string">&#x27;JIA&#x27;</span>, <span class="built_in">num</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="Vuex模块化与命名空间namespaced"><a href="#Vuex模块化与命名空间namespaced" class="headerlink" title="Vuex模块化与命名空间namespaced"></a>Vuex模块化与命名空间namespaced</h2><ol>
 <li><p>目的：为了让代码更方便维护，让Vuex中不同业务类型涉及到的数据进行分类，同时可以避免不同业务数据分类间的命名冲突问题</p>
 </li>
 <li><p>Vuex模块化代码如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 引入vue
-import Vue from &#39;vue&#39;
-&#x2F;&#x2F; 引入Vuex
-import Vuex from &#39;vuex&#39;
-&#x2F;&#x2F; 使用Vuex
-Vue.use(Vuex)
-
-&#x2F;&#x2F; 注册第一个countAbout模块
-const countAbout &#x3D; &#123;
-    &#x2F;&#x2F; 重点：开启命名空间
-    namespaced: true,
-    state: &#123;&#125;,
-    actions: &#123;&#125;,
-    mutations: &#123;&#125;,
-    getter: &#123;&#125;
-&#125;,
-
-&#x2F;&#x2F; 注册第一个personAbout模块
-const personAbout &#x3D; &#123;
-    &#x2F;&#x2F; 重点：开启命名空间
-    namespaced: true,
-    state: &#123;&#125;,
-    actions: &#123;&#125;,
-    mutations: &#123;&#125;,
-    getter: &#123;&#125;
-&#125;
-
-&#x2F;&#x2F; 创建并且导出store
-export default new Vuex.Store(&#123;
-    modoles: &#123;
-        &#x2F;&#x2F; 第一个模块挂载
-        countAbout,
-        &#x2F;&#x2F; 第二个模块挂载
-        personAbout
-    &#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入vue</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="comment">// 引入Vuex</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vuex</span> <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="comment">// 使用Vuex</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Vuex</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册第一个countAbout模块</span></span><br><span class="line"><span class="keyword">const</span> countAbout = &#123;</span><br><span class="line">    <span class="comment">// 重点：开启命名空间</span></span><br><span class="line">    <span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">state</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">getter</span>: &#123;&#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册第一个personAbout模块</span></span><br><span class="line"><span class="keyword">const</span> personAbout = &#123;</span><br><span class="line">    <span class="comment">// 重点：开启命名空间</span></span><br><span class="line">    <span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">state</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">getter</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并且导出store</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">modoles</span>: &#123;</span><br><span class="line">        <span class="comment">// 第一个模块挂载</span></span><br><span class="line">        countAbout,</span><br><span class="line">        <span class="comment">// 第二个模块挂载</span></span><br><span class="line">        personAbout</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="Vuex模块化读取state、getters数据，调用dispatch、commit"><a href="#Vuex模块化读取state、getters数据，调用dispatch、commit" class="headerlink" title="Vuex模块化读取state、getters数据，调用dispatch、commit"></a>Vuex模块化读取state、getters数据，调用dispatch、commit</h3><h4 id="读取state数据"><a href="#读取state数据" class="headerlink" title="读取state数据"></a>读取state数据</h4><ol>
 <li><p>开启命名空间后，在组件中读取state数据</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 方式一：通过$store.state读取
-this.$store.state.Vuex模块化名称.数据属性名
-
-&#x2F;&#x2F; 方式二：通过mapState方式简写读取
-computed: &#123;
-    ...mapState(&#39;Vuex模块化名称&#39;, [&#39;数据属性名&#39;, ...])
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 方式一：通过<span class="variable">$store</span>.<span class="keyword">state</span>读取</span><br><span class="line">this.<span class="variable">$store</span>.<span class="keyword">state</span>.Vuex模块化名称.数据属性名</span><br><span class="line"></span><br><span class="line">// 方式二：通过mapState方式简写读取</span><br><span class="line">computed: &#123;</span><br><span class="line">    ...mapState(&#x27;Vuex模块化名称&#x27;, [&#x27;数据属性名&#x27;, ...])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="读取getters数据"><a href="#读取getters数据" class="headerlink" title="读取getters数据"></a>读取getters数据</h4><ol>
 <li><p>开启命名空间后，在组件中读取getters数据</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 方式一：通过$store.getters读取
-this.$store.getters[&#39;Vuex模块化名称&#x2F;getters数据名&#39;]
-
-&#x2F;&#x2F; 方式二：通过mapGetters方式简写读取
-computed: &#123;
-    ...mapGetters(&#39;Vuex模块化名称&#39;, [&#39;getters数据名&#39;, ...])
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一：通过$store.getters读取</span></span><br><span class="line">this.<span class="variable">$store</span><span class="selector-class">.getters</span><span class="selector-attr">[<span class="string">&#x27;Vuex模块化名称/getters数据名&#x27;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 方式二：通过mapGetters方式简写读取</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    ..<span class="selector-class">.mapGetters</span>(<span class="string">&#x27;Vuex模块化名称&#x27;</span>, <span class="selector-attr">[<span class="string">&#x27;getters数据名&#x27;</span>, ...]</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="调用dispatch"><a href="#调用dispatch" class="headerlink" title="调用dispatch"></a>调用dispatch</h4><ol>
 <li><p>开启命名空间后，在组件中调用dispatch</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!-- 调用incrementOdd，并传参为num --&gt;
-&lt;span @click&#x3D;&quot;incrementOdd(num)&quot;&gt;&lt;&#x2F;span&gt;
-
-&#x2F;&#x2F; 方式一：通过$store.dispatch
-this.$store.dispatch(&#39;Vuex模块化名称&#x2F;Actions中的方法名称&#39;, value)
-
-&#x2F;&#x2F; 方式二：通过mapActions方法简写
-methods: &#123;
-    ...mapActions(&#39;Vuex模块化名称&#39;, &#123;incrementOdd: &#39;Actions中的方法名称&#39;, ...&#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 调用incrementOdd，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;incrementOdd(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">// 方式一：通过$store.dispatch</span></span><br><span class="line"><span class="language-xml">this.$store.dispatch(&#x27;Vuex模块化名称/Actions中的方法名称&#x27;, value)</span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">// 方式二：通过mapActions方法简写</span></span><br><span class="line"><span class="language-xml">methods: </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">    ...mapActions(&#x27;Vuex模块化名称&#x27;, &#123;incrementOdd: &#x27;Actions中的方法名称&#x27;, ...&#125;</span><span class="language-xml">)</span></span><br><span class="line"><span class="language-xml">&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="调用commit"><a href="#调用commit" class="headerlink" title="调用commit"></a>调用commit</h4><ol>
 <li><p>开启命名空间后，在组件中调用commit</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!-- 调用increment，并传参为num --&gt;
-&lt;span @click&#x3D;&quot;increment(num)&quot;&gt;&lt;&#x2F;span&gt;
-   
-&#x2F;&#x2F; 方式一：通过$store.dispatch
-this.$store.commit(&#39;Vuex模块化名称&#x2F;Mutations中的方法名称&#39;, value)
-   
-&#x2F;&#x2F; 方式二：通过mapMutations方法简写
-methods: &#123;
-    ...mapMutations(&#39;Vuex模块化名称&#39;, &#123;increment: &#39;Mutations中的方法名称&#39;, ...&#125;)
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 调用increment，并传参为num --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">span</span> @<span class="attr">click</span>=<span class="string">&quot;increment(num)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">   </span></span><br><span class="line"><span class="language-xml">// 方式一：通过$store.dispatch</span></span><br><span class="line"><span class="language-xml">this.$store.commit(&#x27;Vuex模块化名称/Mutations中的方法名称&#x27;, value)</span></span><br><span class="line"><span class="language-xml">   </span></span><br><span class="line"><span class="language-xml">// 方式二：通过mapMutations方法简写</span></span><br><span class="line"><span class="language-xml">methods: </span><span class="template-variable">&#123;</span></span><br><span class="line"><span class="template-variable">    ...mapMutations(&#x27;Vuex模块化名称&#x27;, &#123;increment: &#x27;Mutations中的方法名称&#x27;, ...&#125;</span><span class="language-xml">)</span></span><br><span class="line"><span class="language-xml">&#125;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

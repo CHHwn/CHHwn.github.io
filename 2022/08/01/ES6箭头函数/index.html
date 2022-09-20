@@ -257,8 +257,7 @@
 <li><p>ES6中新增的定义函数的方式 — 箭头函数</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">() &#x3D;&gt; &#123;&#125;
-const fn &#x3D; () &#x3D;&gt; &#123;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight zephir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="function"><span class="keyword">fn</span> = <span class="params">()</span> =&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>若函数体中只有一句代码，则代码的执行结果就是返回值，可以省略大括号</p>
@@ -266,31 +265,12 @@ const fn &#x3D; () &#x3D;&gt; &#123;&#125;<span aria-hidden="true" class="line-n
 <li><p>一般在需要把一个函数作为另外一个函数的参数传递时，会使用到箭头函数</p>
 </li>
 <li><p>若形参只有一个，形参外侧的小括号可以省略</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  &#x2F;&#x2F; 定义箭头函数，函数体内只有一句代码
-  const fn &#x3D; (n1, n2) &#x3D;&gt; n1 + n2;
-  console.log(fn(1, 3));
-
-  &#x2F;&#x2F; 若形参只有一个，形参外侧的小括号可以省略
-  const f &#x3D; v &#x3D;&gt; alert(v);
-  f(20);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 定义箭头函数，函数体内只有一句代码</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params">n1, n2</span>) =&gt; n1 + n2;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">3</span>));</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 若形参只有一个，形参外侧的小括号可以省略</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> <span class="title function_">f</span> = v =&gt; <span class="title function_">alert</span>(v);</span></span><br><span class="line"><span class="language-javascript">  <span class="title function_">f</span>(<span class="number">20</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>箭头函数不绑定this关键字，箭头函数没有自己的this关键字；箭头函数中的this指向的是箭头函数定义位置的中this</p>
 </li>
 <li><p>箭头函数面试题</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  var age &#x3D; 100;
-  &#x2F;&#x2F; obj对象无法产生作用域
-  const obj &#x3D; &#123;
-    age: 30,
-    say: () &#x3D;&gt; &#123;
-      &#x2F;&#x2F; 因此这里的this指向本作用域中的age属性，即为window中的age属性
-      console.log(this.age); &#x2F;&#x2F; 100
-    &#125;
-  &#125;
-  obj.say();
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> age = <span class="number">100</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// obj对象无法产生作用域</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> obj = &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">age</span>: <span class="number">30</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">say</span>: <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 因此这里的this指向本作用域中的age属性，即为window中的age属性</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span>); <span class="comment">// 100</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  obj.<span class="title function_">say</span>();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

@@ -248,10 +248,7 @@
 
       
         <h1 id="vue脚手架配置代理"><a href="#vue脚手架配置代理" class="headerlink" title="vue脚手架配置代理"></a>vue脚手架配置代理</h1><h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>​	在vue.config.js中添加如下配置：</p>
-<pre class="line-numbers language-none"><code class="language-none">devServer:&#123;
-  proxy:&quot;http:&#x2F;&#x2F;localhost:5000&quot;
-&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">devServer:&#123;</span><br><span class="line">  proxy:<span class="string">&quot;http://localhost:5000&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>说明：</p>
 <ol>
@@ -260,28 +257,7 @@
 <li>工作方式：若按照上述配置代理，当请求了前端不存在的资源时，那么该请求会转发给服务器 （优先匹配前端资源）</li>
 </ol>
 <h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>​	编写vue.config.js配置具体代理规则：</p>
-<pre class="line-numbers language-none"><code class="language-none">module.exports &#x3D; &#123;
-	devServer: &#123;
-      proxy: &#123;
-      &#39;&#x2F;api1&#39;: &#123;&#x2F;&#x2F; 匹配所有以 &#39;&#x2F;api1&#39;开头的请求路径
-        target: &#39;http:&#x2F;&#x2F;localhost:5000&#39;,&#x2F;&#x2F; 代理目标的基础路径
-        changeOrigin: true,
-        pathRewrite: &#123;&#39;^&#x2F;api1&#39;: &#39;&#39;&#125;
-      &#125;,
-      &#39;&#x2F;api2&#39;: &#123;&#x2F;&#x2F; 匹配所有以 &#39;&#x2F;api2&#39;开头的请求路径
-        target: &#39;http:&#x2F;&#x2F;localhost:5001&#39;,&#x2F;&#x2F; 代理目标的基础路径
-        changeOrigin: true,
-        pathRewrite: &#123;&#39;^&#x2F;api2&#39;: &#39;&#39;&#125;
-      &#125;
-    &#125;
-  &#125;
-&#125;
-&#x2F;*
-   changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:5000
-   changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:8080
-   changeOrigin默认值为true
-*&#x2F;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">	devServer: &#123;</span><br><span class="line">      proxy: &#123;</span><br><span class="line">      <span class="string">&#x27;/api1&#x27;</span>: &#123;<span class="regexp">//</span> 匹配所有以 <span class="string">&#x27;/api1&#x27;</span>开头的请求路径</span><br><span class="line">        target: <span class="string">&#x27;http://localhost:5000&#x27;</span>,<span class="regexp">//</span> 代理目标的基础路径</span><br><span class="line">        changeOrigin: true,</span><br><span class="line">        pathRewrite: &#123;<span class="string">&#x27;^/api1&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&#x27;/api2&#x27;</span>: &#123;<span class="regexp">//</span> 匹配所有以 <span class="string">&#x27;/api2&#x27;</span>开头的请求路径</span><br><span class="line">        target: <span class="string">&#x27;http://localhost:5001&#x27;</span>,<span class="regexp">//</span> 代理目标的基础路径</span><br><span class="line">        changeOrigin: true,</span><br><span class="line">        pathRewrite: &#123;<span class="string">&#x27;^/api2&#x27;</span>: <span class="string">&#x27;&#x27;</span>&#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">/*</span><br><span class="line">   changeOrigin设置为true时，服务器收到的请求头中的host为：localhost:<span class="number">5000</span></span><br><span class="line">   changeOrigin设置为false时，服务器收到的请求头中的host为：localhost:<span class="number">8080</span></span><br><span class="line">   changeOrigin默认值为true</span><br><span class="line">*/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>说明：</p>
 <ol>

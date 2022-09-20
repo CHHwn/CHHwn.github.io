@@ -270,45 +270,11 @@
 <li><p>循环注册点击事件</p>
 <ol>
 <li><p>经典面试题：利用闭包的方式得到当前小li的索引号</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-&lt;li&gt;1&lt;&#x2F;li&gt;
-&lt;li&gt;2&lt;&#x2F;li&gt;
-&lt;li&gt;3&lt;&#x2F;li&gt;
-&lt;li&gt;4&lt;&#x2F;li&gt;
-&lt;script&gt;
-  var lis &#x3D; document.querySelectorAll(&#39;li&#39;);
-  for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
-      &#x2F;&#x2F; 利用for循环创建了四个立即执行函数
-      &#x2F;&#x2F; 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 
-      (function (i) &#123;
-          lis[i].onclick &#x3D; function () &#123;
-              console.log(i);
-          &#125;
-      &#125;)(i);
-  &#125;
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lis.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 利用for循环创建了四个立即执行函数</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 立即执行函数是一个小闭包，因为立即执行函数里面任何一个函数都可以使用它的i变量 </span></span></span><br><span class="line"><span class="language-javascript">      (<span class="keyword">function</span> (<span class="params">i</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">          lis[i].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">              <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span></span><br><span class="line"><span class="language-javascript">          &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;)(i);</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>循环中的setTimeout()</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
- &lt;li&gt;1&lt;&#x2F;li&gt;
- &lt;li&gt;2&lt;&#x2F;li&gt;
- &lt;li&gt;3&lt;&#x2F;li&gt;
- &lt;li&gt;4&lt;&#x2F;li&gt;
- &lt;script&gt;
-     var lis &#x3D; document.querySelectorAll(&#39;li&#39;);
-     &#x2F;&#x2F; for循环为同步任务
-     for (var i &#x3D; 0; i &lt; lis.length; i++) &#123;
-         (function (i) &#123;
-             &#x2F;&#x2F; 定时器为异步任务
-             setTimeout(function () &#123;
-                 console.log(i);
-             &#125;, 2000)
-         &#125;)(i);
-     &#125;
- &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">var</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">     <span class="comment">// for循环为同步任务</span></span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lis.<span class="property">length</span>; i++) &#123;</span></span><br><span class="line"><span class="language-javascript">         (<span class="keyword">function</span> (<span class="params">i</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">             <span class="comment">// 定时器为异步任务</span></span></span><br><span class="line"><span class="language-javascript">             <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                 <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span></span><br><span class="line"><span class="language-javascript">             &#125;, <span class="number">2000</span>)</span></span><br><span class="line"><span class="language-javascript">         &#125;)(i);</span></span><br><span class="line"><span class="language-javascript">     &#125;</span></span><br><span class="line"><span class="language-javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

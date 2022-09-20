@@ -266,9 +266,7 @@
 </ol>
 <h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><h3 id="if分支语句"><a href="#if分支语句" class="headerlink" title="if分支语句"></a>if分支语句</h3><ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">if (条件表达式) &#123;
-  &#x2F;&#x2F;执行语句
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式) &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行思路：</p>
 <ol>
@@ -279,11 +277,7 @@
 </ol>
 <h3 id="if…else…双分支语句"><a href="#if…else…双分支语句" class="headerlink" title="if…else…双分支语句"></a>if…else…双分支语句</h3><ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">if (条件表达式) &#123;
-  &#x2F;&#x2F;执行语句1
-&#125; else &#123;
-  &#x2F;&#x2F;执行语句2
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式) &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">1</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行思路：</p>
 <ol>
@@ -294,15 +288,7 @@
 </ol>
 <h3 id="if…else-if-…-else…多分支语句"><a href="#if…else-if-…-else…多分支语句" class="headerlink" title="if…else if … else…多分支语句"></a>if…else if … else…多分支语句</h3><ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">if (条件表达式1) &#123;
-  &#x2F;&#x2F;执行语句1
-&#125; else if (条件表达式2) &#123;
-  &#x2F;&#x2F;执行语句2
-&#125; else if (条件表达式3) &#123;
-  &#x2F;&#x2F;执行语句3
-&#125; else &#123;
-  &#x2F;&#x2F;执行语句4
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (条件表达式<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">1</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件表达式<span class="number">2</span>) &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">2</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (条件表达式<span class="number">3</span>) &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">3</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="regexp">//</span>执行语句<span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><ol>
 <li>语法<ul>
@@ -319,34 +305,10 @@
 <li><p>switch语句也是多分支语句，它用于基于不同的条件来执行不同的代码；当要针对变量设置一系列特定值的选项时，就可以使用switch</p>
 </li>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">switch (条件表达式) &#123;
-  case value1:
-    执行语句1;
-    break;
-  case value1:
-    执行语句1;
-    break;
-  ..
-  default:
-    执行最后的语句;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (条件表达式) &#123;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">    执行语句<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> value1:</span><br><span class="line">    执行语句<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  ..</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    执行最后的语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>代码演示</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  switch (2) &#123;
-    case 1:
-        console.log(&#39;这是1&#39;);
-        break;
-    case 2:
-        console.log(&#39;这是2&#39;);
-        break;
-    case 3:
-        console.log(&#39;这是3&#39;);
-        break;
-    default:
-        console.log(&#39;无&#39;)
-  &#125;
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">switch</span> (<span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">case</span> <span class="number">1</span>:</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;这是1&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">case</span> <span class="number">2</span>:</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;这是2&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">case</span> <span class="number">3</span>:</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;这是3&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">break</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">default</span>:</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;无&#x27;</span>)</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>switch：转换，开关；case：小例子，选项</p>
 </li>
@@ -365,9 +327,7 @@
 <li>一组被重复执行的语句被称之为循环体，能否继续重复执行，取决于循环的终止条件</li>
 <li>由循环体及循环的终止条件组成的语句，被称之为循环语句</li>
 </ol>
-<h2 id="for循环与双重for循环"><a href="#for循环与双重for循环" class="headerlink" title="for循环与双重for循环"></a>for循环与双重for循环</h2><h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><pre class="line-numbers language-none"><code class="language-none">for (初始化变量; 条件表达式; 操作表达式) &#123;
-  &#x2F;&#x2F;循环体
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="for循环与双重for循环"><a href="#for循环与双重for循环" class="headerlink" title="for循环与双重for循环"></a>for循环与双重for循环</h2><h3 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (初始化变量; 条件表达式; 操作表达式) &#123;</span><br><span class="line">  <span class="regexp">//</span>循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>执行顺序：<ol>
@@ -385,9 +345,7 @@
 <li>watch：监视，通过watch可以监视变量的值的变化，非常的常用</li>
 <li>F11：程序单步执行，让程序一行行的执行，这个时候，观察watch中变量的值的变化</li>
 </ol>
-<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><pre class="line-numbers language-none"><code class="language-none">while (条件表达式) &#123;
-  &#x2F;&#x2F;循环体
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (条件表达式) &#123;</span><br><span class="line">  <span class="regexp">//</span>循环体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>执行思路<ol>
@@ -397,9 +355,7 @@
 </ol>
 </li>
 </ol>
-<h2 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do while循环"></a>do while循环</h2><pre class="line-numbers language-none"><code class="language-none">do &#123;
-  &#x2F;&#x2F;循环体代码
-&#125; while(条件表达式);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="do-while循环"><a href="#do-while循环" class="headerlink" title="do while循环"></a>do while循环</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="regexp">//</span>循环体代码</span><br><span class="line">&#125; <span class="keyword">while</span>(条件表达式);</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>执行思路<ol>
@@ -421,18 +377,15 @@
 <li><p>在JavaScript中，arguments实际上它是当前函数的一个内置对象。所有函数都内置了一个arguments对象，arguments对象中存储了传递的所有实参</p>
 </li>
 <li><p>例：</p>
-<pre class="line-numbers language-none"><code class="language-none">function fn() &#123;
-  console.log(arguments); &#x2F;&#x2F;里面存储量所有传递过来的实参
-&#125;
-fn(1, 2, 3);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function <span class="built_in">fn</span>() &#123;</span><br><span class="line">  console<span class="selector-class">.log</span>(arguments); <span class="comment">//里面存储量所有传递过来的实参</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>arguments展示形式是一个伪数组，因此可以进行遍历；伪数组具有以下特点</p>
 <ol>
 <li><p>具有length属性</p>
-<pre class="line-numbers language-none"><code class="language-none">console.log(arguments.length);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(arguments.<span class="built_in">length</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>按索引方式存储数据</p>
-<pre class="line-numbers language-none"><code class="language-none">console.log(arguments[2]);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(arguments[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>不具有真正数组的push()，pop()等方法</p>
 </li>

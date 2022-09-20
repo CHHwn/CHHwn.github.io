@@ -324,11 +324,10 @@
 <li><p>使用Date对象</p>
 <ol>
 <li><p>没有参数：返回当前系统的当前时间</p>
-<pre class="line-numbers language-none"><code class="language-none">var date &#x3D; new Date();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>有参数：返回参数的时间；日期格式字符串为’2019-5-1’，可以写成new Date(‘2019-5-1’)或new Date(‘2019&#x2F;5&#x2F;1’)</p>
-<pre class="line-numbers language-none"><code class="language-none">var date &#x3D; new Date(&#39;2019-5-1&#39;);
-var date &#x3D; new Date(&#39;2019&#x2F;5&#x2F;1&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2019-5-1&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2019/5/1&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -372,32 +371,19 @@ var date &#x3D; new Date(&#39;2019&#x2F;5&#x2F;1&#39;);<span aria-hidden="true" 
 </tbody></table>
 </li>
 <li><p>案例：格式化日期年月日星期</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  &#x2F;&#x2F; 创建日期对象
-  var date &#x3D; new Date();
-
-  var year &#x3D; date.getFullYear();
-  var month &#x3D; date.getMonth();
-  var dates &#x3D; date.getDate();
-  var day &#x3D; date.getDay();
-  var arr &#x3D; [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;];
-
-  console.log(&#39;现在的时间是：&#39; + year + &#39;年&#39; + (month + 1) + &#39;月&#39; + dates + &#39;日&#39; + &#39; &#39; + arr[day]);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// 创建日期对象</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">year</span> = <span class="built_in">date</span>.getFullYear();</span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">month</span> = <span class="built_in">date</span>.getMonth();</span><br><span class="line">  <span class="keyword">var</span> dates = <span class="built_in">date</span>.getDate();</span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">day</span> = <span class="built_in">date</span>.getDay();</span><br><span class="line">  <span class="keyword">var</span> arr = [<span class="string">&#x27;星期日&#x27;</span>, <span class="string">&#x27;星期一&#x27;</span>, <span class="string">&#x27;星期二&#x27;</span>, <span class="string">&#x27;星期三&#x27;</span>, <span class="string">&#x27;星期四&#x27;</span>, <span class="string">&#x27;星期五&#x27;</span>, <span class="string">&#x27;星期六&#x27;</span>];</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;现在的时间是：&#x27;</span> + <span class="built_in">year</span> + <span class="string">&#x27;年&#x27;</span> + (<span class="built_in">month</span> + <span class="number">1</span>) + <span class="string">&#x27;月&#x27;</span> + dates + <span class="string">&#x27;日&#x27;</span> + <span class="string">&#x27; &#x27;</span> + arr[<span class="built_in">day</span>]);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="获取总的毫秒数"><a href="#获取总的毫秒数" class="headerlink" title="获取总的毫秒数"></a>获取总的毫秒数</h3><ol>
 <li><p>Date对象是基于1970年1月1日（世界标准时间）起的毫秒数（时间戳）</p>
 </li>
 <li><p>通过value Of()和getTime()两个函数都可以得到</p>
-<pre class="line-numbers language-none"><code class="language-none">var date &#x3D; new Date();
-console.log(date.valueOf()); &#x2F;&#x2F; 就是现在时间距离1970年1月1日总的毫秒数
-console.log(date.getTime()); &#x2F;&#x2F; 就是现在时间距离1970年1月1日总的毫秒数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">date</span>.valueOf()); <span class="comment">// 就是现在时间距离1970年1月1日总的毫秒数</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">date</span>.getTime()); <span class="comment">// 就是现在时间距离1970年1月1日总的毫秒数</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>简单写法（常用）</p>
-<pre class="line-numbers language-none"><code class="language-none">var date &#x3D; +new Date(); &#x2F;&#x2F; +new Date() 返回的就是总的毫秒数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">date</span> = +<span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// +new Date() 返回的就是总的毫秒数</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>H5新增获取总毫秒数</p>
-<pre class="line-numbers language-none"><code class="language-none">console.log(Date.new());<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">Date</span>.<span class="keyword">new</span>());</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将总毫秒数转换为天、时、分、秒（时间戳转换为时分秒）</p>
 <ol>
@@ -410,52 +396,22 @@ console.log(date.getTime()); &#x2F;&#x2F; 就是现在时间距离1970年1月1�
 </ul>
 </li>
 <li><p>案例：倒计时</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  function countTime(time) &#123;
-    &#x2F;&#x2F; 到当前时间的总毫秒数
-    var nowTime &#x3D; +new Date();
-    &#x2F;&#x2F; 距离用户设置时间time的总毫秒数
-    var inputTime &#x3D; +new Date(time);
-    &#x2F;&#x2F; 现在距离设置时间所剩余的秒数
-    var times &#x3D; (inputTime - nowTime) &#x2F; 1000;
-
-    &#x2F;&#x2F; 天
-    var day &#x3D; parseInt(times &#x2F; 60 &#x2F; 60 &#x2F; 24);
-    day &#x3D; day &lt; 10 ? &#39;0&#39; + day : day;
-    &#x2F;&#x2F; 时
-    var hour &#x3D; parseInt(times &#x2F; 60 &#x2F; 60 % 24);
-    hour &#x3D; hour &lt; 10 ? &#39;0&#39; + hour : hour;
-    &#x2F;&#x2F; 分
-    var minute &#x3D; parseInt(times &#x2F; 60 % 60);
-    minute &#x3D; minute &lt; 10 ? &#39;0&#39; + minute : minute;
-    &#x2F;&#x2F; 秒
-    var second &#x3D; parseInt(times % 60);
-    second &#x3D; second &lt; 10 ? &#39;0&#39; + second : second;
-
-    return day + &#39;天&#39; + hour + &#39;时&#39; + minute + &#39;分&#39; + second + &#39;秒&#39;;
-  &#125;
-  console.log(countTime(&#39;2021-7-22 18:00:00&#39;));
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">countTime</span>(<span class="params">time</span>) &#123;</span><br><span class="line">    <span class="comment">// 到当前时间的总毫秒数</span></span><br><span class="line">    <span class="keyword">var</span> nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    <span class="comment">// 距离用户设置时间time的总毫秒数</span></span><br><span class="line">    <span class="keyword">var</span> inputTime = +<span class="keyword">new</span> <span class="built_in">Date</span>(time);</span><br><span class="line">    <span class="comment">// 现在距离设置时间所剩余的秒数</span></span><br><span class="line">    <span class="keyword">var</span> times = (inputTime - nowTime) / <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 天</span></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">day</span> = parseInt(times / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>);</span><br><span class="line">    <span class="built_in">day</span> = <span class="built_in">day</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="built_in">day</span> : <span class="built_in">day</span>;</span><br><span class="line">    <span class="comment">// 时</span></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">hour</span> = parseInt(times / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>);</span><br><span class="line">    <span class="built_in">hour</span> = <span class="built_in">hour</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="built_in">hour</span> : <span class="built_in">hour</span>;</span><br><span class="line">    <span class="comment">// 分</span></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">minute</span> = parseInt(times / <span class="number">60</span> % <span class="number">60</span>);</span><br><span class="line">    <span class="built_in">minute</span> = <span class="built_in">minute</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="built_in">minute</span> : <span class="built_in">minute</span>;</span><br><span class="line">    <span class="comment">// 秒</span></span><br><span class="line">    <span class="keyword">var</span> <span class="built_in">second</span> = parseInt(times % <span class="number">60</span>);</span><br><span class="line">    <span class="built_in">second</span> = <span class="built_in">second</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="built_in">second</span> : <span class="built_in">second</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">day</span> + <span class="string">&#x27;天&#x27;</span> + <span class="built_in">hour</span> + <span class="string">&#x27;时&#x27;</span> + <span class="built_in">minute</span> + <span class="string">&#x27;分&#x27;</span> + <span class="built_in">second</span> + <span class="string">&#x27;秒&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(countTime(<span class="string">&#x27;2021-7-22 18:00:00&#x27;</span>));</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
 <h2 id="数组对象"><a href="#数组对象" class="headerlink" title="数组对象"></a>数组对象</h2><h3 id="检测是否为数组"><a href="#检测是否为数组" class="headerlink" title="检测是否为数组"></a>检测是否为数组</h3><ol>
 <li><p>方式一：instanceof — 运算符，用来检测是否为数组</p>
-<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [];
-var obj &#x3D; &#123;&#125;;
-console.log(arr instanceof Array); &#x2F;&#x2F; true
-console.log(obj instanceof Array); &#x2F;&#x2F; false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(arr instanceof <span class="built_in">Array</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(obj instanceof <span class="built_in">Array</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方式二：Array.isArray(参数); — H5新增的方法，ie9以上版本支持</p>
-<pre class="line-numbers language-none"><code class="language-none">console.log(Array.isArray(arr)); &#x2F;&#x2F; true
-console.log(Array.isArray(obj)); &#x2F;&#x2F; false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">Array</span>.isArray(arr)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">Array</span>.isArray(obj)); <span class="comment">// false</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="添加数组元素"><a href="#添加数组元素" class="headerlink" title="添加数组元素"></a>添加数组元素</h3><ol>
 <li><p>push(参数1..)：在数组的末尾添加一个或多个元素</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [1, 2, 3];
-arr.push(4, &#39;pink&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="built_in">push</span>(<span class="number">4</span>, <span class="string">&#x27;pink&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>数组元素直接写数组元素</li>
@@ -505,10 +461,7 @@ arr.push(4, &#39;pink&#39;);<span aria-hidden="true" class="line-numbers-rows"><
 <li><p>sort()：对数组中的元素进行排序（内部无参数）</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">arr.sort(function(a, b)&#123;
-  return a -b; &#x2F;&#x2F;升序排序
-  return b - a; &#x2F;&#x2F;降序排序
-&#125;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr.<span class="built_in">sort</span>(<span class="keyword">function</span>(<span class="params">a, b</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> a -b; <span class="comment">//升序排序</span></span><br><span class="line">  <span class="keyword">return</span> b - a; <span class="comment">//降序排序</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -572,17 +525,7 @@ arr.push(4, &#39;pink&#39;);<span aria-hidden="true" class="line-numbers-rows"><
 </ul>
 </li>
 <li><p>返回值为被删除项目的新数组，会影响原数组的元素</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 数组中添加新元素
-var fruits &#x3D; [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;];
-fruits.splice(2,0,&quot;Lemon&quot;,&quot;Kiwi&quot;); &#x2F;&#x2F; Banana,Orange,Lemon,Kiwi,Apple,Mango
-
-&#x2F;&#x2F; 移除数组的第三个元素，并在数组第三个位置添加新元素
-var fruits &#x3D; [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;];
-fruits.splice(2,1,&quot;Lemon&quot;,&quot;Kiwi&quot;); &#x2F;&#x2F; Banana,Orange,Lemon,Kiwi,Mango
-
-&#x2F;&#x2F; 从第三个位置开始删除数组后的两个元素
-var fruits &#x3D; [&quot;Banana&quot;, &quot;Orange&quot;, &quot;Apple&quot;, &quot;Mango&quot;];
-fruits.splice(2,2); &#x2F;&#x2F; Banana,Orange<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组中添加新元素</span></span><br><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line">fruits.<span class="built_in">splice</span>(<span class="number">2</span>,<span class="number">0</span>,<span class="string">&quot;Lemon&quot;</span>,<span class="string">&quot;Kiwi&quot;</span>); <span class="comment">// Banana,Orange,Lemon,Kiwi,Apple,Mango</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除数组的第三个元素，并在数组第三个位置添加新元素</span></span><br><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line">fruits.<span class="built_in">splice</span>(<span class="number">2</span>,<span class="number">1</span>,<span class="string">&quot;Lemon&quot;</span>,<span class="string">&quot;Kiwi&quot;</span>); <span class="comment">// Banana,Orange,Lemon,Kiwi,Mango</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 从第三个位置开始删除数组后的两个元素</span></span><br><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line">fruits.<span class="built_in">splice</span>(<span class="number">2</span>,<span class="number">2</span>); <span class="comment">// Banana,Orange</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>字符串所有的方法，都不会修改字符串本身（字符串是不可变的），操作完成会返回一个新的字符串</p>
@@ -592,8 +535,7 @@ fruits.splice(2,2); &#x2F;&#x2F; Banana,Orange<span aria-hidden="true" class="li
 <li><p>基本包装类型：把简单数据类型，包装成为了复杂数据类型</p>
 </li>
 <li><p>对象和复杂数据类型才具有属性和方法</p>
-<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &#39;andy&#39;;
-str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">str</span> = <span class="string">&#x27;andy&#x27;</span>;</span><br><span class="line"><span class="built_in">str</span>.length;</span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>‘andy’为字符数据类型，属于简单数据类型，为什么会有length属性？<ul>
@@ -612,7 +554,7 @@ str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>indexOf(‘要查找的字符’, [开始查找位置的索引])：字符串中查找给定元素的第一个索引（从前到后查找）</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.indexOf(&#39;a&#39;, 5);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.<span class="built_in">indexOf</span>(<span class="string">&#x27;a&#x27;</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为指定内容在原字符串中的位置，若找不到则返回-1</li>
@@ -623,7 +565,7 @@ str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>lastIndexOf(‘要查找的字符’)：字符串中查找给定元素的最后一个索引（从后到前查找）</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.lastIndexOf(&#39;b&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.lastIndexOf(<span class="string">&#x27;b&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为指定内容在原字符串中的位置，若找不到则返回-1</li>
@@ -641,7 +583,7 @@ str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>charCodeAT(index)：获取指定位置处字符的ASCII码（index为索引号）</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.charCodeAt(3);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.<span class="built_in">char</span><span class="constructor">CodeAt(3)</span>;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>目的是可以判断用户按下了哪个键</li>
@@ -657,33 +599,7 @@ str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>案例：统计一个字符串中每个字符出现的次数，求出出现最多的字符及其出现次数</p>
 <ul>
 <li><p>以下算法很常用</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  var str &#x3D; &#39;abcoefoxyozzopp&#39;;
-  var statistical &#x3D; &#123;&#125;;
-  for (var i &#x3D; 0; i &lt; str.length; i++) &#123;
-    var chars &#x3D; str.charAt(i); &#x2F;&#x2F; 遍历字符串内的每一个字符
-    &#x2F;&#x2F; statistical[chats]是一个属性值，当对象中没有该属性时，属性值为0
-    if (statistical[chars]) &#123;
-      &#x2F;&#x2F; 代表该字符已经在对象出现过，将属性值自增1       
-      statistical[chars]++;
-    &#125; else &#123;
-      &#x2F;&#x2F; 代表该字符在对象中第一次出现，让该属性的值为1
-      statistical[chars] &#x3D; 1;
-    &#125;
-  &#125;
-  console.log(statistical);
-
-  &#x2F;&#x2F; 遍历对象
-  var max &#x3D; 0;
-  var ch &#x3D; &#39;&#39;;
-  for (var k in statistical) &#123; &#x2F;&#x2F; k为变量，输出为属性名
-    if (statistical[k] &gt; max) &#123;
-      max &#x3D; statistical[k]; &#x2F;&#x2F; statistical[k]输出为属性值
-      ch &#x3D; k;
-    &#125;
-  &#125;
-  console.log(&#39;字符串中出现最多的字符为：&#39; + ch + &#39;，出现次数为&#39; + max + &#39;次&#39;);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">&#x27;abcoefoxyozzopp&#x27;</span>;</span><br><span class="line">  <span class="keyword">var</span> statistical = &#123;&#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; str.<span class="built_in">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> chars = str.charAt(i); <span class="comment">// 遍历字符串内的每一个字符</span></span><br><span class="line">    <span class="comment">// statistical[chats]是一个属性值，当对象中没有该属性时，属性值为0</span></span><br><span class="line">    <span class="keyword">if</span> (statistical[chars]) &#123;</span><br><span class="line">      <span class="comment">// 代表该字符已经在对象出现过，将属性值自增1       </span></span><br><span class="line">      statistical[chars]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 代表该字符在对象中第一次出现，让该属性的值为1</span></span><br><span class="line">      statistical[chars] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(statistical);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 遍历对象</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> ch = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> k in statistical) &#123; <span class="comment">// k为变量，输出为属性名</span></span><br><span class="line">    <span class="keyword">if</span> (statistical[k] &gt; <span class="built_in">max</span>) &#123;</span><br><span class="line">      <span class="built_in">max</span> = statistical[k]; <span class="comment">// statistical[k]输出为属性值</span></span><br><span class="line">      ch = k;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;字符串中出现最多的字符为：&#x27;</span> + ch + <span class="string">&#x27;，出现次数为&#x27;</span> + <span class="built_in">max</span> + <span class="string">&#x27;次&#x27;</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -691,14 +607,13 @@ str.length;<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><p>concat(str1, str2, str3..)：用于连接两个或多个字符串，拼接字符串，等效与+，但+更常用</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">str.concat(str1, str2, str3..)
-str.concat(&#39;red&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.<span class="built_in">concat</span>(str1, str2, str3..)</span><br><span class="line"><span class="built_in">str</span>.<span class="built_in">concat</span>(&#x27;red&#x27;);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>substr(start, length)：从start位置开始（索引号），length为取的个数</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.substr(1, 3);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str</span>.substr(<span class="number">1</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为被截取的字符</li>
@@ -709,7 +624,7 @@ str.concat(&#39;red&#39;);<span aria-hidden="true" class="line-numbers-rows"><sp
 <li><p>slice(begin, end)：字符串截取，截取从字符串第begin个索引到第end个索引的字符，不包含索引为end的字符</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.slice(2, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str</span>.slice(<span class="number">2</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为被截取的字符</li>
@@ -721,7 +636,7 @@ str.concat(&#39;red&#39;);<span aria-hidden="true" class="line-numbers-rows"><sp
 <li><p>substring(begin, end)：字符串截取，截取从字符串第begin个索引到第end个索引的字符，不包含索引为end的字符</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.substring(2, 4);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">str</span>.substring(<span class="number">2</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为被截取的字符</li>
@@ -738,13 +653,7 @@ str.concat(&#39;red&#39;);<span aria-hidden="true" class="line-numbers-rows"><sp
 <li><p>num：分割次数。默认为 -1, 即分隔所有</p>
 </li>
 <li><p>注意：返回值为一个<strong>数组</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">str &#x3D; &quot;Line1-abcdef \nLine2-abc \nLine4-abcd&quot;;
-print str.split( );       # 以空格为分隔符，包含 \n
-print str.split(&#39; &#39;, 1 ); # 以空格为分隔符，分隔成两个
-
-&#x2F;&#x2F; 以上输出如下
-&#x2F;&#x2F; [&#39;Line1-abcdef&#39;, &#39;Line2-abc&#39;, &#39;Line4-abcd&#39;]
-&#x2F;&#x2F; [&#39;Line1-abcdef&#39;, &#39;\nLine2-abc \nLine4-abcd&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">&quot;Line1-abcdef \nLine2-abc \nLine4-abcd&quot;</span>;</span><br><span class="line">print str.split( );       <span class="comment"># 以空格为分隔符，包含 \n</span></span><br><span class="line">print str.split(<span class="string">&#x27; &#x27;</span>, <span class="number">1</span> ); <span class="comment"># 以空格为分隔符，分隔成两个</span></span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> 以上输出如下</span><br><span class="line"><span class="regexp">//</span> [<span class="string">&#x27;Line1-abcdef&#x27;</span>, <span class="string">&#x27;Line2-abc&#x27;</span>, <span class="string">&#x27;Line4-abcd&#x27;</span>]</span><br><span class="line"><span class="regexp">//</span> [<span class="string">&#x27;Line1-abcdef&#x27;</span>, <span class="string">&#x27;\nLine2-abc \nLine4-abcd&#x27;</span>]</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -752,21 +661,14 @@ print str.split(&#39; &#39;, 1 ); # 以空格为分隔符，分隔成两个
 <li><p>replace(‘被替换的字符’, ‘替换为的字符’)：替换字符串中指定的字符</p>
 <ol>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">str.replace(&#39;a&#39;, &#39;b&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.<span class="built_in">replace</span>(<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为被替换后的字符串</li>
 </ul>
 </li>
 <li><p>案例：替换敏感词</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  var str &#x3D; &#39;内置对象就是指JS语言自带的一些对象，这些对象供开发者使用，并提供了一些常用的或是最基本而必要的功能(属性和方法)&#39;;
-
-  while (str.indexOf(&#39;些&#39;) !&#x3D;&#x3D; -1) &#123;
-    str &#x3D; str.replace(&#39;些&#39;, &#39;*&#39;);
-  &#125;
-  console.log(str);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">var</span> <span class="built_in">str</span> = <span class="string">&#x27;内置对象就是指JS语言自带的一些对象，这些对象供开发者使用，并提供了一些常用的或是最基本而必要的功能(属性和方法)&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">str</span>.indexOf(<span class="string">&#x27;些&#x27;</span>) !== <span class="number">-1</span>) &#123;</span><br><span class="line">    <span class="built_in">str</span> = <span class="built_in">str</span>.replace(<span class="string">&#x27;些&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(<span class="built_in">str</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -774,8 +676,7 @@ print str.split(&#39; &#39;, 1 ); # 以空格为分隔符，分隔成两个
 <li><p>**split(‘分隔符’)**：将字符串中的字符转换为数组元素，分隔符为需要转换为数组的字符串所带的符号</p>
 <ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &#39;red-green-blue&#39;;
-str.split(&#39;-&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">var</span> <span class="built_in">str</span> = <span class="string">&#x27;red-green-blue&#x27;</span>;</span><br><span class="line"><span class="built_in">str</span>.split(<span class="string">&#x27;-&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>返回值为字符串转换后的数组</li>
@@ -795,8 +696,7 @@ str.split(&#39;-&#39;);<span aria-hidden="true" class="line-numbers-rows"><span>
 <li><p>简单数据类型null，返回的是一个空对象 — object</p>
 </li>
 <li><p>若存在一个变量我们打算存储为对象，却暂时没有想好放什么，这时就可以给null</p>
-<pre class="line-numbers language-none"><code class="language-none">var timer &#x3D; null;
-console.log(typeof timer);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span> timer);</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><ol>
 <li>栈（操作系统）：由操作系统自动分配释放存放函数的参数值，局部变量的值等</li>
@@ -817,29 +717,7 @@ console.log(typeof timer);<span aria-hidden="true" class="line-numbers-rows"><sp
 <li><p>函数的形参也可以看做是一个变量，当我们把引用类型变量传给形参时，实是把变量在栈空间里保存的堆地址复制给了形参，形参和实参其实保存的是同一个堆地址，所以操作的是同一个对象</p>
 </li>
 <li><p>案例</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  function Person(name) &#123;
-    &#x2F;&#x2F; 将栈内存中地址为0xaabbcc指向堆内存中对象p的name属性值改为&#39;刘德华&#39;
-    this.name &#x3D; name;
-  &#125;
-
-  function f1(x) &#123; &#x2F;&#x2F; 这里x在栈内存中的地址为0xaabbcc，指向了堆内存中的对象
-    &#x2F;&#x2F; 输出堆内存中对象的name属性值，因为地址一致，因此地址指向相同，为同一对象
-    console.log(x.name); &#x2F;&#x2F; 第二：输出刘德华
-    &#x2F;&#x2F; 将堆内存中对象的name属性值改为&#39;张学友&#39;
-    x.name &#x3D; &#39;张学友&#39;;
-    console.log(x.name); &#x2F;&#x2F; 第三：输出张学友
-  &#125;
-
-  &#x2F;&#x2F; 创建对象p，将对象p的地址存储进栈内存，假设地址为0xaabbcc；地址指向堆内存中的对象，对象的name属性值为&#39;刘德华&#39;
-  var p &#x3D; new Person(&#39;刘德华&#39;);
-  &#x2F;&#x2F; 通过栈内存中的地址0xaabbcc，找到堆内存中p对象的name属性值
-  console.log(p.name); &#x2F;&#x2F; 第一：输出刘德华
-  &#x2F;&#x2F; 将栈内存中p对象的堆地址0xaabbcc复制给形参
-  f1(p);
-  &#x2F;&#x2F; 此时栈内存中0xaabbcc地址指向的对象属性值已经被更改
-  console.log(p.name); &#x2F;&#x2F; 第四：输出张学友
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">function</span> Person(name) &#123;</span><br><span class="line">    <span class="regexp">//</span> 将栈内存中地址为<span class="number">0</span>xaabbcc指向堆内存中对象p的name属性值改为<span class="string">&#x27;刘德华&#x27;</span></span><br><span class="line">    this.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> f1(x) &#123; <span class="regexp">//</span> 这里x在栈内存中的地址为<span class="number">0</span>xaabbcc，指向了堆内存中的对象</span><br><span class="line">    <span class="regexp">//</span> 输出堆内存中对象的name属性值，因为地址一致，因此地址指向相同，为同一对象</span><br><span class="line">    console.log(x.name); <span class="regexp">//</span> 第二：输出刘德华</span><br><span class="line">    <span class="regexp">//</span> 将堆内存中对象的name属性值改为<span class="string">&#x27;张学友&#x27;</span></span><br><span class="line">    x.name = <span class="string">&#x27;张学友&#x27;</span>;</span><br><span class="line">    console.log(x.name); <span class="regexp">//</span> 第三：输出张学友</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span> 创建对象p，将对象p的地址存储进栈内存，假设地址为<span class="number">0</span>xaabbcc；地址指向堆内存中的对象，对象的name属性值为<span class="string">&#x27;刘德华&#x27;</span></span><br><span class="line">  var p = new Person(<span class="string">&#x27;刘德华&#x27;</span>);</span><br><span class="line">  <span class="regexp">//</span> 通过栈内存中的地址<span class="number">0</span>xaabbcc，找到堆内存中p对象的name属性值</span><br><span class="line">  console.log(p.name); <span class="regexp">//</span> 第一：输出刘德华</span><br><span class="line">  <span class="regexp">//</span> 将栈内存中p对象的堆地址<span class="number">0</span>xaabbcc复制给形参</span><br><span class="line">  f1(p);</span><br><span class="line">  <span class="regexp">//</span> 此时栈内存中<span class="number">0</span>xaabbcc地址指向的对象属性值已经被更改</span><br><span class="line">  console.log(p.name); <span class="regexp">//</span> 第四：输出张学友</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

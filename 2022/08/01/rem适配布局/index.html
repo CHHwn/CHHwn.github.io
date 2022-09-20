@@ -275,9 +275,7 @@
 <li>媒体查询一般按照从大到小或者从小到大的顺序来</li>
 <li>目前针对很多苹果手机、Android手机，平板等设备都用得到多媒体查询</li>
 </ol>
-<h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><pre class="line-numbers language-none"><code class="language-none">@media mediatype and | on | only (media feature) &#125;
-  CSS-code;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h3><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@media</span> mediatype and |<span class="string"> on </span>|<span class="string"> only (media feature) &#125;</span></span><br><span class="line"><span class="string">  CSS-code;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>用@media开头 注意@符号</li>
@@ -341,75 +339,13 @@
 </tbody></table>
 </li>
 <li><p>案例：屏幕尺寸改变屏幕背景颜色</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;head&gt;
-&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-&lt;title&gt;Document&lt;&#x2F;title&gt;
-&lt;style&gt;
-    @media screen and (max-width: 639px) &#123;
-        body &#123;
-            background-color: pink;
-        &#125;
-    &#125;
-
-    @media screen and (min-width: 640px) and (max-width: 799px) &#123;
-        body &#123;
-            background-color: skyblue;
-        &#125;
-    &#125;
-
-    @media screen and (min-width: 800px) &#123;
-        body &#123;
-            background-color: tomato;
-        &#125;
-    &#125;
-&lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">639px</span>) &#123;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">640px</span>) <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">799px</span>) &#123;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">800px</span>) &#123;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: tomato;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="媒体查询-rem实现元素动态大小变化"><a href="#媒体查询-rem实现元素动态大小变化" class="headerlink" title="媒体查询+rem实现元素动态大小变化"></a>媒体查询+rem实现元素动态大小变化</h3><ol>
 <li><p>媒体查询+rem：可以实现不同的设备宽度，实现页面元素大小的动态变化</p>
 </li>
 <li><p>案例：屏幕尺寸改变字体大小</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-
-&lt;head&gt;
-&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-&lt;title&gt;Document&lt;&#x2F;title&gt;
-&lt;style&gt;
-    &#x2F;* 屏幕尺寸小于639px时，html字体大小为50px *&#x2F;
-    @media screen and (max-width: 639px) &#123;
-      html &#123;
-        font-size: 50px;
-      &#125;
-    &#125;
-
-    &#x2F;* 屏幕尺寸大于640px时，html字体大小为100px *&#x2F;
-    @media screen and (min-width: 640px) &#123;
-      html &#123;
-        font-size: 100px;
-      &#125;
-    &#125;
-
-    div &#123;
-        height: 1rem;
-        font-size: .7rem;
-        color: #fff;
-        background-color: skyblue;
-        text-align: center;
-        line-height: 1rem;
-    &#125;
-&lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-
-&lt;body&gt;
-    &lt;div&gt;主页&lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 屏幕尺寸小于639px时，html字体大小为50px */</span></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">639px</span>) &#123;</span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">html</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 屏幕尺寸大于640px时，html字体大小为100px */</span></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">min-width</span>: <span class="number">640px</span>) &#123;</span></span><br><span class="line"><span class="language-css">      <span class="selector-tag">html</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">1rem</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: .<span class="number">7rem</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">color</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">line-height</span>: <span class="number">1rem</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>主页<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="引入资源"><a href="#引入资源" class="headerlink" title="引入资源"></a>引入资源</h3><ol>
 <li><p>当样式比较繁多的时候，我们可以针对不同的媒体使用不同的stylesheets（样式表）</p>
@@ -421,50 +357,7 @@
 <li><p>引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件</p>
 </li>
 <li><p>演示：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-
-    &lt;!-- 建议：媒体查询最好的方法是从小到大
-    引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件 --&gt;
-    &lt;link rel&#x3D;&quot;stylesheet&quot; media&#x3D;&quot;screen and (min-width: 300px)&quot; href&#x3D;&quot;style300.css&quot;&gt;
-    &lt;link rel&#x3D;&quot;stylesheet&quot; media&#x3D;&quot;screen and (min-width: 800px)&quot; href&#x3D;&quot;style800.css&quot;&gt;
-&lt;&#x2F;head&gt;
-
-&lt;body&gt;
-    &lt;div&gt;1&lt;&#x2F;div&gt;
-    &lt;div&gt;2&lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;
-
-&#x2F;* style300.css文件 *&#x2F;
-div &#123;
-    width: 100%;
-    height: 100px;
-&#125;
-div:nth-child(1) &#123;
-    background-color: pink;
-&#125;
-div:nth-child(2) &#123;
-    background-color: skyblue;
-&#125;
-
-&#x2F;* style800.css文件 *&#x2F;
-div &#123;
-    float: left;
-    width: 50%;
-    height: 100px;
-&#125;
-div:nth-child(1) &#123;
-    background-color: pink;
-&#125;
-div:nth-child(2) &#123;
-    background-color: skyblue;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 建议：媒体查询最好的方法是从小到大</span></span><br><span class="line"><span class="comment">    引入资源就是：针对于不同的屏幕尺寸，调用不同的css文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width: 300px)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style300.css&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">media</span>=<span class="string">&quot;screen and (min-width: 800px)&quot;</span> <span class="attr">href</span>=<span class="string">&quot;style800.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">/* style300.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* style800.css文件 */</span><br><span class="line">div &#123;</span><br><span class="line">    float: left;</span><br><span class="line">    width: 50%;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(1) &#123;</span><br><span class="line">    background-color: pink;</span><br><span class="line">&#125;</span><br><span class="line">div:nth-child(2) &#123;</span><br><span class="line">    background-color: skyblue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>语法规范<code>&lt;link rel=&quot;stylesheet&quot; media=&quot;mediatype and|not|only (media feature)&quot; href=&quot;style.css&quot;&gt;</code></p>
 </li>
@@ -557,14 +450,7 @@ div:nth-child(2) &#123;
 </li>
 <li>link：把一个样式文件引入到html页面里面</li>
 </ol>
-<h3 id="body样式"><a href="#body样式" class="headerlink" title="body样式"></a>body样式</h3><pre class="line-numbers language-none"><code class="language-none">body &#123;
-    min-width: 320px;
-    width: 15rem;
-    margin: 0 auto;
-    line-height: 1.5;
-    font-family: Arial, Helvetica;
-    background: #f2f2f2;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="body样式"><a href="#body样式" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">min-width</span>: <span class="number">320px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">15rem</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">    <span class="attribute">font-family</span>: Arial, Helvetica;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#f2f2f2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="新建index-less文件"><a href="#新建index-less文件" class="headerlink" title="新建index.less文件"></a>新建index.less文件</h3><ol>
 <li>新建index.less，用于写首页样式</li>
@@ -585,16 +471,7 @@ div:nth-child(2) &#123;
 <h3 id="引入flexible-js文件"><a href="#引入flexible-js文件" class="headerlink" title="引入flexible.js文件"></a>引入flexible.js文件</h3><ol>
 <li>语法：<code>&lt;script src=&quot;js/flexible.js&quot;&gt;&lt;script&gt;</code></li>
 </ol>
-<h3 id="body样式-1"><a href="#body样式-1" class="headerlink" title="body样式"></a>body样式</h3><pre class="line-numbers language-none"><code class="language-none">body &#123;
-  min-width: 320px;
-  max-width: 750px;
-  &#x2F;* flexible.js给我们划分了10等份 *&#x2F;
-  width: 10rem;
-  margin: 0 auto;
-  line-height: 1.5;
-  font-family: Arial, Helvetica;
-  background: #f2f2f2;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="body样式-1"><a href="#body样式-1" class="headerlink" title="body样式"></a>body样式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">min-width</span>: <span class="number">320px</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">750px</span>;</span><br><span class="line">  <span class="comment">/* flexible.js给我们划分了10等份 */</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">10rem</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: Arial, Helvetica;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#f2f2f2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="cssrem插件px转换为rem"><a href="#cssrem插件px转换为rem" class="headerlink" title="cssrem插件px转换为rem"></a>cssrem插件px转换为rem</h3><ol>
 <li>VScode安装插件重启即可</li>

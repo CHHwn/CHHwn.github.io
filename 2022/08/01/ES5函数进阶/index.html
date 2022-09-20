@@ -292,18 +292,11 @@
 </ol>
 <h3 id="为脚本开启严格模式"><a href="#为脚本开启严格模式" class="headerlink" title="为脚本开启严格模式"></a>为脚本开启严格模式</h3><ol>
 <li><p>有的Script是严格模式，有的Script脚本是正常模式，这样不利于文件合并，所以将整个脚本文件放在一个立即执行的匿名函数之中，这样独立创建一个作用域而不影响其他Script脚本文件</p>
-<pre class="line-numbers language-none"><code class="language-none">(function () &#123;
-    &#39;use strict&#39;;
-    var num &#x3D; 10;
-    function fn() &#123;&#125;
-&#125;) ();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> <span class="params">()</span> &#123;</span><br><span class="line">    <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> num = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">fn</span><span class="params">()</span> &#123;&#125;</span><br><span class="line">&#125;) ();</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="为函数开启严格模式"><a href="#为函数开启严格模式" class="headerlink" title="为函数开启严格模式"></a>为函数开启严格模式</h3><ol>
 <li><p>要给某个函数开启严格模式，需要把’use strict’;声明放在函数体所有语句之前</p>
-<pre class="line-numbers language-none"><code class="language-none">function fn() &#123;
-    &#39;use strict&#39;;
-    &#x2F;&#x2F; 该函数内部以下的代码按照严格模式执行代码
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">    <span class="comment">// 该函数内部以下的代码按照严格模式执行代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="严格模式中的变化"><a href="#严格模式中的变化" class="headerlink" title="严格模式中的变化"></a>严格模式中的变化</h3><ol>
 <li>变量规定<ol>

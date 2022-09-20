@@ -255,41 +255,15 @@
       
         <h1 id="ES6的Array的扩展方法"><a href="#ES6的Array的扩展方法" class="headerlink" title="ES6的Array的扩展方法"></a>ES6的Array的扩展方法</h1><h3 id="扩展运算符（展开语法）"><a href="#扩展运算符（展开语法）" class="headerlink" title="扩展运算符（展开语法）"></a>扩展运算符（展开语法）</h3><ol>
 <li><p>扩展运算符可以将数组或者对象转化为用逗号分隔的参数序列</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  let arr &#x3D; [1, 2, 3, 4];
-  &#x2F;&#x2F; ...arr; 相当于1, 2, 3, 4
-  &#x2F;&#x2F; 因此console.log(...arr);相当于console.log(1, 2, 3, 4);
-  &#x2F;&#x2F; 在输出时，console.log();语句会自动将&#39;,&#39;看作分隔符，因此输出时没有逗号
-  console.log(...arr);
-  &#x2F;&#x2F; console.log(1, 2, 3, 4);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// ...arr; 相当于1, 2, 3, 4</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 因此console.log(...arr);相当于console.log(1, 2, 3, 4);</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 在输出时，console.log();语句会自动将&#x27;,&#x27;看作分隔符，因此输出时没有逗号</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(...arr);</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// console.log(1, 2, 3, 4);</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>扩展运算符可以应用</p>
 <ol>
 <li><p>数组合并</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  let arr1 &#x3D; [1, 2, 3];
-  let arr2 &#x3D; [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;];
-  &#x2F;&#x2F; let arr &#x3D; [...arr1, ...arr2];
-  arr1.push(...arr2);
-  console.log(arr1); &#x2F;&#x2F; [1, 2, 3, &quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> arr2 = [<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;王五&#x27;</span>];</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// let arr = [...arr1, ...arr2];</span></span></span><br><span class="line"><span class="language-javascript">  arr1.<span class="title function_">push</span>(...arr2);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// [1, 2, 3, &quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;]</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将伪数组转化为数组，从而方便的调用数组中的方法</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-    &lt;script&gt;
-        let divs &#x3D; document.querySelectorAll(&#39;div&#39;);
-        console.log(divs); &#x2F;&#x2F; NodeList(5) [div, div, div, div, div]
-        &#x2F;&#x2F; 将伪数组转化为数组 
-        var arr &#x3D; [...divs];
-        console.log(arr); &#x2F;&#x2F; [div, div, div, div, div]
-    &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> divs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;div&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(divs); <span class="comment">// NodeList(5) [div, div, div, div, div]</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 将伪数组转化为数组 </span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> arr = [...divs];</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">// [div, div, div, div, div]</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -297,23 +271,10 @@
 <li><p>将伪数组或可遍历的对象转换为真正的数组（伪数组内必须有length属性）</p>
 </li>
 <li><p>方法返回值为转换完毕后的数组</p>
-<pre class="line-numbers language-none"><code class="language-none">let arrayLink &#x3D; &#123;
-    &#39;0&#39;: &#39;张三&#39;,
-    &#39;1&#39;: &#39;男&#39;,
-    &#39;length&#39;: &#39;2&#39;
-&#125;;
-let arr &#x3D; Array.from(arrayLink);
-console.log(arr);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLink = &#123;</span><br><span class="line">    <span class="string">&#x27;0&#x27;</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;1&#x27;</span>: <span class="string">&#x27;男&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;length&#x27;</span>: <span class="string">&#x27;2&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(arrayLink);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方法还可以接受第二个参数，用来对每个元素进行处理，将处理后的值放入返回的数组</p>
-<pre class="line-numbers language-none"><code class="language-none">let arr1 &#x3D; &#123;
-    &#39;0&#39;: &#39;1&#39;,
-    &#39;1&#39;: &#39;2&#39;,
-    &#39;2&#39;: &#39;3&#39;,
-    &#39;length&#39;: &#39;3&#39;
-&#125;
-var ary &#x3D; Array.from(arr1, item &#x3D;&gt; item * 2);
-console.log(ary);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = &#123;</span><br><span class="line">    <span class="string">&#x27;0&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;1&#x27;</span>: <span class="string">&#x27;2&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;2&#x27;</span>: <span class="string">&#x27;3&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;length&#x27;</span>: <span class="string">&#x27;3&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> ary = <span class="title class_">Array</span>.<span class="title function_">from</span>(arr1, <span class="function"><span class="params">item</span> =&gt;</span> item * <span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ary);</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="实例方法：includes"><a href="#实例方法：includes" class="headerlink" title="实例方法：includes()"></a>实例方法：includes()</h3><ol>
 <li>表示某个数组是否包含给定的值，返回布尔值<ul>

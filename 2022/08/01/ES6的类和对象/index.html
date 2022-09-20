@@ -284,27 +284,7 @@
 </ol>
 <h3 id="类添加方法"><a href="#类添加方法" class="headerlink" title="类添加方法"></a>类添加方法</h3><ol>
 <li><p>类里面的所有的函数都不需要写function</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  &#x2F;&#x2F; 创建类
-  class Star &#123;
-    constructor(uname, age) &#123;
-      this.uname &#x3D; uname;
-      this.age &#x3D; age;
-    &#125;
-
-    sing(song) &#123;
-      console.log(this.uname + song);
-    &#125;
-  &#125;
-
-  &#x2F;&#x2F; 创建对象
-  var ldh &#x3D; new Star(&quot;刘德华&quot;, 45);
-  var zxy &#x3D; new Star(&quot;张学友&quot;, 50);
-  ldh.sing(&quot;冰雨&quot;);
-  zxy.sing(&quot;李香兰&quot;);
-  console.log(ldh);
-  console.log(ldh.uname);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 创建类</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">class</span> <span class="title class_">Star</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">constructor</span>(<span class="params">uname, age</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">uname</span> = uname;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">age</span> = age;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">sing</span>(<span class="params">song</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">uname</span> + song);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// 创建对象</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> ldh = <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&quot;刘德华&quot;</span>, <span class="number">45</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> zxy = <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&quot;张学友&quot;</span>, <span class="number">50</span>);</span></span><br><span class="line"><span class="language-javascript">  ldh.<span class="title function_">sing</span>(<span class="string">&quot;冰雨&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  zxy.<span class="title function_">sing</span>(<span class="string">&quot;李香兰&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ldh);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ldh.<span class="property">uname</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="在类中调用函数"><a href="#在类中调用函数" class="headerlink" title="在类中调用函数"></a>在类中调用函数</h3><ol>
 <li>在类中调用函数，调用函数时，若不需要函数在页面加载后马上调用，则利用this.函数名进行调用，<strong>在后面不要加上括号，否则函数会在页面加载后立即执行</strong><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211008000651.png" alt="img"></li>
@@ -317,36 +297,7 @@
 </li>
 <li><p>super必须在子类this之前调用</p>
 <p>（必须先调用父类的构造方法，再使用子类的构造方法）</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  class Father &#123;
-    constructor(x, y) &#123;
-      this.x &#x3D; x;
-      this.y &#x3D; y;
-    &#125;
-
-    sum() &#123;
-      &#x2F;&#x2F; 这里的参数必须是父类传过来的才能进行相加
-      console.log(this.x + this.y);
-    &#125;
-  &#125;
-
-  class Son extends Father &#123; &#x2F;&#x2F; 继承父类
-    constructor(x, y) &#123;
-      &#x2F;&#x2F; super必须在子类this之前调用
-      super(x, y); &#x2F;&#x2F; 调用了父类中的构造函数和普通函数
-      &#x2F;&#x2F; this.x &#x3D; x;
-      &#x2F;&#x2F; this.y &#x3D; y;  &#x2F;&#x2F; 这里的x和y指向子类
-    &#125;
-
-    subtract() &#123;
-      console.log(this.x - this.y);
-    &#125;
-  &#125;
-
-  var son &#x3D; new Son(11, 22);
-  son.sum(); &#x2F;&#x2F; 33
-  son.subtract(); &#x2F;&#x2F; -11
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">constructor</span>(<span class="params">x, y</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">x</span> = x;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">y</span> = y;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">sum</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 这里的参数必须是父类传过来的才能进行相加</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">x</span> + <span class="variable language_">this</span>.<span class="property">y</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Father</span> &#123; <span class="comment">// 继承父类</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">constructor</span>(<span class="params">x, y</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// super必须在子类this之前调用</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">super</span>(x, y); <span class="comment">// 调用了父类中的构造函数和普通函数</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// this.x = x;</span></span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// this.y = y;  // 这里的x和y指向子类</span></span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">subtract</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">x</span> - <span class="variable language_">this</span>.<span class="property">y</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> son = <span class="keyword">new</span> <span class="title class_">Son</span>(<span class="number">11</span>, <span class="number">22</span>);</span></span><br><span class="line"><span class="language-javascript">  son.<span class="title function_">sum</span>(); <span class="comment">// 33</span></span></span><br><span class="line"><span class="language-javascript">  son.<span class="title function_">subtract</span>(); <span class="comment">// -11</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>继承中，如果实例化子类输出一个方法，先看子类有没有这个方法，如果有就先执行子类的；如果子类里面没有，就去查找父类有没有这个方法，如果有，就执行父类的这个方法（就近原则）</p>
 </li>
@@ -361,45 +312,7 @@
 <li><p><strong>constructor里面的this指向的是创建的实例对象，方法里面的this指向这个方法的调用者</strong></p>
 </li>
 <li><p>小技巧：当一个类的方法中需要使用指向实例对象的this，但是由于方法里面的this指向这个方法的调用者，因此可以定义一个全局变量that，将constructor里面指向实例对象的this赋值给that，这样方法就可以通过that使用指向实例对象的this，见下图白框内容</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-  &lt;button&gt;按钮&lt;&#x2F;button&gt;
-  &lt;script&gt;
-    var that;
-    class Star &#123;
-      constructor(uname, age) &#123;
-        &#x2F;&#x2F; this指向的是创建的实例对象，将实例对象赋值给that
-        &#x2F;&#x2F; 这样that指向的也是创建的实例对象
-        that &#x3D; this;
-        &#x2F;&#x2F; constructor里面的this指向的是创建的实例对象
-        this.uname &#x3D; uname;
-        this.age &#x3D; age;
-        this.btn &#x3D; document.querySelector(&quot;button&quot;);
-        &#x2F;&#x2F; 这里调用sing函数，在sing后面没有加括号
-        &#x2F;&#x2F; 因为这个函数是在btn被点击后才调用，因此不加括号
-        &#x2F;&#x2F; 若在sing后面加上括号，则表示页面一经加载，则函数立即调用
-        this.btn.onclick &#x3D; this.sing;
-      &#125;
-      sing() &#123;
-        &#x2F;&#x2F; 输出&lt;button&gt;按钮&lt;&#x2F;button&gt;
-        &#x2F;&#x2F; 方法里面的this指向这个方法的调用者，因为sing函数是被btn调用的，this指向btn
-        console.log(this);
-
-        &#x2F;&#x2F; 输出undefined，因为btn没有uname属性
-        console.log(this.uname);
-
-        &#x2F;&#x2F; that里面存储的是constructor里面的this
-        &#x2F;&#x2F; 因此输出&quot;刘德华&quot;
-        console.log(that.uname);
-      &#125;
-      song() &#123;
-        console.log(this); &#x2F;&#x2F; 输出ldh的实例对象 Star&#123;&#125;，因为song方法是实例对象ldh调用
-      &#125;
-    &#125;
-
-    var ldh &#x3D; new Star(&quot;刘德华&quot;, 47);
-    ldh.song();
-  &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> that;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">class</span> <span class="title class_">Star</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">constructor</span>(<span class="params">uname, age</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// this指向的是创建的实例对象，将实例对象赋值给that</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 这样that指向的也是创建的实例对象</span></span></span><br><span class="line"><span class="language-javascript">        that = <span class="variable language_">this</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// constructor里面的this指向的是创建的实例对象</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">uname</span> = uname;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">age</span> = age;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">btn</span> = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;button&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 这里调用sing函数，在sing后面没有加括号</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 因为这个函数是在btn被点击后才调用，因此不加括号</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 若在sing后面加上括号，则表示页面一经加载，则函数立即调用</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">btn</span>.<span class="property">onclick</span> = <span class="variable language_">this</span>.<span class="property">sing</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">sing</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 输出&lt;button&gt;按钮&lt;/button&gt;</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 方法里面的this指向这个方法的调用者，因为sing函数是被btn调用的，this指向btn</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 输出undefined，因为btn没有uname属性</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">uname</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// that里面存储的是constructor里面的this</span></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 因此输出&quot;刘德华&quot;</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(that.<span class="property">uname</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">song</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>); <span class="comment">// 输出ldh的实例对象 Star&#123;&#125;，因为song方法是实例对象ldh调用</span></span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> ldh = <span class="keyword">new</span> <span class="title class_">Star</span>(<span class="string">&quot;刘德华&quot;</span>, <span class="number">47</span>);</span></span><br><span class="line"><span class="language-javascript">    ldh.<span class="title function_">song</span>();</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>

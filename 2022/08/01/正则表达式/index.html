@@ -459,13 +459,7 @@
 </ol>
 <h2 id="利用正则表达式进行搜索"><a href="#利用正则表达式进行搜索" class="headerlink" title="利用正则表达式进行搜索"></a>利用正则表达式进行搜索</h2><h3 id="match-方法"><a href="#match-方法" class="headerlink" title="match()方法"></a>match()方法</h3><ol>
 <li><p>使用match()方法进行字符串查找，相比于includes()区分大小写（见ES6-Array的扩展方法），可以<strong>根据参数来决定是否区分大小写</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 创建一个正则表达式对象
-&#x2F;&#x2F; 参数一：需要匹配的字符串；参数二：i -- 不区分大小写 g -- 全局匹配
-var reg &#x3D; new RegExp(&quot;huawei&quot;, &#39;ig&#39;);
-var agent &#x3D; &#123;[], [], []&#125;
-&#x2F;&#x2F; 被搜索的对象
-&#x2F;&#x2F; reg：正则表达式
-var isHuawei &#x3D; agent.match(reg);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个正则表达式对象</span></span><br><span class="line"><span class="comment">// 参数一：需要匹配的字符串；参数二：i -- 不区分大小写 g -- 全局匹配</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;huawei&quot;</span>, <span class="string">&#x27;ig&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> agent = &#123;[], [], []&#125;</span><br><span class="line"><span class="comment">// 被搜索的对象</span></span><br><span class="line"><span class="comment">// reg：正则表达式</span></span><br><span class="line"><span class="keyword">var</span> isHuawei = agent.match(reg);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>两者区别</p>
 <ol>

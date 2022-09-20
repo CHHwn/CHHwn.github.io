@@ -391,7 +391,7 @@
 <li><p>对应loader的安装方法在webpack的官网中的loader文档中有详细说明</p>
 </li>
 <li><p>其他需要使用到的loader都可以在webpack官网中根据文档进行安装，比如less与less-loader，安装指令为：</p>
-<pre class="line-numbers language-none"><code class="language-none">npm install less less-loader --save-dev    <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="keyword">less</span> <span class="keyword">less</span>-loader --save-dev    </span><br></pre></td></tr></table></figure>
 
 <h3 id="处理图片文件的loader"><a href="#处理图片文件的loader" class="headerlink" title="处理图片文件的loader"></a>处理图片文件的loader</h3></li>
 <li><p>资源准备</p>
@@ -473,7 +473,7 @@
 <li>将子组件放入.vue文件中，将template模板、js文件都放入其中，在vue文件中还可以书写css样式<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004038.png" alt="img"></li>
 </ol>
 </li>
-<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#118;&#117;&#101;&#45;&#x6c;&#x6f;&#97;&#100;&#101;&#114;&#x40;&#49;&#x33;&#46;&#x30;&#46;&#x30;">&#118;&#117;&#101;&#45;&#x6c;&#x6f;&#97;&#100;&#101;&#114;&#x40;&#49;&#x33;&#46;&#x30;&#46;&#x30;</a> <a href="mailto:&#x76;&#117;&#101;&#45;&#x74;&#x65;&#x6d;&#112;&#108;&#x61;&#x74;&#x65;&#x2d;&#99;&#111;&#109;&#112;&#105;&#108;&#x65;&#x72;&#x40;&#x32;&#46;&#x36;&#x2e;&#x31;&#x34;">&#x76;&#117;&#101;&#45;&#x74;&#x65;&#x6d;&#112;&#108;&#x61;&#x74;&#x65;&#x2d;&#99;&#111;&#109;&#112;&#105;&#108;&#x65;&#x72;&#x40;&#x32;&#46;&#x36;&#x2e;&#x31;&#x34;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
+<li>将子组件在vue文件中书写完毕并导出后，在main.js中进行引入<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004106.png" alt="img">1. 此时进行npm run build会报错，因为没有安装vue-loader和vue-template-compiler，注意版本问题！ - npm install <a href="mailto:&#118;&#117;&#x65;&#45;&#108;&#x6f;&#x61;&#100;&#x65;&#114;&#x40;&#x31;&#51;&#x2e;&#48;&#x2e;&#x30;">&#118;&#117;&#x65;&#45;&#108;&#x6f;&#x61;&#100;&#x65;&#114;&#x40;&#x31;&#51;&#x2e;&#48;&#x2e;&#x30;</a> <a href="mailto:&#x76;&#117;&#101;&#x2d;&#116;&#101;&#x6d;&#112;&#x6c;&#x61;&#x74;&#x65;&#x2d;&#x63;&#111;&#x6d;&#x70;&#x69;&#108;&#101;&#114;&#64;&#x32;&#x2e;&#54;&#x2e;&#x31;&#52;">&#x76;&#117;&#101;&#x2d;&#116;&#101;&#x6d;&#112;&#x6c;&#x61;&#x74;&#x65;&#x2d;&#x63;&#111;&#x6d;&#x70;&#x69;&#108;&#101;&#114;&#64;&#x32;&#x2e;&#54;&#x2e;&#x31;&#52;</a> –save-dev 2. 配置webpack.config.js文件<img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211011004126.png" alt="img">3. 配置成功</li>
 </ol>
 <h3 id="打包html的plugin"><a href="#打包html的plugin" class="headerlink" title="打包html的plugin"></a>打包html的plugin</h3><ol>
 <li><p>目前，index.html文件是存放在项目根目录的</p>

@@ -475,9 +475,7 @@
 </tbody></table>
 </li>
 <li><p>注意：可以通过设置以下方式修改placehoder里面的字体颜色</p>
-<pre class="line-numbers language-none"><code class="language-none">input::placeholder &#123;
-  color: pink;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::placeholder</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h1 id="CSS3新特性"><a href="#CSS3新特性" class="headerlink" title="CSS3新特性"></a>CSS3新特性</h1><h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><ol>
 <li>属性选择器，按照字面意思，都是根据标签中的属性来选择元素</li>
@@ -644,13 +642,13 @@
 <li><p>filter: CSS属性将模糊或颜色偏移等图形效果应用于元素</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">filter:函数(); --&gt; 例如:filter: blur(5px); --&gt; blur模糊处理数值越大越模糊<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">filter</span>:函数(); --&gt; 例如:filter: <span class="built_in">blur</span>(<span class="number">5px</span>); --&gt; blur模糊处理数值越大越模糊</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="CSS3的calc函数"><a href="#CSS3的calc函数" class="headerlink" title="CSS3的calc函数"></a>CSS3的calc函数</h3><ol>
 <li><p>calc():此CSS函数让你在声明CSS属性值时执行一些计算</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">width: calc(100% - 80px);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> - <span class="number">80px</span>);</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>括号里面可以使用 + - *  &#x2F; 来进行计算</p>
 <h2 id="CSS3过渡（重点）"><a href="#CSS3过渡（重点）" class="headerlink" title="CSS3过渡（重点）"></a>CSS3过渡（重点）</h2><ol>
@@ -661,7 +659,7 @@
 <li><p>我们现在经常和:hover 一起 搭配使用。</p>
 </li>
 <li><p>语法：</p>
-<pre class="line-numbers language-none"><code class="language-none">transition: 要过渡的属性  花费时间  运动曲线  何时开始;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition</span>: 要过渡的属性  花费时间  运动曲线  何时开始;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>属性值</p>
 <ol>
@@ -676,37 +674,7 @@
 <li><p>后面两个属性可以省略</p>
 </li>
 <li><p>记住过渡的使用口诀：谁做过渡给谁加</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        div &#123;
-            width: 200px;
-            height: 80px;
-            background-color: pink;
-            &#x2F;* transition: width 1s; *&#x2F;
-            &#x2F;* 想要写多个属性，则用逗号进行分隔 *&#x2F;
-            transition: width 1s, hight 1s;
-            &#x2F;* 所有的属性都需要变化过渡,则属性值为all,开发中常用 *&#x2F;
-            transition: all 1s;
-            border-top-right-radius: 100px;
-            border-bottom-right-radius: 100px;
-        &#125;
-        div:hover &#123;
-            width: 700px;
-            height: 300px;
-            background-color: skyblue;
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">80px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transition: width 1s; */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 想要写多个属性，则用逗号进行分隔 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: width <span class="number">1s</span>, hight <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 所有的属性都需要变化过渡,则属性值为all,开发中常用 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border-top-right-radius</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border-bottom-right-radius</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">700px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -736,19 +704,7 @@
 </ol>
 </li>
 <li><p>例：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-    div &#123;
-        width: 200px;
-        height: 200px;
-        background-color: skyblue;
-        &#x2F;* transform：translate(x,y); *&#x2F;
-        transform: translate(100px, 100px);
-        &#x2F;* transform: translateX(n); *&#x2F;
-        transform: translateX(100px);
-        &#x2F;* transform: translateY(n); *&#x2F;
-        transform: translateY(100px);
-    &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* transform：translate(x,y); */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">100px</span>, <span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* transform: translateX(n); */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* transform: translateY(n); */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重点：</p>
 <ol>
@@ -759,39 +715,7 @@
 </ol>
 </li>
 <li><p>小技巧：让盒子实现水平垂直居中</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        div &#123;
-            position: relative;
-            width: 500px;
-            height: 500px;
-            background-color: skyblue;
-        &#125;
-        p &#123;
-            position: absolute;
-            &#x2F;* 定位 *&#x2F;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background-color: pink;
-            &#x2F;* 移动 *&#x2F;
-            transform: translate(-50%, -50%);
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div&gt;
-        &lt;p&gt;&lt;&#x2F;p&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">500px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">p</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 定位 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">top</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">left</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 移动 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="转换之2D旋转rotate"><a href="#转换之2D旋转rotate" class="headerlink" title="转换之2D旋转rotate"></a>转换之2D旋转rotate</h2><ol>
 <li><p>2D旋转是指让元素在2维平面内顺时针旋转或者逆时针旋转</p>
@@ -809,31 +733,7 @@
 </ol>
 </li>
 <li><p>例：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        img &#123;
-            width: 200px;
-            height: 200px;
-            border: 2px solid pink;
-            border-radius: 100px;
-            transition: all 1s;
-        &#125;
-        img:hover &#123;
-            &#x2F;* rotate旋转 *&#x2F;
-            transform: rotate(360deg);
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;img src&#x3D;&quot;..&#x2F;..&#x2F;images&#x2F;fat.png&quot; alt&#x3D;&quot;&quot;&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border</span>: <span class="number">2px</span> solid pink;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">border-radius</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* rotate旋转 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../../images/fat.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>2D转换中心点transform-origin</p>
 <ol>
@@ -850,34 +750,7 @@
 </ul>
 </li>
 <li><p>例</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        div &#123;
-            width: 100px;
-            height: 100px;
-            background-color: skyblue;
-            margin: 200px auto;
-            transition: all 1s;
-            &#x2F;* 旋转中心点为左下角 *&#x2F;
-            transform-origin: left bottom;
-            &#x2F;* 旋转中心点为距离盒子上边框和左边框各30px *&#x2F;
-            transform-origin: 30px 30px;
-        &#125;
-        div:hover &#123;
-            transform: rotate(360deg)
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">200px</span> auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 旋转中心点为左下角 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform-origin</span>: left bottom;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* 旋转中心点为距离盒子上边框和左边框各30px */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform-origin</span>: <span class="number">30px</span> <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">360deg</span>)</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -900,35 +773,7 @@
 </ol>
 </li>
 <li><p>演示：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-    &lt;title&gt;Document&lt;&#x2F;title&gt;
-    &lt;style&gt;
-        div &#123;
-            width: 200px;
-            height: 200px;
-            background-color: skyblue;
-            margin: 100px auto;
-            transition: all 1s;
-        &#125;
-        div:hover &#123;
-            &#x2F;* transform: scale(2, 2)：宽和高都放大了2倍 *&#x2F;
-            &#x2F;* transform: scale(2, 2); *&#x2F;
-            &#x2F;* transform: scale(2)：只写一个参数，第二个参数则和第一个参数一样，相当于scale(2, 2) *&#x2F;
-            &#x2F;* transform: scale(2); *&#x2F;
-            &#x2F;* transform: scale(0.5, 0.5)：缩小 *&#x2F;
-            transform: scale(0.5, 0.5);
-        &#125;
-    &lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div&gt;&lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transform: scale(2, 2)：宽和高都放大了2倍 */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transform: scale(2, 2); */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transform: scale(2)：只写一个参数，第二个参数则和第一个参数一样，相当于scale(2, 2) */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transform: scale(2); */</span></span></span><br><span class="line"><span class="language-css">            <span class="comment">/* transform: scale(0.5, 0.5)：缩小 */</span></span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>, <span class="number">0.5</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="2D转换综合写法"><a href="#2D转换综合写法" class="headerlink" title="2D转换综合写法"></a>2D转换综合写法</h2><ol>
 <li><p>注意</p>
@@ -941,17 +786,7 @@
 <li><p>其顺序会影响转换的效果（先旋转会改变坐标轴的方向）</p>
 </li>
 <li><p>当我们同时有位移和其他属性的时候，记得要将位移放到最前面</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-    div &#123;
-        width: 150px;
-        height: 150px;
-        background-color: pink;
-        transition: all 0.5s;
-    &#125;
-    div:hover &#123;
-        transform: translate(200px, 100px) rotate(180deg) scale(1.5);
-    &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">150px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">150px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: all <span class="number">0.5s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">200px</span>, <span class="number">100px</span>) <span class="built_in">rotate</span>(<span class="number">180deg</span>) <span class="built_in">scale</span>(<span class="number">1.5</span>);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -969,55 +804,11 @@
 <li>动画是使元素从一种样式逐渐变化为另一种样式的效果，可以改变任意多的样式任意多的次数</li>
 <li>请用百分比来规定变化发生的时间，或者关键词”from”和”to”，等同于0%和100%</li>
 </ol>
-<h3 id="用keyframes定义动画（类似定义类选择器）"><a href="#用keyframes定义动画（类似定义类选择器）" class="headerlink" title="用keyframes定义动画（类似定义类选择器）"></a>用keyframes定义动画（类似定义类选择器）</h3><pre class="line-numbers language-none"><code class="language-none">@keyframes 动画名称 &#123;
-  0% &#123;
-    width: 100px;
-  &#125;
-  100% &#123;
-    width: 200px;
-  &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="用keyframes定义动画（类似定义类选择器）"><a href="#用keyframes定义动画（类似定义类选择器）" class="headerlink" title="用keyframes定义动画（类似定义类选择器）"></a>用keyframes定义动画（类似定义类选择器）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> 动画名称 &#123;</span><br><span class="line">  <span class="number">0%</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="number">100%</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="元素使用动画"><a href="#元素使用动画" class="headerlink" title="元素使用动画"></a>元素使用动画</h3><pre class="line-numbers language-none"><code class="language-none">div &#123;
-  width: 200px;
-  height: 200px;
-  background-color: aqua;
-  margin: 100px auto;
-  &#x2F;* 调用动画 *&#x2F;
-  animation-name: 动画名称；
-  &#x2F;* 持续时间 *&#x2F;
-  animation-duration: 持续时间； 
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="元素使用动画"><a href="#元素使用动画" class="headerlink" title="元素使用动画"></a>元素使用动画</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: aqua;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span><br><span class="line">  <span class="comment">/* 调用动画 */</span></span><br><span class="line">  <span class="attribute">animation-name</span>: 动画名称；</span><br><span class="line">  <span class="comment">/* 持续时间 */</span></span><br><span class="line">  animation-duration: 持续时间； </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-    &#x2F;* 定义动画 *&#x2F;
-    @keyframes move &#123;
-        0% &#123;
-            transform: translate(0, 0);
-        &#125;
-        25% &#123;
-            transform: translate(800px, 0);
-        &#125;
-        50% &#123;
-            transform: translate(800px, 500px);
-        &#125;
-        75% &#123;
-            transform: translate(0, 500px);
-        &#125;
-        100% &#123;
-            transform: translate(0, 0);
-        &#125;
-    &#125;
-    div &#123;
-        width: 100px;
-        height: 100px;
-        background-color: pink;
-        &#x2F;* 调用动画 *&#x2F;
-        animation-name: move;
-        &#x2F;* 持续时间 *&#x2F;
-        animation-duration: 8s;
-    &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 定义动画 */</span></span></span><br><span class="line"><span class="language-css">    <span class="keyword">@keyframes</span> move &#123;</span></span><br><span class="line"><span class="language-css">        <span class="number">0%</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="number">25%</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">800px</span>, <span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="number">50%</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">800px</span>, <span class="number">500px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="number">75%</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">500px</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="number">100%</span> &#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 调用动画 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">animation-name</span>: move;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 持续时间 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">animation-duration</span>: <span class="number">8s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="动画常见属性"><a href="#动画常见属性" class="headerlink" title="动画常见属性"></a>动画常见属性</h2><table>
 <thead>
@@ -1069,39 +860,7 @@
 </tbody></table>
 <ol>
 <li><p>例：</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-  @keyframes move &#123;
-      0% &#123;
-          transform: translateX(0, 0);
-      &#125;
-      100% &#123;
-          transform: translate(1000px);
-      &#125;
-  &#125;
-  div &#123;
-      width: 100px;
-      height: 100px;
-      background-color: pink;
-      &#x2F;* @keyframes动画的名称 *&#x2F;
-      animation-name: move;
-      &#x2F;* 规定动画完成一个周期所花费的秒或毫秒，默认是0 *&#x2F;
-      animation-duration: 3s;
-      &#x2F;* 规定动画的速度曲线，默认是“ease” *&#x2F;
-      animation-timing-function: ease;
-      &#x2F;* 规定动画何时开始，默认是0 *&#x2F;
-      animation-delay: 2s;
-      &#x2F;* 规定动画被播放次数，默认是1，还有infinite(无限) *&#x2F;
-      animation-iteration-count: 3;
-      &#x2F;* 规定动画是否在下一周期逆向播放，默认是“normal”，“alternate”为逆向播放 *&#x2F;
-      animation-direction: alternate;
-      &#x2F;* 规定动画结束购状态，保持forward，回到起始backwards *&#x2F;
-      animation-fill-mode: backwards;
-  &#125;
-  div:hover &#123;
-      &#x2F;* 规定动画是否正在运行或暂停。默认是运行“running”，暂停“paused” *&#x2F;
-      animation-play-state: paused;
-  &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="keyword">@keyframes</span> move &#123;</span></span><br><span class="line"><span class="language-css">      <span class="number">0%</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">0</span>, <span class="number">0</span>);</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="number">100%</span> &#123;</span></span><br><span class="line"><span class="language-css">          <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">1000px</span>);</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* @keyframes动画的名称 */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-name</span>: move;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画完成一个周期所花费的秒或毫秒，默认是0 */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-duration</span>: <span class="number">3s</span>;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画的速度曲线，默认是“ease” */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-timing-function</span>: ease;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画何时开始，默认是0 */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-delay</span>: <span class="number">2s</span>;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画被播放次数，默认是1，还有infinite(无限) */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-iteration-count</span>: <span class="number">3</span>;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画是否在下一周期逆向播放，默认是“normal”，“alternate”为逆向播放 */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-direction</span>: alternate;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画结束购状态，保持forward，回到起始backwards */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-fill-mode</span>: backwards;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">      <span class="comment">/* 规定动画是否正在运行或暂停。默认是运行“running”，暂停“paused” */</span></span></span><br><span class="line"><span class="language-css">      <span class="attribute">animation-play-state</span>: paused;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="动画简写"><a href="#动画简写" class="headerlink" title="动画简写"></a>动画简写</h3><ol>
 <li>animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 动画起始或者结束的状态;</li>
@@ -1163,22 +922,7 @@
 <li><p>transform: translateZ(100px)：在z轴上移动(注意：translateZ一般用px单位)</p>
 </li>
 <li><p>transform: translate3d(x, y, z)：其中x, y, z分别指移动的轴的方向的距离</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-div &#123;
-    width: 100px;
-    height: 100px;
-    background-color: pink;
-    margin: 200px auto;
-    &#x2F;* 在x轴上移动 *&#x2F;
-    transform: translateX(100px);
-    &#x2F;* 在y轴上移动 *&#x2F;
-    transform: translateY(100px);
-    &#x2F;* 在z轴上移动(注意：translateZ一般用px单位) *&#x2F;
-    transform: translateZ(100px);
-    &#x2F;* 其中x, y, z分别指移动的轴的方向的距离 *&#x2F;
-    transform: translate3d(50px, 50px, 50px)
-&#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin</span>: <span class="number">200px</span> auto;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 在x轴上移动 */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 在y轴上移动 */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 在z轴上移动(注意：translateZ一般用px单位) */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 其中x, y, z分别指移动的轴的方向的距离 */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(<span class="number">50px</span>, <span class="number">50px</span>, <span class="number">50px</span>)</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -1190,19 +934,7 @@ div &#123;
 <li><p>透视的单位是像素</p>
 </li>
 <li><p>透视写在被观察元素的父盒子上面</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-    body &#123;
-        &#x2F;* 透视写在被观察元素的父盒子上面 *&#x2F;
-        perspective: 200px;
-    &#125;
-    div &#123;
-        width: 100px;
-        height: 100px;
-        background-color: pink;
-        margin: 200px auto;
-        transform: translateZ(100px);
-    &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 透视写在被观察元素的父盒子上面 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">perspective</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">200px</span> auto;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(<span class="number">100px</span>);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>d：视距（透视），视距就是一个距离，人的眼睛到屏幕的距离</li>
@@ -1227,30 +959,7 @@ div &#123;
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">&lt;style&gt;
-    body &#123;
-        &#x2F;* 透视写在被观察元素的父盒子上面 *&#x2F;
-        perspective: 300px;
-    &#125;
-    div &#123;
-        width: 320px;
-        height: 250px;
-        margin: 200px auto;
-        transition: all 1s;
-    &#125;
-    img &#123;
-        width: 100%;
-        height: 100%;
-    &#125;
-    div:hover &#123;
-        &#x2F;* 沿着x轴正方向旋转45度 *&#x2F;
-        transform: rotateX(360deg);
-        &#x2F;* 沿着y轴正方向旋转45度 *&#x2F;
-        transform: rotateY(360deg);
-        &#x2F;* 沿着z轴正方向旋转45度 *&#x2F;
-        transform: rotateZ(360deg);
-    &#125;
-&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 透视写在被观察元素的父盒子上面 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">perspective</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">320px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">250px</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">margin</span>: <span class="number">200px</span> auto;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css">    <span class="selector-tag">div</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 沿着x轴正方向旋转45度 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 沿着y轴正方向旋转45度 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">        <span class="comment">/* 沿着z轴正方向旋转45度 */</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">transform</span>: <span class="built_in">rotateZ</span>(<span class="number">360deg</span>);</span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="3D呈现transform-style"><a href="#3D呈现transform-style" class="headerlink" title="3D呈现transform-style"></a>3D呈现transform-style</h2><ol>
 <li><p>控制子元素是否开启三维立体环境</p>
@@ -1264,52 +973,7 @@ div &#123;
 <li><p>这个属性很重要，后面必用</p>
 </li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-&lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;
-&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
-&lt;title&gt;Document&lt;&#x2F;title&gt;
-&lt;style&gt;
-body &#123;
-    perspective: 300px;
-&#125;
-.box &#123;
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 100px auto;
-    transition: all 1s;
-    &#x2F;* 代码写给父级，但是影响的是子盒子 *&#x2F;
-    transform-style: preserve-3d;
-&#125;
-.box:hover &#123;
-    transform: rotateY(60deg);
-&#125;
-.box div &#123;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-&#125;
-.one &#123;
-    background-color: pink;
-&#125;
-.two &#123;
-    background-color: skyblue;
-    transform: rotateX(60deg);
-&#125;
-&lt;&#x2F;style&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
-    &lt;div class&#x3D;&quot;box&quot;&gt;
-        &lt;div class&#x3D;&quot;one&quot;&gt;&lt;&#x2F;div&gt;
-        &lt;div class&#x3D;&quot;two&quot;&gt;&lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;body&gt;
-&lt;&#x2F;html&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">perspective</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin</span>: <span class="number">100px</span> auto;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transition</span>: all <span class="number">1s</span>;</span></span><br><span class="line"><span class="language-css">    <span class="comment">/* 代码写给父级，但是影响的是子盒子 */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">60deg</span>);</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.box</span> <span class="selector-tag">div</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">left</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.one</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-class">.two</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: skyblue;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">rotateX</span>(<span class="number">60deg</span>);</span></span><br><span class="line"><span class="language-css">&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
     </div>
 

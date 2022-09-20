@@ -255,39 +255,13 @@
       
         <h1 id="ES6剩余参数"><a href="#ES6剩余参数" class="headerlink" title="ES6剩余参数"></a>ES6剩余参数</h1><ol>
 <li><p>剩余参数：当实参个数大于形参个数时，将剩余的不定数量的参数表示为一个数组</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  const fn &#x3D; (first, ...args) &#x3D;&gt; &#123;
-    console.log(first); &#x2F;&#x2F; 1
-    &#x2F;&#x2F; args为一个数组
-    console.log(args); &#x2F;&#x2F; [2, 3, 4]
-    console.log(...args); &#x2F;&#x2F; 2 3 4
-  &#125;
-  fn(1, 2, 3, 4);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const fn = <span class="function">(<span class="params"><span class="built_in">first</span>, ...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">first</span>); <span class="comment">// 1</span></span><br><span class="line">    <span class="comment">// args为一个数组</span></span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(args); <span class="comment">// [2, 3, 4]</span></span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(...args); <span class="comment">// 2 3 4</span></span><br><span class="line">  &#125;</span><br><span class="line">  fn(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>例：求任意个数据相加之和</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  const sum &#x3D; (...args) &#x3D;&gt; &#123;
-    let result &#x3D; 0;
-    &#x2F;&#x2F; 遍历数组
-    args.forEach(value &#x3D;&gt; result +&#x3D; value)
-    &#x2F;&#x2F; args.forEach((value) &#x3D;&gt; &#123;
-    &#x2F;&#x2F;     result +&#x3D; value;
-    &#x2F;&#x2F; &#125;)
-    return result;
-  &#125;
-  console.log(sum(10, 20, 30)); &#x2F;&#x2F; 60
-  console.log(sum(10, 20, 30, 40)); &#x2F;&#x2F; 100
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  const <span class="built_in">sum</span> = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    let result = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 遍历数组</span></span><br><span class="line">    args.forEach(<span class="function"><span class="params">value</span> =&gt;</span> result += value)</span><br><span class="line">    <span class="comment">// args.forEach((value) =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     result += value;</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">sum</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>)); <span class="comment">// 60</span></span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">sum</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>)); <span class="comment">// 100</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>剩余参数与解构配合使用</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  let arr &#x3D; [&#39;张三&#39;, &#39;李四&#39;, &#39;王五&#39;];
-  let [arr1, ...arr2] &#x3D; arr;
-  console.log(arr1); &#x2F;&#x2F; 张三
-  &#x2F;&#x2F; arr2为数组
-  console.log(arr2); &#x2F;&#x2F; Array(2) [&#39;李四&#39;, &#39;王五&#39;]
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> arr = [<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;王五&#x27;</span>];</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> [arr1, ...arr2] = arr;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// 张三</span></span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// arr2为数组</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr2); <span class="comment">// Array(2) [&#x27;李四&#x27;, &#x27;王五&#x27;]</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

@@ -261,18 +261,12 @@
 <li><p>模板字符串的特点</p>
 <ol>
 <li><p>模板字符串中可以解析变量</p>
-<pre class="line-numbers language-none"><code class="language-none">let name &#x3D; &#96;张三&#96;;
-let sayHello &#x3D; &#96;你好啊，我的朋友$&#123;name&#125;&#96;;
-console.log(sayHello); &#x2F;&#x2F; 你好啊，我的朋友张三<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">`张三`</span>;</span><br><span class="line"><span class="keyword">let</span> sayHello = <span class="string">`你好啊，我的朋友<span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sayHello); <span class="comment">// 你好啊，我的朋友张三</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>模板字符串中可以实现换行</p>
 </li>
 <li><p>在模板字符串中可以调用函数</p>
-<pre class="line-numbers language-none"><code class="language-none">let fn &#x3D; () &#x3D;&gt; &#123;
-    return &#96;在干嘛&#96;;
-&#125;
-let say &#x3D; &#96;你好呀，$&#123;fn()&#125;&#96;;
-console.log(say);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let fn = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`在干嘛`</span>;</span><br><span class="line">&#125;</span><br><span class="line">let say = <span class="string">`你好呀，<span class="subst">$&#123;fn()&#125;</span>`</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(say);</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
@@ -281,16 +275,11 @@ console.log(say);<span aria-hidden="true" class="line-numbers-rows"><span></span
 </ol>
 <h3 id="实例方法：endsWith"><a href="#实例方法：endsWith" class="headerlink" title="实例方法：endsWith()"></a>实例方法：endsWith()</h3><ol>
 <li><p>endsWith()：表示参数字符串是否在原字符串的尾部，返回布尔值</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  let str &#x3D; &#39;hello world!&#39;;
-  var flag1 &#x3D; str.startsWith(&#39;hell&#39;); &#x2F;&#x2F; true
-  var flag2 &#x3D; str.endsWith(&#39;d!&#39;); &#x2F;&#x2F; true
-  console.log(flag1, flag2);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> str = <span class="string">&#x27;hello world!&#x27;</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> flag1 = str.<span class="title function_">startsWith</span>(<span class="string">&#x27;hell&#x27;</span>); <span class="comment">// true</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> flag2 = str.<span class="title function_">endsWith</span>(<span class="string">&#x27;d!&#x27;</span>); <span class="comment">// true</span></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(flag1, flag2);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="实例方法：repeat"><a href="#实例方法：repeat" class="headerlink" title="实例方法：repeat()"></a>实例方法：repeat()</h3><ol>
 <li><p>repeat()：表示将原字符串重复n次，返回一个新的字符串</p>
-<pre class="line-numbers language-none"><code class="language-none">console.log(&#39;你好呀&#39;.repeat(5));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;你好呀&#x27;</span>.repeat(<span class="number">5</span>));</span><br></pre></td></tr></table></figure></li>
 </ol>
 
     </div>

@@ -325,24 +325,7 @@
 </ul>
 </li>
 <li><p>步骤四：指定配置项和数据（option） — 根据具体需求修改配置选项</p>
-<pre class="line-numbers language-none"><code class="language-none">var option &#x3D; &#123;
-  title: &#123;
-    text: &#39;Echarts 入门示例&#39;
-  &#125;,
-  tooltip: &#123;&#125;,
-  legend: &#123;
-    date:[&#39;销量&#39;]
-  &#125;,
-  xAxis: &#123;
-    date: [&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;, &quot;裤子&quot;, &quot;高跟鞋&quot;, &quot;袜子&quot;]
-  &#125;,
-  yAxis: &#123;&#125;,
-  series: [&#123;
-    name: &#39;销量&#39;,
-    type: &#39;bar&#39;,
-    data: [5, 20, 36, 10, 10, 20]
-  &#125;]
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">option</span> = &#123;</span><br><span class="line">  title: &#123;</span><br><span class="line">    <span class="type">text</span>: <span class="string">&#x27;Echarts 入门示例&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  tooltip: &#123;&#125;,</span><br><span class="line">  legend: &#123;</span><br><span class="line">    <span class="type">date</span>:[<span class="string">&#x27;销量&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  xAxis: &#123;</span><br><span class="line">    <span class="type">date</span>: [&quot;衬衫&quot;, &quot;羊毛衫&quot;, &quot;雪纺衫&quot;, &quot;裤子&quot;, &quot;高跟鞋&quot;, &quot;袜子&quot;]</span><br><span class="line">  &#125;,</span><br><span class="line">  yAxis: &#123;&#125;,</span><br><span class="line">  series: [&#123;</span><br><span class="line">    <span class="type">name</span>: <span class="string">&#x27;销量&#x27;</span>,</span><br><span class="line">    <span class="keyword">type</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">    data: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">  &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>步骤五：将配置项设置给echarts实例对象 — 让echarts对象根据修改好的配置生效</p>
 <ul>

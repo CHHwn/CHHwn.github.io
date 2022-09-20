@@ -257,20 +257,7 @@
 <li><p>typeof：用于判断数据类型，返回值为6个字符串，分别为string, boolean, number, function, object, undefined</p>
 <ol>
 <li><p>代码演示</p>
-<pre class="line-numbers language-none"><code class="language-none">var a &#x3D;[34,4,3,54],
-b &#x3D;34,
-c &#x3D;&#39;adsfas&#39;,
-d&#x3D;function()&#123;console.log(&#39;我是函数&#39;)&#125;,
-e &#x3D;true,
-f&#x3D;null,
-g;
-console.log(typeof(a));  &#x2F;&#x2F;object
-console.log(typeof(b));  &#x2F;&#x2F;number
-console.log(typeof(c));  &#x2F;&#x2F;string
-console.log(typeof(d));  &#x2F;&#x2F;function
-console.log(typeof(e));  &#x2F;&#x2F;boolean
-console.log(typeof(f));  &#x2F;&#x2F;object
-console.log(typeof(g));  &#x2F;&#x2F;undefined<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =[<span class="number">34</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">54</span>],</span><br><span class="line">b =<span class="number">34</span>,</span><br><span class="line">c =<span class="string">&#x27;adsfas&#x27;</span>,</span><br><span class="line">d=<span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;我是函数&#x27;</span>)&#125;,</span><br><span class="line">e =<span class="literal">true</span>,</span><br><span class="line">f=<span class="literal">null</span>,</span><br><span class="line">g;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(a));  <span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(b));  <span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(c));  <span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(d));  <span class="comment">//function</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(e));  <span class="comment">//boolean</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(f));  <span class="comment">//object</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">typeof</span>(g));  <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 <li><p>instanceof：对象运算符，判断该对象是谁的实例，返回值为布尔值</p>

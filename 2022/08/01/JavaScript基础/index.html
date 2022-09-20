@@ -357,13 +357,11 @@
 </li>
 </ul>
 <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>1.JavaScript <strong>是一种弱类型或者说动态语言。</strong>这意味着不用提前声明变量的类型，在程序运行过程中，类型会被自动确定。</p>
-<pre class="line-numbers language-none"><code class="language-none">var age &#x3D; 10; 			 &#x2F;&#x2F;这是一个数字型
-var areYouOk &#x3D; &#39;使得&#39;;	&#x2F;&#x2F;这是一个字符串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">10</span>; 			 <span class="comment">//这是一个数字型</span></span><br><span class="line"><span class="keyword">var</span> areYouOk = <span class="string">&#x27;使得&#x27;</span>;	<span class="comment">//这是一个字符串</span></span><br></pre></td></tr></table></figure>
 
 <p>在代码运行时，变量的数据类型是由 JS引擎 根据 &#x3D; 右边变量值的数据类型来判断 的，运行完毕之后， 变量就确定了数据类型。</p>
 <p>2.JavaScript 拥有动态类型，同时也意味着相同的变量可用作不同的类型</p>
-<pre class="line-numbers language-none"><code class="language-none">var x &#x3D; 6;		&#x2F;&#x2F;x为数字
-var x &#x3D; &quot;Bill&quot;;	&#x2F;&#x2F;x为字符串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x <span class="operator">=</span> <span class="number">6</span><span class="comment">;		//x为数字</span></span><br><span class="line">var x <span class="operator">=</span> <span class="string">&quot;Bill&quot;</span><span class="comment">;	//x为字符串</span></span><br></pre></td></tr></table></figure>
 
 <p>JS 把数据类型分为两类：</p>
 <ul>
@@ -406,23 +404,18 @@ var x &#x3D; &quot;Bill&quot;;	&#x2F;&#x2F;x为字符串<span aria-hidden="true"
 </tbody></table>
 <h2 id="数字型进制"><a href="#数字型进制" class="headerlink" title="数字型进制"></a>数字型进制</h2><p>最常见的进制有二进制、八进制、十进制、十六进制。</p>
 <p>1.八进制数字序列范围：0~7</p>
-<pre class="line-numbers language-none"><code class="language-none">var num1 &#x3D; 07; 		&#x2F;&#x2F;对应十进制的7
-var Num2 &#x3D; 019;		&#x2F;&#x2F;对应十进制的19
-var num3 &#x3D; 08;		&#x2F;&#x2F;对应十进制的8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight wren"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="variable">num1</span> <span class="operator">=</span> <span class="number">07</span>; 		<span class="comment">//对应十进制的7</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Num</span>2 <span class="operator">=</span> <span class="number">019</span>;		<span class="comment">//对应十进制的19</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable">num3</span> <span class="operator">=</span> <span class="number">08</span>;		<span class="comment">//对应十进制的8</span></span><br></pre></td></tr></table></figure>
 
 <p>2.十六进制数字序列范围：0<del>9以及A</del>F</p>
-<pre class="line-numbers language-none"><code class="language-none">var num &#x3D; 0xA;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var num <span class="operator">=</span> <span class="number">0</span>xA<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>⭐在JS中八进制前面加0，十六进制前面加 0x</strong></p>
 <ol>
 <li><p>数字型范围<br>JS中数值的最大值：Number.MAX_VALUE<br>JS中数值的最小值：Number.MIN_VALUE</p>
- <pre class="line-numbers language-none"><code class="language-none">consol.log(Number.MAX_VALUE);
-consol.log(Number.MIN_VALUE);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">consol.<span class="built_in">log</span>(<span class="built_in">Number</span>.MAX_VALUE);</span><br><span class="line">consol.<span class="built_in">log</span>(<span class="built_in">Number</span>.MIN_VALUE);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>数字型的三个特殊值</p>
-<pre class="line-numbers language-none"><code class="language-none">alert(Infinity); 	&#x2F;&#x2F;Infinity(无穷大)
-alert(-Infinity); 	&#x2F;&#x2F;-Infinity(无穷小)
-alert(NaN);       	&#x2F;&#x2F;NaN - Not a Number ,代表任何一个非数值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alert</span>(Infinity); 	<span class="comment">//Infinity(无穷大)</span></span><br><span class="line"><span class="built_in">alert</span>(-Infinity); 	<span class="comment">//-Infinity(无穷小)</span></span><br><span class="line"><span class="built_in">alert</span>(NaN);       	<span class="comment">//NaN - Not a Number ,代表任何一个非数值</span></span><br></pre></td></tr></table></figure>
 
 <ol>
 <li>Infinity ，代表无穷大，大于任何数值</li>
@@ -431,16 +424,10 @@ alert(NaN);       	&#x2F;&#x2F;NaN - Not a Number ,代表任何一个非数值<s
 </ol>
 </li>
 <li><p>isNaN(): 这个方法用来判断非数字，并且返回一个值，如果是数字返回的是false，如果不是数字返回的是true</p>
-<pre class="line-numbers language-none"><code class="language-none">var userAge &#x3D; 21;
-var isOk &#x3D; isNan(userAge);
-console.log(isOk);		&#x2F;&#x2F;false,21不是一个非数字
-
-var userName &#x3D; &quot;andy&quot;;
-console.log(isNan(userName));	&#x2F;&#x2F;true,&quot;andy&quot;是一个非数字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> userAge = <span class="number">21</span>;</span><br><span class="line"><span class="keyword">var</span> isOk = <span class="built_in">isNan</span>(userAge);</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(isOk);		<span class="comment">//false,21不是一个非数字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> userName = <span class="string">&quot;andy&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">isNan</span>(userName));	<span class="comment">//true,&quot;andy&quot;是一个非数字</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="字符串型String"><a href="#字符串型String" class="headerlink" title="字符串型String"></a>字符串型String</h2><p>字符串型可以是引号中的任意文本，其语法为 “双引号” 和 “单引号’’</p>
-<pre class="line-numbers language-none"><code class="language-none">var strMsg &#x3D; &quot;我爱北京天安门~&quot;;		&#x2F;&#x2F;使用双引号表示字符串
-var strMsg &#x3D; &#39;我爱北京&#39;;			  &#x2F;&#x2F;使用单引号表示字符串<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strMsg = <span class="string">&quot;我爱北京天安门~&quot;</span>;		<span class="comment">//使用双引号表示字符串</span></span><br><span class="line"><span class="keyword">var</span> strMsg = <span class="string">&#x27;我爱北京&#x27;</span>;			  <span class="comment">//使用单引号表示字符串</span></span><br></pre></td></tr></table></figure>
 
 
 <ul>
@@ -448,8 +435,7 @@ var strMsg &#x3D; &#39;我爱北京&#39;;			  &#x2F;&#x2F;使用单引号表示�
 </ul>
 <ol>
 <li><p>字符串引号嵌套<br>JS可以用 单引号嵌套双引号，或者用 双引号嵌套单引号（外双内单，外单内双）</p>
- <pre class="line-numbers language-none"><code class="language-none">var strMsg &#x3D;&#39;我是一个“天才”&#39; &#x2F;&#x2F;可以用 &#39; &#39; 包含 &quot; &quot;
-var strMsg2 &#x3D;&quot;我是&#39;天才&#39;&quot; &#x2F;&#x2F;可以用&quot; &quot;  包含  &#39;&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var strMsg =<span class="string">&#x27;我是一个“天才”&#x27;</span> <span class="regexp">//</span>可以用 <span class="string">&#x27; &#x27;</span> 包含 <span class="string">&quot; &quot;</span></span><br><span class="line">var strMsg2 =<span class="string">&quot;我是&#x27;天才&#x27;&quot;</span> <span class="regexp">//</span>可以用<span class="string">&quot; &quot;</span>  包含  <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
 
 </li>
 <li><p>字符串转义符<br>类似HTML里面的特殊字符，字符串中也有特殊字符，我们称之为转义符。</p>
@@ -490,9 +476,7 @@ var strMsg2 &#x3D;&quot;我是&#39;天才&#39;&quot; &#x2F;&#x2F;可以用&quot;
 </tbody></table>
 <ol start="3">
 <li><p>字符串长度<br>字符串是由若干字符组成的，这些字符的数量就是字符串的长度。通过字符串的 length 属性可以获取整个字符串的长度。</p>
- <pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;通过字符串的length属性可以获取整个字符串的长度
-var strMsg &#x3D; &quot;我是天才！&quot;;
-alert(strMsg.length);     &#x2F;&#x2F;显示5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+ <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过字符串的length属性可以获取整个字符串的长度</span></span><br><span class="line"><span class="keyword">var</span> strMsg = <span class="string">&quot;我是天才！&quot;</span>;</span><br><span class="line">alert(strMsg.<span class="built_in">length</span>);     <span class="comment">//显示5</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>字符串的拼接</p>
 <ol>
@@ -504,38 +488,32 @@ alert(strMsg.length);     &#x2F;&#x2F;显示5<span aria-hidden="true" class="lin
 <ol>
 <li>字符串相加</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">alert(&#39;hello&#39; + &#39; &#39; + &#39;World&#39;);  &#x2F;&#x2F;hello World<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">&#x27;hello&#x27;</span> + <span class="string">&#x27; &#x27;</span> + <span class="string">&#x27;World&#x27;</span>);  <span class="regexp">//</span>hello World</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>数值字符串相加</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">alert(&#39;100&#39; + &#39;100&#39;); &#x2F;&#x2F;100100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">&#x27;100&#x27;</span> + <span class="string">&#x27;100&#x27;</span>); <span class="regexp">//</span><span class="number">100100</span></span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li>数值字符串+数值</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">alert(&#39;12&#39;+12); &#x2F;&#x2F;1212<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">alert</span>(&#x27;<span class="number">12</span>&#x27;+<span class="number">12</span>); //<span class="number">1212</span></span><br></pre></td></tr></table></figure>
 
 <ol start="4">
 <li>数值+数值</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">alert(12+12); &#x2F;&#x2F;24<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">alert</span>(<span class="number">12</span>+<span class="number">12</span>); //<span class="number">24</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ol>
 <p>⭐<strong>号总结口诀：数值相加，字符相连</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">var  age &#x3D; 18;
-console.log(&#39;我今年&#39;+age+&#39;岁&#39;);
-console.log(&#39;我今年&#39;+age+&#39;岁&#39;);  &#x2F;&#x2F;引引加加，最终也是上面的形式<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  age = <span class="number">18</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;我今年&#x27;</span>+age+<span class="string">&#x27;岁&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;我今年&#x27;</span>+age+<span class="string">&#x27;岁&#x27;</span>);  <span class="comment">//引引加加，最终也是上面的形式</span></span><br></pre></td></tr></table></figure>
 
 <ol start="5">
 <li>字符串拼接加强</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">console.log(&#39;老师&#39; + 18);			&#x2F;&#x2F;只要有字符就会相连
-var age &#x3D; 18;
-&#x2F;&#x2F; console.log(&#39;老师age岁了&#39;);	&#x2F;&#x2F;这样不行,会输出&quot;老师age岁了&quot;
-console.log(&#39;老师&#39; + age);		 &#x2F;&#x2F; 老师18
-console.log(&#39;老师&#39; + age + &#39;岁啦&#39;);	&#x2F;&#x2F; 老师18岁啦<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="string">&#x27;老师&#x27;</span> + <span class="number">18</span>);			<span class="regexp">//</span>只要有字符就会相连</span><br><span class="line">var age = <span class="number">18</span>;</span><br><span class="line"><span class="regexp">//</span> console.log(<span class="string">&#x27;老师age岁了&#x27;</span>);	<span class="regexp">//</span>这样不行,会输出<span class="string">&quot;老师age岁了&quot;</span></span><br><span class="line">console.log(<span class="string">&#x27;老师&#x27;</span> + age);		 <span class="regexp">//</span> 老师<span class="number">18</span></span><br><span class="line">console.log(<span class="string">&#x27;老师&#x27;</span> + age + <span class="string">&#x27;岁啦&#x27;</span>);	<span class="regexp">//</span> 老师<span class="number">18</span>岁啦</span><br></pre></td></tr></table></figure>
 
 <p>我们经常会将字符串和变量来拼接，因为变量可以很方便地修改里面的值<br>变量是不能添加引号的，因为加引号的变量会变成字符串<br>如果变量两侧都有字符串拼接，口诀&#x3D;&#x3D;“引引加加 ”，删掉数字&#x3D;&#x3D;变量写加中间</p>
 <h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="转换为字符串"><a href="#转换为字符串" class="headerlink" title="转换为字符串"></a>转换为字符串</h3><table>
@@ -580,11 +558,7 @@ console.log(&#39;老师&#39; + age + &#39;岁啦&#39;);	&#x2F;&#x2F; 老师18岁
 <td>parseInt(‘78’)</td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 将string类型转成整数数值型
-var str &#x3D; &#39;10.32&#39;;
-console.log(parseInt(str)); &#x2F;&#x2F;10 取整
-&#x2F;&#x2F; 可以用于去除单位
-console.log(parseInt(&#39;12px&#39;)); &#x2F;&#x2F;12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将string类型转成整数数值型</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;10.32&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(parseInt(str)); <span class="comment">//10 取整</span></span><br><span class="line"><span class="comment">// 可以用于去除单位</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(parseInt(<span class="string">&#x27;12px&#x27;</span>)); <span class="comment">//12</span></span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -598,11 +572,7 @@ console.log(parseInt(&#39;12px&#39;)); &#x2F;&#x2F;12<span aria-hidden="true" cl
 <td>将string类型转成浮点数数值型(可以用于去除单位) parseFloat(‘78.21’)</td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 将string类型转成浮点数数值型
-var str1 &#x3D; &#39;10.24&#39;;
-console.log(parseFloat(str1)); &#x2F;&#x2F;10.24
-&#x2F;&#x2F; 可以用于去除单位
-console.log(parseFloat(&#39;120px&#39;)); &#x2F;&#x2F;120<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将string类型转成浮点数数值型</span></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&#x27;10.24&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(parseFloat(str1)); <span class="comment">//10.24</span></span><br><span class="line"><span class="comment">// 可以用于去除单位</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(parseFloat(<span class="string">&#x27;120px&#x27;</span>)); <span class="comment">//120</span></span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -618,9 +588,7 @@ console.log(parseFloat(&#39;120px&#39;)); &#x2F;&#x2F;120<span aria-hidden="true
 <td>Number(‘12’)</td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 将string类型转换为数值型
-var str2 &#x3D; &#39;123&#39;;
-console.log(Number(str2)); &#x2F;&#x2F;123<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将string类型转换为数值型</span></span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&#x27;123&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="built_in">Number</span>(str2)); <span class="comment">//123</span></span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -636,10 +604,7 @@ console.log(Number(str2)); &#x2F;&#x2F;123<span aria-hidden="true" class="line-n
 <td>‘12’-0</td>
 </tr>
 </tbody></table>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 利用算术运算隐式转换为数值
-console.log(&#39;12&#39; - 0); &#x2F;&#x2F;12
-console.log(&#39;120&#39; &#x2F; 10); &#x2F;&#x2F;12
-console.log(&#39;12&#39; * 1); &#x2F;&#x2F;12<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用算术运算隐式转换为数值</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;12&#x27;</span> - <span class="number">0</span>); <span class="comment">//12</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;120&#x27;</span> / <span class="number">10</span>); <span class="comment">//12</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;12&#x27;</span> * <span class="number">1</span>); <span class="comment">//12</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="转换为布尔型"><a href="#转换为布尔型" class="headerlink" title="转换为布尔型"></a>转换为布尔型</h3><table>
 <thead>

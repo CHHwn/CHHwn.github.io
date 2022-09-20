@@ -254,26 +254,7 @@
 <li><p>通过setter来实现对对象的监测，并且只有在创建Vue实例（new Vue）时就需要在data中设置好数据才能实现监测</p>
 </li>
 <li><p>对于在新建Vue实例（new Vue）后，往data中添加的数据，Vue不进行监视（响应式处理）</p>
-  <pre class="line-numbers language-none"><code class="language-none">new Vue (&#123;
-    data() &#123;
-        return &#123;
-            student: &#123;
-                name: &#39;张三&#39;,
-                age: 18
-            &#125;
-        &#125;
-    &#125;,
-    created() &#123;
-        this.addSex()
-    &#125;,
-    methods: &#123;
-        addSex () &#123;
-            &#x2F;&#x2F; 通过这种方式进行添加的数据，Vue不进行监视（响应式处理），sex属性也没有对应的setter和getter
-            this.student.sex &#x3D; &#39;男&#39;
-        &#125;
-    &#125;
-&#125;)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span> (&#123;</span><br><span class="line">    <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">student</span>: &#123;</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">                <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">addSex</span>()</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        addSex () &#123;</span><br><span class="line">            <span class="comment">// 通过这种方式进行添加的数据，Vue不进行监视（响应式处理），sex属性也没有对应的setter和getter</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">student</span>.<span class="property">sex</span> = <span class="string">&#x27;男&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>若需要给后加入的属性做响应式处理，则需要使用以下api</p>
 </li>
 </ol>
@@ -286,27 +267,7 @@
   2. propertyName/index：目标对象中的属性/目标数组中的索引
   3. value：添加的值
 </code></pre>
-  <pre class="line-numbers language-none"><code class="language-none">new Vue (&#123;
-    data() &#123;
-        return &#123;
-            student: &#123;
-                name: &#39;张三&#39;,
-                age: 18
-            &#125;
-        &#125;
-    &#125;,
-    created() &#123;
-        this.addSex()
-    &#125;,
-    methods: &#123;
-        addSex () &#123;
-            &#x2F;&#x2F; 通过此方式添加的数据，Vue可以进行监测，实现响应式处理
-            this.$set(this.student, &#39;sex&#39;, &#39;男&#39;)
-            &#x2F;&#x2F; Vue.set(this.student, &#39;sex&#39;, &#39;男&#39;)
-        &#125;
-    &#125;
-&#125;)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">new Vue (&#123;</span><br><span class="line">    <span class="keyword">data</span>() &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            student: &#123;</span><br><span class="line">                name: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">                age: <span class="number">18</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    created() &#123;</span><br><span class="line">        <span class="keyword">this</span>.addSex()</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        addSex () &#123;</span><br><span class="line">            <span class="comment">// 通过此方式添加的数据，Vue可以进行监测，实现响应式处理</span></span><br><span class="line">            <span class="keyword">this</span>.$<span class="keyword">set</span>(<span class="keyword">this</span>.student, <span class="string">&#x27;sex&#x27;</span>, <span class="string">&#x27;男&#x27;</span>)</span><br><span class="line">            <span class="comment">// Vue.set(this.student, &#x27;sex&#x27;, &#x27;男&#x27;)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="监测数组中的数据"><a href="#监测数组中的数据" class="headerlink" title="监测数组中的数据"></a>监测数组中的数据</h2><ol>
 <li>通过包裹数组更新元素的方法实现，本质上做了以下两件事情<br>1. 调用原生对应的方法对数组进行更新<br>2. 重新解析模板，更新页面</li>

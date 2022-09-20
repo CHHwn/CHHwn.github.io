@@ -260,19 +260,7 @@
 </ol>
 <h2 id="借用父构造函数继承属性和方法"><a href="#借用父构造函数继承属性和方法" class="headerlink" title="借用父构造函数继承属性和方法"></a>借用父构造函数继承属性和方法</h2><h3 id="借用父构造函数继承属性"><a href="#借用父构造函数继承属性" class="headerlink" title="借用父构造函数继承属性"></a>借用父构造函数继承属性</h3><ol>
 <li><p>核心原理：通过call()把父类型的this指向子类型的this，这样就可以实现子类型继承父类型的属性</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;
-  function Father(uname, age) &#123;
-    this.uname &#x3D; uname;
-    this.age &#x3D; age;
-  &#125;
-  function son(uname, age, sex) &#123;
-    &#x2F;&#x2F; 借用父构造函数继承属性
-    Father.call(this, uname, age);
-    this.sex &#x3D; sex;
-  &#125;
-  var son &#x3D; new son(&#39;张三&#39;, 15, &#39;女&#39;);
-  console.log(son);
-&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">uname, age</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">this</span>.<span class="property">uname</span> = uname;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">son</span>(<span class="params">uname, age, sex</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 借用父构造函数继承属性</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Father</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, uname, age);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">var</span> son = <span class="keyword">new</span> <span class="title function_">son</span>(<span class="string">&#x27;张三&#x27;</span>, <span class="number">15</span>, <span class="string">&#x27;女&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(son);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="借用父构造函数继承方法"><a href="#借用父构造函数继承方法" class="headerlink" title="借用父构造函数继承方法"></a>借用父构造函数继承方法</h3><ol>
 <li><p>因为构造函数的方法会放在原型对象中，因此父构造函数的方法放在父原型对象内部，若子构造函数的实例对象要想继承使用父原型对象内部的方法，则进行如下过程</p>
@@ -282,39 +270,7 @@
 </ol>
 </li>
 <li><p>注意：千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;body&gt;
-  &lt;script&gt;
-    function Father(uname, age) &#123;
-      this.uname &#x3D; uname;
-      this.age &#x3D; age;
-    &#125;
-    function Son(uname, age, sex) &#123;
-      &#x2F;&#x2F; 借用父构造函数继承属性
-      Father.call(this, uname, age);
-      this.sex &#x3D; sex;
-    &#125;
-
-    &#x2F;&#x2F; 在父原型对象中添加方法
-    Father.prototype.money &#x3D; function () &#123;
-      console.log(&#39;赚钱赚钱&#39;);
-    &#125;
-
-    &#x2F;&#x2F; 千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法
-    Son.prototype &#x3D; Father.prototype;
-
-    &#x2F;&#x2F; 借用父构造函数继承方法
-    &#x2F;&#x2F; 父构造函数实例化，让子原型对象指向父实例化对象
-    Son.prototype &#x3D; new Father();
-    &#x2F;&#x2F; 因为new Father()创建了一个对象，覆盖了子原型对象，因此需要让子原型对象手动指回构造函数
-    Son.prototype.constructor &#x3D; Son;
-
-    &#x2F;&#x2F; 子原型对象成功继承父原型对象中的方法
-    Son.prototype.money(); &#x2F;&#x2F; 输出：赚钱赚钱
-    console.log(Son.prototype); &#x2F;&#x2F; 子原型对象指向父实例对象
-    console.log(Son.prototype.constructor); &#x2F;&#x2F; 指向子构造函数
-
-  &lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">Father</span>(<span class="params">uname, age</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">uname</span> = uname;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">age</span> = age;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">Son</span>(<span class="params">uname, age, sex</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 借用父构造函数继承属性</span></span></span><br><span class="line"><span class="language-javascript">      <span class="title class_">Father</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, uname, age);</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 在父原型对象中添加方法</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">money</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;赚钱赚钱&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 千万不可直接将父原型对象直接赋值给子原型对象，这样会让子原型对象直接指向父原型对象，导致一旦给子原型对象添加方法，会让父原型对象同时添加这个方法</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="title class_">Father</span>.<span class="property"><span class="keyword">prototype</span></span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 借用父构造函数继承方法</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 父构造函数实例化，让子原型对象指向父实例化对象</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span> = <span class="keyword">new</span> <span class="title class_">Father</span>();</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 因为new Father()创建了一个对象，覆盖了子原型对象，因此需要让子原型对象手动指回构造函数</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span> = <span class="title class_">Son</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 子原型对象成功继承父原型对象中的方法</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="title function_">money</span>(); <span class="comment">// 输出：赚钱赚钱</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// 子原型对象指向父实例对象</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Son</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">constructor</span>); <span class="comment">// 指向子构造函数</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <p><img src="https://twentyseven.oss-cn-guangzhou.aliyuncs.com/20211007005323.png" alt="img"></p>
 

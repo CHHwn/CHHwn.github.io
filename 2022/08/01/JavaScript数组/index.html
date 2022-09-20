@@ -259,11 +259,11 @@
 <li>数组中可以存放任意类型的数据，例如字符串，数字，布尔值等</li>
 <li>JS中创建数组有两种方式</li>
 </ol>
-<h3 id="利用new创建数组"><a href="#利用new创建数组" class="headerlink" title="利用new创建数组"></a>利用new创建数组</h3><pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; new Array();<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="利用new创建数组"><a href="#利用new创建数组" class="headerlink" title="利用new创建数组"></a>利用new创建数组</h3><figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br></pre></td></tr></table></figure>
 
 <h3 id="利用数组字面量创建数组（常用）"><a href="#利用数组字面量创建数组（常用）" class="headerlink" title="利用数组字面量创建数组（常用）"></a>利用数组字面量创建数组（常用）</h3><ol>
 <li><p>[]：表示数组的字面量</p>
-<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [];<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr <span class="operator">=</span> []<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="获取数组元素"><a href="#获取数组元素" class="headerlink" title="获取数组元素"></a>获取数组元素</h2><ol>
 <li>数组的索引<ol>
@@ -285,12 +285,11 @@
 <li><p>length属性是可读写的</p>
 </li>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">arr.length &#x3D; 数组长度;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">arr.length</span> = 数组长度<span class="comment">;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="修改索引号"><a href="#修改索引号" class="headerlink" title="修改索引号"></a>修改索引号</h3><ol>
 <li><p>语法</p>
-<pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [1, 2, 3];
-arr[3] &#x3D; 4;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var arr = <span class="comment">[1, 2, 3]</span>;</span><br><span class="line">arr<span class="comment">[3]</span> = 4;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过追加索引号，并为该索引号对应的元素赋值的方式新增元素</p>
 </li>
@@ -299,16 +298,7 @@ arr[3] &#x3D; 4;<span aria-hidden="true" class="line-numbers-rows"><span></span>
 <li><p>不能直接给数组名赋值，否则会覆盖掉以前的数据</p>
 </li>
 </ol>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre class="line-numbers language-none"><code class="language-none">var arr &#x3D; [2, 5, 11, 85, 3, 16, 24, 9, 7];
-  for (var i &#x3D; 0; i &lt; arr.length; i++) &#123;
-    for (var j &#x3D; 0; j &lt; arr.length - 1 - i; j++) &#123;
-      if (arr[j] &lt; arr[j + 1]) &#123;
-        var temp &#x3D; arr[j];
-        arr[j] &#x3D; arr[j + 1];
-        arr[j + 1] &#x3D; temp;
-      &#125;
-    &#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var arr = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">11</span>, <span class="number">85</span>, <span class="number">3</span>, <span class="number">16</span>, <span class="number">24</span>, <span class="number">9</span>, <span class="number">7</span>];</span><br><span class="line">  for (var i = <span class="number">0</span><span class="comment">; i &lt; arr.length; i++) &#123;</span></span><br><span class="line">    for (var <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j &lt; arr.length - 1 - i; j++) &#123;</span></span><br><span class="line">      if (arr[<span class="keyword">j] </span>&lt; arr[<span class="keyword">j </span>+ <span class="number">1</span>]) &#123;</span><br><span class="line">        var temp = arr[<span class="keyword">j];</span></span><br><span class="line"><span class="keyword"></span>        arr[<span class="keyword">j] </span>= arr[<span class="keyword">j </span>+ <span class="number">1</span>];</span><br><span class="line">        arr[<span class="keyword">j </span>+ <span class="number">1</span>] = temp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>

@@ -276,27 +276,7 @@
 <li><code>Buffer.alloUnsafe(size)</code>：创建指定大小的 Buffer，可能包含敏感数据（分配内存时不会清除内存残留的数据）</li>
 <li><code>buf.toString()</code>：将 Buffer 数据转为字符串</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">var str &#x3D; &#39;Hello前端&#39;
-
-var buf &#x3D; Buffer.from(str)
-
-&#x2F;&#x2F; 占用内存的大小，一个汉字3字节 13
-console.log(buf.length)
-&#x2F;&#x2F; 字符串的长度 7
-console.log(str.length)
-&#x2F;&#x2F; 8进制输出第一个元素 145
-console.log(buf[1].toString(8))
-
-&#x2F;&#x2F;创建一个10个字节的buffer
-var buf2 &#x3D; Buffer.alloc(10)
-&#x2F;&#x2F;通过索引，来操作buf中的元素
-buf2[0] &#x3D; 88
-buf2[1] &#x3D; 255
-buf2[2] &#x3D; 0xaa
-buf2[3] &#x3D; 255
-
-var buf3 &#x3D; Buffer.allocUnsafe(10)
-console.log(buf3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&#x27;Hello前端&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> buf = <span class="built_in">Buffer</span>.from(str)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 占用内存的大小，一个汉字3字节 13</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(buf.<span class="built_in">length</span>)</span><br><span class="line"><span class="comment">// 字符串的长度 7</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(str.<span class="built_in">length</span>)</span><br><span class="line"><span class="comment">// 8进制输出第一个元素 145</span></span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(buf[<span class="number">1</span>].toString(<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个10个字节的buffer</span></span><br><span class="line"><span class="keyword">var</span> buf2 = <span class="built_in">Buffer</span>.alloc(<span class="number">10</span>)</span><br><span class="line"><span class="comment">//通过索引，来操作buf中的元素</span></span><br><span class="line">buf2[<span class="number">0</span>] = <span class="number">88</span></span><br><span class="line">buf2[<span class="number">1</span>] = <span class="number">255</span></span><br><span class="line">buf2[<span class="number">2</span>] = <span class="number">0xaa</span></span><br><span class="line">buf2[<span class="number">3</span>] = <span class="number">255</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> buf3 = <span class="built_in">Buffer</span>.allocUnsafe(<span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.<span class="built_in">log</span>(buf3)</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="fs文件系统模块"><a href="#fs文件系统模块" class="headerlink" title="fs文件系统模块"></a>fs文件系统模块</h2><ul>
@@ -363,20 +343,13 @@ console.log(buf3)<span aria-hidden="true" class="line-numbers-rows"><span></span
 </tr>
 </tbody></table>
 <h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><h4 id="简单文件读取"><a href="#简单文件读取" class="headerlink" title="简单文件读取"></a>简单文件读取</h4><p>语法格式：</p>
-<pre class="line-numbers language-none"><code class="language-none">fs.readFile(path[, options], callback)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.read<span class="constructor">File(<span class="params">path</span>[, <span class="params">options</span>], <span class="params">callback</span>)</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p><code>path</code>：文件路径</p>
 </li>
 <li><p>&#96;&#96;&#96;<br>options</p>
-<pre class="line-numbers language-none"><code class="language-none">
-  ：配置选项，若是字符串则指定编码格式
-
-  - &#96;encoding&#96;：编码格式
-  - &#96;flag&#96;：打开方式
-
-- &#96;&#96;&#96;
-  callback<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ：配置选项，若是字符串则指定编码格式</span><br><span class="line"></span><br><span class="line">  - `encoding`：编码格式</span><br><span class="line">  - `flag`：打开方式</span><br><span class="line"></span><br><span class="line">- ```</span><br><span class="line">  callback</span><br></pre></td></tr></table></figure>
 
 <p>：回调函数</p>
 <ul>
@@ -385,28 +358,7 @@ console.log(buf3)<span aria-hidden="true" class="line-numbers-rows"><span></span
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
-
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">'./files/1.txt'</span><span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'failed!'</span> <span class="token operator">+</span> err<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
-  <span class="token punctuation">&#125;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'content:'</span> <span class="token operator">+</span> data<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-
-
-<span class="token comment">// 复制文件内容</span>
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">"C:/Users/笔记.mp3"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token comment">// 将data写入到文件中</span>
-		fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">"C:/Users/hello.jpg"</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-			<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-				console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"文件写入成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">&#125;</span>
-		<span class="token punctuation">&#125;</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;./files/1.txt&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>, <span class="keyword">function</span>(<span class="params">err, data</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span>(err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;failed!&#x27;</span> + err.<span class="property">message</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;content:&#x27;</span> + data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 复制文件内容</span></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;C:/Users/笔记.mp3&quot;</span>, <span class="keyword">function</span>(<span class="params">err, data</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span>(!err) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">		<span class="comment">// 将data写入到文件中</span></span><br><span class="line">		fs.<span class="title function_">writeFile</span>(<span class="string">&quot;C:/Users/hello.jpg&quot;</span>, data, <span class="keyword">function</span>(<span class="params">err</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!err)&#123;</span><br><span class="line">				<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;文件写入成功&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; );</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 
 
@@ -414,55 +366,17 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 <li>简单文件读取的方式会一次性读取文件内容到内存中，若文件较大，会占用过多内存影响系统性能，且读取速度慢</li>
 <li>大文件适合用流式文件读取，它会分多次将文件读取到内存中</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">var fs &#x3D; require(&#39;fs&#39;)
-
-&#x2F;&#x2F; 创建一个可读流
-var rs &#x3D; fs.createReadStream(&#39;C:&#x2F;Users&#x2F;笔记.mp3&#39;)
-&#x2F;&#x2F; 创建一个可写流
-var ws &#x3D; fs.createWriteStream(&#39;a.mp3&#39;)
-
-&#x2F;&#x2F; 监听流的开启和关闭
-&#x2F;&#x2F; 这几个监听不是必须的
-rs.once(&#39;open&#39;, function () &#123;
-  console.log(&#39;可读流打开了~~&#39;)
-&#125;)
-
-rs.once(&#39;close&#39;, function () &#123;
-  console.log(&#39;可读流关闭了~~&#39;)
-  &#x2F;&#x2F;数据读取完毕，关闭可写流
-  ws.end()
-&#125;)
-
-ws.once(&#39;open&#39;, function () &#123;
-  console.log(&#39;可写流打开了~~&#39;)
-&#125;)
-
-ws.once(&#39;close&#39;, function () &#123;
-  console.log(&#39;可写流关闭了~~&#39;)
-&#125;)
-
-&#x2F;&#x2F;要读取一个可读流中的数据，要为可读流绑定一个data事件，data事件绑定完毕自动开始读取数据
-rs.on(&#39;data&#39;, function (data) &#123;
-  console.log(data)
-  &#x2F;&#x2F;将读取到的数据写入到可写流中
-  ws.write(data)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = require(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个可读流</span></span><br><span class="line"><span class="keyword">var</span> rs = fs.createReadStream(<span class="string">&#x27;C:/Users/笔记.mp3&#x27;</span>)</span><br><span class="line"><span class="comment">// 创建一个可写流</span></span><br><span class="line"><span class="keyword">var</span> ws = fs.createWriteStream(<span class="string">&#x27;a.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听流的开启和关闭</span></span><br><span class="line"><span class="comment">// 这几个监听不是必须的</span></span><br><span class="line">rs.once(<span class="string">&#x27;open&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;可读流打开了~~&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">rs.once(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;可读流关闭了~~&#x27;</span>)</span><br><span class="line">  <span class="comment">//数据读取完毕，关闭可写流</span></span><br><span class="line">  ws.end()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ws.once(<span class="string">&#x27;open&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;可写流打开了~~&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ws.once(<span class="string">&#x27;close&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;可写流关闭了~~&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//要读取一个可读流中的数据，要为可读流绑定一个data事件，data事件绑定完毕自动开始读取数据</span></span><br><span class="line">rs.on(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(data)</span><br><span class="line">  <span class="comment">//将读取到的数据写入到可写流中</span></span><br><span class="line">  ws.write(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
 
 <p>简便方式：</p>
-<pre class="line-numbers language-none"><code class="language-none">var fs &#x3D; require(&#39;fs&#39;)
-
-var rs &#x3D; fs.createReadStream(&#39;C:&#x2F;Users&#x2F;lilichao&#x2F;Desktop&#x2F;笔记.mp3&#39;)
-var ws &#x3D; fs.createWriteStream(&#39;b.mp3&#39;)
-
-&#x2F;&#x2F; pipe()可以将可读流中的内容，直接输出到可写流中
-rs.pipe(ws)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">var</span> rs = fs<span class="selector-class">.createReadStream</span>(<span class="string">&#x27;C:/Users/lilichao/Desktop/笔记.mp3&#x27;</span>)</span><br><span class="line"><span class="selector-tag">var</span> ws = fs<span class="selector-class">.createWriteStream</span>(<span class="string">&#x27;b.mp3&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// pipe()可以将可读流中的内容，直接输出到可写流中</span></span><br><span class="line">rs<span class="selector-class">.pipe</span>(ws)</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h3><h4 id="简单文件写入"><a href="#简单文件写入" class="headerlink" title="简单文件写入"></a>简单文件写入</h4><p>语法格式：</p>
-<pre class="line-numbers language-none"><code class="language-none">fs.writeFile(file, data[, options], callback)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.write<span class="constructor">File(<span class="params">file</span>, <span class="params">data</span>[, <span class="params">options</span>], <span class="params">callback</span>)</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>file</code>：文件路径</li>
@@ -470,47 +384,11 @@ rs.pipe(ws)<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li><code>options</code>：配置选项，包含 <code>encoding, mode, flag</code>；若是字符串则指定编码格式</li>
 <li><code>callback</code>：回调函数</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">const fs &#x3D; require(&#39;fs&#39;)
-fs.writeFile(&#39;.&#x2F;files&#x2F;2.txt&#39;, &#39;Hello Nodejs&#39;, function (err) &#123;
-  if (err) &#123;
-    return console.log(&#39;failed!&#39; + err.message)
-  &#125;
-  console.log(&#39;success!&#39;)
-&#125;)
-
-fs.writeFile(&#39;C:&#x2F;Users&#x2F;hello.txt&#39;, &#39;通过 writeFile 写入的内容&#39;, &#123; flag: &#39;w&#39; &#125;, function (err) &#123;
-  if (!err) &#123;
-    console.log(&#39;写入成功！&#39;)
-  &#125; else &#123;
-    console.log(err)
-  &#125;
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line">fs.writeFile(<span class="string">&#x27;./files/2.txt&#x27;</span>, <span class="string">&#x27;Hello Nodejs&#x27;</span>, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;failed!&#x27;</span> + err.message)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;success!&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">fs.writeFile(<span class="string">&#x27;C:/Users/hello.txt&#x27;</span>, <span class="string">&#x27;通过 writeFile 写入的内容&#x27;</span>, &#123; <span class="attr">flag</span>: <span class="string">&#x27;w&#x27;</span> &#125;, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&#x27;写入成功！&#x27;</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(err)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="流式文件写入"><a href="#流式文件写入" class="headerlink" title="流式文件写入"></a>流式文件写入</h4><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 同步、异步、简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出
-var fs &#x3D; require(&#39;fs&#39;)
-
-&#x2F;&#x2F; 创建一个可写流
-var ws &#x3D; fs.createWriteStream(&#39;hello3.txt&#39;)
-
-ws.once(&#39;open&#39;, function () &#123;
-  console.log(&#39;流打开了~~&#39;)
-&#125;)
-
-ws.once(&#39;close&#39;, function () &#123;
-  console.log(&#39;流关闭了~~&#39;)
-&#125;)
-
-&#x2F;&#x2F; 通过ws向文件中输出内容
-ws.write(&#39;通过可写流写入文件的内容&#39;)
-ws.write(&#39;1&#39;)
-ws.write(&#39;2&#39;)
-ws.write(&#39;3&#39;)
-ws.write(&#39;4&#39;)
-
-&#x2F;&#x2F; 关闭流
-ws.end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="流式文件写入"><a href="#流式文件写入" class="headerlink" title="流式文件写入"></a>流式文件写入</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 同步、异步、简单文件的写入都不适合大文件的写入，性能较差，容易导致内存溢出</span></span><br><span class="line"><span class="selector-tag">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个可写流</span></span><br><span class="line"><span class="selector-tag">var</span> ws = fs<span class="selector-class">.createWriteStream</span>(<span class="string">&#x27;hello3.txt&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ws<span class="selector-class">.once</span>(<span class="string">&#x27;open&#x27;</span>, function () &#123;</span><br><span class="line">  console<span class="selector-class">.log</span>(<span class="string">&#x27;流打开了~~&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">ws<span class="selector-class">.once</span>(<span class="string">&#x27;close&#x27;</span>, function () &#123;</span><br><span class="line">  console<span class="selector-class">.log</span>(<span class="string">&#x27;流关闭了~~&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过ws向文件中输出内容</span></span><br><span class="line">ws<span class="selector-class">.write</span>(<span class="string">&#x27;通过可写流写入文件的内容&#x27;</span>)</span><br><span class="line">ws<span class="selector-class">.write</span>(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">ws<span class="selector-class">.write</span>(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">ws<span class="selector-class">.write</span>(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">ws<span class="selector-class">.write</span>(<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭流</span></span><br><span class="line">ws<span class="selector-class">.end</span>()</span><br></pre></td></tr></table></figure>
 
 
 
@@ -520,9 +398,7 @@ ws.end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <li>解决方案：在使用 fs 模块操作文件时，直接提供完整的路径，从而防止路径动态拼接的问题</li>
 <li><code>__dirname</code> 获取文件所处的绝对路径</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">fs.readFile(__dirname + &#39;&#x2F;files&#x2F;1.txt&#39;, &#39;utf8&#39;, function(err, data) &#123;
-  ...
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.read<span class="constructor">File(<span class="params">__dirname</span> + &#x27;<span class="operator">/</span><span class="params">files</span><span class="operator">/</span>1.<span class="params">txt</span>&#x27;, &#x27;<span class="params">utf8</span>&#x27;, <span class="params">function</span>(<span class="params">err</span>, <span class="params">data</span>)</span> &#123;<span class="operator"></span></span><br><span class="line"><span class="operator">  ...</span></span><br><span class="line"><span class="operator"></span>&#125;)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -571,95 +447,27 @@ ws.end()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <li><code>fs.watchFile(filename[, options], listener)</code></li>
 </ul>
 <h2 id="path路径模块"><a href="#path路径模块" class="headerlink" title="path路径模块"></a>path路径模块</h2><p>path 模块是 Node.js 官方提供的、用来处理路径的模块。它提供了一系列的方法和属性，用来满足用户对路径的处理需求。</p>
-<h3 id="路径拼接path-join"><a href="#路径拼接path-join" class="headerlink" title="路径拼接path.join()"></a>路径拼接<code>path.join()</code></h3><pre class="line-numbers language-none"><code class="language-none">const path &#x3D; require(&#39;path&#39;)
-const fs &#x3D; require(&#39;fs&#39;)
-
-&#x2F;&#x2F; 注意 ..&#x2F; 会抵消前面的路径
-&#x2F;&#x2F; .&#x2F; 会被忽略
-const pathStr &#x3D; path.join(&#39;&#x2F;a&#39;, &#39;&#x2F;b&#x2F;c&#39;, &#39;..&#x2F;..&#x2F;&#39;, &#39;.&#x2F;d&#39;, &#39;e&#39;)
-console.log(pathStr) &#x2F;&#x2F; \a\d\e
-
-fs.readFile(path.join(__dirname, &#39;.&#x2F;files&#x2F;1.txt&#39;), &#39;utf8&#39;, function (err, dataStr) &#123;
-  if (err) &#123;
-    return console.log(err.message)
-  &#125;
-  console.log(dataStr)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="路径拼接path-join"><a href="#路径拼接path-join" class="headerlink" title="路径拼接path.join()"></a>路径拼接<code>path.join()</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 ../ 会抵消前面的路径</span></span><br><span class="line"><span class="comment">// ./ 会被忽略</span></span><br><span class="line"><span class="keyword">const</span> pathStr = path.<span class="title function_">join</span>(<span class="string">&#x27;/a&#x27;</span>, <span class="string">&#x27;/b/c&#x27;</span>, <span class="string">&#x27;../../&#x27;</span>, <span class="string">&#x27;./d&#x27;</span>, <span class="string">&#x27;e&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(pathStr) <span class="comment">// \a\d\e</span></span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;./files/1.txt&#x27;</span>), <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, dataStr</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(err.<span class="property">message</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(dataStr)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
 <h3 id="获取路径中文件名path-basename"><a href="#获取路径中文件名path-basename" class="headerlink" title="获取路径中文件名path.basename()"></a>获取路径中文件名<code>path.basename()</code></h3><p>使用 <code>path.basename()</code> 方法，可以获取路径中的最后一部分，常通过该方法获取路径中的文件名</p>
-<pre class="line-numbers language-none"><code class="language-none">path.basename(path[, ext])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">path</span>.basename(<span class="built_in">path</span>[, ext])</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>path: 文件路径</li>
 <li>ext: 文件扩展名</li>
 </ul>
-<pre class="line-numbers language-none"><code class="language-none">const path &#x3D; require(&#39;path&#39;)
-
-&#x2F;&#x2F; 定义文件的存放路径
-const fpath &#x3D; &#39;&#x2F;a&#x2F;b&#x2F;c&#x2F;index.html&#39;
-
-const fullName &#x3D; path.basename(fpath)
-console.log(fullName) &#x2F;&#x2F; index.html
-
-const nameWithoutExt &#x3D; path.basename(fpath, &#39;.html&#39;)
-console.log(nameWithoutExt) &#x2F;&#x2F; index<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义文件的存放路径</span></span><br><span class="line"><span class="keyword">const</span> fpath = <span class="string">&#x27;/a/b/c/index.html&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fullName = path.<span class="title function_">basename</span>(fpath)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fullName) <span class="comment">// index.html</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> nameWithoutExt = path.<span class="title function_">basename</span>(fpath, <span class="string">&#x27;.html&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(nameWithoutExt) <span class="comment">// index</span></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="获取路径中文件扩展名path-extname"><a href="#获取路径中文件扩展名path-extname" class="headerlink" title="获取路径中文件扩展名path.extname()"></a>获取路径中文件扩展名<code>path.extname()</code></h3><pre class="line-numbers language-none"><code class="language-none">const path &#x3D; require(&#39;path&#39;)
-
-const fpath &#x3D; &#39;&#x2F;a&#x2F;b&#x2F;c&#x2F;index.html&#39;
-
-const fext &#x3D; path.extname(fpath)
-console.log(fext) &#x2F;&#x2F; .html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="获取路径中文件扩展名path-extname"><a href="#获取路径中文件扩展名path-extname" class="headerlink" title="获取路径中文件扩展名path.extname()"></a>获取路径中文件扩展名<code>path.extname()</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fpath = <span class="string">&#x27;/a/b/c/index.html&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> fext = path.<span class="title function_">extname</span>(fpath)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fext) <span class="comment">// .html</span></span><br></pre></td></tr></table></figure>
 
 
 <h2 id="http模块"><a href="#http模块" class="headerlink" title="http模块"></a>http模块</h2><p>http模块是Node.js官方提供的、用来创建web服务器的模块。</p>
-<h3 id="创建基本Web服务器"><a href="#创建基本Web服务器" class="headerlink" title="创建基本Web服务器"></a>创建基本Web服务器</h3><pre class="line-numbers language-none"><code class="language-none">const http &#x3D; require(&#39;http&#39;)
-
-&#x2F;&#x2F; 创建 web 服务器实例
-const server &#x3D; http.createServer()
-
-&#x2F;&#x2F; 为服务器实例绑定 request 事件，监听客户端的请求
-server.on(&#39;request&#39;, function (req, res) &#123;
-  const url &#x3D; req.url
-  const method &#x3D; req.method
-  const str &#x3D; &#96;Your request url is $&#123;url&#125;, and request method is $&#123;method&#125;&#96;
-  console.log(str)
-
-  &#x2F;&#x2F; 设置 Content-Type 响应头，解决中文乱码的问题
-  res.setHeader(&#39;Content-Type&#39;, &#39;text&#x2F;html; charset&#x3D;utf-8&#39;)
-  &#x2F;&#x2F; 向客户端响应内容
-  res.end(str)
-&#125;)
-
-server.listen(8080, function () &#123;
-  console.log(&#39;server running at http:&#x2F;&#x2F;127.0.0.1:8080&#39;)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="创建基本Web服务器"><a href="#创建基本Web服务器" class="headerlink" title="创建基本Web服务器"></a>创建基本Web服务器</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建 web 服务器实例</span></span><br><span class="line"><span class="keyword">const</span> server = http.createServer()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为服务器实例绑定 request 事件，监听客户端的请求</span></span><br><span class="line">server.on(<span class="string">&#x27;request&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">url</span> = req.url</span><br><span class="line">  <span class="keyword">const</span> method = req.method</span><br><span class="line">  <span class="keyword">const</span> str = <span class="string">`Your request url is <span class="subst">$&#123;url&#125;</span>, and request method is <span class="subst">$&#123;method&#125;</span>`</span></span><br><span class="line">  <span class="built_in">console</span>.log(str)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置 Content-Type 响应头，解决中文乱码的问题</span></span><br><span class="line">  res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/html; charset=utf-8&#x27;</span>)</span><br><span class="line">  <span class="comment">// 向客户端响应内容</span></span><br><span class="line">  res.end(str)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;server running at http://127.0.0.1:8080&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="实现简陋路由效果"><a href="#实现简陋路由效果" class="headerlink" title="实现简陋路由效果"></a>实现简陋路由效果</h3><pre class="line-numbers language-none"><code class="language-none">const http &#x3D; require(&#39;http&#39;)
-const server &#x3D; http.createServer()
-
-server.on(&#39;request&#39;, (req, res) &#x3D;&gt; &#123;
-  const url &#x3D; req.url
-  &#x2F;&#x2F; 设置默认的响应内容为 404 Not found
-  let content &#x3D; &#39;&lt;h1&gt;404 Not found!&lt;&#x2F;h1&gt;&#39;
-  &#x2F;&#x2F; 判断用户请求的是否为 &#x2F; 或 &#x2F;index.html 首页
-  &#x2F;&#x2F; 判断用户请求的是否为 &#x2F;about.html 关于页面
-  if (url &#x3D;&#x3D;&#x3D; &#39;&#x2F;&#39; || url &#x3D;&#x3D;&#x3D; &#39;&#x2F;index.html&#39;) &#123;
-    content &#x3D; &#39;&lt;h1&gt;首页&lt;&#x2F;h1&gt;&#39;
-  &#125; else if (url &#x3D;&#x3D;&#x3D; &#39;&#x2F;about.html&#39;) &#123;
-    content &#x3D; &#39;&lt;h1&gt;关于页面&lt;&#x2F;h1&gt;&#39;
-  &#125;
-
-  res.setHeader(&#39;Content-Type&#39;, &#39;text&#x2F;html; charset&#x3D;utf-8&#39;)
-  res.end(content)
-&#125;)
-
-server.listen(80, () &#x3D;&gt; &#123;
-  console.log(&#39;server running at http:&#x2F;&#x2F;127.0.0.1&#39;)
-&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="实现简陋路由效果"><a href="#实现简陋路由效果" class="headerlink" title="实现简陋路由效果"></a>实现简陋路由效果</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> server = http.createServer()</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">&#x27;request&#x27;</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">url</span> = req.url</span><br><span class="line">  <span class="comment">// 设置默认的响应内容为 404 Not found</span></span><br><span class="line">  <span class="keyword">let</span> content = <span class="string">&#x27;&lt;h1&gt;404 Not found!&lt;/h1&gt;&#x27;</span></span><br><span class="line">  <span class="comment">// 判断用户请求的是否为 / 或 /index.html 首页</span></span><br><span class="line">  <span class="comment">// 判断用户请求的是否为 /about.html 关于页面</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">url</span> === <span class="string">&#x27;/&#x27;</span> || <span class="built_in">url</span> === <span class="string">&#x27;/index.html&#x27;</span>) &#123;</span><br><span class="line">    content = <span class="string">&#x27;&lt;h1&gt;首页&lt;/h1&gt;&#x27;</span></span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">url</span> === <span class="string">&#x27;/about.html&#x27;</span>) &#123;</span><br><span class="line">    content = <span class="string">&#x27;&lt;h1&gt;关于页面&lt;/h1&gt;&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/html; charset=utf-8&#x27;</span>)</span><br><span class="line">  res.end(content)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">80</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;server running at http://127.0.0.1&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h3 id="模块化概念"><a href="#模块化概念" class="headerlink" title="模块化概念"></a>模块化概念</h3><ul>
